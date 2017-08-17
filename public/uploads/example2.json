@@ -1,0 +1,6581 @@
+{
+ "results": [
+  {
+   "word_alternatives": [
+    {
+     "start_time": 1.87,
+     "alternatives": [
+      {
+       "confidence": 0.4744,
+       "word": "yeah"
+      },
+      {
+       "confidence": 0.4567,
+       "word": "yes"
+      },
+      {
+       "confidence": 0.0116,
+       "word": "Nancy"
+      }
+     ],
+     "end_time": 2.12
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Yes ",
+       1.87,
+       2.12
+      ],
+      [
+       "you. ",
+       2.12,
+       2.33
+      ]
+     ],
+     "confidence": 0.231,
+     "transcript": "Yes you. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 3.43,
+     "alternatives": [
+      {
+       "confidence": 0.6729,
+       "word": "okay"
+      },
+      {
+       "confidence": 0.075,
+       "word": "have"
+      },
+      {
+       "confidence": 0.0452,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.0272,
+       "word": "alright"
+      },
+      {
+       "confidence": 0.0127,
+       "word": "are"
+      },
+      {
+       "confidence": 0.0122,
+       "word": "right"
+      }
+     ],
+     "end_time": 3.79
+    },
+    {
+     "start_time": 3.8,
+     "alternatives": [
+      {
+       "confidence": 0.4943,
+       "word": "list"
+      },
+      {
+       "confidence": 0.1851,
+       "word": "rudest"
+      },
+      {
+       "confidence": 0.1564,
+       "word": "reduced"
+      },
+      {
+       "confidence": 0.0386,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0326,
+       "word": "realist"
+      }
+     ],
+     "end_time": 4.22
+    },
+    {
+     "start_time": 4.42,
+     "alternatives": [
+      {
+       "confidence": 0.7249,
+       "word": "only"
+      },
+      {
+       "confidence": 0.1489,
+       "word": "okay"
+      }
+     ],
+     "end_time": 4.7
+    },
+    {
+     "start_time": 4.7,
+     "alternatives": [
+      {
+       "confidence": 0.515,
+       "word": "and"
+      },
+      {
+       "confidence": 0.3248,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.043,
+       "word": "in"
+      }
+     ],
+     "end_time": 4.83
+    },
+    {
+     "start_time": 4.83,
+     "alternatives": [
+      {
+       "confidence": 0.5164,
+       "word": "that's"
+      },
+      {
+       "confidence": 0.2512,
+       "word": "asset"
+      },
+      {
+       "confidence": 0.0366,
+       "word": "that"
+      }
+     ],
+     "end_time": 5.02
+    },
+    {
+     "start_time": 5.02,
+     "alternatives": [
+      {
+       "confidence": 0.4465,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0775,
+       "word": "that"
+      },
+      {
+       "confidence": 0.048,
+       "word": "set"
+      }
+     ],
+     "end_time": 5.23
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Okay ",
+       3.43,
+       3.79
+      ],
+      [
+       "rudest ",
+       3.79,
+       4.22
+      ],
+      [
+       "only ",
+       4.42,
+       4.7
+      ],
+      [
+       "and ",
+       4.7,
+       4.83
+      ],
+      [
+       "that's ",
+       4.83,
+       5.02
+      ],
+      [
+       "it. ",
+       5.02,
+       5.23
+      ]
+     ],
+     "confidence": 0.198,
+     "transcript": "Okay rudest only and that's it. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "I ",
+       6.82,
+       6.87
+      ],
+      [
+       "don't ",
+       6.87,
+       6.99
+      ],
+      [
+       "know ",
+       6.99,
+       7.15
+      ],
+      [
+       "if ",
+       7.61,
+       7.74
+      ],
+      [
+       "we ",
+       7.74,
+       7.81
+      ],
+      [
+       "can. ",
+       7.81,
+       7.94
+      ]
+     ],
+     "confidence": 0.31,
+     "transcript": "I don't know if we can. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 10.2,
+     "alternatives": [
+      {
+       "confidence": 0.998,
+       "word": "you"
+      }
+     ],
+     "end_time": 10.4
+    },
+    {
+     "start_time": 10.4,
+     "alternatives": [
+      {
+       "confidence": 0.8704,
+       "word": "ominous"
+      },
+      {
+       "confidence": 0.05,
+       "word": "this"
+      },
+      {
+       "confidence": 0.0357,
+       "word": "miss"
+      }
+     ],
+     "end_time": 10.77
+    },
+    {
+     "start_time": 10.77,
+     "alternatives": [
+      {
+       "confidence": 0.9109,
+       "word": "beginning"
+      },
+      {
+       "confidence": 0.0584,
+       "word": "beginnings"
+      }
+     ],
+     "end_time": 11.11
+    },
+    {
+     "start_time": 11.11,
+     "alternatives": [
+      {
+       "confidence": 0.6857,
+       "word": "with"
+      },
+      {
+       "confidence": 0.0726,
+       "word": "is"
+      },
+      {
+       "confidence": 0.049,
+       "word": "of"
+      },
+      {
+       "confidence": 0.0167,
+       "word": "and"
+      },
+      {
+       "confidence": 0.0137,
+       "word": "means"
+      }
+     ],
+     "end_time": 11.24
+    },
+    {
+     "start_time": 11.24,
+     "alternatives": [
+      {
+       "confidence": 0.8757,
+       "word": "now"
+      },
+      {
+       "confidence": 0.0745,
+       "word": "no"
+      }
+     ],
+     "end_time": 11.57
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "You ",
+       10.2,
+       10.4
+      ],
+      [
+       "ominous ",
+       10.4,
+       10.77
+      ],
+      [
+       "beginning ",
+       10.77,
+       11.11
+      ],
+      [
+       "with ",
+       11.11,
+       11.24
+      ],
+      [
+       "now. ",
+       11.24,
+       11.57
+      ]
+     ],
+     "confidence": 0.581,
+     "transcript": "You ominous beginning with now. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 12.57,
+     "alternatives": [
+      {
+       "confidence": 0.4957,
+       "word": "so"
+      },
+      {
+       "confidence": 0.1246,
+       "word": "yeah"
+      },
+      {
+       "confidence": 0.0293,
+       "word": "yes"
+      },
+      {
+       "confidence": 0.0202,
+       "word": "the"
+      }
+     ],
+     "end_time": 12.74
+    },
+    {
+     "start_time": 12.85,
+     "alternatives": [
+      {
+       "confidence": 0.5136,
+       "word": "easy"
+      },
+      {
+       "confidence": 0.1857,
+       "word": "said"
+      },
+      {
+       "confidence": 0.0892,
+       "word": "OCC"
+      },
+      {
+       "confidence": 0.0547,
+       "word": "OCZ"
+      },
+      {
+       "confidence": 0.0396,
+       "word": "in"
+      },
+      {
+       "confidence": 0.025,
+       "word": "see"
+      },
+      {
+       "confidence": 0.0168,
+       "word": "CZ"
+      }
+     ],
+     "end_time": 13.23
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "So ",
+       12.57,
+       12.74
+      ],
+      [
+       "it's ",
+       12.74,
+       12.85
+      ],
+      [
+       "easy. ",
+       12.85,
+       13.23
+      ]
+     ],
+     "confidence": 0.243,
+     "transcript": "So it's easy. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 13.73,
+     "alternatives": [
+      {
+       "confidence": 0.4989,
+       "word": "right"
+      },
+      {
+       "confidence": 0.4733,
+       "word": "but"
+      },
+      {
+       "confidence": 0.0167,
+       "word": "got"
+      }
+     ],
+     "end_time": 14.11
+    },
+    {
+     "start_time": 13.95,
+     "alternatives": [
+      {
+       "confidence": 0.5435,
+       "word": "it"
+      }
+     ],
+     "end_time": 14.11
+    },
+    {
+     "start_time": 14.11,
+     "alternatives": [
+      {
+       "confidence": 0.9717,
+       "word": "right"
+      },
+      {
+       "confidence": 0.0241,
+       "word": "can"
+      }
+     ],
+     "end_time": 14.25
+    },
+    {
+     "start_time": 14.25,
+     "alternatives": [
+      {
+       "confidence": 0.8303,
+       "word": "you"
+      }
+     ],
+     "end_time": 14.34
+    },
+    {
+     "start_time": 14.34,
+     "alternatives": [
+      {
+       "confidence": 0.9994,
+       "word": "right"
+      }
+     ],
+     "end_time": 14.51
+    },
+    {
+     "start_time": 14.51,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "me"
+      }
+     ],
+     "end_time": 14.61
+    },
+    {
+     "start_time": 14.61,
+     "alternatives": [
+      {
+       "confidence": 0.9999,
+       "word": "right"
+      }
+     ],
+     "end_time": 14.76
+    },
+    {
+     "start_time": 14.76,
+     "alternatives": [
+      {
+       "confidence": 0.9981,
+       "word": "this"
+      }
+     ],
+     "end_time": 15.06
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Right ",
+       13.73,
+       14.11
+      ],
+      [
+       "could ",
+       14.11,
+       14.25
+      ],
+      [
+       "you ",
+       14.25,
+       14.34
+      ],
+      [
+       "help ",
+       14.34,
+       14.51
+      ],
+      [
+       "me ",
+       14.51,
+       14.61
+      ],
+      [
+       "with ",
+       14.61,
+       14.76
+      ],
+      [
+       "this. ",
+       14.76,
+       15.06
+      ]
+     ],
+     "confidence": 0.525,
+     "transcript": "Right could you help me with this. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Labor because of them. ",
+     "timestamps": [
+      [
+       "Labor ",
+       15.09,
+       15.34
+      ],
+      [
+       "because ",
+       15.34,
+       15.49
+      ],
+      [
+       "of ",
+       15.49,
+       15.56
+      ],
+      [
+       "them. ",
+       15.56,
+       15.83
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 15.25,
+     "alternatives": [
+      {
+       "confidence": 0.6197,
+       "word": "what"
+      },
+      {
+       "confidence": 0.2022,
+       "word": "labor"
+      },
+      {
+       "confidence": 0.0346,
+       "word": "liquid"
+      },
+      {
+       "confidence": 0.0178,
+       "word": "but"
+      }
+     ],
+     "end_time": 15.38
+    },
+    {
+     "start_time": 15.38,
+     "alternatives": [
+      {
+       "confidence": 0.529,
+       "word": "is"
+      },
+      {
+       "confidence": 0.1436,
+       "word": "because"
+      },
+      {
+       "confidence": 0.059,
+       "word": "has"
+      },
+      {
+       "confidence": 0.0316,
+       "word": "was"
+      },
+      {
+       "confidence": 0.0123,
+       "word": "it's"
+      },
+      {
+       "confidence": 0.0115,
+       "word": "languages"
+      }
+     ],
+     "end_time": 15.49
+    },
+    {
+     "start_time": 15.49,
+     "alternatives": [
+      {
+       "confidence": 0.451,
+       "word": "a"
+      },
+      {
+       "confidence": 0.1651,
+       "word": "of"
+      },
+      {
+       "confidence": 0.1021,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0171,
+       "word": "it"
+      }
+     ],
+     "end_time": 15.54
+    },
+    {
+     "start_time": 15.54,
+     "alternatives": [
+      {
+       "confidence": 0.5485,
+       "word": "gun"
+      },
+      {
+       "confidence": 0.1574,
+       "word": "them"
+      },
+      {
+       "confidence": 0.0364,
+       "word": "that"
+      },
+      {
+       "confidence": 0.0258,
+       "word": "not"
+      },
+      {
+       "confidence": 0.0245,
+       "word": "about"
+      },
+      {
+       "confidence": 0.0209,
+       "word": "god"
+      }
+     ],
+     "end_time": 15.8
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 16.3,
+     "alternatives": [
+      {
+       "confidence": 0.6828,
+       "word": "will"
+      },
+      {
+       "confidence": 0.2378,
+       "word": "would"
+      },
+      {
+       "confidence": 0.0589,
+       "word": "we"
+      }
+     ],
+     "end_time": 16.44
+    },
+    {
+     "start_time": 16.44,
+     "alternatives": [
+      {
+       "confidence": 0.9391,
+       "word": "you"
+      }
+     ],
+     "end_time": 16.5
+    },
+    {
+     "start_time": 16.5,
+     "alternatives": [
+      {
+       "confidence": 0.9617,
+       "word": "right"
+      },
+      {
+       "confidence": 0.0169,
+       "word": "had"
+      }
+     ],
+     "end_time": 16.64
+    },
+    {
+     "start_time": 16.64,
+     "alternatives": [
+      {
+       "confidence": 0.9531,
+       "word": "me"
+      },
+      {
+       "confidence": 0.0293,
+       "word": "it"
+      }
+     ],
+     "end_time": 16.7
+    },
+    {
+     "start_time": 16.7,
+     "alternatives": [
+      {
+       "confidence": 0.994,
+       "word": "with"
+      }
+     ],
+     "end_time": 16.88
+    },
+    {
+     "start_time": 16.88,
+     "alternatives": [
+      {
+       "confidence": 0.9962,
+       "word": "this"
+      }
+     ],
+     "end_time": 17.18
+    },
+    {
+     "start_time": 17.21,
+     "alternatives": [
+      {
+       "confidence": 0.9585,
+       "word": "I"
+      }
+     ],
+     "end_time": 17.32
+    },
+    {
+     "start_time": 17.32,
+     "alternatives": [
+      {
+       "confidence": 0.803,
+       "word": "want"
+      },
+      {
+       "confidence": 0.0906,
+       "word": "won"
+      },
+      {
+       "confidence": 0.03,
+       "word": "win"
+      },
+      {
+       "confidence": 0.0226,
+       "word": "island"
+      },
+      {
+       "confidence": 0.0207,
+       "word": "one"
+      }
+     ],
+     "end_time": 17.56
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Will ",
+       16.3,
+       16.44
+      ],
+      [
+       "you ",
+       16.44,
+       16.5
+      ],
+      [
+       "help ",
+       16.5,
+       16.64
+      ],
+      [
+       "me ",
+       16.64,
+       16.7
+      ],
+      [
+       "with ",
+       16.7,
+       16.88
+      ],
+      [
+       "this ",
+       16.88,
+       17.18
+      ],
+      [
+       "I ",
+       17.21,
+       17.32
+      ],
+      [
+       "want. ",
+       17.32,
+       17.56
+      ]
+     ],
+     "confidence": 0.577,
+     "transcript": "Will you help me with this I want. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Someone close. ",
+     "timestamps": [
+      [
+       "Someone ",
+       17.83,
+       18.14
+      ],
+      [
+       "close. ",
+       18.14,
+       18.72
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 17.83,
+     "alternatives": [
+      {
+       "confidence": 0.8729,
+       "word": "someone"
+      },
+      {
+       "confidence": 0.0423,
+       "word": "I"
+      }
+     ],
+     "end_time": 18.14
+    },
+    {
+     "start_time": 18.14,
+     "alternatives": [
+      {
+       "confidence": 0.6653,
+       "word": "close"
+      },
+      {
+       "confidence": 0.0562,
+       "word": "else"
+      },
+      {
+       "confidence": 0.015,
+       "word": "us"
+      },
+      {
+       "confidence": 0.0143,
+       "word": "talk"
+      }
+     ],
+     "end_time": 18.72
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "To these. ",
+     "timestamps": [
+      [
+       "To ",
+       18.75,
+       18.83
+      ],
+      [
+       "these. ",
+       18.83,
+       19.17
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 18.75,
+     "alternatives": [
+      {
+       "confidence": 0.9676,
+       "word": "to"
+      }
+     ],
+     "end_time": 18.83
+    },
+    {
+     "start_time": 18.83,
+     "alternatives": [
+      {
+       "confidence": 0.9174,
+       "word": "these"
+      },
+      {
+       "confidence": 0.0248,
+       "word": "this"
+      },
+      {
+       "confidence": 0.014,
+       "word": "dis"
+      }
+     ],
+     "end_time": 19.17
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 21.41,
+     "alternatives": [
+      {
+       "confidence": 0.5428,
+       "word": "or"
+      },
+      {
+       "confidence": 0.1057,
+       "word": "what"
+      },
+      {
+       "confidence": 0.101,
+       "word": "would"
+      },
+      {
+       "confidence": 0.083,
+       "word": "August"
+      },
+      {
+       "confidence": 0.0765,
+       "word": "well"
+      },
+      {
+       "confidence": 0.0347,
+       "word": "all"
+      },
+      {
+       "confidence": 0.017,
+       "word": "Augustus"
+      },
+      {
+       "confidence": 0.0116,
+       "word": "orthodox"
+      }
+     ],
+     "end_time": 21.59
+    },
+    {
+     "start_time": 21.59,
+     "alternatives": [
+      {
+       "confidence": 0.3118,
+       "word": "drugs"
+      },
+      {
+       "confidence": 0.175,
+       "word": "drug"
+      },
+      {
+       "confidence": 0.0925,
+       "word": "like"
+      },
+      {
+       "confidence": 0.0674,
+       "word": "looks"
+      },
+      {
+       "confidence": 0.0519,
+       "word": "got"
+      },
+      {
+       "confidence": 0.0358,
+       "word": "god"
+      },
+      {
+       "confidence": 0.0334,
+       "word": "glasses"
+      },
+      {
+       "confidence": 0.0171,
+       "word": "ducks"
+      },
+      {
+       "confidence": 0.0155,
+       "word": "what"
+      },
+      {
+       "confidence": 0.0105,
+       "word": "doctors"
+      }
+     ],
+     "end_time": 21.89
+    },
+    {
+     "start_time": 21.89,
+     "alternatives": [
+      {
+       "confidence": 0.3022,
+       "word": "is"
+      },
+      {
+       "confidence": 0.1385,
+       "word": "as"
+      },
+      {
+       "confidence": 0.1307,
+       "word": "to"
+      },
+      {
+       "confidence": 0.0857,
+       "word": "tested"
+      },
+      {
+       "confidence": 0.0721,
+       "word": "testing"
+      },
+      {
+       "confidence": 0.0347,
+       "word": "says"
+      },
+      {
+       "confidence": 0.0156,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0142,
+       "word": "system"
+      },
+      {
+       "confidence": 0.0115,
+       "word": "this"
+      }
+     ],
+     "end_time": 22.01
+    },
+    {
+     "start_time": 22.16,
+     "alternatives": [
+      {
+       "confidence": 0.3985,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0828,
+       "word": "stick"
+      },
+      {
+       "confidence": 0.0601,
+       "word": "think"
+      },
+      {
+       "confidence": 0.0407,
+       "word": "lift"
+      },
+      {
+       "confidence": 0.0269,
+       "word": "look"
+      },
+      {
+       "confidence": 0.0205,
+       "word": "leave"
+      },
+      {
+       "confidence": 0.0182,
+       "word": "it's"
+      },
+      {
+       "confidence": 0.0164,
+       "word": "this"
+      },
+      {
+       "confidence": 0.0145,
+       "word": "these"
+      },
+      {
+       "confidence": 0.0113,
+       "word": "estimates"
+      }
+     ],
+     "end_time": 22.32
+    },
+    {
+     "start_time": 22.36,
+     "alternatives": [
+      {
+       "confidence": 0.3811,
+       "word": "out"
+      },
+      {
+       "confidence": 0.2782,
+       "word": "up"
+      },
+      {
+       "confidence": 0.0174,
+       "word": "about"
+      }
+     ],
+     "end_time": 22.57
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Or ",
+       21.41,
+       21.59
+      ],
+      [
+       "drug ",
+       21.59,
+       21.86
+      ],
+      [
+       "tested ",
+       21.86,
+       22.17
+      ],
+      [
+       "it ",
+       22.17,
+       22.32
+      ],
+      [
+       "out. ",
+       22.35,
+       22.58
+      ]
+     ],
+     "confidence": 0.197,
+     "transcript": "Or drug tested it out. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 25.72,
+     "alternatives": [
+      {
+       "confidence": 0.9775,
+       "word": "you"
+      }
+     ],
+     "end_time": 25.83
+    },
+    {
+     "start_time": 25.83,
+     "alternatives": [
+      {
+       "confidence": 0.9768,
+       "word": "know"
+      },
+      {
+       "confidence": 0.0224,
+       "word": "no"
+      }
+     ],
+     "end_time": 26.11
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "You ",
+       25.72,
+       25.83
+      ],
+      [
+       "know. ",
+       25.83,
+       26.11
+      ]
+     ],
+     "confidence": 0.93,
+     "transcript": "You know. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 26.85,
+     "alternatives": [
+      {
+       "confidence": 0.5309,
+       "word": "see"
+      },
+      {
+       "confidence": 0.4497,
+       "word": "seek"
+      },
+      {
+       "confidence": 0.0133,
+       "word": "C."
+      }
+     ],
+     "end_time": 27.17
+    },
+    {
+     "start_time": 27.21,
+     "alternatives": [
+      {
+       "confidence": 0.4691,
+       "word": "your"
+      },
+      {
+       "confidence": 0.3615,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0736,
+       "word": "their"
+      },
+      {
+       "confidence": 0.0553,
+       "word": "you're"
+      }
+     ],
+     "end_time": 27.38
+    },
+    {
+     "start_time": 27.38,
+     "alternatives": [
+      {
+       "confidence": 0.4341,
+       "word": "help"
+      },
+      {
+       "confidence": 0.3505,
+       "word": "how"
+      },
+      {
+       "confidence": 0.1053,
+       "word": "hot"
+      },
+      {
+       "confidence": 0.0457,
+       "word": "house"
+      },
+      {
+       "confidence": 0.0241,
+       "word": "Iraq"
+      }
+     ],
+     "end_time": 27.71
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "See ",
+       26.85,
+       27.17
+      ],
+      [
+       "you ",
+       27.21,
+       27.29
+      ],
+      [
+       "know ",
+       27.29,
+       27.35
+      ],
+      [
+       "how. ",
+       27.35,
+       27.71
+      ]
+     ],
+     "confidence": 0.389,
+     "transcript": "See you know how. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 28.78,
+     "alternatives": [
+      {
+       "confidence": 0.9996,
+       "word": "I"
+      }
+     ],
+     "end_time": 28.94
+    },
+    {
+     "start_time": 28.94,
+     "alternatives": [
+      {
+       "confidence": 0.9489,
+       "word": "am"
+      },
+      {
+       "confidence": 0.0308,
+       "word": "have"
+      },
+      {
+       "confidence": 0.0156,
+       "word": "I'm"
+      }
+     ],
+     "end_time": 29.23
+    },
+    {
+     "start_time": 29.23,
+     "alternatives": [
+      {
+       "confidence": 0.8381,
+       "word": "definitely"
+      },
+      {
+       "confidence": 0.0545,
+       "word": "better"
+      },
+      {
+       "confidence": 0.0389,
+       "word": "enemy"
+      },
+      {
+       "confidence": 0.0207,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0149,
+       "word": "entered"
+      }
+     ],
+     "end_time": 29.8
+    },
+    {
+     "start_time": 29.8,
+     "alternatives": [
+      {
+       "confidence": 0.5984,
+       "word": "dead"
+      },
+      {
+       "confidence": 0.148,
+       "word": "did"
+      },
+      {
+       "confidence": 0.0689,
+       "word": "debt"
+      },
+      {
+       "confidence": 0.0537,
+       "word": "than"
+      },
+      {
+       "confidence": 0.0208,
+       "word": "and"
+      }
+     ],
+     "end_time": 30.07
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "I ",
+       28.78,
+       28.94
+      ],
+      [
+       "am ",
+       28.94,
+       29.23
+      ],
+      [
+       "definitely ",
+       29.23,
+       29.8
+      ],
+      [
+       "dead. ",
+       29.8,
+       30.07
+      ]
+     ],
+     "confidence": 0.356,
+     "transcript": "I am definitely dead. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 30.73,
+     "alternatives": [
+      {
+       "confidence": 0.6705,
+       "word": "no"
+      },
+      {
+       "confidence": 0.1373,
+       "word": "okay"
+      },
+      {
+       "confidence": 0.1157,
+       "word": "yeah"
+      },
+      {
+       "confidence": 0.0221,
+       "word": "know"
+      },
+      {
+       "confidence": 0.0192,
+       "word": "now"
+      },
+      {
+       "confidence": 0.0122,
+       "word": "not"
+      },
+      {
+       "confidence": 0.0111,
+       "word": "note"
+      }
+     ],
+     "end_time": 31.03
+    },
+    {
+     "start_time": 31.03,
+     "alternatives": [
+      {
+       "confidence": 0.9907,
+       "word": "so"
+      }
+     ],
+     "end_time": 31.25
+    },
+    {
+     "start_time": 31.25,
+     "alternatives": [
+      {
+       "confidence": 0.9967,
+       "word": "you"
+      }
+     ],
+     "end_time": 31.57
+    },
+    {
+     "start_time": 31.61,
+     "alternatives": [
+      {
+       "confidence": 0.3224,
+       "word": "end"
+      },
+      {
+       "confidence": 0.248,
+       "word": "and"
+      },
+      {
+       "confidence": 0.1091,
+       "word": "think"
+      },
+      {
+       "confidence": 0.0898,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.0496,
+       "word": "can"
+      },
+      {
+       "confidence": 0.0364,
+       "word": "then"
+      },
+      {
+       "confidence": 0.023,
+       "word": "in"
+      },
+      {
+       "confidence": 0.0164,
+       "word": "didn't"
+      }
+     ],
+     "end_time": 31.84
+    },
+    {
+     "start_time": 32.05,
+     "alternatives": [
+      {
+       "confidence": 0.4422,
+       "word": "version"
+      },
+      {
+       "confidence": 0.1094,
+       "word": "urgent"
+      },
+      {
+       "confidence": 0.0921,
+       "word": "Russian"
+      },
+      {
+       "confidence": 0.0185,
+       "word": "rest"
+      },
+      {
+       "confidence": 0.0182,
+       "word": "person"
+      },
+      {
+       "confidence": 0.01,
+       "word": "urging"
+      }
+     ],
+     "end_time": 32.38
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "No ",
+       30.73,
+       31.03
+      ],
+      [
+       "so ",
+       31.03,
+       31.25
+      ],
+      [
+       "you ",
+       31.25,
+       31.57
+      ],
+      [
+       "end ",
+       31.61,
+       31.84
+      ],
+      [
+       "version ",
+       32.05,
+       32.38
+      ],
+      [
+       "that. ",
+       32.64,
+       32.93
+      ]
+     ],
+     "confidence": 0.489,
+     "transcript": "No so you end version that. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 34.69,
+     "alternatives": [
+      {
+       "confidence": 0.9172,
+       "word": "and"
+      },
+      {
+       "confidence": 0.077,
+       "word": "in"
+      }
+     ],
+     "end_time": 34.8
+    },
+    {
+     "start_time": 34.8,
+     "alternatives": [
+      {
+       "confidence": 0.8372,
+       "word": "that"
+      },
+      {
+       "confidence": 0.0454,
+       "word": "the"
+      },
+      {
+       "confidence": 0.042,
+       "word": "there"
+      },
+      {
+       "confidence": 0.0186,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0118,
+       "word": "that's"
+      },
+      {
+       "confidence": 0.0111,
+       "word": "they're"
+      }
+     ],
+     "end_time": 34.98
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "And ",
+       34.69,
+       34.8
+      ],
+      [
+       "that. ",
+       34.8,
+       34.98
+      ]
+     ],
+     "confidence": 0.528,
+     "transcript": "And that. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 37.53,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "so"
+      }
+     ],
+     "end_time": 37.65
+    },
+    {
+     "start_time": 37.65,
+     "alternatives": [
+      {
+       "confidence": 0.6849,
+       "word": "nothing"
+      },
+      {
+       "confidence": 0.1752,
+       "word": "doesn't"
+      },
+      {
+       "confidence": 0.1336,
+       "word": "thing"
+      }
+     ],
+     "end_time": 37.96
+    },
+    {
+     "start_time": 37.96,
+     "alternatives": [
+      {
+       "confidence": 0.2867,
+       "word": "worth"
+      },
+      {
+       "confidence": 0.2567,
+       "word": "work"
+      },
+      {
+       "confidence": 0.1514,
+       "word": "we're"
+      },
+      {
+       "confidence": 0.0374,
+       "word": "were"
+      },
+      {
+       "confidence": 0.0145,
+       "word": "more"
+      },
+      {
+       "confidence": 0.0122,
+       "word": "worked"
+      },
+      {
+       "confidence": 0.01,
+       "word": "where"
+      }
+     ],
+     "end_time": 38.17
+    },
+    {
+     "start_time": 38.18,
+     "alternatives": [
+      {
+       "confidence": 0.7646,
+       "word": "picking"
+      },
+      {
+       "confidence": 0.2243,
+       "word": "working"
+      }
+     ],
+     "end_time": 38.57
+    },
+    {
+     "start_time": 38.57,
+     "alternatives": [
+      {
+       "confidence": 0.9589,
+       "word": "on"
+      }
+     ],
+     "end_time": 38.69
+    },
+    {
+     "start_time": 38.69,
+     "alternatives": [
+      {
+       "confidence": 0.9344,
+       "word": "it"
+      }
+     ],
+     "end_time": 38.85
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "So ",
+       37.53,
+       37.65
+      ],
+      [
+       "nothing ",
+       37.65,
+       37.96
+      ],
+      [
+       "working ",
+       37.96,
+       38.57
+      ],
+      [
+       "on ",
+       38.57,
+       38.69
+      ],
+      [
+       "it. ",
+       38.69,
+       38.85
+      ]
+     ],
+     "confidence": 0.347,
+     "transcript": "So nothing working on it. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 40,
+     "alternatives": [
+      {
+       "confidence": 0.8541,
+       "word": "unemployed"
+      },
+      {
+       "confidence": 0.0756,
+       "word": "on"
+      },
+      {
+       "confidence": 0.0656,
+       "word": "until"
+      }
+     ],
+     "end_time": 40.57
+    },
+    {
+     "start_time": 40.57,
+     "alternatives": [
+      {
+       "confidence": 0.4931,
+       "word": "then"
+      },
+      {
+       "confidence": 0.4612,
+       "word": "them"
+      },
+      {
+       "confidence": 0.0375,
+       "word": "than"
+      }
+     ],
+     "end_time": 40.72
+    },
+    {
+     "start_time": 40.72,
+     "alternatives": [
+      {
+       "confidence": 0.7155,
+       "word": "though"
+      },
+      {
+       "confidence": 0.2747,
+       "word": "go"
+      }
+     ],
+     "end_time": 41.31
+    },
+    {
+     "start_time": 41.4,
+     "alternatives": [
+      {
+       "confidence": 0.9869,
+       "word": "but"
+      }
+     ],
+     "end_time": 41.63
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Unemployed ",
+       40,
+       40.57
+      ],
+      [
+       "them ",
+       40.57,
+       40.72
+      ],
+      [
+       "though ",
+       40.72,
+       41.31
+      ],
+      [
+       "but. ",
+       41.4,
+       41.63
+      ]
+     ],
+     "confidence": 0.527,
+     "transcript": "Unemployed them though but. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 42.63,
+     "alternatives": [
+      {
+       "confidence": 0.5477,
+       "word": "well"
+      },
+      {
+       "confidence": 0.249,
+       "word": "%HESITATION"
+      },
+      {
+       "confidence": 0.0963,
+       "word": "oh"
+      },
+      {
+       "confidence": 0.0357,
+       "word": "O."
+      },
+      {
+       "confidence": 0.0177,
+       "word": "both"
+      },
+      {
+       "confidence": 0.0151,
+       "word": "but"
+      },
+      {
+       "confidence": 0.014,
+       "word": "book"
+      },
+      {
+       "confidence": 0.0134,
+       "word": "what"
+      }
+     ],
+     "end_time": 42.89
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Well. ",
+       42.63,
+       42.89
+      ]
+     ],
+     "confidence": 0.275,
+     "transcript": "Well. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 43.38,
+     "alternatives": [
+      {
+       "confidence": 0.7796,
+       "word": "you"
+      },
+      {
+       "confidence": 0.1304,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0135,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0132,
+       "word": "it's"
+      },
+      {
+       "confidence": 0.0101,
+       "word": "yeah"
+      }
+     ],
+     "end_time": 43.63
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "You. ",
+       43.38,
+       43.63
+      ]
+     ],
+     "confidence": 0.331,
+     "transcript": "You. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 44.25,
+     "alternatives": [
+      {
+       "confidence": 0.5375,
+       "word": "but"
+      },
+      {
+       "confidence": 0.0807,
+       "word": "I"
+      }
+     ],
+     "end_time": 44.41
+    },
+    {
+     "start_time": 44.41,
+     "alternatives": [
+      {
+       "confidence": 0.5282,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.0379,
+       "word": "see"
+      },
+      {
+       "confidence": 0.0189,
+       "word": "he"
+      }
+     ],
+     "end_time": 44.46
+    },
+    {
+     "start_time": 44.46,
+     "alternatives": [
+      {
+       "confidence": 0.9355,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0144,
+       "word": "yeah"
+      },
+      {
+       "confidence": 0.0108,
+       "word": "didn't"
+      },
+      {
+       "confidence": 0.0103,
+       "word": "hit"
+      }
+     ],
+     "end_time": 44.82
+    },
+    {
+     "start_time": 44.89,
+     "alternatives": [
+      {
+       "confidence": 0.621,
+       "word": "worked"
+      },
+      {
+       "confidence": 0.1616,
+       "word": "works"
+      },
+      {
+       "confidence": 0.0991,
+       "word": "work"
+      }
+     ],
+     "end_time": 45.17
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "But ",
+       44.25,
+       44.41
+      ],
+      [
+       "it ",
+       44.46,
+       44.82
+      ],
+      [
+       "worked. ",
+       44.89,
+       45.17
+      ]
+     ],
+     "confidence": 0.379,
+     "transcript": "But it worked. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 46.5,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "yeah"
+      }
+     ],
+     "end_time": 46.69
+    },
+    {
+     "start_time": 46.69,
+     "alternatives": [
+      {
+       "confidence": 0.5438,
+       "word": "they"
+      },
+      {
+       "confidence": 0.2761,
+       "word": "do"
+      },
+      {
+       "confidence": 0.0535,
+       "word": "did"
+      },
+      {
+       "confidence": 0.045,
+       "word": "the"
+      }
+     ],
+     "end_time": 46.86
+    },
+    {
+     "start_time": 46.86,
+     "alternatives": [
+      {
+       "confidence": 0.7604,
+       "word": "know"
+      },
+      {
+       "confidence": 0.1182,
+       "word": "no"
+      },
+      {
+       "confidence": 0.1037,
+       "word": "don't"
+      }
+     ],
+     "end_time": 47.15
+    },
+    {
+     "start_time": 47.46,
+     "alternatives": [
+      {
+       "confidence": 0.4171,
+       "word": "your"
+      },
+      {
+       "confidence": 0.326,
+       "word": "you're"
+      },
+      {
+       "confidence": 0.0786,
+       "word": "unit"
+      },
+      {
+       "confidence": 0.023,
+       "word": "hear"
+      },
+      {
+       "confidence": 0.0153,
+       "word": "know"
+      },
+      {
+       "confidence": 0.0133,
+       "word": "where"
+      }
+     ],
+     "end_time": 47.6
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Yeah ",
+       46.5,
+       46.69
+      ],
+      [
+       "they ",
+       46.69,
+       46.86
+      ],
+      [
+       "know ",
+       46.86,
+       47.15
+      ],
+      [
+       "you're. ",
+       47.46,
+       47.68
+      ]
+     ],
+     "confidence": 0.619,
+     "transcript": "Yeah they know you're. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 50.88,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "okay"
+      }
+     ],
+     "end_time": 51.44
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Okay. ",
+       50.88,
+       51.44
+      ]
+     ],
+     "confidence": 0.608,
+     "transcript": "Okay. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "So while. ",
+     "timestamps": [
+      [
+       "So ",
+       51.47,
+       52.03
+      ],
+      [
+       "while. ",
+       52.06,
+       52.34
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 51.47,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "so"
+      }
+     ],
+     "end_time": 52.03
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "TV. ",
+     "timestamps": [
+      [
+       "TV. ",
+       52.46,
+       52.84
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 52.46,
+     "alternatives": [
+      {
+       "confidence": 0.6791,
+       "word": "TV"
+      },
+      {
+       "confidence": 0.2354,
+       "word": "she'd"
+      },
+      {
+       "confidence": 0.0124,
+       "word": "teed"
+      }
+     ],
+     "end_time": 52.84
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "There's a problem here. ",
+     "timestamps": [
+      [
+       "There's ",
+       53.02,
+       53.22
+      ],
+      [
+       "a ",
+       53.22,
+       53.27
+      ],
+      [
+       "problem ",
+       53.27,
+       53.54
+      ],
+      [
+       "here. ",
+       53.54,
+       53.84
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 53.02,
+     "alternatives": [
+      {
+       "confidence": 0.55,
+       "word": "there's"
+      },
+      {
+       "confidence": 0.3245,
+       "word": "this"
+      },
+      {
+       "confidence": 0.0454,
+       "word": "that's"
+      }
+     ],
+     "end_time": 53.22
+    },
+    {
+     "start_time": 53.22,
+     "alternatives": [
+      {
+       "confidence": 0.784,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0474,
+       "word": "agreement"
+      },
+      {
+       "confidence": 0.0357,
+       "word": "ability"
+      }
+     ],
+     "end_time": 53.27
+    },
+    {
+     "start_time": 53.59,
+     "alternatives": [
+      {
+       "confidence": 0.5945,
+       "word": "here"
+      },
+      {
+       "confidence": 0.1162,
+       "word": "yet"
+      }
+     ],
+     "end_time": 53.84
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 55.05,
+     "alternatives": [
+      {
+       "confidence": 0.9893,
+       "word": "the"
+      }
+     ],
+     "end_time": 55.2
+    },
+    {
+     "start_time": 55.2,
+     "alternatives": [
+      {
+       "confidence": 0.9117,
+       "word": "thing"
+      },
+      {
+       "confidence": 0.0599,
+       "word": "things"
+      },
+      {
+       "confidence": 0.0178,
+       "word": "theme"
+      }
+     ],
+     "end_time": 55.59
+    },
+    {
+     "start_time": 55.66,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "that"
+      }
+     ],
+     "end_time": 55.89
+    },
+    {
+     "start_time": 55.89,
+     "alternatives": [
+      {
+       "confidence": 0.9965,
+       "word": "we"
+      }
+     ],
+     "end_time": 56.06
+    },
+    {
+     "start_time": 56.06,
+     "alternatives": [
+      {
+       "confidence": 0.779,
+       "word": "are"
+      },
+      {
+       "confidence": 0.2102,
+       "word": "I"
+      }
+     ],
+     "end_time": 56.15
+    },
+    {
+     "start_time": 56.15,
+     "alternatives": [
+      {
+       "confidence": 0.4913,
+       "word": "thinking"
+      },
+      {
+       "confidence": 0.2095,
+       "word": "think"
+      },
+      {
+       "confidence": 0.1877,
+       "word": "three"
+      },
+      {
+       "confidence": 0.0724,
+       "word": "looking"
+      },
+      {
+       "confidence": 0.0293,
+       "word": "the"
+      }
+     ],
+     "end_time": 56.54
+    },
+    {
+     "start_time": 56.54,
+     "alternatives": [
+      {
+       "confidence": 0.2227,
+       "word": "people"
+      },
+      {
+       "confidence": 0.195,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.164,
+       "word": "or"
+      },
+      {
+       "confidence": 0.0652,
+       "word": "for"
+      },
+      {
+       "confidence": 0.0604,
+       "word": "but"
+      },
+      {
+       "confidence": 0.0465,
+       "word": "good"
+      },
+      {
+       "confidence": 0.0429,
+       "word": "court"
+      },
+      {
+       "confidence": 0.0295,
+       "word": "god"
+      },
+      {
+       "confidence": 0.0188,
+       "word": "about"
+      },
+      {
+       "confidence": 0.0109,
+       "word": "got"
+      }
+     ],
+     "end_time": 56.78
+    },
+    {
+     "start_time": 56.92,
+     "alternatives": [
+      {
+       "confidence": 0.9711,
+       "word": "unless"
+      }
+     ],
+     "end_time": 57.24
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "The ",
+       55.05,
+       55.2
+      ],
+      [
+       "thing ",
+       55.2,
+       55.59
+      ],
+      [
+       "that ",
+       55.66,
+       55.89
+      ],
+      [
+       "we ",
+       55.89,
+       56.06
+      ],
+      [
+       "are ",
+       56.06,
+       56.15
+      ],
+      [
+       "thinking ",
+       56.15,
+       56.54
+      ],
+      [
+       "or ",
+       56.54,
+       56.78
+      ],
+      [
+       "unless. ",
+       56.92,
+       57.24
+      ]
+     ],
+     "confidence": 0.616,
+     "transcript": "The thing that we are thinking or unless. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "We are. ",
+     "timestamps": [
+      [
+       "We ",
+       57.29,
+       57.48
+      ],
+      [
+       "are. ",
+       57.48,
+       57.69
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 57.29,
+     "alternatives": [
+      {
+       "confidence": 0.982,
+       "word": "we"
+      }
+     ],
+     "end_time": 57.48
+    },
+    {
+     "start_time": 57.48,
+     "alternatives": [
+      {
+       "confidence": 0.6395,
+       "word": "are"
+      },
+      {
+       "confidence": 0.13,
+       "word": "all"
+      },
+      {
+       "confidence": 0.0665,
+       "word": "only"
+      },
+      {
+       "confidence": 0.0193,
+       "word": "own"
+      }
+     ],
+     "end_time": 57.69
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Only two people. ",
+     "timestamps": [
+      [
+       "Only ",
+       57.78,
+       57.96
+      ],
+      [
+       "two ",
+       57.96,
+       58.09
+      ],
+      [
+       "people. ",
+       58.09,
+       58.51
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 57.78,
+     "alternatives": [
+      {
+       "confidence": 0.8829,
+       "word": "only"
+      },
+      {
+       "confidence": 0.0574,
+       "word": "wanted"
+      },
+      {
+       "confidence": 0.0286,
+       "word": "went"
+      }
+     ],
+     "end_time": 57.96
+    },
+    {
+     "start_time": 57.96,
+     "alternatives": [
+      {
+       "confidence": 0.712,
+       "word": "two"
+      },
+      {
+       "confidence": 0.2596,
+       "word": "to"
+      }
+     ],
+     "end_time": 58.09
+    },
+    {
+     "start_time": 58.09,
+     "alternatives": [
+      {
+       "confidence": 0.9453,
+       "word": "people"
+      }
+     ],
+     "end_time": 58.51
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 61.95,
+     "alternatives": [
+      {
+       "confidence": 0.7612,
+       "word": "no"
+      },
+      {
+       "confidence": 0.0275,
+       "word": "know"
+      },
+      {
+       "confidence": 0.0103,
+       "word": "now"
+      }
+     ],
+     "end_time": 62.09
+    },
+    {
+     "start_time": 62.09,
+     "alternatives": [
+      {
+       "confidence": 0.5791,
+       "word": "not"
+      },
+      {
+       "confidence": 0.1083,
+       "word": "next"
+      },
+      {
+       "confidence": 0.028,
+       "word": "messy"
+      }
+     ],
+     "end_time": 62.27
+    },
+    {
+     "start_time": 62.27,
+     "alternatives": [
+      {
+       "confidence": 0.4437,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0414,
+       "word": "she"
+      },
+      {
+       "confidence": 0.0377,
+       "word": "just"
+      },
+      {
+       "confidence": 0.0199,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0131,
+       "word": "see"
+      }
+     ],
+     "end_time": 62.36
+    },
+    {
+     "start_time": 62.36,
+     "alternatives": [
+      {
+       "confidence": 0.3841,
+       "word": "think"
+      },
+      {
+       "confidence": 0.264,
+       "word": "nothing"
+      },
+      {
+       "confidence": 0.2517,
+       "word": "thing"
+      },
+      {
+       "confidence": 0.0377,
+       "word": "any"
+      },
+      {
+       "confidence": 0.0264,
+       "word": "shifting"
+      }
+     ],
+     "end_time": 62.64
+    },
+    {
+     "start_time": 62.64,
+     "alternatives": [
+      {
+       "confidence": 0.4343,
+       "word": "less"
+      },
+      {
+       "confidence": 0.2911,
+       "word": "looks"
+      },
+      {
+       "confidence": 0.081,
+       "word": "let's"
+      },
+      {
+       "confidence": 0.0588,
+       "word": "lex"
+      },
+      {
+       "confidence": 0.0188,
+       "word": "next"
+      }
+     ],
+     "end_time": 62.9
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Next ",
+       61.95,
+       62.37
+      ],
+      [
+       "thing ",
+       62.37,
+       62.62
+      ],
+      [
+       "looks ",
+       62.62,
+       62.9
+      ],
+      [
+       "very. ",
+       62.9,
+       63.17
+      ]
+     ],
+     "confidence": 0.168,
+     "transcript": "Next thing looks very. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 65.07,
+     "alternatives": [
+      {
+       "confidence": 0.9765,
+       "word": "okay"
+      },
+      {
+       "confidence": 0.0204,
+       "word": "link"
+      }
+     ],
+     "end_time": 65.39
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Okay. ",
+       65.07,
+       65.39
+      ]
+     ],
+     "confidence": 0.547,
+     "transcript": "Okay. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Nonexistent listings yes let's just beginning with let's see some of the interesting about it I don't know what to say but yesterday we went to this new money with that kidneys movie well it was nice button with Billy was going to be better because yeah. ",
+     "timestamps": [
+      [
+       "Nonexistent ",
+       65.63,
+       66.29
+      ],
+      [
+       "listings ",
+       66.63,
+       67.7
+      ],
+      [
+       "yes ",
+       68.06,
+       68.39
+      ],
+      [
+       "let's ",
+       68.39,
+       68.58
+      ],
+      [
+       "just ",
+       68.58,
+       68.76
+      ],
+      [
+       "beginning ",
+       68.76,
+       69.13
+      ],
+      [
+       "with ",
+       69.13,
+       69.27
+      ],
+      [
+       "let's ",
+       69.27,
+       69.46
+      ],
+      [
+       "see ",
+       69.46,
+       69.57
+      ],
+      [
+       "some ",
+       69.57,
+       69.77
+      ],
+      [
+       "of ",
+       69.77,
+       69.87
+      ],
+      [
+       "the ",
+       69.87,
+       69.97
+      ],
+      [
+       "interesting ",
+       69.97,
+       70.43
+      ],
+      [
+       "about ",
+       70.43,
+       70.71
+      ],
+      [
+       "it ",
+       70.71,
+       70.88
+      ],
+      [
+       "I ",
+       71.09,
+       71.2
+      ],
+      [
+       "don't ",
+       71.2,
+       71.33
+      ],
+      [
+       "know ",
+       71.33,
+       71.7
+      ],
+      [
+       "what ",
+       71.73,
+       71.88
+      ],
+      [
+       "to ",
+       71.88,
+       71.97
+      ],
+      [
+       "say ",
+       71.97,
+       72.37
+      ],
+      [
+       "but ",
+       72.58,
+       72.74
+      ],
+      [
+       "yesterday ",
+       72.74,
+       73.11
+      ],
+      [
+       "we ",
+       73.11,
+       73.25
+      ],
+      [
+       "went ",
+       73.25,
+       73.45
+      ],
+      [
+       "to ",
+       73.45,
+       73.51
+      ],
+      [
+       "this ",
+       73.51,
+       73.74
+      ],
+      [
+       "new ",
+       73.74,
+       73.86
+      ],
+      [
+       "money ",
+       73.86,
+       74.31
+      ],
+      [
+       "with ",
+       74.31,
+       74.7
+      ],
+      [
+       "that ",
+       74.85,
+       75.34
+      ],
+      [
+       "kidneys ",
+       75.53,
+       76.51
+      ],
+      [
+       "movie ",
+       76.54,
+       77.04
+      ],
+      [
+       "well ",
+       77.2,
+       77.48
+      ],
+      [
+       "it ",
+       77.48,
+       77.64
+      ],
+      [
+       "was ",
+       77.64,
+       77.8
+      ],
+      [
+       "nice ",
+       77.8,
+       78.07
+      ],
+      [
+       "button ",
+       78.07,
+       78.8
+      ],
+      [
+       "with ",
+       79.05,
+       79.25
+      ],
+      [
+       "Billy ",
+       79.25,
+       79.58
+      ],
+      [
+       "was ",
+       79.58,
+       79.77
+      ],
+      [
+       "going ",
+       79.77,
+       79.96
+      ],
+      [
+       "to ",
+       79.96,
+       80.07
+      ],
+      [
+       "be ",
+       80.07,
+       80.15
+      ],
+      [
+       "better ",
+       80.15,
+       80.45
+      ],
+      [
+       "because ",
+       80.45,
+       80.83
+      ],
+      [
+       "yeah. ",
+       80.83,
+       81.67
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 65.63,
+     "alternatives": [
+      {
+       "confidence": 0.553,
+       "word": "none"
+      },
+      {
+       "confidence": 0.2645,
+       "word": "nonexistent"
+      },
+      {
+       "confidence": 0.1244,
+       "word": "known"
+      },
+      {
+       "confidence": 0.0188,
+       "word": "non"
+      }
+     ],
+     "end_time": 65.85
+    },
+    {
+     "start_time": 65.85,
+     "alternatives": [
+      {
+       "confidence": 0.655,
+       "word": "existed"
+      },
+      {
+       "confidence": 0.0189,
+       "word": "existent"
+      }
+     ],
+     "end_time": 66.28
+    },
+    {
+     "start_time": 66.63,
+     "alternatives": [
+      {
+       "confidence": 0.8778,
+       "word": "listings"
+      },
+      {
+       "confidence": 0.0534,
+       "word": "beginnings"
+      },
+      {
+       "confidence": 0.0108,
+       "word": "these"
+      }
+     ],
+     "end_time": 67.7
+    },
+    {
+     "start_time": 68.06,
+     "alternatives": [
+      {
+       "confidence": 0.9876,
+       "word": "yes"
+      }
+     ],
+     "end_time": 68.39
+    },
+    {
+     "start_time": 68.39,
+     "alternatives": [
+      {
+       "confidence": 0.7805,
+       "word": "let's"
+      },
+      {
+       "confidence": 0.1339,
+       "word": "lets"
+      },
+      {
+       "confidence": 0.0129,
+       "word": "let"
+      }
+     ],
+     "end_time": 68.58
+    },
+    {
+     "start_time": 68.58,
+     "alternatives": [
+      {
+       "confidence": 0.5933,
+       "word": "just"
+      },
+      {
+       "confidence": 0.24,
+       "word": "is"
+      },
+      {
+       "confidence": 0.0356,
+       "word": "his"
+      },
+      {
+       "confidence": 0.0267,
+       "word": "us"
+      },
+      {
+       "confidence": 0.0178,
+       "word": "this"
+      }
+     ],
+     "end_time": 68.76
+    },
+    {
+     "start_time": 68.76,
+     "alternatives": [
+      {
+       "confidence": 0.9608,
+       "word": "beginning"
+      }
+     ],
+     "end_time": 69.13
+    },
+    {
+     "start_time": 69.13,
+     "alternatives": [
+      {
+       "confidence": 0.558,
+       "word": "with"
+      },
+      {
+       "confidence": 0.1829,
+       "word": "this"
+      },
+      {
+       "confidence": 0.1112,
+       "word": "is"
+      },
+      {
+       "confidence": 0.0757,
+       "word": "his"
+      },
+      {
+       "confidence": 0.0117,
+       "word": "its"
+      }
+     ],
+     "end_time": 69.27
+    },
+    {
+     "start_time": 69.27,
+     "alternatives": [
+      {
+       "confidence": 0.7556,
+       "word": "let's"
+      },
+      {
+       "confidence": 0.1882,
+       "word": "that"
+      }
+     ],
+     "end_time": 69.46
+    },
+    {
+     "start_time": 69.46,
+     "alternatives": [
+      {
+       "confidence": 0.5781,
+       "word": "see"
+      },
+      {
+       "confidence": 0.4113,
+       "word": "say"
+      }
+     ],
+     "end_time": 69.57
+    },
+    {
+     "start_time": 69.57,
+     "alternatives": [
+      {
+       "confidence": 0.9866,
+       "word": "some"
+      }
+     ],
+     "end_time": 69.77
+    },
+    {
+     "start_time": 69.77,
+     "alternatives": [
+      {
+       "confidence": 0.9949,
+       "word": "of"
+      }
+     ],
+     "end_time": 69.87
+    },
+    {
+     "start_time": 69.87,
+     "alternatives": [
+      {
+       "confidence": 0.9953,
+       "word": "the"
+      }
+     ],
+     "end_time": 69.97
+    },
+    {
+     "start_time": 69.97,
+     "alternatives": [
+      {
+       "confidence": 0.9952,
+       "word": "interesting"
+      }
+     ],
+     "end_time": 70.43
+    },
+    {
+     "start_time": 70.43,
+     "alternatives": [
+      {
+       "confidence": 0.9979,
+       "word": "about"
+      }
+     ],
+     "end_time": 70.71
+    },
+    {
+     "start_time": 70.71,
+     "alternatives": [
+      {
+       "confidence": 0.6015,
+       "word": "it"
+      },
+      {
+       "confidence": 0.3962,
+       "word": "that"
+      }
+     ],
+     "end_time": 70.88
+    },
+    {
+     "start_time": 71.09,
+     "alternatives": [
+      {
+       "confidence": 0.9987,
+       "word": "I"
+      }
+     ],
+     "end_time": 71.2
+    },
+    {
+     "start_time": 71.2,
+     "alternatives": [
+      {
+       "confidence": 0.9776,
+       "word": "don't"
+      }
+     ],
+     "end_time": 71.33
+    },
+    {
+     "start_time": 71.33,
+     "alternatives": [
+      {
+       "confidence": 0.9999,
+       "word": "know"
+      }
+     ],
+     "end_time": 71.7
+    },
+    {
+     "start_time": 71.73,
+     "alternatives": [
+      {
+       "confidence": 0.9993,
+       "word": "what"
+      }
+     ],
+     "end_time": 71.88
+    },
+    {
+     "start_time": 71.88,
+     "alternatives": [
+      {
+       "confidence": 0.9865,
+       "word": "to"
+      },
+      {
+       "confidence": 0.0128,
+       "word": "they"
+      }
+     ],
+     "end_time": 71.97
+    },
+    {
+     "start_time": 71.97,
+     "alternatives": [
+      {
+       "confidence": 0.9996,
+       "word": "say"
+      }
+     ],
+     "end_time": 72.37
+    },
+    {
+     "start_time": 72.58,
+     "alternatives": [
+      {
+       "confidence": 0.3893,
+       "word": "but"
+      },
+      {
+       "confidence": 0.3509,
+       "word": "by"
+      },
+      {
+       "confidence": 0.1613,
+       "word": "why"
+      },
+      {
+       "confidence": 0.0224,
+       "word": "buy"
+      },
+      {
+       "confidence": 0.0224,
+       "word": "my"
+      },
+      {
+       "confidence": 0.0208,
+       "word": "bye"
+      }
+     ],
+     "end_time": 72.7
+    },
+    {
+     "start_time": 72.7,
+     "alternatives": [
+      {
+       "confidence": 0.6576,
+       "word": "yesterday"
+      },
+      {
+       "confidence": 0.1313,
+       "word": "is"
+      },
+      {
+       "confidence": 0.0934,
+       "word": "use"
+      },
+      {
+       "confidence": 0.0304,
+       "word": "isn't"
+      },
+      {
+       "confidence": 0.0193,
+       "word": "yes"
+      }
+     ],
+     "end_time": 73.11
+    },
+    {
+     "start_time": 73.25,
+     "alternatives": [
+      {
+       "confidence": 0.5348,
+       "word": "went"
+      },
+      {
+       "confidence": 0.1128,
+       "word": "were"
+      },
+      {
+       "confidence": 0.0632,
+       "word": "word"
+      },
+      {
+       "confidence": 0.0515,
+       "word": "when"
+      },
+      {
+       "confidence": 0.039,
+       "word": "wide"
+      },
+      {
+       "confidence": 0.0254,
+       "word": "words"
+      },
+      {
+       "confidence": 0.025,
+       "word": "woods"
+      },
+      {
+       "confidence": 0.0134,
+       "word": "would"
+      }
+     ],
+     "end_time": 73.45
+    },
+    {
+     "start_time": 73.51,
+     "alternatives": [
+      {
+       "confidence": 0.713,
+       "word": "this"
+      },
+      {
+       "confidence": 0.1116,
+       "word": "insisting"
+      },
+      {
+       "confidence": 0.0233,
+       "word": "the"
+      }
+     ],
+     "end_time": 73.74
+    },
+    {
+     "start_time": 73.74,
+     "alternatives": [
+      {
+       "confidence": 0.7084,
+       "word": "new"
+      },
+      {
+       "confidence": 0.0356,
+       "word": "noon"
+      },
+      {
+       "confidence": 0.0221,
+       "word": "cinema"
+      },
+      {
+       "confidence": 0.0141,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0122,
+       "word": "him"
+      }
+     ],
+     "end_time": 73.92
+    },
+    {
+     "start_time": 73.92,
+     "alternatives": [
+      {
+       "confidence": 0.631,
+       "word": "on"
+      },
+      {
+       "confidence": 0.256,
+       "word": "money"
+      },
+      {
+       "confidence": 0.0152,
+       "word": "onion"
+      }
+     ],
+     "end_time": 74.22
+    },
+    {
+     "start_time": 74.22,
+     "alternatives": [
+      {
+       "confidence": 0.6362,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0124,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0112,
+       "word": "in"
+      },
+      {
+       "confidence": 0.0107,
+       "word": "mean"
+      }
+     ],
+     "end_time": 74.31
+    },
+    {
+     "start_time": 74.31,
+     "alternatives": [
+      {
+       "confidence": 0.4775,
+       "word": "with"
+      },
+      {
+       "confidence": 0.3234,
+       "word": "list"
+      },
+      {
+       "confidence": 0.0532,
+       "word": "was"
+      },
+      {
+       "confidence": 0.0245,
+       "word": "west"
+      },
+      {
+       "confidence": 0.0207,
+       "word": "worst"
+      }
+     ],
+     "end_time": 74.7
+    },
+    {
+     "start_time": 74.85,
+     "alternatives": [
+      {
+       "confidence": 0.7515,
+       "word": "that"
+      },
+      {
+       "confidence": 0.1482,
+       "word": "at"
+      }
+     ],
+     "end_time": 75.34
+    },
+    {
+     "start_time": 75.53,
+     "alternatives": [
+      {
+       "confidence": 0.652,
+       "word": "kidneys"
+      },
+      {
+       "confidence": 0.2059,
+       "word": "these"
+      },
+      {
+       "confidence": 0.0595,
+       "word": "peace"
+      },
+      {
+       "confidence": 0.0248,
+       "word": "niece"
+      },
+      {
+       "confidence": 0.0105,
+       "word": "hideous"
+      }
+     ],
+     "end_time": 76.51
+    },
+    {
+     "start_time": 76.54,
+     "alternatives": [
+      {
+       "confidence": 0.9322,
+       "word": "movie"
+      }
+     ],
+     "end_time": 77.04
+    },
+    {
+     "start_time": 77.2,
+     "alternatives": [
+      {
+       "confidence": 0.9813,
+       "word": "well"
+      }
+     ],
+     "end_time": 77.48
+    },
+    {
+     "start_time": 77.48,
+     "alternatives": [
+      {
+       "confidence": 0.9993,
+       "word": "it"
+      }
+     ],
+     "end_time": 77.64
+    },
+    {
+     "start_time": 77.64,
+     "alternatives": [
+      {
+       "confidence": 0.9994,
+       "word": "was"
+      }
+     ],
+     "end_time": 77.8
+    },
+    {
+     "start_time": 77.8,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "nice"
+      }
+     ],
+     "end_time": 78.07
+    },
+    {
+     "start_time": 78.07,
+     "alternatives": [
+      {
+       "confidence": 0.426,
+       "word": "but"
+      },
+      {
+       "confidence": 0.3284,
+       "word": "button"
+      },
+      {
+       "confidence": 0.1915,
+       "word": "book"
+      },
+      {
+       "confidence": 0.0186,
+       "word": "buttons"
+      },
+      {
+       "confidence": 0.0161,
+       "word": "bump"
+      },
+      {
+       "confidence": 0.0113,
+       "word": "Buck"
+      }
+     ],
+     "end_time": 78.32
+    },
+    {
+     "start_time": 79.05,
+     "alternatives": [
+      {
+       "confidence": 0.7703,
+       "word": "with"
+      }
+     ],
+     "end_time": 79.25
+    },
+    {
+     "start_time": 79.25,
+     "alternatives": [
+      {
+       "confidence": 0.2605,
+       "word": "Billy"
+      },
+      {
+       "confidence": 0.0901,
+       "word": "Ellen"
+      },
+      {
+       "confidence": 0.0851,
+       "word": "Allen"
+      },
+      {
+       "confidence": 0.0845,
+       "word": "early"
+      },
+      {
+       "confidence": 0.0769,
+       "word": "overly"
+      },
+      {
+       "confidence": 0.0764,
+       "word": "Boeing"
+      },
+      {
+       "confidence": 0.0426,
+       "word": "Alan"
+      },
+      {
+       "confidence": 0.0307,
+       "word": "bowling"
+      },
+      {
+       "confidence": 0.0164,
+       "word": "alone"
+      },
+      {
+       "confidence": 0.0145,
+       "word": "someone"
+      },
+      {
+       "confidence": 0.0114,
+       "word": "Eliot"
+      },
+      {
+       "confidence": 0.0112,
+       "word": "only"
+      }
+     ],
+     "end_time": 79.58
+    },
+    {
+     "start_time": 79.58,
+     "alternatives": [
+      {
+       "confidence": 0.8015,
+       "word": "was"
+      },
+      {
+       "confidence": 0.117,
+       "word": "what's"
+      }
+     ],
+     "end_time": 79.77
+    },
+    {
+     "start_time": 79.77,
+     "alternatives": [
+      {
+       "confidence": 0.9915,
+       "word": "going"
+      }
+     ],
+     "end_time": 79.96
+    },
+    {
+     "start_time": 79.96,
+     "alternatives": [
+      {
+       "confidence": 0.9926,
+       "word": "to"
+      }
+     ],
+     "end_time": 80.07
+    },
+    {
+     "start_time": 80.07,
+     "alternatives": [
+      {
+       "confidence": 0.9994,
+       "word": "be"
+      }
+     ],
+     "end_time": 80.15
+    },
+    {
+     "start_time": 80.15,
+     "alternatives": [
+      {
+       "confidence": 0.9993,
+       "word": "better"
+      }
+     ],
+     "end_time": 80.45
+    },
+    {
+     "start_time": 80.45,
+     "alternatives": [
+      {
+       "confidence": 0.9982,
+       "word": "because"
+      }
+     ],
+     "end_time": 80.84
+    },
+    {
+     "start_time": 80.9,
+     "alternatives": [
+      {
+       "confidence": 0.459,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.1041,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0123,
+       "word": "yeah"
+      }
+     ],
+     "end_time": 81.05
+    },
+    {
+     "start_time": 81.05,
+     "alternatives": [
+      {
+       "confidence": 0.5037,
+       "word": "yeah"
+      },
+      {
+       "confidence": 0.2882,
+       "word": "any"
+      },
+      {
+       "confidence": 0.0443,
+       "word": "anything"
+      },
+      {
+       "confidence": 0.0375,
+       "word": "alien"
+      },
+      {
+       "confidence": 0.0146,
+       "word": "really"
+      }
+     ],
+     "end_time": 81.67
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 82.55,
+     "alternatives": [
+      {
+       "confidence": 0.5556,
+       "word": "I"
+      },
+      {
+       "confidence": 0.1338,
+       "word": "we"
+      },
+      {
+       "confidence": 0.0573,
+       "word": "the"
+      },
+      {
+       "confidence": 0.018,
+       "word": "you"
+      }
+     ],
+     "end_time": 82.6
+    },
+    {
+     "start_time": 82.6,
+     "alternatives": [
+      {
+       "confidence": 0.614,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.1755,
+       "word": "because"
+      },
+      {
+       "confidence": 0.0918,
+       "word": "didn't"
+      },
+      {
+       "confidence": 0.0573,
+       "word": "good"
+      }
+     ],
+     "end_time": 82.83
+    },
+    {
+     "start_time": 82.83,
+     "alternatives": [
+      {
+       "confidence": 0.8735,
+       "word": "think"
+      },
+      {
+       "confidence": 0.0623,
+       "word": "thing"
+      },
+      {
+       "confidence": 0.0344,
+       "word": "need"
+      }
+     ],
+     "end_time": 82.98
+    },
+    {
+     "start_time": 82.98,
+     "alternatives": [
+      {
+       "confidence": 0.376,
+       "word": "it"
+      },
+      {
+       "confidence": 0.1358,
+       "word": "it's"
+      },
+      {
+       "confidence": 0.0949,
+       "word": "if"
+      },
+      {
+       "confidence": 0.0839,
+       "word": "is"
+      },
+      {
+       "confidence": 0.0298,
+       "word": "its"
+      },
+      {
+       "confidence": 0.0135,
+       "word": "he's"
+      }
+     ],
+     "end_time": 83.08
+    },
+    {
+     "start_time": 83.08,
+     "alternatives": [
+      {
+       "confidence": 0.3857,
+       "word": "look"
+      },
+      {
+       "confidence": 0.143,
+       "word": "looks"
+      },
+      {
+       "confidence": 0.0738,
+       "word": "will"
+      },
+      {
+       "confidence": 0.0668,
+       "word": "through"
+      },
+      {
+       "confidence": 0.0206,
+       "word": "looked"
+      },
+      {
+       "confidence": 0.0132,
+       "word": "good"
+      },
+      {
+       "confidence": 0.0101,
+       "word": "not"
+      }
+     ],
+     "end_time": 83.3
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "I ",
+       82.55,
+       82.6
+      ],
+      [
+       "don't ",
+       82.6,
+       82.83
+      ],
+      [
+       "think ",
+       82.83,
+       82.98
+      ],
+      [
+       "it ",
+       82.98,
+       83.08
+      ],
+      [
+       "looks. ",
+       83.08,
+       83.3
+      ]
+     ],
+     "confidence": 0.365,
+     "transcript": "I don't think it looks. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 83.88,
+     "alternatives": [
+      {
+       "confidence": 0.7798,
+       "word": "okay"
+      },
+      {
+       "confidence": 0.2166,
+       "word": "get"
+      }
+     ],
+     "end_time": 84.22
+    },
+    {
+     "start_time": 84.25,
+     "alternatives": [
+      {
+       "confidence": 0.3788,
+       "word": "shoe"
+      },
+      {
+       "confidence": 0.2726,
+       "word": "to"
+      },
+      {
+       "confidence": 0.2171,
+       "word": "chew"
+      },
+      {
+       "confidence": 0.0905,
+       "word": "Chu"
+      },
+      {
+       "confidence": 0.0299,
+       "word": "Choo"
+      }
+     ],
+     "end_time": 84.73
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "You ",
+       83.88,
+       83.97
+      ],
+      [
+       "get ",
+       83.97,
+       84.21
+      ],
+      [
+       "to. ",
+       84.25,
+       84.73
+      ]
+     ],
+     "confidence": 0.3,
+     "transcript": "You get to. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 85.2,
+     "alternatives": [
+      {
+       "confidence": 0.3681,
+       "word": "because"
+      },
+      {
+       "confidence": 0.3212,
+       "word": "etcetera"
+      },
+      {
+       "confidence": 0.1768,
+       "word": "can"
+      },
+      {
+       "confidence": 0.0308,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0213,
+       "word": "is"
+      }
+     ],
+     "end_time": 85.46
+    },
+    {
+     "start_time": 85.46,
+     "alternatives": [
+      {
+       "confidence": 0.364,
+       "word": "cedras"
+      },
+      {
+       "confidence": 0.1794,
+       "word": "send"
+      },
+      {
+       "confidence": 0.0977,
+       "word": "said"
+      },
+      {
+       "confidence": 0.0177,
+       "word": "set"
+      }
+     ],
+     "end_time": 85.87
+    },
+    {
+     "start_time": 85.88,
+     "alternatives": [
+      {
+       "confidence": 0.5594,
+       "word": "to"
+      },
+      {
+       "confidence": 0.1169,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0281,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0139,
+       "word": "but"
+      }
+     ],
+     "end_time": 85.98
+    },
+    {
+     "start_time": 85.98,
+     "alternatives": [
+      {
+       "confidence": 0.5901,
+       "word": "get"
+      },
+      {
+       "confidence": 0.3416,
+       "word": "good"
+      },
+      {
+       "confidence": 0.0195,
+       "word": "begin"
+      }
+     ],
+     "end_time": 86.15
+    },
+    {
+     "start_time": 86.15,
+     "alternatives": [
+      {
+       "confidence": 0.9551,
+       "word": "one"
+      }
+     ],
+     "end_time": 86.49
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Because ",
+       85.2,
+       85.46
+      ],
+      [
+       "cedras ",
+       85.46,
+       85.88
+      ],
+      [
+       "to ",
+       85.88,
+       85.98
+      ],
+      [
+       "get ",
+       85.98,
+       86.15
+      ],
+      [
+       "one. ",
+       86.15,
+       86.49
+      ]
+     ],
+     "confidence": 0.417,
+     "transcript": "Because cedras to get one. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 86.86,
+     "alternatives": [
+      {
+       "confidence": 0.9874,
+       "word": "so"
+      }
+     ],
+     "end_time": 87.02
+    },
+    {
+     "start_time": 87.28,
+     "alternatives": [
+      {
+       "confidence": 0.5884,
+       "word": "potentially"
+      },
+      {
+       "confidence": 0.1699,
+       "word": "this"
+      },
+      {
+       "confidence": 0.0539,
+       "word": "they"
+      },
+      {
+       "confidence": 0.0432,
+       "word": "details"
+      },
+      {
+       "confidence": 0.0218,
+       "word": "that"
+      }
+     ],
+     "end_time": 87.98
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "So ",
+       86.86,
+       87.02
+      ],
+      [
+       "that ",
+       87.02,
+       87.24
+      ],
+      [
+       "potentially. ",
+       87.24,
+       87.98
+      ]
+     ],
+     "confidence": 0.291,
+     "transcript": "So that potentially. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 88.46,
+     "alternatives": [
+      {
+       "confidence": 0.9932,
+       "word": "also"
+      }
+     ],
+     "end_time": 88.96
+    },
+    {
+     "start_time": 88.96,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "there"
+      }
+     ],
+     "end_time": 89.36
+    },
+    {
+     "start_time": 89.36,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "should"
+      }
+     ],
+     "end_time": 89.62
+    },
+    {
+     "start_time": 89.62,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "be"
+      }
+     ],
+     "end_time": 89.71
+    },
+    {
+     "start_time": 89.71,
+     "alternatives": [
+      {
+       "confidence": 0.9999,
+       "word": "three"
+      }
+     ],
+     "end_time": 90.12
+    },
+    {
+     "start_time": 90.12,
+     "alternatives": [
+      {
+       "confidence": 0.9999,
+       "word": "people"
+      }
+     ],
+     "end_time": 90.53
+    },
+    {
+     "start_time": 90.53,
+     "alternatives": [
+      {
+       "confidence": 0.9392,
+       "word": "right"
+      },
+      {
+       "confidence": 0.0601,
+       "word": "write"
+      }
+     ],
+     "end_time": 90.85
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Also ",
+       88.46,
+       88.96
+      ],
+      [
+       "there ",
+       88.96,
+       89.36
+      ],
+      [
+       "should ",
+       89.36,
+       89.62
+      ],
+      [
+       "be ",
+       89.62,
+       89.71
+      ],
+      [
+       "three ",
+       89.71,
+       90.12
+      ],
+      [
+       "people ",
+       90.12,
+       90.53
+      ],
+      [
+       "right. ",
+       90.53,
+       90.85
+      ]
+     ],
+     "confidence": 0.951,
+     "transcript": "Also there should be three people right. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Still. ",
+       91.7,
+       92.5
+      ]
+     ],
+     "confidence": 0.16,
+     "transcript": "Still. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 93.35,
+     "alternatives": [
+      {
+       "confidence": 0.8291,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0478,
+       "word": "at"
+      },
+      {
+       "confidence": 0.0396,
+       "word": "and"
+      },
+      {
+       "confidence": 0.0269,
+       "word": "I"
+      },
+      {
+       "confidence": 0.0155,
+       "word": "yeah"
+      }
+     ],
+     "end_time": 93.5
+    },
+    {
+     "start_time": 93.5,
+     "alternatives": [
+      {
+       "confidence": 0.6288,
+       "word": "<eps>"
+      }
+     ],
+     "end_time": 93.53
+    },
+    {
+     "start_time": 93.53,
+     "alternatives": [
+      {
+       "confidence": 0.5757,
+       "word": "no"
+      },
+      {
+       "confidence": 0.0685,
+       "word": "nun"
+      },
+      {
+       "confidence": 0.0186,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.0157,
+       "word": "gunman"
+      },
+      {
+       "confidence": 0.0148,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0143,
+       "word": "noon"
+      }
+     ],
+     "end_time": 93.65
+    },
+    {
+     "start_time": 93.84,
+     "alternatives": [
+      {
+       "confidence": 0.5301,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.033,
+       "word": "of"
+      }
+     ],
+     "end_time": 93.89
+    },
+    {
+     "start_time": 93.89,
+     "alternatives": [
+      {
+       "confidence": 0.8043,
+       "word": "did"
+      },
+      {
+       "confidence": 0.0709,
+       "word": "this"
+      }
+     ],
+     "end_time": 94.11
+    },
+    {
+     "start_time": 94.14,
+     "alternatives": [
+      {
+       "confidence": 0.9427,
+       "word": "this"
+      }
+     ],
+     "end_time": 94.29
+    },
+    {
+     "start_time": 94.29,
+     "alternatives": [
+      {
+       "confidence": 0.9749,
+       "word": "to"
+      }
+     ],
+     "end_time": 94.37
+    },
+    {
+     "start_time": 94.37,
+     "alternatives": [
+      {
+       "confidence": 0.9936,
+       "word": "be"
+      }
+     ],
+     "end_time": 94.48
+    },
+    {
+     "start_time": 94.48,
+     "alternatives": [
+      {
+       "confidence": 0.9971,
+       "word": "true"
+      }
+     ],
+     "end_time": 94.7
+    },
+    {
+     "start_time": 94.7,
+     "alternatives": [
+      {
+       "confidence": 0.9177,
+       "word": "we"
+      },
+      {
+       "confidence": 0.079,
+       "word": "which"
+      }
+     ],
+     "end_time": 94.93
+    },
+    {
+     "start_time": 94.93,
+     "alternatives": [
+      {
+       "confidence": 0.7493,
+       "word": "have"
+      },
+      {
+       "confidence": 0.077,
+       "word": "had"
+      },
+      {
+       "confidence": 0.0616,
+       "word": "actually"
+      },
+      {
+       "confidence": 0.024,
+       "word": "are"
+      }
+     ],
+     "end_time": 95.02
+    },
+    {
+     "start_time": 95.02,
+     "alternatives": [
+      {
+       "confidence": 0.5093,
+       "word": "to"
+      },
+      {
+       "confidence": 0.3456,
+       "word": "two"
+      },
+      {
+       "confidence": 0.0795,
+       "word": "you"
+      }
+     ],
+     "end_time": 95.18
+    },
+    {
+     "start_time": 95.18,
+     "alternatives": [
+      {
+       "confidence": 0.5626,
+       "word": "want"
+      },
+      {
+       "confidence": 0.3332,
+       "word": "one"
+      },
+      {
+       "confidence": 0.0897,
+       "word": "went"
+      }
+     ],
+     "end_time": 95.42
+    },
+    {
+     "start_time": 95.44,
+     "alternatives": [
+      {
+       "confidence": 0.6644,
+       "word": "to"
+      },
+      {
+       "confidence": 0.3204,
+       "word": "two"
+      }
+     ],
+     "end_time": 95.72
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "A ",
+       93.35,
+       93.5
+      ],
+      [
+       "no ",
+       93.53,
+       93.65
+      ],
+      [
+       "no ",
+       93.65,
+       93.84
+      ],
+      [
+       "did ",
+       93.89,
+       94.11
+      ],
+      [
+       "this ",
+       94.14,
+       94.29
+      ],
+      [
+       "to ",
+       94.29,
+       94.37
+      ],
+      [
+       "be ",
+       94.37,
+       94.48
+      ],
+      [
+       "true ",
+       94.48,
+       94.7
+      ],
+      [
+       "we ",
+       94.7,
+       94.93
+      ],
+      [
+       "have ",
+       94.93,
+       95.02
+      ],
+      [
+       "to ",
+       95.02,
+       95.18
+      ],
+      [
+       "want ",
+       95.18,
+       95.44
+      ],
+      [
+       "to. ",
+       95.44,
+       95.72
+      ]
+     ],
+     "confidence": 0.653,
+     "transcript": "A no no did this to be true we have to want to. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 96.24,
+     "alternatives": [
+      {
+       "confidence": 0.9991,
+       "word": "okay"
+      }
+     ],
+     "end_time": 96.54
+    },
+    {
+     "start_time": 96.54,
+     "alternatives": [
+      {
+       "confidence": 0.2685,
+       "word": "then"
+      },
+      {
+       "confidence": 0.2488,
+       "word": "I"
+      },
+      {
+       "confidence": 0.1606,
+       "word": "can"
+      },
+      {
+       "confidence": 0.0925,
+       "word": "them"
+      },
+      {
+       "confidence": 0.0534,
+       "word": "don't"
+      },
+      {
+       "confidence": 0.0204,
+       "word": "than"
+      },
+      {
+       "confidence": 0.0175,
+       "word": "I'll"
+      }
+     ],
+     "end_time": 96.66
+    },
+    {
+     "start_time": 96.66,
+     "alternatives": [
+      {
+       "confidence": 0.6156,
+       "word": "get"
+      },
+      {
+       "confidence": 0.2646,
+       "word": "understand"
+      },
+      {
+       "confidence": 0.075,
+       "word": "got"
+      }
+     ],
+     "end_time": 96.8
+    },
+    {
+     "start_time": 96.8,
+     "alternatives": [
+      {
+       "confidence": 0.3325,
+       "word": "under"
+      },
+      {
+       "confidence": 0.3079,
+       "word": "the"
+      },
+      {
+       "confidence": 0.2978,
+       "word": "underway"
+      },
+      {
+       "confidence": 0.0137,
+       "word": "angry"
+      }
+     ],
+     "end_time": 97.1
+    },
+    {
+     "start_time": 97.1,
+     "alternatives": [
+      {
+       "confidence": 0.6456,
+       "word": "way"
+      },
+      {
+       "confidence": 0.0158,
+       "word": "when"
+      }
+     ],
+     "end_time": 97.29
+    },
+    {
+     "start_time": 97.29,
+     "alternatives": [
+      {
+       "confidence": 0.9684,
+       "word": "we"
+      }
+     ],
+     "end_time": 97.52
+    },
+    {
+     "start_time": 97.52,
+     "alternatives": [
+      {
+       "confidence": 0.9764,
+       "word": "are"
+      }
+     ],
+     "end_time": 97.6
+    },
+    {
+     "start_time": 97.6,
+     "alternatives": [
+      {
+       "confidence": 0.4866,
+       "word": "talking"
+      },
+      {
+       "confidence": 0.4816,
+       "word": "thinking"
+      }
+     ],
+     "end_time": 97.88
+    },
+    {
+     "start_time": 98.19,
+     "alternatives": [
+      {
+       "confidence": 0.6117,
+       "word": "you're"
+      },
+      {
+       "confidence": 0.0839,
+       "word": "your"
+      },
+      {
+       "confidence": 0.0838,
+       "word": "got"
+      },
+      {
+       "confidence": 0.079,
+       "word": "gotta"
+      },
+      {
+       "confidence": 0.0563,
+       "word": "you"
+      }
+     ],
+     "end_time": 98.38
+    },
+    {
+     "start_time": 98.38,
+     "alternatives": [
+      {
+       "confidence": 0.7934,
+       "word": "talking"
+      },
+      {
+       "confidence": 0.1692,
+       "word": "get"
+      }
+     ],
+     "end_time": 98.68
+    },
+    {
+     "start_time": 98.68,
+     "alternatives": [
+      {
+       "confidence": 0.9567,
+       "word": "to"
+      }
+     ],
+     "end_time": 98.81
+    },
+    {
+     "start_time": 98.81,
+     "alternatives": [
+      {
+       "confidence": 0.9693,
+       "word": "me"
+      }
+     ],
+     "end_time": 99.01
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Okay ",
+       96.24,
+       96.55
+      ],
+      [
+       "I ",
+       96.55,
+       96.58
+      ],
+      [
+       "understand ",
+       96.58,
+       96.99
+      ],
+      [
+       "the ",
+       96.99,
+       97.07
+      ],
+      [
+       "way ",
+       97.07,
+       97.29
+      ],
+      [
+       "we ",
+       97.29,
+       97.52
+      ],
+      [
+       "are ",
+       97.52,
+       97.6
+      ],
+      [
+       "thinking ",
+       97.6,
+       98.11
+      ],
+      [
+       "you're ",
+       98.19,
+       98.38
+      ],
+      [
+       "talking ",
+       98.38,
+       98.68
+      ],
+      [
+       "to ",
+       98.68,
+       98.81
+      ],
+      [
+       "me. ",
+       98.81,
+       99.01
+      ]
+     ],
+     "confidence": 0.479,
+     "transcript": "Okay I understand the way we are thinking you're talking to me. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "I'm now looks at the damage will not. ",
+     "timestamps": [
+      [
+       "I'm ",
+       99.11,
+       99.34
+      ],
+      [
+       "now ",
+       99.34,
+       99.45
+      ],
+      [
+       "looks ",
+       99.45,
+       100.03
+      ],
+      [
+       "at ",
+       100.3,
+       100.39
+      ],
+      [
+       "the ",
+       100.39,
+       100.48
+      ],
+      [
+       "damage ",
+       100.48,
+       100.78
+      ],
+      [
+       "will ",
+       100.78,
+       100.9
+      ],
+      [
+       "not. ",
+       100.9,
+       101.22
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 99.11,
+     "alternatives": [
+      {
+       "confidence": 0.7846,
+       "word": "I'm"
+      },
+      {
+       "confidence": 0.0547,
+       "word": "hometown"
+      },
+      {
+       "confidence": 0.0517,
+       "word": "im"
+      },
+      {
+       "confidence": 0.0274,
+       "word": "home"
+      },
+      {
+       "confidence": 0.0197,
+       "word": "I"
+      }
+     ],
+     "end_time": 99.34
+    },
+    {
+     "start_time": 99.34,
+     "alternatives": [
+      {
+       "confidence": 0.8697,
+       "word": "now"
+      },
+      {
+       "confidence": 0.0205,
+       "word": "no"
+      },
+      {
+       "confidence": 0.0128,
+       "word": "known"
+      },
+      {
+       "confidence": 0.0105,
+       "word": "on"
+      }
+     ],
+     "end_time": 99.45
+    },
+    {
+     "start_time": 99.45,
+     "alternatives": [
+      {
+       "confidence": 0.9836,
+       "word": "looks"
+      }
+     ],
+     "end_time": 100.03
+    },
+    {
+     "start_time": 100.25,
+     "alternatives": [
+      {
+       "confidence": 0.1958,
+       "word": "if"
+      },
+      {
+       "confidence": 0.1412,
+       "word": "at"
+      },
+      {
+       "confidence": 0.1282,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0709,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0578,
+       "word": "keep"
+      },
+      {
+       "confidence": 0.053,
+       "word": "deep"
+      },
+      {
+       "confidence": 0.0504,
+       "word": "like"
+      },
+      {
+       "confidence": 0.0456,
+       "word": "eat"
+      },
+      {
+       "confidence": 0.0305,
+       "word": "he"
+      },
+      {
+       "confidence": 0.016,
+       "word": "in"
+      },
+      {
+       "confidence": 0.0158,
+       "word": "E."
+      },
+      {
+       "confidence": 0.01,
+       "word": "you"
+      }
+     ],
+     "end_time": 100.39
+    },
+    {
+     "start_time": 100.39,
+     "alternatives": [
+      {
+       "confidence": 0.7055,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0576,
+       "word": "either"
+      },
+      {
+       "confidence": 0.0307,
+       "word": "like"
+      }
+     ],
+     "end_time": 100.48
+    },
+    {
+     "start_time": 100.48,
+     "alternatives": [
+      {
+       "confidence": 0.5059,
+       "word": "gum"
+      },
+      {
+       "confidence": 0.1567,
+       "word": "damage"
+      },
+      {
+       "confidence": 0.1068,
+       "word": "becomes"
+      },
+      {
+       "confidence": 0.0575,
+       "word": "come"
+      },
+      {
+       "confidence": 0.0334,
+       "word": "government"
+      },
+      {
+       "confidence": 0.0246,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0191,
+       "word": "become"
+      },
+      {
+       "confidence": 0.0136,
+       "word": "gumshoe"
+      },
+      {
+       "confidence": 0.0101,
+       "word": "gums"
+      }
+     ],
+     "end_time": 100.69
+    },
+    {
+     "start_time": 100.78,
+     "alternatives": [
+      {
+       "confidence": 0.4941,
+       "word": "chewing"
+      },
+      {
+       "confidence": 0.3091,
+       "word": "will"
+      },
+      {
+       "confidence": 0.0541,
+       "word": "true"
+      },
+      {
+       "confidence": 0.0168,
+       "word": "to"
+      },
+      {
+       "confidence": 0.0141,
+       "word": "mature"
+      }
+     ],
+     "end_time": 100.9
+    },
+    {
+     "start_time": 100.9,
+     "alternatives": [
+      {
+       "confidence": 0.4038,
+       "word": "not"
+      },
+      {
+       "confidence": 0.2141,
+       "word": "gum"
+      },
+      {
+       "confidence": 0.1403,
+       "word": "now"
+      },
+      {
+       "confidence": 0.0443,
+       "word": "out"
+      },
+      {
+       "confidence": 0.0207,
+       "word": "on"
+      },
+      {
+       "confidence": 0.0165,
+       "word": "naught"
+      }
+     ],
+     "end_time": 101.22
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 102.45,
+     "alternatives": [
+      {
+       "confidence": 0.9999,
+       "word": "so"
+      }
+     ],
+     "end_time": 102.87
+    },
+    {
+     "start_time": 102.87,
+     "alternatives": [
+      {
+       "confidence": 0.9272,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.0681,
+       "word": "it"
+      }
+     ],
+     "end_time": 102.93
+    },
+    {
+     "start_time": 102.93,
+     "alternatives": [
+      {
+       "confidence": 0.776,
+       "word": "that"
+      },
+      {
+       "confidence": 0.0644,
+       "word": "that's"
+      },
+      {
+       "confidence": 0.0373,
+       "word": "does"
+      },
+      {
+       "confidence": 0.03,
+       "word": "never"
+      }
+     ],
+     "end_time": 103.15
+    },
+    {
+     "start_time": 103.15,
+     "alternatives": [
+      {
+       "confidence": 0.5606,
+       "word": "is"
+      },
+      {
+       "confidence": 0.2212,
+       "word": "that's"
+      },
+      {
+       "confidence": 0.1339,
+       "word": "was"
+      }
+     ],
+     "end_time": 103.28
+    },
+    {
+     "start_time": 103.28,
+     "alternatives": [
+      {
+       "confidence": 0.8728,
+       "word": "not"
+      },
+      {
+       "confidence": 0.0264,
+       "word": "marked"
+      },
+      {
+       "confidence": 0.0188,
+       "word": "mark"
+      },
+      {
+       "confidence": 0.014,
+       "word": "my"
+      }
+     ],
+     "end_time": 103.57
+    },
+    {
+     "start_time": 103.57,
+     "alternatives": [
+      {
+       "confidence": 0.9395,
+       "word": "right"
+      }
+     ],
+     "end_time": 103.86
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "So ",
+       102.45,
+       102.87
+      ],
+      [
+       "that ",
+       102.93,
+       103.15
+      ],
+      [
+       "is ",
+       103.15,
+       103.29
+      ],
+      [
+       "not ",
+       103.29,
+       103.58
+      ],
+      [
+       "right. ",
+       103.58,
+       103.86
+      ]
+     ],
+     "confidence": 0.541,
+     "transcript": "So that is not right. "
+    }
+   ],
+   "final": true,
+   "speaker": 1
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Each. ",
+     "timestamps": [
+      [
+       "Each. ",
+       104.28,
+       104.49
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 104.28,
+     "alternatives": [
+      {
+       "confidence": 0.2716,
+       "word": "each"
+      },
+      {
+       "confidence": 0.2052,
+       "word": "it"
+      },
+      {
+       "confidence": 0.1988,
+       "word": "eat"
+      },
+      {
+       "confidence": 0.057,
+       "word": "ET"
+      },
+      {
+       "confidence": 0.0466,
+       "word": "E."
+      },
+      {
+       "confidence": 0.0185,
+       "word": "eek"
+      },
+      {
+       "confidence": 0.0159,
+       "word": "easy"
+      }
+     ],
+     "end_time": 104.49
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Identify how maybe we. ",
+     "timestamps": [
+      [
+       "Identify ",
+       104.85,
+       105.4
+      ],
+      [
+       "how ",
+       105.4,
+       105.55
+      ],
+      [
+       "maybe ",
+       105.55,
+       105.98
+      ],
+      [
+       "we. ",
+       105.98,
+       106.2
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 104.85,
+     "alternatives": [
+      {
+       "confidence": 0.8858,
+       "word": "identify"
+      },
+      {
+       "confidence": 0.0668,
+       "word": "identified"
+      }
+     ],
+     "end_time": 105.4
+    },
+    {
+     "start_time": 105.4,
+     "alternatives": [
+      {
+       "confidence": 0.9896,
+       "word": "how"
+      }
+     ],
+     "end_time": 105.55
+    },
+    {
+     "start_time": 105.55,
+     "alternatives": [
+      {
+       "confidence": 0.7104,
+       "word": "maybe"
+      },
+      {
+       "confidence": 0.268,
+       "word": "may"
+      }
+     ],
+     "end_time": 105.98
+    },
+    {
+     "start_time": 105.98,
+     "alternatives": [
+      {
+       "confidence": 0.9305,
+       "word": "we"
+      },
+      {
+       "confidence": 0.0234,
+       "word": "me"
+      }
+     ],
+     "end_time": 106.2
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Will that no. ",
+     "timestamps": [
+      [
+       "Will ",
+       106.7,
+       106.83
+      ],
+      [
+       "that ",
+       106.83,
+       107.2
+      ],
+      [
+       "no. ",
+       107.23,
+       107.62
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 106.7,
+     "alternatives": [
+      {
+       "confidence": 0.9265,
+       "word": "will"
+      },
+      {
+       "confidence": 0.0596,
+       "word": "all"
+      }
+     ],
+     "end_time": 106.83
+    },
+    {
+     "start_time": 106.83,
+     "alternatives": [
+      {
+       "confidence": 0.9971,
+       "word": "that"
+      }
+     ],
+     "end_time": 107.2
+    },
+    {
+     "start_time": 107.23,
+     "alternatives": [
+      {
+       "confidence": 0.905,
+       "word": "no"
+      },
+      {
+       "confidence": 0.0487,
+       "word": "now"
+      },
+      {
+       "confidence": 0.0335,
+       "word": "know"
+      }
+     ],
+     "end_time": 107.62
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Knowledge of it with. ",
+     "timestamps": [
+      [
+       "Knowledge ",
+       107.65,
+       108.11
+      ],
+      [
+       "of ",
+       108.11,
+       108.2
+      ],
+      [
+       "it ",
+       108.2,
+       108.32
+      ],
+      [
+       "with. ",
+       108.32,
+       108.53
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 107.65,
+     "alternatives": [
+      {
+       "confidence": 0.6719,
+       "word": "knowledge"
+      },
+      {
+       "confidence": 0.1898,
+       "word": "that"
+      },
+      {
+       "confidence": 0.0147,
+       "word": "notes"
+      }
+     ],
+     "end_time": 108.11
+    },
+    {
+     "start_time": 108.11,
+     "alternatives": [
+      {
+       "confidence": 0.6313,
+       "word": "of"
+      },
+      {
+       "confidence": 0.2019,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0596,
+       "word": "a"
+      }
+     ],
+     "end_time": 108.2
+    },
+    {
+     "start_time": 108.2,
+     "alternatives": [
+      {
+       "confidence": 0.5494,
+       "word": "it"
+      },
+      {
+       "confidence": 0.1948,
+       "word": "get"
+      },
+      {
+       "confidence": 0.0755,
+       "word": "what"
+      },
+      {
+       "confidence": 0.0587,
+       "word": "bit"
+      },
+      {
+       "confidence": 0.026,
+       "word": "that"
+      }
+     ],
+     "end_time": 108.32
+    },
+    {
+     "start_time": 108.32,
+     "alternatives": [
+      {
+       "confidence": 0.6478,
+       "word": "with"
+      },
+      {
+       "confidence": 0.0491,
+       "word": "was"
+      },
+      {
+       "confidence": 0.0206,
+       "word": "look"
+      }
+     ],
+     "end_time": 108.53
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "The. ",
+     "timestamps": [
+      [
+       "The. ",
+       108.87,
+       109.05
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 110.07,
+     "alternatives": [
+      {
+       "confidence": 0.9796,
+       "word": "identify"
+      },
+      {
+       "confidence": 0.0197,
+       "word": "identifying"
+      }
+     ],
+     "end_time": 111.05
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Identify. ",
+       110.07,
+       111.05
+      ]
+     ],
+     "confidence": 0.442,
+     "transcript": "Identify. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Them and it is likely to be. ",
+     "timestamps": [
+      [
+       "Them ",
+       111.32,
+       111.61
+      ],
+      [
+       "and ",
+       111.61,
+       111.71
+      ],
+      [
+       "it ",
+       111.71,
+       111.8
+      ],
+      [
+       "is ",
+       111.8,
+       111.9
+      ],
+      [
+       "likely ",
+       111.9,
+       112.22
+      ],
+      [
+       "to ",
+       112.22,
+       112.33
+      ],
+      [
+       "be. ",
+       112.33,
+       112.43
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 111.32,
+     "alternatives": [
+      {
+       "confidence": 0.5535,
+       "word": "them"
+      },
+      {
+       "confidence": 0.1709,
+       "word": "numbing"
+      },
+      {
+       "confidence": 0.0142,
+       "word": "community's"
+      },
+      {
+       "confidence": 0.0141,
+       "word": "communities"
+      },
+      {
+       "confidence": 0.0126,
+       "word": "need"
+      }
+     ],
+     "end_time": 111.61
+    },
+    {
+     "start_time": 111.7,
+     "alternatives": [
+      {
+       "confidence": 0.6192,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0221,
+       "word": "minute"
+      }
+     ],
+     "end_time": 111.8
+    },
+    {
+     "start_time": 111.8,
+     "alternatives": [
+      {
+       "confidence": 0.6338,
+       "word": "is"
+      },
+      {
+       "confidence": 0.1655,
+       "word": "users"
+      },
+      {
+       "confidence": 0.0426,
+       "word": "amenities"
+      },
+      {
+       "confidence": 0.0149,
+       "word": "it's"
+      },
+      {
+       "confidence": 0.011,
+       "word": "minions"
+      }
+     ],
+     "end_time": 111.89
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 113.07,
+     "alternatives": [
+      {
+       "confidence": 1,
+       "word": "okay"
+      }
+     ],
+     "end_time": 113.42
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Okay. ",
+       113.07,
+       113.42
+      ]
+     ],
+     "confidence": 0.585,
+     "transcript": "Okay. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Notched ovate now. ",
+     "timestamps": [
+      [
+       "Notched ",
+       113.5,
+       113.92
+      ],
+      [
+       "ovate ",
+       113.96,
+       114.34
+      ],
+      [
+       "now. ",
+       114.34,
+       114.64
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 113.5,
+     "alternatives": [
+      {
+       "confidence": 0.9108,
+       "word": "notched"
+      },
+      {
+       "confidence": 0.0753,
+       "word": "noticed"
+      }
+     ],
+     "end_time": 113.92
+    },
+    {
+     "start_time": 113.96,
+     "alternatives": [
+      {
+       "confidence": 0.9055,
+       "word": "ovate"
+      },
+      {
+       "confidence": 0.0393,
+       "word": "abate"
+      },
+      {
+       "confidence": 0.0201,
+       "word": "date"
+      }
+     ],
+     "end_time": 114.34
+    },
+    {
+     "start_time": 114.34,
+     "alternatives": [
+      {
+       "confidence": 0.9586,
+       "word": "now"
+      },
+      {
+       "confidence": 0.017,
+       "word": "no"
+      }
+     ],
+     "end_time": 114.64
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "Now owe. ",
+     "timestamps": [
+      [
+       "Now ",
+       114.68,
+       114.94
+      ],
+      [
+       "owe. ",
+       114.94,
+       115.41
+      ]
+     ]
+    }
+   ],
+   "speaker": 0,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 114.68,
+     "alternatives": [
+      {
+       "confidence": 0.9536,
+       "word": "now"
+      }
+     ],
+     "end_time": 114.94
+    },
+    {
+     "start_time": 114.94,
+     "alternatives": [
+      {
+       "confidence": 0.5534,
+       "word": "owe"
+      },
+      {
+       "confidence": 0.1979,
+       "word": "who"
+      },
+      {
+       "confidence": 0.1153,
+       "word": "%HESITATION"
+      },
+      {
+       "confidence": 0.0468,
+       "word": "oh"
+      },
+      {
+       "confidence": 0.0315,
+       "word": "no"
+      },
+      {
+       "confidence": 0.0251,
+       "word": "au"
+      }
+     ],
+     "end_time": 115.41
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "alternatives": [
+    {
+     "transcript": "You get angry when you. ",
+     "timestamps": [
+      [
+       "You ",
+       115.72,
+       115.84
+      ],
+      [
+       "get ",
+       115.84,
+       115.97
+      ],
+      [
+       "angry ",
+       115.97,
+       116.22
+      ],
+      [
+       "when ",
+       116.22,
+       116.41
+      ],
+      [
+       "you. ",
+       116.41,
+       116.63
+      ]
+     ]
+    }
+   ],
+   "speaker": 1,
+   "final": true,
+   "word_alternatives": [
+    {
+     "start_time": 115.72,
+     "alternatives": [
+      {
+       "confidence": 0.8125,
+       "word": "you"
+      },
+      {
+       "confidence": 0.1463,
+       "word": "do"
+      }
+     ],
+     "end_time": 115.84
+    },
+    {
+     "start_time": 115.84,
+     "alternatives": [
+      {
+       "confidence": 0.3353,
+       "word": "get"
+      },
+      {
+       "confidence": 0.2976,
+       "word": "that"
+      },
+      {
+       "confidence": 0.1637,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0286,
+       "word": "could"
+      },
+      {
+       "confidence": 0.0205,
+       "word": "and"
+      },
+      {
+       "confidence": 0.0176,
+       "word": "got"
+      }
+     ],
+     "end_time": 115.97
+    },
+    {
+     "start_time": 115.99,
+     "alternatives": [
+      {
+       "confidence": 0.7572,
+       "word": "I"
+      }
+     ],
+     "end_time": 116.07
+    },
+    {
+     "start_time": 116.07,
+     "alternatives": [
+      {
+       "confidence": 0.4554,
+       "word": "mean"
+      },
+      {
+       "confidence": 0.2862,
+       "word": "it"
+      },
+      {
+       "confidence": 0.1272,
+       "word": "angry"
+      }
+     ],
+     "end_time": 116.28
+    },
+    {
+     "start_time": 116.28,
+     "alternatives": [
+      {
+       "confidence": 0.9652,
+       "word": "when"
+      }
+     ],
+     "end_time": 116.41
+    },
+    {
+     "start_time": 116.41,
+     "alternatives": [
+      {
+       "confidence": 0.9021,
+       "word": "you"
+      },
+      {
+       "confidence": 0.0784,
+       "word": "you're"
+      }
+     ],
+     "end_time": 116.63
+    }
+   ],
+   "keywords_result": {}
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 117.41,
+     "alternatives": [
+      {
+       "confidence": 0.8379,
+       "word": "right"
+      },
+      {
+       "confidence": 0.091,
+       "word": "okay"
+      },
+      {
+       "confidence": 0.0548,
+       "word": "alright"
+      }
+     ],
+     "end_time": 117.84
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "Right. ",
+       117.41,
+       117.84
+      ]
+     ],
+     "confidence": 0.582,
+     "transcript": "Right. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  },
+  {
+   "word_alternatives": [
+    {
+     "start_time": 119.33,
+     "alternatives": [
+      {
+       "confidence": 0.8299,
+       "word": "but"
+      },
+      {
+       "confidence": 0.0878,
+       "word": "there"
+      },
+      {
+       "confidence": 0.0335,
+       "word": "they"
+      },
+      {
+       "confidence": 0.0268,
+       "word": "the"
+      }
+     ],
+     "end_time": 119.53
+    },
+    {
+     "start_time": 119.53,
+     "alternatives": [
+      {
+       "confidence": 0.5432,
+       "word": "if"
+      },
+      {
+       "confidence": 0.2133,
+       "word": "a"
+      },
+      {
+       "confidence": 0.0408,
+       "word": "are"
+      },
+      {
+       "confidence": 0.0171,
+       "word": "ability"
+      },
+      {
+       "confidence": 0.0106,
+       "word": "have"
+      }
+     ],
+     "end_time": 119.67
+    },
+    {
+     "start_time": 119.67,
+     "alternatives": [
+      {
+       "confidence": 0.1888,
+       "word": "little"
+      },
+      {
+       "confidence": 0.1577,
+       "word": "<eps>"
+      },
+      {
+       "confidence": 0.1316,
+       "word": "they"
+      },
+      {
+       "confidence": 0.1197,
+       "word": "there"
+      },
+      {
+       "confidence": 0.0843,
+       "word": "it"
+      },
+      {
+       "confidence": 0.0493,
+       "word": "I"
+      },
+      {
+       "confidence": 0.0466,
+       "word": "there's"
+      },
+      {
+       "confidence": 0.0286,
+       "word": "the"
+      },
+      {
+       "confidence": 0.0198,
+       "word": "we"
+      }
+     ],
+     "end_time": 119.77
+    }
+   ],
+   "keywords_result": {},
+   "alternatives": [
+    {
+     "timestamps": [
+      [
+       "But ",
+       119.33,
+       119.53
+      ],
+      [
+       "if ",
+       119.53,
+       119.67
+      ],
+      [
+       "there ",
+       119.67,
+       119.77
+      ],
+      [
+       "is ",
+       119.77,
+       119.93
+      ],
+      [
+       "a. ",
+       119.93,
+       120.13
+      ]
+     ],
+     "confidence": 0.288,
+     "transcript": "But if there is a. "
+    }
+   ],
+   "final": true,
+   "speaker": 0
+  }
+ ],
+ "result_index": 0
+}

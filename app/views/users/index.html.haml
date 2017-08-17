@@ -1,0 +1,10 @@
+%h3 
+  = "basic instructions can be seen" 
+  %a{:href => "https://www.youtube.com/watch?v=GV2xgIWgGVE"} in this video.
+%p
+  ="email: hello@voiceable.io"  
+  
+%h1 List of students 
+- @users.each do |user|
+  %p 
+    = link_to user.name, user_path(user)

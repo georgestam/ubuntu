@@ -1,0 +1,62 @@
+%h1 
+  = "Student" 
+  = @user.name.capitalize
+- if @recordings.any?
+  %ul#selector
+    %li 
+      %h3
+        = "email:" 
+        = @user.email
+    %li 
+      %h3
+        = "words known:" 
+        = @user.words_known_by_user.size
+      %p
+        = @user.words_known_by_user
+    %li
+      %h3
+        = "words in the process to be learnt (less than 3 times said):" 
+        = @user.learning_words_by_user.size
+      %p
+        = @user.learning_words_by_user
+    %li
+      %h3
+        = "number of recordings:" 
+        = @recordings.size
+  - @recordings.each do |recording|
+    %h2
+      = "Recording" 
+      = recording.id
+    %br
+      %p
+        = link_to "Destroy Recording", api_respira_v1_recording_path(recording), method: :delete, data: { confirm: 'Are you sure?' }
+    %ul#selector
+      %li 
+        %p 
+          = "date:"
+          = recording.created_at
+      - if recording.description.present?
+        %li 
+          %p 
+            = "description:"
+            = recording.description
+      %li 
+        %p 
+          = "confidence:"
+          = recording.confidence
+          = "%"
+      %li 
+        %p 
+          = "speaker:"
+          = recording.speaker
+      %li 
+        %p 
+          = 'new words or learning words on this recording:'
+        = recording.learning_words
+- else
+  %h3 
+    = @user.name.capitalize
+    = "does not have recordings"        
+      
+%br
+= link_to "back", users_path
