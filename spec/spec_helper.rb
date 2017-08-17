@@ -30,7 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
 WebMock.disable_net_connect!(allow_localhost: true)
 
 Capybara.server_host = 'localhost' # no 127.0.0.1. Cleaner and FB expects it too
-Capybara.server_port = Voiceable::Application.port
+Capybara.server_port = Ubuntu::Application.port
 Capybara.app_host = Rails.application.config.asset_host
 
 Timecop.safe_mode = true
@@ -50,7 +50,7 @@ RSpec.configure do |config|
   config.include ActionView::Helpers::TranslationHelper
   config.include Warden::Test::Helpers, type: :feature
   config.infer_spec_type_from_file_location!
-  config.render_views  
+  config.render_views
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.use_transactional_fixtures = false
 
@@ -65,17 +65,17 @@ RSpec.configure do |config|
     DatabaseCleaner.start
     Warden.test_mode!
   end
-  
+
   config.before(:each, :js) do
     page.driver.browser.manage.window.resize_to(1920, 1200)
   end
-  
+
   config.after(:each) do |example|
     assert_js_ok if example.metadata[:js] && !example.metadata[:skip_js_check]
     DatabaseCleaner.clean
     Warden.test_reset!
   end
-  
+
   config.around :each, :js do |ex|
     ex.run_with_retry retry: (ci? ? 3 : 2), retry_wait: 3
   end
