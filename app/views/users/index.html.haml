@@ -7,16 +7,18 @@
   .width-buttom
     width: 200px !important
 
-%h1.center Ubuntu Power
+%h1.center{style: "margin-bottom: 100px"}
+  Ubuntu Power
 %h4
   = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom'
   = "Click here to access the admin dashboard"
 %h4 
   = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom'
   = "Click here button to update database"
-%p Notes: 
+%p{ style: "margin-top: 150px"}
+  %strong Notes: 
 
-%ul.list-group:
+%ul.list-group
   %li.list-group-item 
     When the database is updated (green buttom above) all the information from the Steama database is downloaded into this platform in order to crete alerts.
   %li.list-group-item 
@@ -27,7 +29,8 @@
   %li.list-group-item 
     Data from the admin panel can be filtered and downloaded using the 'Export' button
   
-%p To do:
+%p
+  %strong To do:
 %ol
-  %li Database to be updated every hour (there will no need to click the green button above)
-  %li When a database is created a notification into slack is created.
+  %li Database to be updated every hour (there will no be need to click the green button above)
+  %li When a database is created a notification into slack is send.
