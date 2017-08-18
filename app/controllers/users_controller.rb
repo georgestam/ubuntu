@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   
   def update_db
     authorize(current_user)
-    CreateUsersParser.update_users_db 
+    CreateUsersParser.update_customer_db 
+    CreateAlerts.update_alerts
   end 
   
 end

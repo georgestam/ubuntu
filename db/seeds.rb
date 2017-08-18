@@ -1,4 +1,7 @@
+Customer.destroy_all
 User.destroy_all
+TypeAlert.destroy_all
+
 # Recording.destroy_all
 
 User.create!({
@@ -30,3 +33,7 @@ User.create!({
 #     speaker: 1
 #     })
 # end
+
+TypeAlert.create!({
+  name: "negative_account"
+  })

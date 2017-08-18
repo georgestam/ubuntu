@@ -3,4 +3,6 @@ class Alert < ApplicationRecord
   belongs_to :type_alert
   
   validates :customer, presence: true
+  
+  
 end

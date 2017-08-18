@@ -2,7 +2,7 @@ class CreateUsersParser
   
   require 'rest-client'
   
-  def self.update_users_db
+  def self.update_customer_db
     url1 = "https://api.steama.co/customers/?format=json&page_size=100"
     url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=100"
     

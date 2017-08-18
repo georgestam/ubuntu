@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818120917) do
+ActiveRecord::Schema.define(version: 20170818163304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "alerts", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "type_alert_id"
+    t.string   "description"
+    t.boolean  "open"
+    t.boolean  "closed"
+    t.boolean  "resolved"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
+    t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
+  end
 
   create_table "customers", force: :cascade do |t|
     t.integer  "id_steama",               null: false
@@ -68,6 +81,12 @@ ActiveRecord::Schema.define(version: 20170818120917) do
     t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
+  create_table "type_alerts", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                             default: "",    null: false
     t.string   "encrypted_password",                default: "",    null: false
@@ -88,4 +107,6 @@ ActiveRecord::Schema.define(version: 20170818120917) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "alerts", "customers"
+  add_foreign_key "alerts", "type_alerts"
 end
