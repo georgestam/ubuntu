@@ -12,12 +12,12 @@ class CreateUsersParser
       # This defines the id:
       # body['results'][0]['id']
       
-      # json_data['results']each do |user|
-      #   unless false # exist > user['id']
-      #     create_new_user(user)  
-      # end 
-      # binding.pry
-      CreateUsersParser.create_new_customer(json_data['results'][0])  
+      json_data['results'].each do |user|
+        unless Customer.customer_id_exist?(user['id'])
+          CreateUsersParser.create_new_customer(user)
+        end 
+      end 
+        
     end 
   
   end
