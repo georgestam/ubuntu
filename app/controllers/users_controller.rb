@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
-    @users = policy_scope(User)
+    policy_scope(User)
+    
+    data_test = CreateUsersParser.update_users_db  
   end
   
   def show
