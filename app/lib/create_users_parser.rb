@@ -6,7 +6,7 @@ class CreateUsersParser
     url1 = "https://api.steama.co/customers/?format=json&page_size=100"
     url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=100"
     
-    [url1,url2].each do |url|
+    [url1, url2].each do |url|
       body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
       json_data = JSON.parse(body)
       # This defines the id:
@@ -19,7 +19,6 @@ class CreateUsersParser
       end 
         
     end 
-  
   end
   
   def self.create_new_customer(user)
@@ -57,7 +56,7 @@ class CreateUsersParser
         labels: user['labels']
         })
     else 
-      #todo: send email with there has been a problem
+      # TODO: send email with there has been a problem
     end 
          
   end 

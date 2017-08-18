@@ -5,11 +5,7 @@ class UsersController < ApplicationController
   
   def update_db
     authorize(current_user)
-    if CreateUsersParser.update_users_db 
-    else
-      #to do alert. 
-    end 
-    redirect_to users_path
+    CreateUsersParser.update_users_db 
   end 
   
 end
