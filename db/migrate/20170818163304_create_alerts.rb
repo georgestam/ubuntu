@@ -4,9 +4,9 @@ class CreateAlerts < ActiveRecord::Migration[5.0]
       t.references :customer, foreign_key: true
       t.references :type_alert, foreign_key: true
       t.string :description
-      t.boolean :open
-      t.boolean :closed
-      t.boolean :resolved
+      t.boolean :open, default: true
+      t.boolean :closed, default: false
+      t.boolean :resolved, default: false
       t.string :description
 
       t.timestamps
