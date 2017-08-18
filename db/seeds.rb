@@ -1,10 +1,9 @@
 User.destroy_all
-Recording.destroy_all
+# Recording.destroy_all
 
 User.create!({
-  email: "laima@ubuntu.org",
+  email: "admin@ubuntu.org",
   password: "password10",
-  name: 'laima',
   admin: true
   })
 

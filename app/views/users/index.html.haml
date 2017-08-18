@@ -1,8 +1,39 @@
-%h3
-  = "basic instructions can be seen"
-  %a{:href => "https://www.youtube.com/watch?v=GV2xgIWgGVE"} in this video.
+:sass
+
+  .center 
+    text-align: center
+  .margin
+    margin: 30px
+  .width-buttom
+    width: 200px !important
+
+%h1.center{style: "margin-bottom: 100px"}
+  Ubuntu Power
+%h4
+  = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom'
+  = "Click here to access the admin dashboard"
+%h4 
+  = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom'
+  = "Click here button to update database"
+%p{ style: "margin-top: 150px"}
+  %strong Notes: 
+
+%ul.list-group
+  %li.list-group-item 
+    When the database is updated (green buttom above) all the information from the Steama database is downloaded into this platform in order to crete alerts.
+  %li.list-group-item 
+    Current alers created are:
+    %ol
+      %li Negative_account: An alert is created an account_balance is negative
+      
+  %li.list-group-item 
+    Data from the admin panel can be filtered and downloaded using the 'Export' button
+  %li.list-group-item 
+    Current database is setup to 200 users, please let me know when this number may be exceeded.
+  
 %p
-%h1 List of students
-- @users.each do |user|
-  %p
-    = link_to user.name, user_path(user)
+  %strong To do:
+%ol
+  %li Database to be updated every hour (there will no be need to click the green button above)
+  %li When a database is created a notification into slack is send.
+  %li If database can not be updated, an email of error will be sent.
