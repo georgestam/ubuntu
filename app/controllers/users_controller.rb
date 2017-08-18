@@ -1,13 +1,15 @@
 class UsersController < ApplicationController
   def index
     policy_scope(User)
-    
-    data_test = CreateUsersParser.update_users_db  
   end
   
-  def show
-    @user = User.find(params[:id])
-    authorize @user
-    @recordings = Recording.where(user: @user)
-  end
+  def update_db
+    authorize(current_user)
+    if CreateUsersParser.update_users_db 
+    else
+      #to do alert. 
+    end 
+    redirect_to users_path
+  end 
+  
 end

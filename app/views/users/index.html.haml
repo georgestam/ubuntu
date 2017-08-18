@@ -1,8 +1,27 @@
-%h3
-  = "basic instructions can be seen"
-  %a{:href => "https://www.youtube.com/watch?v=GV2xgIWgGVE"} in this video.
-%p
-%h1 List of students
--# - @users.each do |user|
-  %p
-    = link_to user.name, user_path(user)
+:sass
+
+  .center 
+    text-align: center
+  .margin
+    margin: 20px
+
+%h1.center Ubuntu Power
+%h4.center 
+  = "Click this button to update database:"
+  = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin'
+%p Notes: 
+
+%ul.list-group:
+  %li.list-group-item 
+    Cras justo odio
+  %li.list-group-item 
+    Dapibus ac facilisis in
+  %li.list-group-item Morbi leo risus
+  %li.list-group-item Porta ac consectetur ac
+  %li.list-group-item Vestibulum at eros
+  
+%p To do:
+%ol
+  %li This is an experiment, 
+  %li Tea
+  %li Milk

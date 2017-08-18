@@ -7,5 +7,9 @@ class UserPolicy < ApplicationPolicy
   
   def main?
     record == user
-  end 
+  end
+  
+  def update_db?
+    record == user
+  end  
 end
