@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     CreateUsersParser.update_customer_db
     # create alerts if users have negative accounts 
     Alert.users_with_negative_acount
+    flash[:notice] = "database updated successfully!"
+    redirect_to users_path
   end 
   
 end

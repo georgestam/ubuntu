@@ -55,7 +55,9 @@ class CreateUsersParser
         integration_id: user['integration_id'],
         labels: user['labels']
         })
+      # flash[:notice] = "New Customers were created"
     else 
+      # flash[:alert] = customer.errors.full_messages
       # TODO: send email with there has been a problem
     end 
          
