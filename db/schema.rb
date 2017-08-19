@@ -19,11 +19,11 @@ ActiveRecord::Schema.define(version: 20170818163304) do
     t.integer  "customer_id"
     t.integer  "type_alert_id"
     t.string   "description"
-    t.boolean  "open"
-    t.boolean  "closed"
-    t.boolean  "resolved"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.boolean  "open",          default: true
+    t.boolean  "closed",        default: false
+    t.boolean  "resolved",      default: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
   end
