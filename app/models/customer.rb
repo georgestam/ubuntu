@@ -8,4 +8,14 @@ class Customer < ApplicationRecord
     true if Customer.find_by(id_steama: id_steama)
   end 
   
+  def customer_description_does_not_exist_open?
+    exist = true 
+    Alert.all.each do |alert|
+      if Alert.find_by(customer_id: self.id)
+        exist = false  
+      end
+    end 
+    exist
+  end
+  
 end
