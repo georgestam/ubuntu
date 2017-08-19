@@ -30,10 +30,13 @@
     Data from the admin panel can be filtered and downloaded using the 'Export' button
   %li.list-group-item 
     Current database is setup to 200 users, please let me know when this number may be exceeded.
+  %li.list-group-item 
+    The 'green button' is clicked automatically at 9am, 2pm and 7pm (UK time). You can see 
+    = link_to "here", "/sidekiq"
+    here each time that the button is clicked automatically. 
   
 %p
   %strong To do:
 %ol
-  %li Database to be updated every hour (there will no be need to click the green button above)
   %li When a database is created a notification into slack is send.
   %li If database can not be updated, an email of error will be sent.
