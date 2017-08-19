@@ -37,3 +37,13 @@ User.create!({
 TypeAlert.create!({
   name: "negative_account"
   })
+  
+Status.create!({
+  name: "open"
+  })
+Status.create!({
+  name: "closed"
+  })
+Status.create!({
+  name: "Resolved"
+  })

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170818163304) do
+ActiveRecord::Schema.define(version: 20170819194521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,12 +19,11 @@ ActiveRecord::Schema.define(version: 20170818163304) do
     t.integer  "customer_id"
     t.integer  "type_alert_id"
     t.string   "description"
-    t.boolean  "open",          default: true
-    t.boolean  "closed",        default: false
-    t.boolean  "resolved",      default: false
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "status_id"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
+    t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
   end
 
@@ -60,6 +59,7 @@ ActiveRecord::Schema.define(version: 20170818163304) do
     t.string   "payment_plan"
     t.string   "integration_id"
     t.string   "labels"
+    t.string   "description"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
@@ -79,6 +79,12 @@ ActiveRecord::Schema.define(version: 20170818163304) do
     t.datetime "updated_at"
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
     t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "type_alerts", force: :cascade do |t|
@@ -108,5 +114,6 @@ ActiveRecord::Schema.define(version: 20170818163304) do
   end
 
   add_foreign_key "alerts", "customers"
+  add_foreign_key "alerts", "statuses"
   add_foreign_key "alerts", "type_alerts"
 end

@@ -1,6 +1,7 @@
 class Alert < ApplicationRecord
   belongs_to :customer
   belongs_to :type_alert
+  belongs_to :status
   
   validates :customer, presence: true
   

@@ -33,6 +33,7 @@ class CreateCustomers < ActiveRecord::Migration[5.0]
       t.string :payment_plan
       t.string :integration_id
       t.string :labels
+      t.string :description
 
       t.timestamps
     end
