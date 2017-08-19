@@ -1,5 +1,20 @@
 RailsAdmin.config do |config|
   
+  config.model Alert do
+    list do
+      field :customer
+      field :type_alert
+      field :description
+      field :status
+      field :created_at do
+        column_width 30
+      end
+      field :updated_at do
+        column_width 30
+      end
+    end
+  end
+  
   config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration
