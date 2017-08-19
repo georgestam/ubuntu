@@ -4,7 +4,7 @@ class Alert < ApplicationRecord
   
   validates :customer, presence: true
   
-  def self.users_with_negative_acount
+  def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
       if customer.account_balance.to_i <= 0 
         if Alert.create!({
