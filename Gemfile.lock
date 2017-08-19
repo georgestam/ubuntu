@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/mhfs/sidekiq-failures.git
+  revision: ade3c0035e8b7df0821a71328fe31dc706226aeb
+  specs:
+    sidekiq-failures (1.0.0)
+      sidekiq (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -103,6 +110,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     countries (2.0.8)
       i18n_data (~> 0.7.0)
       money (~> 6.7)
@@ -310,6 +318,8 @@ GEM
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
+    rack-protection (2.0.0)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -422,6 +432,11 @@ GEM
     sexp_processor (4.9.0)
     shoulda-matchers (3.1.1)
       activesupport (>= 4.0.0)
+    sidekiq (5.0.4)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (~> 3.3, >= 3.3.3)
     simple_calendar (2.2.5)
       rails (>= 3.0)
     simple_form (3.5.0)
@@ -561,6 +576,8 @@ DEPENDENCIES
   sass-rails (~> 5)
   selenium-webdriver (~> 2.47)
   shoulda-matchers (~> 3.1)
+  sidekiq (~> 5.0.4)
+  sidekiq-failures!
   simple_calendar (~> 2.2)
   simple_form
   simple_token_authentication (~> 1.15)
