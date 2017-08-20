@@ -15,6 +15,21 @@ RailsAdmin.config do |config|
     end
   end
   
+  config.model Customer do
+    list do
+      field :id_steama         
+      field :telephone
+      field :first_name
+      field :last_name
+      field :description
+      field :account_balance
+      field :low_balance_warning
+      field :low_balance_level
+      field :line_number
+      field :language
+    end
+  end
+  
   config.parent_controller = '::ApplicationController'
 
   ### Popular gems integration
