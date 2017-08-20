@@ -5,10 +5,11 @@ class Alert < ApplicationRecord
   
   validates :customer, presence: true
   
-  after_create :send_alert_email
+  after_create :send_alert_email_and_slack_notification
 
-  def send_alert_email
+  def send_alert_email_and_slack_notification
     AlertMailer.perform(self).deliver_later
+    SendNotificationsToSlack.perform_later
   end
   
   def self.check_customers_with_negative_acount
