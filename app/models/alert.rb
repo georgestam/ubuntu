@@ -5,6 +5,12 @@ class Alert < ApplicationRecord
   
   validates :customer, presence: true
   
+  after_create :send_alert_email
+
+  def send_alert_email
+    AlertMailer.perform(self).deliver_now
+  end
+  
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
       if customer.account_balance.to_i <= 0 && customer.customer_description_does_not_exist_open?
