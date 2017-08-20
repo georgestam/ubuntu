@@ -1,2 +1,11 @@
 %p
-  = @greeting + ", find me in app/views/alert_mailer/perform.html.haml"
+  - @alert.created_by
+  - if @alert.customer
+    = @alert.customer.id
+    = @alert.customer.first_name
+    = @alert.customer.last_name
+    = @alert.customer.id
+  = @alert.type_alert
+  = @alert.description
+  = @alert.status
+  = @alert.created_at 
