@@ -1,11 +1,9 @@
 class SendNotificationsToSlack < ApplicationJob
   queue_as :default
 
-  def perform
+  def perform(alert_id)
     puts "I'm starting jobs"
-    client = Slack::Web::Client.new
-    client.auth_test
-    client.chat_postMessage(channel: '#alerts', text: 'Hello World', as_user: 'ubuntu')
+    Alert.slack_API_call(alert_id)
     puts "OK I'm done now"
   end
 end
