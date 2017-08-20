@@ -8,11 +8,9 @@ class AlertMailer < ApplicationMailer
   
   
   def perform(alert)
-    @greeting = "Hi"
     @alert = alert  # Instance variable => available in view
-    @user = User.first
 
-    mail(to: 'jordi@respira.io', subject: 'Welcome to Le Wagon')
+    mail(to: 'jordi@respira.io', subject: 'New Alert')
     # This will render a view in `app/views/user_mailer`!
   end
 end

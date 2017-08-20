@@ -18,7 +18,8 @@ class Alert < ApplicationRecord
             customer: customer,
             type_alert: TypeAlert.first, # this alert is 'nagative_account'
             description: "User has negative account",
-            status: Status.first
+            status: Status.first,
+            created_by: User.first
             })
         else 
           # flash[:alert] = alert.errors.full_messages
