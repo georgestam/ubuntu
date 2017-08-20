@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20170819194521) do
     t.integer  "customer_id"
     t.integer  "type_alert_id"
     t.string   "description"
+    t.string   "created_by"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "status_id"
