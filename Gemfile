@@ -8,6 +8,8 @@ gem 'pg', '~> 0.18'
 
 gem 'puma'
 
+gem 'twilio-ruby', '~> 5.1.2'
+
 gem 'activerecord-session_store', '~> 1'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'browser', '~> 2.3'
