@@ -8,7 +8,7 @@ class Alert < ApplicationRecord
   after_create :send_alert_email
 
   def send_alert_email
-    AlertMailer.perform(self).deliver_now
+    AlertMailer.perform(self).deliver_later
   end
   
   def self.check_customers_with_negative_acount
