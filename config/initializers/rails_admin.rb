@@ -2,6 +2,7 @@ RailsAdmin.config do |config|
   
   config.model Alert do
     list do
+      field :id
       field :customer
       field :type_alert
       field :description
@@ -18,6 +19,7 @@ RailsAdmin.config do |config|
   
   config.model Customer do
     list do
+      field :id
       field :id_steama         
       field :telephone
       field :first_name
