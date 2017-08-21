@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   
   resources  :users, only: %i(index)
   
+  resources  :alerts, only: %i(new create)
+  
   post "users/update_db"
   
   root to: 'users#index', as: :root

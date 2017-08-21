@@ -1,0 +1,26 @@
+.section.sign-up-box
+  .well.col-sm-8
+    .row
+      #login.brand-header
+        -# = image_tag 'logo/main-logo.png', class: 'main-logo'
+        %p.platform Open Icebergs
+    %h1 
+      = "Create an Issue"
+    %p
+      Please fill in this form to create a new issue
+    .row
+      .left.col-md-offset-3.col-md-6
+        = simple_form_for Alert.new, url: alerts_path, method: :post do |f|
+          - if flash.any?
+            .alert.alert-danger
+              - flash.each do |name, msg|
+                = content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
+            
+          = f.input :customer, label: false, collection: @customers, prompt: "Select customer" 
+          = f.input :type_alert, label: false, collection: @type_alerts, prompt: "Select alert type" 
+          = f.input :description, label: false, placeholder: 'description', label: false, autofocus: true
+          = f.input :status, label: false, collection: @status, prompt: "Select status" 
+          = f.input :created_by, label: false, placeholder: 'description', label: false, autofocus: true
+          = f.button :submit, class: "button btn btn-lg btn-primary"
+          
+          

@@ -5,6 +5,10 @@ class UserPolicy < ApplicationPolicy
     end
   end
   
+  def new?
+    user
+  end 
+  
   def main?
     record == user
   end
