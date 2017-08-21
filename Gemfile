@@ -8,6 +8,10 @@ gem 'pg', '~> 0.18'
 
 gem 'puma'
 
+gem 'slack-ruby-client'
+gem 'eventmachine'
+gem 'faye-websocket'
+
 gem 'activerecord-session_store', '~> 1'
 gem 'bootstrap-sass', '~> 3.3'
 gem 'browser', '~> 2.3'
