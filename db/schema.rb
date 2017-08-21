@@ -65,14 +65,6 @@ ActiveRecord::Schema.define(version: 20170819194521) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "recordings", force: :cascade do |t|
-    t.string   "data",                    null: false
-    t.text     "array_data", default: [],              array: true
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "file"
-  end
-
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"

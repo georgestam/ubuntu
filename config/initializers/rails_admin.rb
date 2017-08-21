@@ -1,21 +1,6 @@
 RailsAdmin.config do |config|
   
-  config.model Alert do
-    list do
-      field :id
-      field :customer
-      field :type_alert
-      field :description
-      field :status
-      field :created_by
-      field :created_at do
-        column_width 30
-      end
-      field :updated_at do
-        column_width 30
-      end
-    end
-  end
+  config.label_methods << :custom_label_method
   
   config.model Customer do
     list do
@@ -30,6 +15,23 @@ RailsAdmin.config do |config|
       field :low_balance_level
       field :line_number
       field :language
+    end
+  end
+  
+  config.model Alert do
+    list do
+      field :id
+      field :customer 
+      field :type_alert
+      field :description
+      field :status
+      field :created_by
+      field :created_at do
+        column_width 30
+      end
+      field :updated_at do
+        column_width 30
+      end
     end
   end
   
@@ -76,3 +78,5 @@ RailsAdmin.config do |config|
     # history_show
   end
 end
+
+

@@ -8,6 +8,10 @@ class Customer < ApplicationRecord
     true if Customer.find_by(id_steama: id_steama)
   end 
   
+  def custom_label_method
+    "#{self.first_name} #{self.last_name}"
+  end
+  
   def customer_description_does_not_exist_open?
     exist = true 
     Alert.all.each do |alert|
