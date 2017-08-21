@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   def customer_description_does_not_exist_open?
     exist = true 
     Alert.all.each do |alert|
-      if Alert.find_by(customer_id: self.id, description: "User has negative account")
+      if Alert.find_by(customer_id: self.id, status_id: 1, description: "User has negative account")
         exist = false  
       end
     end 
