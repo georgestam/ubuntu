@@ -1,4 +1,4 @@
-class UserPolicy < ApplicationPolicy
+class AlertPolicy < ApplicationPolicy
   
   def new?
     user

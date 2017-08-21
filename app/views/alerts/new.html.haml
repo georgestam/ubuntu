@@ -20,7 +20,7 @@
           = f.input :type_alert, label: false, collection: @type_alerts, prompt: "Select alert type" 
           = f.input :description, label: false, placeholder: 'description', label: false, autofocus: true
           = f.input :status, label: false, collection: @status, prompt: "Select status" 
-          = f.input :created_by, label: false, placeholder: 'description', label: false, autofocus: true
-          = f.button :submit, class: "button btn btn-lg btn-primary"
+          = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
+          = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
           
           

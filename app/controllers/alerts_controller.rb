@@ -9,11 +9,20 @@ class AlertsController < ApplicationController
   
   def create 
     @alert = Alert.new(alert_params)
-    customer = customer_params.split(",")
+    
+    # assing params. I get an error with those fields not sure why
+    @type_alert = TypeAlert.find(params.require(:alert).permit(:type_alert)[:type_alert])
+    @status = Status.find(params.require(:alert).permit(:status)[:status])
+    @alert.type_alert = @type_alert
+    @alert.status = @status
+    
+    #split name and find customer
+    customer = customer_params[:customer].split(",")
     first_name = customer[0]
     last_name = customer[1]
-    custumer = Custumer.find_by(first_name: first_name ,last_name: last_name)
-    @alert.customer = custumer
+    customer = Customer.find_by(first_name: first_name ,last_name: last_name)
+    
+    @alert.customer = customer
     authorize @alert
     if @alert.save
       flash[:notice] = "New Issue Created!"
@@ -26,7 +35,7 @@ class AlertsController < ApplicationController
   private
   
   def alert_params
-    params.require(:alert).permit(:type_alert, :description, :status, :created_by )
+    params.require(:alert).permit(:description, :created_by)
   end
   
   def customer_params
