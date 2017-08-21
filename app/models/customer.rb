@@ -9,7 +9,7 @@ class Customer < ApplicationRecord
   end 
   
   def custom_label_method
-    "#{self.first_name} #{self.last_name}"
+    "#{self.first_name},#{self.last_name}"
   end
   
   def customer_description_does_not_exist_open?
