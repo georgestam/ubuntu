@@ -40,11 +40,10 @@
               %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
                 %span{"aria-hidden" => "true"} ×
               = alert
-            
-          = f.input :customer, label: false, collection: @customers, prompt: "Select customer" 
-          = f.input :type_alert, label: false, collection: @type_alerts, prompt: "Select alert type" 
+          = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
+          = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
           = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
-          = f.input :status, label: false, collection: @status, prompt: "Select status" 
+          = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
           = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
 .row

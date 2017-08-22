@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
     true if Customer.find_by(id_steama: id_steama)
   end 
   
-  def custom_label_method
+  def name
     "#{self.first_name},#{self.last_name}"
   end
   
