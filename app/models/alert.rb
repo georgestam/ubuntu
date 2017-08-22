@@ -18,7 +18,7 @@ class Alert < ApplicationRecord
   
   def self.slack_API_call(alert_id)
     alert = Alert.find(alert_id)
-    text = "New alert created by #{alert.created_by} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.description}"
+    text = "New alert created by #{alert.created_by if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.description}"
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: '#alerts', text: text, as_user: 'ubuntu')

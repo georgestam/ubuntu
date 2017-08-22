@@ -3,8 +3,8 @@ class CreateUsersParser
   require 'rest-client'
   
   def self.update_customer_db
-    url1 = "https://api.steama.co/customers/?format=json&page_size=98"
-    url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=98"
+    url1 = "https://api.steama.co/customers/?format=json&page_size=70"
+    url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=70"
     
     [url1, url2].each do |url|
       body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
