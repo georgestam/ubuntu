@@ -47,4 +47,7 @@
           = f.input :status, label: false, collection: @status, prompt: "Select status" 
           = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
-          
+.row
+  .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
+    = "To sign out click here:"
+    = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path
