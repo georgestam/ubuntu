@@ -25,6 +25,7 @@ RailsAdmin.config do |config|
       field :type_alert
       field :description
       field :status
+      field :resolved_comments
       field :created_by
       field :created_at do
         column_width 30
