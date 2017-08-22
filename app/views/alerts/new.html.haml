@@ -13,30 +13,6 @@
     width: 100%
     text-align: center
     margin: 4px 0 0 0
-    
-
--# .row
--#   .panel-default.col-md-offset-3.col-md-6
--#     %h4
--#       = t('.sign_in', default: 'Sign in')
--#     .panel-body
--#       = form_for(resource, as: resource_name, url: session_path(resource_name), html: { role: 'form' }) do |f|
--#         .form-group
--#           = f.label :email
--#           = f.email_field :email, autofocus: true, class: 'form-control'
--#         .form-group
--#           = f.label :password
--#           = f.password_field :password, autocomplete: 'off', class: 'form-control'
--#         - if devise_mapping.rememberable?
--#           .checkbox
--#             = f.label :remember_me do
--#               = f.check_box :remember_me
--#               = t('.remember_me', default: 'Remember me')
--#         = f.submit  t('.sign_in', default: 'Sign in'), class: 'btn btn-primary'
-
-
-
-
 
 .row
   .col-md-offset-3.col-md-6
@@ -53,14 +29,21 @@
     .row
       .col-md-offset-2.col-md-8
         = simple_form_for Alert.new, url: alerts_path, method: :post do |f|
-          - if flash.any?
-            .alert.alert-danger
-              - flash.each do |name, msg|
-                = content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String)
+          = f.error_notification
+          - if notice
+            .alert.alert-info.alert-dismissible{role: "alert"}
+              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+                %span{"aria-hidden" => "true"} ×
+              = notice
+          - if alert
+            .alert.alert-warning.alert-dismissible{role: "alert"}
+              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
+                %span{"aria-hidden" => "true"} ×
+              = alert
             
           = f.input :customer, label: false, collection: @customers, prompt: "Select customer" 
           = f.input :type_alert, label: false, collection: @type_alerts, prompt: "Select alert type" 
-          = f.input :description, label: false, placeholder: 'description', label: false, autofocus: true
+          = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
           = f.input :status, label: false, collection: @status, prompt: "Select status" 
           = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"

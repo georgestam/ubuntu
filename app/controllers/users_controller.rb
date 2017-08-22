@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def index
     policy_scope(User)
+    unless current_user.admin
+      redirect_to new_alert_path
+    end 
   end
   
   def update_db
