@@ -30,16 +30,7 @@
       .col-md-offset-2.col-md-8
         = simple_form_for Alert.new, url: alerts_path, method: :post do |f|
           = f.error_notification
-          - if notice
-            .alert.alert-info.alert-dismissible{role: "alert"}
-              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
-                %span{"aria-hidden" => "true"} ×
-              = notice
-          - if alert
-            .alert.alert-warning.alert-dismissible{role: "alert"}
-              %button.close{"aria-label" => "Close", "data-dismiss" => "alert", type: "button"}
-                %span{"aria-hidden" => "true"} ×
-              = alert
+          = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
           = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
           = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
