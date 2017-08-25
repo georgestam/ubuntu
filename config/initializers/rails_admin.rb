@@ -21,10 +21,19 @@ RailsAdmin.config do |config|
   config.model Alert do
     list do
       field :id
-      field :customer 
-      field :type_alert
+      field :customer do
+        column_width 120
+      end 
+      field :assigned_to do
+        column_width 100
+      end 
+      field :type_alert do
+        column_width 120
+      end 
       field :description
-      field :status
+      field :status do
+        column_width 60
+      end
       field :resolved_comments
       field :created_by
       field :created_at do

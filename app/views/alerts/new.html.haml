@@ -36,6 +36,7 @@
           = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
           = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
           = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
+          = f.input :assigned_to, label: false, placeholder: 'Assigned to', label: false, autofocus: true
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}

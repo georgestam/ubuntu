@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822101114) do
+ActiveRecord::Schema.define(version: 20170825104109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20170822101114) do
     t.datetime "updated_at",        null: false
     t.integer  "status_id"
     t.string   "resolved_comments"
+    t.string   "assigned_to"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
