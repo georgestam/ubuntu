@@ -35,6 +35,7 @@
           = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
           = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
           = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
+          = f.input :resolved_comments, as: :text, label: false, placeholder: "If status is 'resolved', please add how it was resolved", label: false, autofocus: true
           = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
           = f.input :assigned_to, label: false, placeholder: 'Assigned to', label: false, autofocus: true
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
