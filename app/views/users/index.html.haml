@@ -6,7 +6,22 @@
     margin: 30px
   .width-buttom
     width: 200px !important
+    
+  .brand-header img 
+    width: 100px
+    margin: 20px
+  
+  .brand-header
+    background: white
+    float: left
+    width: 100%
+    text-align: center
+    margin: 4px 0 0 0
 
+.row
+  .col-md-offset-3.col-md-6
+    #login.brand-header
+      = image_tag 'logo/main-logo.png', class: 'main-logo'
 %h1.center{style: "margin-bottom: 100px"}
   Ubuntu Power
 %h4
@@ -14,7 +29,10 @@
   = "Click here to access the admin dashboard"
 %h4 
   = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom'
-  = "Click here button to update database"
+  = "Click here to update database"
+%h4 
+  = link_to "Input issues form", new_alert_path, class: 'btn btn-default btn-lg margin width-buttom'
+  = "Click here to get access to the input issues form ('field employees' have different login)"
 %p{ style: "margin-top: 150px"}
   %strong Notes: 
 
@@ -30,7 +48,7 @@
   %li.list-group-item 
     Data from the admin panel can be filtered and downloaded using the 'Export' button
   %li.list-group-item 
-    Current database is setup to 200 users, please let me know when this number may be exceeded.
+    Current database is setup to 140 users, please let me know when this number may be exceeded.
   %li.list-group-item 
     The 'green button' is clicked automatically at 9am, 2pm and 7pm (UK time). You can see 
     = link_to "here", "/sidekiq"

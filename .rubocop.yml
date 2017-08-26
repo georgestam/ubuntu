@@ -5,6 +5,9 @@ AllCops:
     - app/lib/spec_helper.rb
     - app/helpers/application_helper.rb
   UseCache: false
+GlobalVars:
+  AllowedVariables: 
+    - $redis
 Rails:
   Enabled: true
 Style/EmptyLinesAroundBlockBody:

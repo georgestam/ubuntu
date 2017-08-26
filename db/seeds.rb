@@ -10,6 +10,12 @@ User.create!({
   admin: true
   })
 
+User.create!({
+  email: "field@ubuntu.org",
+  password: "password10",
+  admin: false
+  })
+
 # file = File.read('lib/examples/json/example1.json')
 # 
 # 1.times do

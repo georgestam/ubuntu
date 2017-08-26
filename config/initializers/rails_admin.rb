@@ -21,10 +21,20 @@ RailsAdmin.config do |config|
   config.model Alert do
     list do
       field :id
-      field :customer 
-      field :type_alert
+      field :customer do
+        column_width 120
+      end 
+      field :assigned_to do
+        column_width 100
+      end 
+      field :type_alert do
+        column_width 120
+      end 
       field :description
-      field :status
+      field :status do
+        column_width 60
+      end
+      field :resolved_comments
       field :created_by
       field :created_at do
         column_width 30
@@ -42,6 +52,10 @@ RailsAdmin.config do |config|
   ## == Devise ==
   config.authenticate_with { warden.authenticate! scope: :user }
   config.current_user_method(&:current_user)
+  
+  config.authorize_with do |controller|
+    redirect_to main_app.root_path unless current_user && current_user.admin
+  end
   
   # config.authorize_with do |controller|
   #   redirect_to main_app.root_path unless current_user && current_user.admin

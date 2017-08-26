@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   # sidekiq setup
   require "sidekiq/web"
-  authenticate :user, lambda { |u| u.admin } do
+  authenticate :user, (lambda { |u| u.admin }) do
     mount Sidekiq::Web => '/sidekiq'
   end
 
@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   
   resources  :users, only: %i(index)
+  
+  resources  :alerts, only: %i(new create)
   
   post "users/update_db"
   

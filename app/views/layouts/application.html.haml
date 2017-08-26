@@ -21,7 +21,7 @@
 
   %body.container
     -# = render 'shared/navbar_selector'
-    = render 'shared/flashes'
+    = render 'shared/flashes' unless controller_name.in?('alerts') && action_name == 'new'
     = yield
     -# = render 'shared/footer' unless action_name == "form"
     = javascript_include_tag 'application'

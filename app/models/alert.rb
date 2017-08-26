@@ -5,8 +5,8 @@ class Alert < ApplicationRecord
   
   validates :customer, presence: true
   
-  after_create :send_alert_email
-  after_create :send_slack_notification
+  after_save :send_alert_email
+  after_save :send_slack_notification, unless: :development?
 
   def send_alert_email
     AlertMailer.perform(self).deliver_later
@@ -16,9 +16,9 @@ class Alert < ApplicationRecord
     SendNotificationsToSlack.perform_later(self.id)
   end
   
-  def self.slack_API_call(alert_id)
+  def self.slack_api_call(alert_id)
     alert = Alert.find(alert_id)
-    text = "New alert created by #{alert.created_by} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.description}"
+    text = "New alert created by #{alert.created_by if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.description}"
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: '#alerts', text: text, as_user: 'ubuntu')
