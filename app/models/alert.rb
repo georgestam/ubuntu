@@ -16,7 +16,7 @@ class Alert < ApplicationRecord
     SendNotificationsToSlack.perform_later(self.id)
   end
   
-  def self.slack_API_call(alert_id)
+  def self.slack_api_call(alert_id)
     alert = Alert.find(alert_id)
     text = "New alert created by #{alert.created_by if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.description}"
     client = Slack::Web::Client.new
