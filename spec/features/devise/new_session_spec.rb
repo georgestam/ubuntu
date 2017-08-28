@@ -1,10 +1,10 @@
 describe "User Logging in" do 
-  
-  before {
-    visit root_path
-  }
     
   context "when the user goes to login page" do
+    
+    before {
+      visit root_path
+    }
     
     let!(:password){ "password10" }
     let!(:reference_user){ FactoryGirl.create :user, password: password }
@@ -25,5 +25,27 @@ describe "User Logging in" do
     end 
     
   end 
+  
+  context 'when user is signed-in as admin user' do 
+  
+    sign_as :admin
+    
+    it 'displays main panel' do
+      visit root_path
+      expect(page).to have_selector('#main-panel')
+    end
+    
+  end
+  
+  context 'when user is signed-in as field user' do 
+  
+    sign_as
+    
+    it 'displays main panel' do
+      visit root_path
+      expect(page).to have_selector('#alerts-new')
+    end
+    
+  end
   
 end
