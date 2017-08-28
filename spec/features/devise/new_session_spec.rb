@@ -41,7 +41,7 @@ describe "User Logging in" do
   
     sign_as
     
-    it 'displays main panel' do
+    it 'displays new alert form' do
       visit root_path
       expect(page).to have_selector('#alerts-new')
     end
