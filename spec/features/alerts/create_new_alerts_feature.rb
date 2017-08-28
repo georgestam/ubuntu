@@ -1,4 +1,4 @@
-describe "User Logging in" do 
+describe "Create alerts#new" do 
     
   context 'when user is signed-in as field user' do 
     

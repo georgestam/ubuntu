@@ -10,7 +10,7 @@ describe "User Logging in" do
     let!(:reference_user){ FactoryGirl.create :user, password: password }
     
     it "shows the login page" do
-      expect(page).to have_selector :css, '#login'
+      expect(page).to have_selector('#login')
     end
     
     it 'creates a new session' do
