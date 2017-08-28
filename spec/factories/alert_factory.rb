@@ -5,7 +5,6 @@ FactoryGirl.define do
     customer
     type_alert
     status
-    customer_id { SecureRandom.hex(8) }
     description { Faker::ChuckNorris.fact }
     created_by { Faker::Name.first_name }
     assigned_to { Faker::Name.first_name }
