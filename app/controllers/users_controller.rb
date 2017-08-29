@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     
     authorize(current_user)
     # pull users database and create new users if they are not in the database
-    CreateUsersParser.update_customer_db
+    Customer.update_customer_db
     # create alerts if users have negative accounts 
     Alert.check_customers_with_negative_acount
     
