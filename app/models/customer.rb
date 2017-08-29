@@ -29,12 +29,12 @@ class Customer < ApplicationRecord
     url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=70"
     
     [url1, url2].each do |url|
-      json_data = Hash.new
+      json_data = {}
       if !test?
         body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
         json_data = JSON.parse(body)
       else 
-        file = File.join(Rails.root, 'spec', 'support', 'example_steama.json')
+        file = Rails.root.join('spec', 'support', 'example_steama.json')
         json_data = JSON.parse(File.read(file))
       end 
       
