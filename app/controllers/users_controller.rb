@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     Alert.check_customers_with_negative_acount
     
     flash[:notice] = "database updated successfully!"
-    redirect_to users_path
+    redirect_to root_path
   end 
   
 end

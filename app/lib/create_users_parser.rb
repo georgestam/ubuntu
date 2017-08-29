@@ -7,8 +7,15 @@ class CreateUsersParser
     url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=70"
     
     [url1, url2].each do |url|
-      body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
-      json_data = JSON.parse(body)
+      json_data = Hash.new
+      if !test?
+        body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
+        json_data = JSON.parse(body)
+      else 
+        file = File.join(Rails.root, 'spec', 'support', 'example_steama.json')
+        json_data = JSON.parse(File.read(file))
+      end 
+      
       # This defines the id:
       # body['results'][0]['id']
       
@@ -20,7 +27,9 @@ class CreateUsersParser
         end 
         # update customers
         Customer.find_by(id_steama: customer['id']).update_customer(customer)
-      end 
+      end
+
+      
         
     end 
   end
