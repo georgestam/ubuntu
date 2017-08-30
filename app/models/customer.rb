@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
   
+  require 'rest-client'
+  
   has_many :alerts, dependent: :destroy
   
   validates :id_steama, presence: true, uniqueness: true
@@ -22,8 +24,6 @@ class Customer < ApplicationRecord
     exist
   end
   
-  require 'rest-client'
-  
   def self.update_customer_db
     url1 = "https://api.steama.co/customers/?format=json&page_size=70"
     url2 = "https://api.steama.co/customers/?format=json&page=2&page_size=70"
@@ -37,10 +37,8 @@ class Customer < ApplicationRecord
         file = Rails.root.join('spec', 'support', 'example_steama.json')
         json_data = JSON.parse(File.read(file))
       end 
-      
       # This defines the id:
       # body['results'][0]['id']
-      
       # create new customers
       json_data['results'].each do |customer|
         # create new customers
