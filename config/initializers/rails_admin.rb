@@ -30,9 +30,7 @@ RailsAdmin.config do |config|
       field :type_alert do
         column_width 120
       end 
-      field :description do 
-        html_attributes rows: 20, cols: 50
-      end 
+      field :description
       field :status do
         column_width 60
       end

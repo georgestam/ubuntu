@@ -1,0 +1,94 @@
+
+/* -------------------------------------
+ * Utilities classes
+ * These are examples of utilities classes
+ * Feel free to change them and create your own
+ * ------------------------------------- */
+
+// Paddings
+.padded {
+  padding-top: 5em;
+  padding-bottom: 5em;
+}
+
+.padded-large {
+  padding-top: 10em;
+  padding-bottom: 10em;
+}
+
+// Backgrounds
+.bg-black {
+  background: #4a4a4a;
+}
+.bg-grey {
+  background: #aeaeae;
+}
+.bg-blue {
+  background: #00a3e1;
+}
+.bg-dark-blue {
+  background: #3b5998;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+body {
+  // background-image: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0,0,0,0.3));
+}
+
+.lift-bacground {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.79), rgba(0,0,0,0.3));
+}
+
+.soft-background {
+  background: #F2F2F2;
+}
+
+.no-decoration {
+
+  text-decoration: none !important;
+
+}
+
+a:hover {
+    // color: white;
+}
+
+
+.limit-to-x-lines {
+
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   // line-height: 16px;     /* fallback */
+   // max-height: 200px;      /* fallback */
+   -webkit-line-clamp: 6; /* number of lines to show */
+   -webkit-box-orient: vertical;
+   margin: 10px 10px 0px 10px;
+
+}
+
+.custom-btn-width {
+    width: 200px !important;
+}
+
+.padded-small {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.flags {
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 80%;
+}
+
