@@ -18,6 +18,7 @@
     text-align: center
     margin: 4px 0 0 0
 
+#main-panel
 .row
   .col-md-offset-3.col-md-6
     #login.brand-header
@@ -25,10 +26,10 @@
 %h1.center{style: "margin-bottom: 100px"}
   Ubuntu Power
 %h4
-  = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom'
+  = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "admin-panel-button"
   = "Click here to access the admin dashboard"
 %h4 
-  = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom'
+  = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom', id: "update-database-button"
   = "Click here to update database"
 %h4 
   = link_to "Input issues form", new_alert_path, class: 'btn btn-default btn-lg margin width-buttom'
@@ -50,11 +51,7 @@
   %li.list-group-item 
     Current database is setup to 140 users, please let me know when this number may be exceeded.
   %li.list-group-item 
-    The 'green button' is clicked automatically at 9am, 2pm and 7pm (UK time). You can see 
+    The 'green button' is activated automatically 3 times a day. You can see 
     = link_to "here", "/sidekiq"
     here each time that the button is clicked automatically. 
   
-%p
-  %strong To do:
-%ol
-  %li If database can not be updated, an email of error will be sent.

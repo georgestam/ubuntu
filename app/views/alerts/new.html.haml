@@ -14,6 +14,7 @@
     text-align: center
     margin: 4px 0 0 0
 
+#alerts-new
 .row
   .col-md-offset-3.col-md-6
     #login.brand-header
@@ -33,12 +34,12 @@
           = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
           = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
-          = f.input :description, as: :text, label: false, placeholder: 'description', label: false, autofocus: true
+          = f.input :description, as: :text, label: false, placeholder: 'description', autofocus: true
           = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
-          = f.input :resolved_comments, as: :text, label: false, placeholder: "If status is 'resolved', please add how it was resolved", label: false, autofocus: true
-          = f.input :created_by, label: false, placeholder: 'Created_by', label: false, autofocus: true
-          = f.input :assigned_to, label: false, placeholder: 'Assigned to', label: false, autofocus: true
-          = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary"
+          = f.input :resolved_comments, as: :text, label: false, placeholder: "If status is 'resolved', please add how it was resolved", autofocus: true
+          = f.input :created_by, label: false, placeholder: 'Created_by', autofocus: true
+          = f.input :assigned_to, label: false, placeholder: 'Assigned to', autofocus: true
+          = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
     = "To sign out click here:"

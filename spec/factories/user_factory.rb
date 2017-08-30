@@ -2,8 +2,12 @@ FactoryGirl.define do
   
   factory :user do
     
-    email { "#{SecureRandom.hex(8)}@mailinator.com" } # mail can be actually checked at mailinator.com.
+    email { Faker::Internet.email }
     password { SecureRandom.hex }
+    
+    trait :admin do 
+      admin true
+    end 
       
   end
   

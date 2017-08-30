@@ -10,8 +10,6 @@ Rails.application.routes.draw do
     
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   
-  resources  :users, only: %i(index)
-  
   resources  :alerts, only: %i(new create)
   
   post "users/update_db"

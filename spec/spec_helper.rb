@@ -7,8 +7,8 @@ if (RSpec.configuration.instance_variable_get :@files_or_directories_to_run) == 
   unless ENV['CODESHIP']
     require 'simplecov'
     SimpleCov.start 'rails' do
-      add_filter 'app/mailer_previews'
-      add_filter 'lib/generators'
+      add_filter 'test/mailers'
+      add_filter 'app/lib'
     end
   end
 end
