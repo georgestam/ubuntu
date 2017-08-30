@@ -9,6 +9,13 @@ class AlertsController < ApplicationController
   
   def create 
     @alert = Alert.new(alert_params)
+    
+    # this checks if the alert was resolved when it was created. 
+    status = Status.find(alert_params[:status_id])
+    if status == Status.second #resolved status
+      @alert.resolved_at = Time.current
+    end 
+    
     authorize @alert
     if @alert.save
       flash[:notice] = "New Issue Created!"

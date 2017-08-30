@@ -3,6 +3,8 @@ class Alert < ApplicationRecord
   belongs_to :type_alert
   belongs_to :status
   
+  validates :resolved_at, presence:true, if: :resolved_at
+  
   validates :customer, presence: true
   
   after_save :send_alert_email
@@ -22,6 +24,14 @@ class Alert < ApplicationRecord
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: '#alerts', text: text, as_user: 'ubuntu')
+  end 
+  
+  def resolved_at!
+     self.update_attributes(resolved_at: Time.current)
+  end 
+  
+  def closed_at!
+     self.update_attributes(closed_at: Time.current)
   end 
   
   def self.check_customers_with_negative_acount
