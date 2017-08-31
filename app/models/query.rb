@@ -4,6 +4,7 @@ class Query < ApplicationRecord
   
   # to show text in rails admin
   validates :resolution, uniqueness: {scope: :type_alert}, allow_nil: true
+  validates :type_alert, presence: true
   
   def name
     self.resolution

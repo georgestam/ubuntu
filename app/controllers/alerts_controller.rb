@@ -10,16 +10,41 @@ class AlertsController < ApplicationController
   end 
   
   def create 
-    @alert = Alert.new(alert_params)
-    
-    # this checks if the alert was resolved when it was created. 
-    status = Status.find(alert_params[:status_id])
-    if status == Status.second #resolved status
-      @alert.resolved_at = Time.current
+    # if ther is some input for 'new issue' description it creates a new alert and query
+    if params[:description_new_alert] != ""
+      #firs record of GroupAlert and TypeQuery is new
+      group_alert = GroupAlert.find_by(title: "new")
+      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert )
+      unless type_alert.save
+        flash[:alert] = @alert.errors.full_messages
+        redirect_to new_alert_path
+      end 
+      
+      @query = Query.new(resolution: params[:resolved_description_new], type_alert: type_alert) 
+      unless @query.save
+        flash[:alert] = @alert.errors.full_messages
+        redirect_to new_alert_path
+      end 
+  
+    # if the issue existed but with diferent resolution
+    elsif !Query.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
+      @query = Query.new(type_alert_id: params[:type_alert])
+      @query.resolution = params[:resolved_description]
+      unless @query.save
+        flash[:alert] = @alert.errors.full_messages
+        redirect_to new_alert_path
+      end
+    # if the issue already existed
+    else 
+      @query = Query.find(params[:query])
     end 
+    
+    @alert = Alert.new(alert_params)
+    @alert.query = @query
     
     authorize @alert
     if @alert.save
+      @alert.resolved_at! if params[:status] == "Yes"
       flash[:notice] = "New Issue Created!"
     else
       flash[:alert] = @alert.errors.full_messages
@@ -56,7 +81,7 @@ class AlertsController < ApplicationController
   private
   
   def alert_params
-    params.require(:alert).permit(:created_by, :status_id, :customer_id, :assigned_to, :query_id)
+    params.require(:alert).permit(:customer_id, :created_by)
   end
   
 end

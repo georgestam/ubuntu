@@ -39,5 +39,7 @@ if development? || staging?
       end 
     end 
   end 
+  
+  FactoryGirl.create :group_alert, title: "new"
 
 end 
