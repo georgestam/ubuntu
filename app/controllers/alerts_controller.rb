@@ -41,8 +41,7 @@ class AlertsController < ApplicationController
    @alert ||= Alert.new
    authorize @alert
    @group_alert = GroupAlert.find(params[:group_alert])
-   @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
-  #  @type_alerts = @group_alert.type_alerts.collect {|c| [c.name, c.id]}
+   @type_alerts = @group_alert.type_alerts.collect {|c| [c.name, c.id]}
    render json: [@type_alerts]
   end 
   

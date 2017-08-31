@@ -3,7 +3,7 @@ class Query < ApplicationRecord
   has_many :alerts 
   
   # to show text in rails admin
-  validates :resolution, presence: true
+  validates :resolution, uniqueness: {scope: :type_alert}, allow_nil: true
   
   def name
     self.resolution
