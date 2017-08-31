@@ -28,6 +28,14 @@ class AlertsController < ApplicationController
     redirect_to new_alert_path
   end 
   
+  def select_issue_response
+    # ajax 
+   @alert ||= Alert.new
+   authorize @alert
+   @query = Query.find(params[:id])
+   render json: [@query]
+  end 
+  
   private
   
   def alert_params

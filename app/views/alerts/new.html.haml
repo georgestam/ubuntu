@@ -36,14 +36,34 @@
           = f.input :created_by, label: false, collection: @users, prompt: "Created by"
           = f.input :group_alert, as: :fake_select, label: "If issue already exist: select existing issue", collection: @group_alerts, prompt: "Select issue group" 
           = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue sub-group" 
-          = f.input :resolved_response, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select possible response"
-          -# = f.input :response_description, as: :fake, as: :text, 
+          = f.input :resolved_response, as: :fake_select, label: false, collection: @queries, prompt: "Select possible response"
           = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :description, as: :fake, label: "If issue does not exist: add new issue", placeholder: 'Add issue description', autofocus: true
-          = f.input :resolved_response, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
+          = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :status, label: "Has de issue been resolved?", collection: ["Yes", "No"], prompt: "Select response"     
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
+#teste
+  hey
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
     = "To sign out click here:"
     = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path
+    
+    
+
+- content_for :bottom_js do
+  :javascript
+    // https://stackoverflow.com/questions/38202484/simple-form-select-collection-populated-by-ajax-call
+    $('#resolved_response').change(function(){
+      $.ajax({
+        url: 'select_issue_response',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          id: this.value
+        },
+        success: function(data) {
+          $('#resolved_description').val(data[0].resolution);
+        }  
+      });
+    });
