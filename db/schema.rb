@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830170117) do
+ActiveRecord::Schema.define(version: 20170830171319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 20170830170117) do
     t.string   "assigned_to"
     t.datetime "resolved_at"
     t.datetime "closed_at"
+    t.integer  "query_id"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
+    t.index ["query_id"], name: "index_alerts_on_query_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
   end
@@ -75,6 +77,14 @@ ActiveRecord::Schema.define(version: 20170830170117) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "queries", force: :cascade do |t|
+    t.integer  "type_alert_id"
+    t.string   "resolution"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["type_alert_id"], name: "index_queries_on_type_alert_id", using: :btree
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -119,7 +129,9 @@ ActiveRecord::Schema.define(version: 20170830170117) do
   end
 
   add_foreign_key "alerts", "customers"
+  add_foreign_key "alerts", "queries"
   add_foreign_key "alerts", "statuses"
   add_foreign_key "alerts", "type_alerts"
+  add_foreign_key "queries", "type_alerts"
   add_foreign_key "type_alerts", "group_alerts"
 end

@@ -1,6 +1,6 @@
 class TypeAlert < ApplicationRecord
   
-  # has_many :queries
+  has_many :queries
   
   belongs_to :group_alert
   

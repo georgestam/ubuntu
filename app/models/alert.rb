@@ -2,10 +2,12 @@ class Alert < ApplicationRecord
   belongs_to :customer
   belongs_to :type_alert
   belongs_to :status
+  belongs_to :query
   
   validates :resolved_at, presence:true, if: :resolved_at
   
   validates :customer, presence: true
+  validates :query, presence: true
   
   after_save :send_alert_email
   after_save :send_slack_notification, unless: :development?
