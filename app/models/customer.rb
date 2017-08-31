@@ -14,11 +14,11 @@ class Customer < ApplicationRecord
     "#{self.first_name},#{self.last_name}"
   end
   
-  def customer_description_does_not_exist_open?
-    exist = true 
+  def has_an_alert_with_negative_acount_open?
+    exist = false 
     Alert.all.each do |alert|
-      if Alert.find_by(customer_id: self.id, status_id: 1, description: "User has negative account")
-        exist = false  
+      if Alert.find_by(customer_id: self.id, query: Query.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")))
+        exist = true  
       end
     end 
     exist

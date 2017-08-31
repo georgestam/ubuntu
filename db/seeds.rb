@@ -41,5 +41,6 @@ if development? || staging?
   end 
   
   FactoryGirl.create :group_alert, title: "new"
+  FactoryGirl.create :type_alert, name: "Customer has negative account"
 
 end 

@@ -41,12 +41,10 @@ class Alert < ApplicationRecord
   
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && customer.customer_description_does_not_exist_open?
+      if customer.account_balance.to_i <= 0 && !customer.has_an_alert_with_negative_acount_open?
         if Alert.create({
             customer: customer,
-            type_alert: TypeAlert.first, # this alert is 'nagative_account'
-            description: "User has negative account",
-            status: Status.first,
+            query: Query.where(alert_type: TypeAlert.where(name: "Customer has negative account")),
             created_by: "Laima"
             })
         else 
