@@ -41,7 +41,7 @@
           = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :description, as: :fake, label: "If issue does not exist: add new issue", placeholder: 'Add issue description', autofocus: true
           = f.input :resolved_response, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
-          = f.input :status, label: false, collection: ["Yes", "No"], prompt: "Has de issue been resolved?"     
+          = f.input :status, label: "Has de issue been resolved?", collection: ["Yes", "No"], prompt: "Select response"     
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
