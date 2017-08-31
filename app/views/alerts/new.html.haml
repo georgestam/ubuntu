@@ -33,12 +33,15 @@
           = f.error_notification
           = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
-          = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
-          = f.input :description, as: :text, label: false, placeholder: 'description', autofocus: true
-          = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
-          = f.input :resolved_comments, as: :text, label: false, placeholder: "If status is 'resolved', please add how it was resolved", autofocus: true
-          = f.input :created_by, label: false, placeholder: 'Created_by', autofocus: true
-          = f.input :assigned_to, label: false, placeholder: 'Assigned to', autofocus: true
+          = f.input :created_by, label: false, collection: @users, prompt: "Created by"
+          = f.input :group_alert, as: :fake_select, label: "If issue already exist: select existing issue", collection: @group_alerts, prompt: "Select issue group" 
+          = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue sub-group" 
+          = f.input :resolved_response, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select possible response"
+          -# = f.input :response_description, as: :fake, as: :text, 
+          = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
+          = f.input :description, as: :fake, label: "If issue does not exist: add new issue", placeholder: 'Add issue description', autofocus: true
+          = f.input :resolved_response, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
+          = f.input :status, label: false, collection: ["Yes", "No"], prompt: "Has de issue been resolved?"     
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}

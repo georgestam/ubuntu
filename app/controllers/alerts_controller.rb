@@ -5,6 +5,9 @@ class AlertsController < ApplicationController
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
     @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
     @status = Status.all.collect {|c| [c.name, c.id]}
+    @queries= Query.all.collect {|c| [c.name, c.id]}
+    @group_alerts= GroupAlert.all.collect {|c| [c.title, c.id]}
+    @users= User.all.collect {|c| [c.email, c.id]}
   end 
   
   def create 
@@ -28,7 +31,7 @@ class AlertsController < ApplicationController
   private
   
   def alert_params
-    params.require(:alert).permit(:description, :created_by, :type_alert_id, :status_id, :customer_id, :assigned_to, :resolved_comments)
+    params.require(:alert).permit(:created_by, :status_id, :customer_id, :assigned_to, :query_id)
   end
   
 end

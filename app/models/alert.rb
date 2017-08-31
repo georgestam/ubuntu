@@ -1,4 +1,7 @@
 class Alert < ApplicationRecord
+  
+  STATUS = %w[open resolved].freeze
+  
   belongs_to :customer
   belongs_to :type_alert
   belongs_to :status
