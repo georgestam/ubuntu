@@ -5,12 +5,12 @@ class Alert < ApplicationRecord
   belongs_to :customer
   belongs_to :type_alert
   belongs_to :status
-  belongs_to :query
+  belongs_to :issue
   
   validates :resolved_at, presence:true, if: :resolved_at
   
   validates :customer, presence: true
-  validates :query, presence: true
+  validates :issue, presence: true
   
   after_save :send_alert_email
   after_save :send_slack_notification, unless: :development?
@@ -44,7 +44,7 @@ class Alert < ApplicationRecord
       if customer.account_balance.to_i <= 0 && !customer.has_an_alert_with_negative_acount_open?
         if Alert.create({
             customer: customer,
-            query: Query.where(alert_type: TypeAlert.where(name: "Customer has negative account")),
+            issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")),
             created_by: "Laima"
             })
         else 

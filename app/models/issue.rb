@@ -1,4 +1,4 @@
-class Query < ApplicationRecord
+class Issue < ApplicationRecord
   belongs_to :type_alert
   has_many :alerts 
   

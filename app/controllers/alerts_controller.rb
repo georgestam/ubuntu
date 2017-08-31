@@ -4,13 +4,13 @@ class AlertsController < ApplicationController
     authorize(current_user)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
     @type_alerts = []
-    @queries= []
+    @issues= []
     @group_alerts= GroupAlert.all.collect {|c| [c.title, c.id]}
     @users= User.all.collect {|c| [c.email, c.id]}
   end 
   
   def create 
-    # if ther is some input for 'new issue' description it creates a new alert and query
+    # if ther is some input for 'new issue' description it creates a new alert and issue
     if params[:description_new_alert] != ""
       #firs record of GroupAlert and TypeQuery is new
       group_alert = GroupAlert.find_by(title: "new")
@@ -20,27 +20,27 @@ class AlertsController < ApplicationController
         redirect_to new_alert_path
       end 
       
-      @query = Query.new(resolution: params[:resolved_description_new], type_alert: type_alert) 
-      unless @query.save
+      @issue = Issue.new(resolution: params[:resolved_description_new], type_alert: type_alert) 
+      unless @issue.save
         flash[:alert] = @alert.errors.full_messages
         redirect_to new_alert_path
       end 
   
     # if the issue existed but with diferent resolution
-    elsif !Query.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
-      @query = Query.new(type_alert_id: params[:type_alert])
-      @query.resolution = params[:resolved_description]
-      unless @query.save
+    elsif !Issue.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
+      @issue = Issue.new(type_alert_id: params[:type_alert])
+      @issue.resolution = params[:resolved_description]
+      unless @issue.save
         flash[:alert] = @alert.errors.full_messages
         redirect_to new_alert_path
       end
     # if the issue already existed
     else 
-      @query = Query.find(params[:query])
+      @issue = Issue.find(params[:issue])
     end 
     
     @alert = Alert.new(alert_params)
-    @alert.query = @query
+    @alert.issue = @issue
     
     authorize @alert
     if @alert.save
@@ -56,8 +56,8 @@ class AlertsController < ApplicationController
     # ajax 
    @alert ||= Alert.new
    authorize @alert
-   @query = Query.find(params[:id])
-   render json: [@query]
+   @issue = Issue.find(params[:id])
+   render json: [@issue]
   end 
   
   def select_alert_subgroup
@@ -74,8 +74,8 @@ class AlertsController < ApplicationController
    @alert ||= Alert.new
    authorize @alert
    @type_alert = TypeAlert.find(params[:type_alert])
-   @queries = @type_alert.queries.collect {|c| [c.name, c.id]}
-   render json: [@queries]
+   @issues = @type_alert.issues.collect {|c| [c.name, c.id]}
+   render json: [@issues]
   end 
   
   private

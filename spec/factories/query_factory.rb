@@ -1,6 +1,6 @@
 FactoryGirl.define do
   
-  factory :query do
+  factory :issue do
     
     type_alert
     resolution { Faker::ChuckNorris.fact }

@@ -36,7 +36,7 @@
           = f.input :created_by, label: false, collection: @users, prompt: "Created by"
           = f.input :group_alert, as: :fake_select, label: "If issue already exist: select existing issue", collection: @group_alerts, prompt: "Select issue group"
           = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue sub-group"
-          = f.input :query, as: :fake_select, label: false, collection: @queries, prompt: "Select possible response"
+          = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select possible response"
           = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :description_new_alert, as: :fake, label: "If issue does not exist: add new issue", placeholder: 'Add issue description', autofocus: true
           = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
@@ -89,7 +89,7 @@
           
           // Populate second dropdown here
           var output = '';
-          $('#query').empty().append(function() {
+          $('#issue').empty().append(function() {
             data.forEach(function(item) {
               item.forEach(function(subitem){
                 output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
@@ -102,7 +102,7 @@
     });
 
     // copy possible response in empty field
-    $('#query').change(function(){
+    $('#issue').change(function(){
       $.ajax({
         url: 'select_issue_response',
         dataType: 'json',

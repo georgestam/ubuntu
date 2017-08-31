@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20170831171129) do
     t.string   "assigned_to"
     t.datetime "resolved_at"
     t.datetime "closed_at"
-    t.integer  "query_id"
+    t.integer  "issue_id"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
-    t.index ["query_id"], name: "index_alerts_on_query_id", using: :btree
+    t.index ["issue_id"], name: "index_alerts_on_issue_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
   end
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 20170831171129) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "queries", force: :cascade do |t|
+  create_table "issues", force: :cascade do |t|
     t.integer  "type_alert_id"
     t.string   "resolution"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["type_alert_id"], name: "index_queries_on_type_alert_id", using: :btree
+    t.index ["type_alert_id"], name: "index_issues_on_type_alert_id", using: :btree
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -127,9 +127,9 @@ ActiveRecord::Schema.define(version: 20170831171129) do
   end
 
   add_foreign_key "alerts", "customers"
-  add_foreign_key "alerts", "queries"
+  add_foreign_key "alerts", "issues"
   add_foreign_key "alerts", "statuses"
   add_foreign_key "alerts", "type_alerts"
-  add_foreign_key "queries", "type_alerts"
+  add_foreign_key "issues", "type_alerts"
   add_foreign_key "type_alerts", "group_alerts"
 end

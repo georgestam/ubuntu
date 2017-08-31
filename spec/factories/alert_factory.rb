@@ -3,7 +3,7 @@ FactoryGirl.define do
   factory :alert do
     
     customer
-    query
+    issue
     created_by { Faker::Name.first_name }
     assigned_to { Faker::Name.first_name }
     # closed_at { rand(10.years).ago }
