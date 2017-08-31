@@ -2,7 +2,8 @@ FactoryGirl.define do
   
   factory :type_alert do
     
-    name { Faker::Name.first_name }
+    group_alert
+    name { Faker::Lorem.sentence }
       
   end
   
