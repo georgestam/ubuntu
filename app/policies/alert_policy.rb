@@ -16,4 +16,8 @@ class AlertPolicy < ApplicationPolicy
     user
   end 
   
+  def select_query?
+    user
+  end 
+  
 end
