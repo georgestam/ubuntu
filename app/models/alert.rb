@@ -12,8 +12,8 @@ class Alert < ApplicationRecord
   validates :customer, presence: true
   validates :issue, presence: true
   
-  after_save :send_alert_email
-  after_save :send_slack_notification, unless: :development?
+  after_save :send_alert_email, if: :production?
+  after_save :send_slack_notification, if: :production?
 
   def send_alert_email
     AlertMailer.perform(self).deliver_later
