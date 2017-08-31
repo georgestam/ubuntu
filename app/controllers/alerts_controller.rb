@@ -3,7 +3,7 @@ class AlertsController < ApplicationController
   def new 
     authorize(current_user)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
-    @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
+    @type_alerts = []
     @status = Status.all.collect {|c| [c.name, c.id]}
     @queries= Query.all.collect {|c| [c.name, c.id]}
     @group_alerts= GroupAlert.all.collect {|c| [c.title, c.id]}
@@ -34,6 +34,16 @@ class AlertsController < ApplicationController
    authorize @alert
    @query = Query.find(params[:id])
    render json: [@query]
+  end 
+  
+  def select_alert_subgroup
+    # ajax 
+   @alert ||= Alert.new
+   authorize @alert
+   @group_alert = GroupAlert.find(params[:group_alert])
+   @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
+  #  @type_alerts = @group_alert.type_alerts.collect {|c| [c.name, c.id]}
+   render json: [@type_alerts]
   end 
   
   private
