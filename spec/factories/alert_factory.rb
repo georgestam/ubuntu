@@ -4,7 +4,6 @@ FactoryGirl.define do
     
     customer
     query
-    description { Faker::HowIMetYourMother.catch_phrase }
     created_by { Faker::Name.first_name }
     assigned_to { Faker::Name.first_name }
     # closed_at { rand(10.years).ago }

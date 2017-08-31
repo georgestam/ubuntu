@@ -9,7 +9,7 @@ FactoryGirl.define do
     account_balance { rand(0..1000) }
     low_balance_warning { rand(0..1000) }
     low_balance_level { rand(0..1000) }
-    description { Faker::Lorem.sentence(3) } 
+    description { Faker::HowIMetYourMother.catch_phrase } 
       
   end
   
