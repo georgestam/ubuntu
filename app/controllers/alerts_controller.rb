@@ -1,5 +1,7 @@
 class AlertsController < ApplicationController
   
+  before_action :set_alert, only: [:select_issue_response, :select_alert_subgroup, :select_issue]
+  
   def new 
     authorize(current_user)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
@@ -29,16 +31,12 @@ class AlertsController < ApplicationController
   
   def select_issue_response
    # ajax 
-   @alert ||= Alert.new
-   authorize @alert
    @issue = Issue.find(params[:id])
    render json: [@issue]
   end 
   
   def select_alert_subgroup
    # ajax 
-   @alert ||= Alert.new
-   authorize @alert
    @group_alert = GroupAlert.find(params[:group_alert])
    @type_alerts = @group_alert.type_alerts.collect {|c| [c.name, c.id]}
    render json: [@type_alerts]
@@ -46,14 +44,17 @@ class AlertsController < ApplicationController
   
   def select_issue
    # ajax 
-   @alert ||= Alert.new
-   authorize @alert
    @type_alert = TypeAlert.find(params[:type_alert])
    @issues = @type_alert.issues.collect {|c| [c.name, c.id]}
    render json: [@issues]
   end 
   
   private
+
+  def set_alert
+    @alert ||= Alert.new
+    authorize @alert
+  end 
   
   def set_issue
     # if ther is some input for 'new issue' description it creates a new alert and issue
