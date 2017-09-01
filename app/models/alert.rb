@@ -49,14 +49,14 @@ class Alert < ApplicationRecord
   
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && !customer.has_an_alert_with_negative_acount_open?
-        alert = if Alert.create!({
+      if customer.account_balance.to_i <= 0 && !customer.an_alert_with_negative_acount_open?
+        @alert = if Alert.create!({
             customer: customer,
             issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")),
             created_by: "Laima"
             })
         else 
-          # flash[:alert] = alert.errors.full_messages
+          flash[:alert] = @alert.errors.full_messages
           # TODO: send email with there has been a problem
         end 
       end 

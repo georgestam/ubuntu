@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
     "#{self.first_name},#{self.last_name}"
   end
   
-  def has_an_alert_with_negative_acount_open?
+  def an_alert_with_negative_acount_open?
     exist = false 
     Alert.all.each do |alert|
       if Alert.find_by(customer_id: self.id, issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")))

@@ -9,42 +9,16 @@ class AlertsController < ApplicationController
     @users = User.all.collect {|c| [c.email, c.id]}
   end 
   
-  def create 
-    # if ther is some input for 'new issue' description it creates a new alert and issue
-    if params[:description_new_alert] != ""
-      # first record of GroupAlert and TypeQuery is new
-      group_alert = GroupAlert.find_by(title: "new")
-      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
-      unless type_alert.save
-        flash[:alert] = @alert.errors.full_messages
-        redirect_to new_alert_path
-      end 
-      
-      @issue = Issue.new(resolution: params[:resolved_description_new], type_alert: type_alert) 
-      unless @issue.save
-        flash[:alert] = @alert.errors.full_messages
-        redirect_to new_alert_path
-      end 
-  
-    # if the issue existed but with diferent resolution
-    elsif !Issue.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
-      @issue = Issue.new(type_alert_id: params[:type_alert])
-      @issue.resolution = params[:resolved_description]
-      unless @issue.save
-        flash[:alert] = @alert.errors.full_messages
-        redirect_to new_alert_path
-      end
-    # if the issue already existed
-    else 
-      @issue = Issue.find(params[:issue])
-    end 
+  def create
+    
+    set_issue 
     
     @alert = Alert.new(alert_params)
     @alert.issue = @issue
     
     authorize @alert
     if @alert.save
-      @alert.resolved_at = Time.now if params[:status] == "Yes"
+      @alert.resolved_at = DateTime.current if params[:status] == "Yes"
       @alert.save! if @alert.resolved?
       flash[:notice] = "New Alert Created!"
     else
@@ -81,9 +55,35 @@ class AlertsController < ApplicationController
   
   private
   
+  def set_issue
+    # if ther is some input for 'new issue' description it creates a new alert and issue
+    @issue = if params[:description_new_alert] != ""
+      # first record of GroupAlert and TypeQuery is new
+      group_alert = GroupAlert.find_by(title: "new")
+      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
+      show_errors_and_redirect unless type_alert.save
+      
+      Issue.new(resolution: params[:resolved_description_new], type_alert: type_alert)  
+  
+    # if the issue existed but with diferent resolution
+    elsif !Issue.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
+      Issue.new(type_alert_id: params[:type_alert], resolution: params[:resolved_description])
+    
+    # if the issue already existed
+    else 
+      Issue.find(params[:issue])
+    end
+    show_errors_and_redirect unless @issue.save 
+  end 
+  
   def alert_params
     params.require(:alert).permit(:customer_id, :created_by)
   end
+  
+  def show_errors_and_redirect
+    flash[:alert] = @alert.errors.full_messages
+    redirect_to new_alert_path
+  end 
   
 end
 
