@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    false
+    admin?
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    false
+    admin?
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    false
+    admin?
   end
 
   def edit?
@@ -31,11 +31,29 @@ class ApplicationPolicy
   end
 
   def destroy?
-    false
+    admin?
   end
 
   def scope
     Pundit.policy_scope!(user, record.class)
+  end
+  
+  def admin?
+    user.try :admin?
+  end
+  
+  # rails admin fiels
+  
+  def dashboard?
+    admin? 
+  end
+  
+  def export?
+    admin?
+  end
+  
+  def show_in_app?
+    show?
   end
 
   class Scope
