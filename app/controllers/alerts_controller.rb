@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
   
-  before_action :set_alert, only: [:select_issue_response, :select_alert_subgroup, :select_issue]
+  before_action :set_alert, only: %i[select_issue_response select_alert_subgroup select_issue]
   
   def new 
     authorize(current_user)
@@ -37,16 +37,14 @@ class AlertsController < ApplicationController
   
   def select_alert_subgroup
    # ajax 
-   @group_alert = GroupAlert.find(params[:group_alert])
-   @type_alerts = @group_alert.type_alerts.collect {|c| [c.name, c.id]}
-   render json: [@type_alerts]
+   type_alerts = GroupAlert.find(params[:group_alert]).type_alerts.collect {|c| [c.name, c.id]}
+   render json: [type_alerts]
   end 
   
   def select_issue
    # ajax 
-   @type_alert = TypeAlert.find(params[:type_alert])
-   @issues = @type_alert.issues.collect {|c| [c.name, c.id]}
-   render json: [@issues]
+   issues = TypeAlert.find(params[:type_alert]).issues.collect {|c| [c.name, c.id]}
+   render json: [issues]
   end 
   
   private
@@ -60,7 +58,7 @@ class AlertsController < ApplicationController
     # if ther is some input for 'new issue' description it creates a new alert and issue
     @issue = if params[:description_new_alert] != ""
       # first record of GroupAlert and TypeQuery is new
-      group_alert = GroupAlert.find_by(title: "new")
+      group_alert = GroupAlert.find_by(id: params[:group_alert])
       type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
       show_errors_and_redirect unless type_alert.save
       

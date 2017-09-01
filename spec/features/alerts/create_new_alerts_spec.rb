@@ -16,6 +16,7 @@ describe "Create alerts#new", js: true do
     def customer_and_created_by_setting
       find('#alert_customer_id').find(:xpath, "option[2]").select_option
       find('#alert_created_by').find(:xpath, "option[2]").select_option
+      find('#group_alert').find(:xpath, "option[2]").select_option
     end 
     
     it 'creates only a new alert if issue existed' do
@@ -41,7 +42,6 @@ describe "Create alerts#new", js: true do
       visit root_path
             
       customer_and_created_by_setting
-      find('#group_alert').find(:xpath, "option[2]").select_option
       sleep 3
       find('#type_alert').find(:xpath, "option[1]").select_option
       

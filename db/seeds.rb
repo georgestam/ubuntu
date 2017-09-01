@@ -40,14 +40,14 @@ if development? || staging?
     end 
   end 
   
-  FactoryGirl.create :group_alert, title: "new"
+  FactoryGirl.create :group_alert, title: "others"
   negative_acount = FactoryGirl.create :type_alert, name: "Customer has negative account"
   FactoryGirl.create :issue, type_alert: negative_acount 
 
 end 
 
 if production?
-  FactoryGirl.create :group_alert, title: "new"
+  FactoryGirl.create :group_alert, title: "others"
   negative_acount = FactoryGirl.create :type_alert, name: "Customer has negative account"
   FactoryGirl.create :issue, type_alert: negative_acount 
 end 
