@@ -40,7 +40,7 @@
           = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :description_new_alert, as: :fake, label: "If issue does not exist: add new issue", placeholder: 'Add issue description', autofocus: true
           = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
-          = f.input :status, label: "Has de issue been resolved?", collection: ["Yes", "No"], prompt: "Select response"     
+          = f.input :status, as: :fake_select, label: "Has de issue been resolved?", collection: ["Yes", "No"], prompt: "Select response"     
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
@@ -79,7 +79,7 @@
     // update drowndown of posible responses
     $('#type_alert').change(function(){
       $.ajax({
-        url: 'select_query',
+        url: 'select_issue',
         dataType: 'json',
         type: 'GET',
         data: {

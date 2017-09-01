@@ -44,8 +44,9 @@ class AlertsController < ApplicationController
     
     authorize @alert
     if @alert.save
-      @alert.resolved_at! if params[:status] == "Yes"
-      flash[:notice] = "New Issue Created!"
+      @alert.resolved_at = Time.now if params[:status] == "Yes"
+      @alert.save! if @alert.resolved?
+      flash[:notice] = "New Alert Created!"
     else
       flash[:alert] = @alert.errors.full_messages
     end 
@@ -69,7 +70,7 @@ class AlertsController < ApplicationController
    render json: [@type_alerts]
   end 
   
-  def select_query
+  def select_issue
     # ajax 
    @alert ||= Alert.new
    authorize @alert

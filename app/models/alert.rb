@@ -7,7 +7,7 @@ class Alert < ApplicationRecord
   belongs_to :status
   belongs_to :issue
   
-  validates :resolved_at, presence:true, if: :resolved_at
+  validates :resolved_at, presence:true, if: :closed?
   
   validates :customer, presence: true
   validates :issue, presence: true
@@ -15,6 +15,14 @@ class Alert < ApplicationRecord
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
 
+  def resolved?
+    true if self.resolved_at && self.issue.resolution != "" &&  self.issue.resolution != nil
+  end 
+  
+  def closed?
+    true if self.closed_at 
+  end 
+  
   def send_alert_email
     AlertMailer.perform(self).deliver_later
   end

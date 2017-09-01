@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     collection do 
       get "select_issue_response"   # /alerts/select_issue_response
       get "select_alert_subgroup"   # /alerts/select_issue_subgroup
-      get "select_query" 
+      get "select_issue" 
     end 
     
   end 
