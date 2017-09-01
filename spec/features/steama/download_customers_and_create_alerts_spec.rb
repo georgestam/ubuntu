@@ -5,7 +5,10 @@ describe "Update database from steama API and create alerts" do
     sign_as :admin
     
     before {
-      visit root_path  
+      visit root_path 
+      # create type of alert 'Customer has negative account' as it is a requeried field to assign alerts
+      negative_acount = FactoryGirl.create :type_alert, name: "Customer has negative account"
+      FactoryGirl.create :issue, type_alert: negative_acount 
     }
   
     it 'shows a notification on the main page' do
@@ -14,6 +17,7 @@ describe "Update database from steama API and create alerts" do
     end
     
     it 'create new users and alerts' do
+      
       expect { 
         find('#update-database-button').click
       }.to change { 

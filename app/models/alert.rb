@@ -7,7 +7,7 @@ class Alert < ApplicationRecord
   belongs_to :status
   belongs_to :issue
   
-  validates :resolved_at, presence:true, if: :closed?
+  validates :resolved_at, presence: true, if: :closed?
   
   validates :customer, presence: true
   validates :issue, presence: true
@@ -16,7 +16,7 @@ class Alert < ApplicationRecord
   after_save :send_slack_notification, if: :production?
 
   def resolved?
-    true if self.resolved_at && self.issue.resolution != "" &&  self.issue.resolution != nil
+    true if self.resolved_at && self.issue.resolution != "" && !self.issue.resolution.nil?
   end 
   
   def closed?
@@ -50,7 +50,7 @@ class Alert < ApplicationRecord
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
       if customer.account_balance.to_i <= 0 && !customer.has_an_alert_with_negative_acount_open?
-        if Alert.create({
+        alert = if Alert.create!({
             customer: customer,
             issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")),
             created_by: "Laima"

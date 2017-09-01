@@ -4,17 +4,17 @@ class AlertsController < ApplicationController
     authorize(current_user)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
     @type_alerts = []
-    @issues= []
-    @group_alerts= GroupAlert.all.collect {|c| [c.title, c.id]}
-    @users= User.all.collect {|c| [c.email, c.id]}
+    @issues = []
+    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
+    @users = User.all.collect {|c| [c.email, c.id]}
   end 
   
   def create 
     # if ther is some input for 'new issue' description it creates a new alert and issue
     if params[:description_new_alert] != ""
-      #firs record of GroupAlert and TypeQuery is new
+      # first record of GroupAlert and TypeQuery is new
       group_alert = GroupAlert.find_by(title: "new")
-      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert )
+      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
       unless type_alert.save
         flash[:alert] = @alert.errors.full_messages
         redirect_to new_alert_path
@@ -54,7 +54,7 @@ class AlertsController < ApplicationController
   end 
   
   def select_issue_response
-    # ajax 
+   # ajax 
    @alert ||= Alert.new
    authorize @alert
    @issue = Issue.find(params[:id])
@@ -62,7 +62,7 @@ class AlertsController < ApplicationController
   end 
   
   def select_alert_subgroup
-    # ajax 
+   # ajax 
    @alert ||= Alert.new
    authorize @alert
    @group_alert = GroupAlert.find(params[:group_alert])
@@ -71,7 +71,7 @@ class AlertsController < ApplicationController
   end 
   
   def select_issue
-    # ajax 
+   # ajax 
    @alert ||= Alert.new
    authorize @alert
    @type_alert = TypeAlert.find(params[:type_alert])

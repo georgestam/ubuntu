@@ -30,28 +30,28 @@ RailsAdmin.config do |config|
       configure :status do
         hide
       end
-  #     field :id
-  #     field :customer do
-  #       column_width 120
-  #     end 
-  #     field :assigned_to do
-  #       column_width 100
-  #     end 
-  #     field :type_alert do
-  #       column_width 120
-  #     end 
-  #     field :description
-  #     field :status do
-  #       column_width 60
-  #     end
-  #     field :resolved_comments
-  #     field :created_by
-  #     field :created_at do
-  #       column_width 30
-  #     end
-  #     field :updated_at do
-  #       column_width 30
-  #     end
+      #     field :id
+      #     field :customer do
+      #       column_width 120
+      #     end 
+      #     field :assigned_to do
+      #       column_width 100
+      #     end 
+      #     field :type_alert do
+      #       column_width 120
+      #     end 
+      #     field :description
+      #     field :status do
+      #       column_width 60
+      #     end
+      #     field :resolved_comments
+      #     field :created_by
+      #     field :created_at do
+      #       column_width 30
+      #     end
+      #     field :updated_at do
+      #       column_width 30
+      #     end
     end
   end
   
