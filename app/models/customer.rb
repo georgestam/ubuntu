@@ -95,7 +95,6 @@ class Customer < ApplicationRecord
   
   def update_customer(user)
     if self.update_attributes!({  
-        id_steama: user['id'],
         url: user['url'],
         transactions_url: user['transactions_url'],
         utilities: user['utilities'],
