@@ -43,7 +43,7 @@ describe "Create alerts#new", js: true do
             
       customer_and_created_by_setting
       sleep 3
-      find('#type_alert').find(:xpath, "option[1]").select_option
+      find('#type_alert').find(:xpath, "option[2]").select_option
       
       find("#resolved_description").set reference_issue.resolution
       

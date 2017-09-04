@@ -36,11 +36,12 @@
           = f.input :created_by, label: false, collection: @users, prompt: "Created by"
           = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select issue group"
           = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue"
-          = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select possible response"
-          = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue was 'resolved' in a different manner, please explain", autofocus: true
-          
-          = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new issue description', autofocus: true
-          = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
+          #new-resolved-response
+            = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select possible response"
+            = f.input :resolved_description, as: :fake, label: false, placeholder: "If issue was 'resolved' in a different manner, please explain", autofocus: true
+          #new-type-alert
+            = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new issue description', autofocus: true
+            = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true
           = f.input :status, as: :fake_select, label: "Has the issue been resolved?", collection: ["Yes", "No"], prompt: "Select response"     
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
@@ -67,6 +68,7 @@
           var output = '';
           $('#type_alert').empty().append(function() {
             output += "<option value>"  + "Select issue" + "</option>"
+            output += "<option value='new'>"  + "New (make sure that the issue is not displayed!)" + "</option>"
             data.forEach(function(item) {
               item.forEach(function(subitem){
               // subitem is the vale HTML parameter which is added + 1 as the first one is the description
