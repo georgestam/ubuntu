@@ -43,7 +43,10 @@ describe "Create alerts#new", js: true do
             
       customer_and_created_by_setting
       sleep 3
-      find('#type_alert').find(:xpath, "option[2]").select_option
+      
+      
+      find('#type_alert').find(:xpath, "option[3]").select_option # select a type of alert 
+      find('#issue').find(:xpath, "option[2]").select_option # select and issue 
       
       find("#resolved_description").set reference_issue.resolution
       
@@ -60,6 +63,8 @@ describe "Create alerts#new", js: true do
       visit root_path
             
       customer_and_created_by_setting
+      # select a 'new' issue
+      find('#type_alert').find(:xpath, "option[2]").select_option
       
       find("#description_new_alert").set reference_type_alert.name
       find("#resolved_description_new").set reference_issue.resolution
@@ -80,8 +85,11 @@ describe "Create alerts#new", js: true do
     
     it 'creates a new alert marked as resolved' do
       visit root_path
-            
+  
       customer_and_created_by_setting
+      
+      # select a 'new' issue
+      find('#type_alert').find(:xpath, "option[2]").select_option
       
       find("#description_new_alert").set reference_type_alert.name
       find("#resolved_description_new").set reference_issue.resolution
@@ -102,6 +110,9 @@ describe "Create alerts#new", js: true do
             
       customer_and_created_by_setting
       
+      # select a 'new' issue
+      find('#type_alert').find(:xpath, "option[2]").select_option
+      
       find("#description_new_alert").set reference_type_alert.name
       
       find('#status').find(:xpath, "option[2]").select_option
@@ -113,15 +124,6 @@ describe "Create alerts#new", js: true do
       }.from(0).to(1)
       
       expect(Alert.last.try(:resolved?)).to be nil
-    end
-    
-    it 'does not create an alert if customer is not selected' do
-      visit root_path
-      
-      find("#description_new_alert").set reference_type_alert.name
-      find("#resolved_description_new").set reference_issue.resolution
-      
-      expect { find('#submit-button').click }.to_not change(Alert, :count)
     end
     
   end
