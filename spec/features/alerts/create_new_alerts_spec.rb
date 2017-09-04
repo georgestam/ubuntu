@@ -48,8 +48,6 @@ describe "Create alerts#new", js: true do
       find('#type_alert').find(:xpath, "option[3]").select_option # select a type of alert 
       find('#issue').find(:xpath, "option[2]").select_option # select and issue 
       
-      find("#resolved_description").set reference_issue.resolution
-      
       expect { 
         find('#submit-button').click
       }.to change { 
