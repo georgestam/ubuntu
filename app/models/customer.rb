@@ -53,7 +53,7 @@ class Customer < ApplicationRecord
   end
   
   def self.create_new_customer(user)
-    if Customer.create!({  
+    if Customer.create({  
         id_steama: user['id'],
         url: user['url'],
         transactions_url: user['transactions_url'],
@@ -94,7 +94,7 @@ class Customer < ApplicationRecord
   end 
   
   def update_customer(user)
-    if self.update_attributes!({  
+    if self.update_attributes({  
         id_steama: user['id'],
         url: user['url'],
         transactions_url: user['transactions_url'],
