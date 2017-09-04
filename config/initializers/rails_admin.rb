@@ -44,6 +44,16 @@ RailsAdmin.config do |config|
       end
     end
   end
+    
+  config.model User do
+    list do
+      field :roles, :enum do 
+        enum_method do
+          :roles_enum
+        end
+      end 
+    end
+  end 
   
   config.parent_controller = '::ApplicationController'
 
