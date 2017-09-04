@@ -22,7 +22,7 @@ describe "Create alerts#new", js: true do
     it 'creates only a new alert if issue existed' do
       visit root_path
       
-      # TODO: ajax calls not working for type alert (which is the same than gorup alert!)
+      # TODO: ajax calls not working for type alert (which is the same structure for group alert!). Perhaps 2 ajax calls are not allowed in capybara
       
       # customer_and_created_by_setting
       # find('#group_alert').find(:xpath, "option[2]").select_option

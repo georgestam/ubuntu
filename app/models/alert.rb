@@ -4,7 +4,6 @@ class Alert < ApplicationRecord
   
   belongs_to :customer
   belongs_to :type_alert
-  belongs_to :status
   belongs_to :issue
   
   validates :resolved_at, presence: true, if: :closed?
