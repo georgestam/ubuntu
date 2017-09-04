@@ -68,7 +68,7 @@
           var output = '';
           $('#type_alert').empty().append(function() {
             output += "<option value>"  + "Select issue" + "</option>"
-            output += "<option value='new'>"  + "New" + "</option>"
+            output += "<option value='new'>"  + "New issue" + "</option>"
             data.forEach(function(item) {
               item.forEach(function(subitem){
               // subitem is the vale HTML parameter which is added + 1 as the first one is the description
@@ -94,7 +94,7 @@
           // Populate second dropdown here
           var output = '';
           $('#issue').empty().append(function() {
-            output += "<option value>"  + "Select possible response" + "</option>"
+            output += "<option value>"  + "Select from previous reponses" + "</option>"
             output += "<option value>"  + "Response is not in the list" + "</option>"
             data.forEach(function(item) {
               item.forEach(function(subitem){
