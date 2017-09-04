@@ -18,10 +18,12 @@ ActiveRecord::Schema.define(version: 20170901075701) do
   create_table "alerts", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "type_alert_id"
+    t.string   "description"
     t.string   "created_by"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "status_id"
+    t.string   "resolved_comments"
     t.string   "assigned_to"
     t.datetime "resolved_at"
     t.datetime "closed_at"
