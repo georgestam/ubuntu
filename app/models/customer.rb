@@ -42,11 +42,11 @@ class Customer < ApplicationRecord
       # create new customers
       json_data['results'].each do |customer|
         # create new customers
-        unless Customer.customer_id_exist?(customer['id'])
+        if Customer.customer_id_exist?(customer['id'])
+          Customer.find_by(id_steama: customer['id']).update_customer(customer)
+        else # create new customer
           Customer.create_new_customer(customer)
         end 
-        # update customers
-        Customer.find_by(id_steama: customer['id']).update_customer(customer)
       end  
         
     end 
@@ -95,6 +95,7 @@ class Customer < ApplicationRecord
   
   def update_customer(user)
     if self.update_attributes!({  
+        id_steama: user['id'],
         url: user['url'],
         transactions_url: user['transactions_url'],
         utilities: user['utilities'],
