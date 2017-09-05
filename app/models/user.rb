@@ -17,6 +17,18 @@ class User < ApplicationRecord
      ROLES
   end
   
+  def manager?
+    self.role == "manager"
+  end 
+  
+  def super_user?
+    self.role == "super_user"
+  end 
+  
+  def field_user?
+    self.role == "field_user"
+  end 
+  
 end
 
 

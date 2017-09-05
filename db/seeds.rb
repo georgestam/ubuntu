@@ -7,7 +7,7 @@ TypeAlert.destroy_all
 password = "password10"
 
 manager = FactoryGirl.create :user, :admin, :manager, email: "admin@ubuntu.org", password: password 
-super_user = FactoryGirl.create :user, :super_user, email: "super@ubuntu.org", password: password
+super_user = FactoryGirl.create :user, :admin, :super_user, email: "super@ubuntu.org", password: password
 field_user = FactoryGirl.create :user, :field_user, email: "email@ubuntu.org", password: password
 
 # file = File.read('lib/examples/json/example1.json')

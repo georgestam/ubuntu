@@ -7,7 +7,7 @@ class ApplicationPolicy
   end
 
   def index?
-    admin?
+    super_user_or_manager?
   end
 
   def show?
@@ -15,7 +15,7 @@ class ApplicationPolicy
   end
 
   def create?
-    admin?
+    user.manager?
   end
 
   def new?
@@ -23,7 +23,7 @@ class ApplicationPolicy
   end
 
   def update?
-    admin?
+    user.manager?
   end
 
   def edit?
@@ -31,7 +31,7 @@ class ApplicationPolicy
   end
 
   def destroy?
-    admin?
+    user.manager?
   end
 
   def scope
@@ -42,14 +42,26 @@ class ApplicationPolicy
     user.try :admin?
   end
   
+  def manager?
+    user.manager?
+  end
+  
+  def super_user?
+    user.super_user?
+  end
+  
+  def super_user_or_manager?
+    user.super_user? || user.manager?
+  end
+  
   # rails admin fiels
   
   def dashboard?
-    admin? 
+    super_user_or_manager? 
   end
   
   def export?
-    admin?
+    super_user_or_manager?
   end
   
   def show_in_app?
