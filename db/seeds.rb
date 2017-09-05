@@ -7,8 +7,8 @@ TypeAlert.destroy_all
 password = "password10"
 
 manager = FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password 
-super_user = FactoryGirl.create :user, :super_user, email: "super@ubuntu.org", password: password
-field_user = FactoryGirl.create :user, :field_user, email: "field@ubuntu.org", password: password
+super_user = FactoryGirl.create :user, name: 'test_super_user', :super_user, email: "super@ubuntu.org", password: password
+field_user = FactoryGirl.create :user, name: 'test_field_user', :field_user, email: "field@ubuntu.org", password: password
 
 # file = File.read('lib/examples/json/example1.json')
 # 
@@ -47,3 +47,10 @@ Status.create!({
 Status.create!({
   name: "Resolved"
   })
+  
+if production? 
+
+  super_user = FactoryGirl.create :user, name: 'test_super_user', :super_user, email: "super@ubuntu.org", password: password
+  field_user = FactoryGirl.create :user, name: 'test_field_user', :field_user, email: "field@ubuntu.org", password: password
+  
+end 

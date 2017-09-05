@@ -2,7 +2,7 @@ describe "Display rails admin" do
   
   context 'when user is signed-in as admin user' do 
   
-    sign_as :admin
+    sign_as :manager
     
     it 'displays main panel' do
       visit root_path

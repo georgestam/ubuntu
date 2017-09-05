@@ -5,14 +5,11 @@ class AlertPolicy < ApplicationPolicy
   end 
   
   def create?
-    super_user_or_manager?
+    super_user_or_manager? || user.field_user?
   end
   
   def new?
     user
   end 
-  
-  def create?
-    user
-  end   
+    
 end
