@@ -47,9 +47,12 @@ RailsAdmin.config do |config|
     
   config.model User do
     list do
-      field :roles, :enum do 
+      field :id
+      field :name        
+      field :email
+      field :role, :enum do 
         enum_method do
-          :roles_enum
+          :role_enum
         end
       end 
     end

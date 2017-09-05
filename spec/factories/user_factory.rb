@@ -14,11 +14,11 @@ FactoryGirl.define do
       role User::ROLES[0] #manager
     end
     
-    trait :field do 
+    trait :super_user do 
       role User::ROLES[1] #super
     end
     
-    trait :super do 
+    trait :field_user do 
       role User::ROLES[2] #field
     end     
       
