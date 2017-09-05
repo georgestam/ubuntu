@@ -26,7 +26,7 @@ describe "User Logging in" do
     
   end 
   
-  context 'when user is signed-in as admin user' do 
+  context 'when user is signed-in as a manager' do 
   
     sign_as :manager
     

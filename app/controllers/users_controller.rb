@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def index
     policy_scope(User)
-    unless current_user.admin
+    if current_user.field_user?
       redirect_to new_alert_path
     end 
   end

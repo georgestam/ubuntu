@@ -1,7 +1,7 @@
 class AlertsController < ApplicationController
   
   def new 
-    authorize(current_user)
+    authorize(Alert.new)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
     @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
     @status = Status.all.collect {|c| [c.name, c.id]}

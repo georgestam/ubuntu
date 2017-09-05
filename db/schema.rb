@@ -101,7 +101,6 @@ ActiveRecord::Schema.define(version: 20170904095212) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
-    t.boolean  "admin",                             default: false,        null: false
     t.string   "authentication_token",   limit: 30
     t.string   "role",                              default: "field_user"
     t.string   "name"
