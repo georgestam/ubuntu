@@ -38,17 +38,9 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
   
-  def admin?
-    user.try :admin?
-  end
+  delegate :manager?, to: :user
   
-  def manager?
-    user.manager?
-  end
-  
-  def super_user?
-    user.super_user?
-  end
+  delegate :super_user?, to: :user
   
   def super_user_or_manager?
     user.super_user? || user.manager?

@@ -6,20 +6,16 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password { SecureRandom.hex }
     
-    trait :admin do 
-      admin true
-    end
-    
     trait :manager do 
-      role User::ROLES[0] #manager
+      role User::ROLES[0] # manager
     end
     
     trait :super_user do 
-      role User::ROLES[1] #super
+      role User::ROLES[1] # super
     end
     
     trait :field_user do 
-      role User::ROLES[2] #field
+      role User::ROLES[2] # field
     end     
       
   end
