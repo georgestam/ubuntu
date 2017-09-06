@@ -4,17 +4,11 @@ TypeAlert.destroy_all
 
 # Recording.destroy_all
 
-User.create!({
-  email: "admin@ubuntu.org",
-  password: "password10",
-  admin: true
-  })
+password = "password10"
 
-User.create!({
-  email: "field@ubuntu.org",
-  password: "password10",
-  admin: false
-  })
+FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password 
+FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
+FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
 
 # file = File.read('lib/examples/json/example1.json')
 # 
@@ -53,3 +47,10 @@ Status.create!({
 Status.create!({
   name: "Resolved"
   })
+  
+if production? 
+
+  FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
+  FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
+  
+end 
