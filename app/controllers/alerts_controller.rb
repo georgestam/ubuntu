@@ -12,19 +12,19 @@ class AlertsController < ApplicationController
   end 
   
   def create
-    
-    set_issue 
-    
+    set_issue
     @alert = Alert.new(alert_params)
+    authorize @alert
     @alert.issue = @issue
     
-    authorize @alert
-    if @alert.save
-      @alert.resolved_at = DateTime.current if params[:status] == "Yes"
-      @alert.save! if @alert.resolved?
-      flash[:notice] = "New Alert Created!"
+    if !@issue.resolution.nil?
+      flash[:alert] = "New issue was not created as a solution already exist"
     else
-      flash[:alert] = @alert.errors.full_messages
+      if @alert.save
+        flash[:notice] = "New issue Created!"
+      else
+        flash[:alert] = @alert.errors.full_messages
+      end 
     end 
     redirect_to new_alert_path
   end 
@@ -60,17 +60,14 @@ class AlertsController < ApplicationController
       # first record of GroupAlert and TypeAlert is new
       group_alert = GroupAlert.find_by(id: params[:group_alert])
       type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
-      show_errors_and_redirect unless type_alert.save
+      show_errors_and_redirect unless type_alert.save  
       
-      Issue.new(resolution: params[:resolved_description_new], type_alert: type_alert)  
-  
-    # if the issue existed but with diferent resolution
-    elsif !Issue.find_by(resolution: params[:resolved_description]) && params[:resolved_description] != ""
-      Issue.new(type_alert_id: params[:type_alert], resolution: params[:resolved_description])
-    
-    # if the issue already existed
-    else 
+      Issue.new(type_alert: type_alert)  
+    elsif params[:issue] != "" # if the solution exist 
       Issue.find(params[:issue])
+    else # if the solution is not in the list 
+      type_alert = TypeAlert.find_by(id: params[:group_alert])
+      Issue.new(type_alert: type_alert)
     end
     show_errors_and_redirect unless @issue.save 
   end 
