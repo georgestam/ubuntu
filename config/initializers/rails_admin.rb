@@ -47,7 +47,6 @@ RailsAdmin.config do |config|
     
   config.model User do
     edit do
-      field :id
       field :name        
       field :email
       field :role, :enum do 
@@ -55,6 +54,8 @@ RailsAdmin.config do |config|
           :role_enum
         end
       end 
+      field :password, :password 
+      field :password_confirmation, :password 
     end
     list do
       field :id
