@@ -42,8 +42,6 @@ describe "Create alerts#new", js: true do
       visit root_path
             
       customer_and_created_by_setting
-      sleep 3
-      
       
       find('#type_alert').find(:xpath, "option[3]").select_option # select a type of alert 
       find('#issue').find(:xpath, "option[2]").select_option # select and issue 
@@ -57,7 +55,7 @@ describe "Create alerts#new", js: true do
       }.from(2).to(3)
     end
     
-    it "creates an new 'open' alert, issue and type_alert if type_alert does not exist" do
+    it "creates an alert 'open', issue and type_alert if type_alert does not exist" do
       visit root_path
             
       customer_and_created_by_setting
@@ -65,7 +63,6 @@ describe "Create alerts#new", js: true do
       find('#type_alert').find(:xpath, "option[2]").select_option
       
       find("#description_new_alert").set reference_type_alert.name
-      find("#resolved_description_new").set reference_issue.resolution
       
       expect { 
         find('#submit-button').click
@@ -81,39 +78,27 @@ describe "Create alerts#new", js: true do
 
     end
     
-    it 'creates a new alert marked as resolved' do
+    it 'does not create an alert if a solution exist' do
       visit root_path
   
       customer_and_created_by_setting
       
       # select a 'new' issue
-      find('#type_alert').find(:xpath, "option[2]").select_option
+      find('#type_alert').find(:xpath, "option[3]").select_option
+      find('#issue').find(:xpath, "option[3]").select_option # select solution 
       
-      find("#description_new_alert").set reference_type_alert.name
-      find("#resolved_description_new").set reference_issue.resolution
+      expect{find('#submit-button').click}.not_to change(Alert, :count)
       
-      find('#status').find(:xpath, "option[2]").select_option
-      
-      expect { 
-        find('#submit-button').click
-      }.to change { 
-        Alert.count 
-      }.from(0).to(1)
-      
-      expect(Alert.last.try(:resolved?)).to be true
     end
     
-    it 'does not create a new alert marked as resolved if resolved description is missing' do
+    it "creates an alert if a solution 'is not in the list" do
       visit root_path
-            
+  
       customer_and_created_by_setting
       
       # select a 'new' issue
-      find('#type_alert').find(:xpath, "option[2]").select_option
-      
-      find("#description_new_alert").set reference_type_alert.name
-      
-      find('#status').find(:xpath, "option[2]").select_option
+      find('#type_alert').find(:xpath, "option[3]").select_option
+      find('#issue').find(:xpath, "option[2]").select_option # select "it is not in the list" 
       
       expect { 
         find('#submit-button').click
@@ -121,7 +106,6 @@ describe "Create alerts#new", js: true do
         Alert.count 
       }.from(0).to(1)
       
-      expect(Alert.last.try(:resolved?)).to be nil
     end
     
   end
