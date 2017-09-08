@@ -1,56 +1,38 @@
-Customer.destroy_all
-User.destroy_all
-TypeAlert.destroy_all
-
-# Recording.destroy_all
-
-password = "password10"
-
-FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password 
-FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
-FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
-
-# file = File.read('lib/examples/json/example1.json')
-# 
-# 1.times do
-#   Recording.create!({
-#     data: file,
-#     description: Faker::ChuckNorris.fact,
-#     user: User.first,
-#     confidence: 80,
-#     speaker: 1
-#     })
-# end
-# 
-# file = File.read('lib/examples/json/example2.json')
-# 
-# 1.times do
-#   Recording.create!({
-#     data: file,
-#     description: Faker::ChuckNorris.fact,
-#     user: User.first,
-#     confidence: 80,
-#     speaker: 1
-#     })
-# end
-
-TypeAlert.create!({
-  name: "negative_account"
-  })
+if development? || staging?
+  Customer.destroy_all
+  User.destroy_all
+  Alert.destroy_all
+  Issue.destroy_all
+  TypeAlert.destroy_all
+  GroupAlert.destroy_all
   
-Status.create!({
-  name: "open"
-  })
-Status.create!({
-  name: "closed"
-  })
-Status.create!({
-  name: "Resolved"
-  })
-  
-if production? 
+  password = "password10"
 
+  FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password 
   FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
   
+  3.times do |group_alert|
+    group_alert = FactoryGirl.create :group_alert
+    3.times do |type_alert|
+      type_alert = FactoryGirl.create :type_alert, group_alert: group_alert
+      2.times do |issue|
+        issue = FactoryGirl.create :issue, type_alert: type_alert
+        2.times do 
+          FactoryGirl.create :alert, issue: issue 
+        end 
+        2.times do 
+          FactoryGirl.create :alert, :resolved, issue: issue 
+        end 
+      end 
+    end 
+  end 
+  
+  FactoryGirl.create :group_alert, title: "others"
+  negative_acount = FactoryGirl.create :type_alert, name: "Customer has negative account"
+  FactoryGirl.create :issue, type_alert: negative_acount 
+
+end 
+
+if production?
 end 

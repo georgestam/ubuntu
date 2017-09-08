@@ -25,7 +25,11 @@ ActiveRecord::Schema.define(version: 20170904095212) do
     t.integer  "status_id"
     t.string   "resolved_comments"
     t.string   "assigned_to"
+    t.datetime "resolved_at"
+    t.datetime "closed_at"
+    t.integer  "issue_id"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
+    t.index ["issue_id"], name: "index_alerts_on_issue_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
   end
@@ -67,6 +71,20 @@ ActiveRecord::Schema.define(version: 20170904095212) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "group_alerts", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.integer  "type_alert_id"
+    t.string   "resolution"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["type_alert_id"], name: "index_issues_on_type_alert_id", using: :btree
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -84,8 +102,10 @@ ActiveRecord::Schema.define(version: 20170904095212) do
 
   create_table "type_alerts", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "group_alert_id"
+    t.index ["group_alert_id"], name: "index_type_alerts_on_group_alert_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -101,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170904095212) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
+    t.boolean  "admin",                             default: false,        null: false
     t.string   "authentication_token",   limit: 30
     t.string   "role",                              default: "field_user"
     t.string   "name"
@@ -110,6 +131,9 @@ ActiveRecord::Schema.define(version: 20170904095212) do
   end
 
   add_foreign_key "alerts", "customers"
+  add_foreign_key "alerts", "issues"
   add_foreign_key "alerts", "statuses"
   add_foreign_key "alerts", "type_alerts"
+  add_foreign_key "issues", "type_alerts"
+  add_foreign_key "type_alerts", "group_alerts"
 end

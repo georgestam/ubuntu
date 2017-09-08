@@ -26,7 +26,7 @@ module Ubuntu
       if development_or_test?
         'localhost'
       elsif staging?
-        'https://ubuntu-power.herokuapp.com'
+        'https://ubuntu-power-staging.herokuapp.com'
       else
         'https://ubuntu-power.herokuapp.com'
       end

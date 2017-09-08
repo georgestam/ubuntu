@@ -10,7 +10,14 @@ Rails.application.routes.draw do
     
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   
-  resources  :alerts, only: %i(new create)
+  resources  :alerts, only: %i(new create) do
+    collection do 
+      get "select_issue_response"   # /alerts/select_issue_response
+      get "select_alert_subgroup"   # /alerts/select_issue_subgroup
+      get "select_issue" 
+    end 
+    
+  end 
   
   post "users/update_db"
   

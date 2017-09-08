@@ -1,13 +1,27 @@
 class Alert < ApplicationRecord
+  
+  STATUS = %w[open resolved].freeze
+  
   belongs_to :customer
   belongs_to :type_alert
-  belongs_to :status
+  belongs_to :issue
+  
+  validates :resolved_at, presence: true, if: :closed?
   
   validates :customer, presence: true
+  validates :issue, presence: true
   
-  after_commit :send_alert_email
-  after_commit :send_slack_notification, unless: :development?
+  after_save :send_alert_email, if: :production?
+  after_save :send_slack_notification, if: :production?
 
+  def resolved?
+    true if self.resolved_at && self.issue.resolution != "" && !self.issue.resolution.nil?
+  end 
+  
+  def closed?
+    true if self.closed_at 
+  end 
+  
   def send_alert_email
     AlertMailer.perform(self).deliver_later
   end
@@ -24,18 +38,24 @@ class Alert < ApplicationRecord
     client.chat_postMessage(channel: '#alerts', text: text, as_user: 'ubuntu')
   end 
   
+  def resolved_at!
+     self.update_attributes(resolved_at: Time.current)
+  end 
+  
+  def closed_at!
+     self.update_attributes(closed_at: Time.current)
+  end 
+  
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && customer.customer_description_does_not_exist_open?
-        if Alert.create({
+      if customer.account_balance.to_i <= 0 && !customer.an_alert_with_negative_acount_open?
+        @alert = if Alert.create!({
             customer: customer,
-            type_alert: TypeAlert.first, # this alert is 'nagative_account'
-            description: "User has negative account",
-            status: Status.first,
+            issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")),
             created_by: "Laima"
             })
         else 
-          # flash[:alert] = alert.errors.full_messages
+          flash[:alert] = @alert.errors.full_messages
           # TODO: send email with there has been a problem
         end 
       end 

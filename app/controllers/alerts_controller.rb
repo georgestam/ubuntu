@@ -1,28 +1,83 @@
 class AlertsController < ApplicationController
   
+  before_action :set_alert, only: %i[select_issue_response select_alert_subgroup select_issue]
+  
   def new 
     authorize(Alert.new)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
-    @type_alerts = TypeAlert.all.collect {|c| [c.name, c.id]}
-    @status = Status.all.collect {|c| [c.name, c.id]}
+    @type_alerts = []
+    @issues = []
+    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
+    @users = User.all.collect {|c| [c.email, c.id]}
   end 
   
-  def create 
+  def create
+    set_issue
     @alert = Alert.new(alert_params)
     authorize @alert
-    if @alert.save
-      flash[:notice] = "New Issue Created!"
+    @alert.issue = @issue
+    
+    if !@issue.resolution.nil?
+      flash[:alert] = "New issue was not created as a solution already exist"
+    elsif @alert.save
+      flash[:notice] = "New issue Created!"
     else
       flash[:alert] = @alert.errors.full_messages
     end 
     redirect_to new_alert_path
   end 
   
+  def select_issue_response
+   # ajax 
+   @issue = Issue.find(params[:id])
+   render json: [@issue]
+  end 
+  
+  def select_alert_subgroup
+   # ajax 
+   type_alerts = GroupAlert.find(params[:group_alert]).type_alerts.collect {|c| [c.name, c.id]}
+   render json: [type_alerts]
+  end 
+  
+  def select_issue
+   # ajax 
+   issues = TypeAlert.find(params[:type_alert]).issues.collect {|c| [c.name, c.id]}
+   render json: [issues]
+  end 
+  
   private
+
+  def set_alert
+    @alert ||= Alert.new
+    authorize @alert
+  end 
+  
+  def set_issue
+    # if ther is some input for 'new issue' description it creates a new alert and issue
+    @issue = if params[:description_new_alert] != ""
+      # first record of GroupAlert and TypeAlert is new
+      group_alert = GroupAlert.find_by(id: params[:group_alert])
+      type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
+      show_errors_and_redirect unless type_alert.save  
+      
+      Issue.new(type_alert: type_alert)  
+    elsif params[:issue] != "" # if the solution exist 
+      Issue.find(params[:issue])
+    else # if the solution is not in the list 
+      type_alert = TypeAlert.find_by(id: params[:group_alert])
+      Issue.new(type_alert: type_alert)
+    end
+    show_errors_and_redirect unless @issue.save 
+  end 
   
   def alert_params
-    params.require(:alert).permit(:description, :created_by, :type_alert_id, :status_id, :customer_id, :assigned_to, :resolved_comments)
+    params.require(:alert).permit(:customer_id, :created_by)
   end
+  
+  def show_errors_and_redirect
+    flash[:alert] = @alert.errors.full_messages
+    redirect_to new_alert_path
+  end 
   
 end
 

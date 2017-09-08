@@ -33,14 +33,91 @@
           = f.error_notification
           = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
-          = f.input :type_alert_id, label: false, collection: @type_alerts, prompt: "Select alert type" 
-          = f.input :description, as: :text, label: false, placeholder: 'description', autofocus: true
-          = f.input :status_id, label: false, collection: @status, prompt: "Select status" 
-          = f.input :resolved_comments, as: :text, label: false, placeholder: "If status is 'resolved', please add how it was resolved", autofocus: true
-          = f.input :created_by, label: false, placeholder: 'Created_by', autofocus: true
-          = f.input :assigned_to, label: false, placeholder: 'Assigned to', autofocus: true
+          = f.input :created_by, label: false, collection: @users, prompt: "Created by"
+          = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select issue group"
+          = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue"
+          #new-resolved-response
+            = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select from previous solution"
+            -#= f.input :resolved_description, as: :fake, label: false, placeholder: "If previous response does not exists, please explain", autofocus: true
+          #new-type-alert
+            = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new issue description', autofocus: true
+            -# = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true   
           = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
     = "To sign out click here:"
     = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path
+    
+- content_for :bottom_js do
+  :javascript
+    // https://stackoverflow.com/questions/38202484/simple-form-select-collection-populated-by-ajax-call
+    
+    // update dropdown for subgroup
+    $('#group_alert').change(function(){
+      $.ajax({
+        url: 'select_alert_subgroup',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          group_alert: this.value
+        },
+        success: function(data) {
+          
+          // Populate second dropdown here
+          var output = '';
+          $('#type_alert').empty().append(function() {
+            output += "<option value>"  + "Select issue" + "</option>"
+            output += "<option value='new'>"  + "Create new issue" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+              // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // update drowndown of posible responses
+    $('#type_alert').change(function(){
+      $.ajax({
+        url: 'select_issue',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          type_alert: this.value
+        },
+        success: function(data) {
+          // Populate second dropdown here
+          var output = '';
+          $('#issue').empty().append(function() {
+            output += "<option value>"  + "Select from previous solution" + "</option>"
+            output += "<option value>"  + "Solution is not in the list" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+                // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // copy possible response in empty field
+    // $('#issue').change(function(){
+    //   $.ajax({
+    //     url: 'select_issue_response',
+    //     dataType: 'json',
+    //     type: 'GET',
+    //     data: {
+    //       id: this.value
+    //     },
+    //     success: function(data) {
+    //       $('#resolved_description').val(data[0].resolution);
+    //     }  
+    //   });
+    // });
