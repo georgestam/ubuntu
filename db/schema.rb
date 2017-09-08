@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830171319) do
+ActiveRecord::Schema.define(version: 20170904095212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -121,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170830171319) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
+    t.boolean  "admin",                             default: false,        null: false
     t.string   "authentication_token",   limit: 30
     t.string   "role",                              default: "field_user"
     t.string   "name"
