@@ -2,7 +2,7 @@ describe "Update database from steama API and create alerts" do
   
   context 'when user is signed-in as admin user' do 
   
-    sign_as :admin
+    sign_as :manager
     
     before {
       visit root_path 

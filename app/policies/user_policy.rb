@@ -6,7 +6,7 @@ class UserPolicy < ApplicationPolicy
   end
   
   def new?
-    user
+    user.manager?
   end 
   
   def main?

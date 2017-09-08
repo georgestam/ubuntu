@@ -5,24 +5,12 @@ if development? || staging?
   Issue.destroy_all
   TypeAlert.destroy_all
   GroupAlert.destroy_all
+  
+  password = "password10"
 
-  User.create!({
-    email: "admin@ubuntu.org",
-    password: "password10",
-    admin: true
-    })
-
-  User.create!({
-    email: "field@ubuntu.org",
-    password: "password10",
-    admin: false
-    })
-    
-  User.create!({
-    email: "super@ubuntu.org",
-    password: "password10",
-    admin: false
-    })
+  FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password 
+  FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
+  FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
   
   3.times do |group_alert|
     group_alert = FactoryGirl.create :group_alert
