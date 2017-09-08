@@ -19,12 +19,10 @@ class AlertsController < ApplicationController
     
     if !@issue.resolution.nil?
       flash[:alert] = "New issue was not created as a solution already exist"
+    elsif @alert.save
+      flash[:notice] = "New issue Created!"
     else
-      if @alert.save
-        flash[:notice] = "New issue Created!"
-      else
-        flash[:alert] = @alert.errors.full_messages
-      end 
+      flash[:alert] = @alert.errors.full_messages
     end 
     redirect_to new_alert_path
   end 
