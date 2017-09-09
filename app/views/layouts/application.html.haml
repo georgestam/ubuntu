@@ -19,10 +19,11 @@
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag    'application', media: 'all'
 
-  %body.container
-    = render 'shared/navbar'
+  %body
+    = render 'shared/navbar' if user_signed_in?
     = render 'shared/flashes' unless controller_name.in?('alerts') && action_name == 'new'
-    = yield
+    .container
+      = yield
     -# = render 'shared/footer' unless action_name == "form"
     = javascript_include_tag 'application'
     = yield :bottom_js
