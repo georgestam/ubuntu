@@ -24,7 +24,10 @@
   %h1
     = "#{current_user.name.capitalize}'s dashboard"
   %p
-    = "user type"
+    -if current_user.role == "manager"
+      = "Manager user"
+    - else
+      = "Super user"
 %h4
   = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "admin-panel-button"
   = "Click here to access the admin dashboard"
