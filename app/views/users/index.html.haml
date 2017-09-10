@@ -38,38 +38,5 @@
   = link_to "Input issues form", new_alert_path, class: 'btn btn-default btn-lg margin width-buttom'
   = "Click here to get access to the input issues form ('field employees' have different login)"
 %p{ style: "margin-top: 150px"}
-  %strong Notes: 
-
-%ul.list-group
-  %li.list-group-item 
-    When the database is updated (green buttom above) all the information from the Steama database is downloaded into this platform and alerts are created automatically (they can be also added manually).
-  %li.list-group-item 
-    Whenever a Alert record is created (automatically or manually) a message is sent to a slack channel. 
-  %li.list-group-item 
-    Current alers created are:
-    %ol
-      %li negative_account: An alert is created an account_balance is negative
-  %li.list-group-item 
-    Data from the admin panel can be filtered and downloaded using the 'Export' button
-  %li.list-group-item 
-    Current database is setup to 140 users, please let me know when this number may be exceeded.
-  %li.list-group-item 
-    The 'green button' is activated automatically 3 times a day. You can see 
-    = link_to "here", "/sidekiq"
-    here each time that the button is clicked automatically. 
-
-.tabs
-  %a.tab.active{:href => "#"}
-    %h3 350
-    %p Followers
-  %a.tab{:href => "#"}
-    %h3 456
-    %p Following
-  %a.tab{:href => "#"}
-    %h3 189
-    %p Upvoted
-  %a.tab{:href => "#"}
-    %h3 13
-    %p Submitted
 
   

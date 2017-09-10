@@ -2,6 +2,10 @@ class AlertsController < ApplicationController
   
   before_action :set_alert, only: %i[select_issue_response select_alert_subgroup select_issue]
   
+  def index
+    @alerts = policy_scope(Alert)
+  end 
+  
   def new 
     authorize(Alert.new)
     @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}

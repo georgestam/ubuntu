@@ -7,7 +7,7 @@
   .navbar-wagon-right.hidden-xs.hidden-sm
     - if user_signed_in?
       / Links when logged in
-      = link_to "Tickets", "#", class: "navbar-wagon-item navbar-wagon-link"
+      = link_to "My alerts", alerts_path, class: "navbar-wagon-item navbar-wagon-link"
       = link_to "Info", "#", class: "navbar-wagon-item navbar-wagon-link"
       = link_to "Statistics", "#", class: "navbar-wagon-item navbar-wagon-link"
       / Avatar with dropdown menu
