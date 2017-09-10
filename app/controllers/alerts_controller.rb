@@ -3,7 +3,11 @@ class AlertsController < ApplicationController
   before_action :set_alert, only: %i[select_issue_response select_alert_subgroup select_issue]
   
   def index
-    @alerts = policy_scope(Alert)
+    alerts = policy_scope(Alert)
+    @open_alerts = alerts.open
+    @resolved_alerts = alerts.resolved
+    @closed_alerts = alerts.closed
+    
   end 
   
   def new 
