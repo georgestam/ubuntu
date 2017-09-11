@@ -33,7 +33,7 @@ class Alert < ApplicationRecord
   
   def group_and_type
     # binding.pry
-    if self.issue
+    if self.type_alert
       "#{self.type_alert.group_alert.title}, #{self.type_alert.name}"
     end 
   end
