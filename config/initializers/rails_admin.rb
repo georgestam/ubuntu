@@ -19,29 +19,24 @@ RailsAdmin.config do |config|
   
   config.model Alert do
     weight 2
+    edit do
+      field :customer
+      field :assigned_to
+      field :created_by
+      field :type_alert
+      field :issue do
+        label "Solution"
+      end
+      field :resolved_comments do
+        label "Solution notes"
+      end
+      field :resolved_at 
+      field :closed_at
+      
+      field :status_id
+      field :description
+    end
     list do
-      #     field :id
-      #     field :customer do
-      #       column_width 120
-      #     end 
-      #     field :assigned_to do
-      #       column_width 100
-      #     end 
-      #     field :type_alert do
-      #       column_width 120
-      #     end 
-      #     field :description
-      #     field :status do
-      #       column_width 60
-      #     end
-      #     field :resolved_comments
-      #     field :created_by
-      #     field :created_at do
-      #       column_width 30
-      #     end
-      #     field :updated_at do
-      #       column_width 30
-      #     end
       field :id do
         column_width 30
       end 
@@ -71,7 +66,6 @@ RailsAdmin.config do |config|
       field :resolved_at do
         column_width 200
       end
-      
       field :closed_at do
         column_width 200
       end
