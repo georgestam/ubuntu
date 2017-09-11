@@ -2,27 +2,23 @@ RailsAdmin.config do |config|
   
   config.label_methods << :custom_label_method
   
-  config.model Customer do
-    list do
-      field :id
-      field :id_steama         
-      field :telephone
-      field :first_name
-      field :last_name
-      field :description
-      field :account_balance
-      field :low_balance_warning
-      field :low_balance_level
-      field :line_number
-      field :language
-    end
+  
+  
+  config.model GroupAlert do
+    weight -1
   end
   
-  config.model Status do
-    visible false
+  config.model TypeAlert do
+    weight 0
+  end
+  
+  config.model Issue do
+    label "Solutions"
+    weight 1
   end
   
   config.model Alert do
+    weight 2
     list do
       #     field :id
       #     field :customer do
@@ -46,10 +42,70 @@ RailsAdmin.config do |config|
       #     field :updated_at do
       #       column_width 30
       #     end
+      field :id do
+        column_width 30
+      end 
+      field :customer do
+        column_width 120
+      end 
+      field :assigned_to do
+        column_width 100
+      end 
+      field :created_by do
+        column_width 100
+      end
+      field :type_alert do
+        column_width 120
+      end 
+      field :created_at do
+        column_width 200
+      end
+      field :issue do
+        label "Solution"
+        column_width 200
+      end
+      field :resolved_comments do
+        label "Solution notes"
+        column_width 200
+      end
+      field :resolved_at do
+        column_width 200
+      end
+      
+      field :closed_at do
+        column_width 200
+      end
+      
+      field :status_id
+      field :description
     end
   end
+  
+  config.model Customer do
+    weight 3
+    list do
+      field :id
+      field :id_steama         
+      field :telephone
+      field :first_name
+      field :last_name
+      field :description
+      field :account_balance
+      field :low_balance_warning
+      field :low_balance_level
+      field :line_number
+      field :language
+    end
+  end
+  
+  config.model Status do
+    visible false
+  end
+  
+  
     
   config.model User do
+    weight 4
     edit do
       field :name        
       field :email
