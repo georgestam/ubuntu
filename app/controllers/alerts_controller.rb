@@ -16,6 +16,7 @@ class AlertsController < ApplicationController
     @alert = Alert.new(alert_params)
     authorize @alert
     @alert.issue = @issue
+    @alert.type_alert = set_type_alert
     
     if !@issue.resolution.nil?
       flash[:alert] = "New issue was not created as a solution already exist"
@@ -64,10 +65,13 @@ class AlertsController < ApplicationController
     elsif params[:issue] != "" # if the solution exist 
       Issue.find(params[:issue])
     else # if the solution is not in the list 
-      type_alert = TypeAlert.find_by(id: params[:group_alert])
-      Issue.new(type_alert: type_alert)
+      Issue.new(type_alert: set_type_alert)
     end
     show_errors_and_redirect unless @issue.save 
+  end 
+  
+  def set_type_alert
+    TypeAlert.find_by(id: params[:type_alert])
   end 
   
   def alert_params

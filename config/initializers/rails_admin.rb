@@ -28,18 +28,22 @@ RailsAdmin.config do |config|
         label "Solution"
       end
       field :resolved_comments do
-        label "Solution notes"
+        label "notes"
       end
       field :resolved_at 
-      
-      field :status_id
-      field :description
     end
     list do
       field :id do
         column_width 30
       end 
-      field :group_and_type do
+      field :group_alert do
+        column_width 200
+        formatted_value do 
+          value.to_s
+        end
+        column_width 120
+      end
+      field :type_alert do
         column_width 200
         formatted_value do 
           value.to_s
@@ -69,9 +73,6 @@ RailsAdmin.config do |config|
       field :resolved_at do
         column_width 200
       end
-      
-      field :status_id
-      field :description
     end
   end
   

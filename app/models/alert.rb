@@ -9,6 +9,7 @@ class Alert < ApplicationRecord
   validates :resolved_at, presence: true, if: :closed?
   
   validates :customer, presence: true
+  validates :type_alert, presence: true
   
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
@@ -31,10 +32,9 @@ class Alert < ApplicationRecord
     AlertMailer.perform(self).deliver_later
   end
   
-  def group_and_type
-    # binding.pry
+  def group_alert
     if self.type_alert
-      "#{self.type_alert.group_alert.title}, #{self.type_alert.name}"
+      "#{self.type_alert.group_alert.title}"
     end 
   end
   
