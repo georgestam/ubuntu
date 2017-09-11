@@ -1,0 +1,3 @@
+class GroupAlertPolicy < ApplicationPolicy
+  
+end
