@@ -24,12 +24,6 @@ RailsAdmin.config do |config|
   
   config.model Alert do
     list do
-      configure :type_alert do
-        hide
-      end
-      configure :status do
-        hide
-      end
       #     field :id
       #     field :customer do
       #       column_width 120
