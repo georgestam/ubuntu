@@ -7,7 +7,7 @@ describe "Update database from steama API and create alerts" do
     before {
       visit root_path 
       # create type of alert 'Customer has negative account' as it is a requeried field to assign alerts
-      negative_acount = FactoryGirl.create :type_alert, name: "Customer has negative account"
+      negative_acount = FactoryGirl.create :type_alert, name: "Negative account"
       FactoryGirl.create :issue, type_alert: negative_acount 
     }
   
