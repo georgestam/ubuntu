@@ -51,7 +51,7 @@ class Alert < ApplicationRecord
       if customer.account_balance.to_i <= 0 && !customer.an_alert_with_negative_acount_open?
         @alert = if Alert.create!({
             customer: customer,
-            issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Customer has negative account")),
+            issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Negative account")),
             created_by: "Laima"
             })
         else 
