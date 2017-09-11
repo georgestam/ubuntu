@@ -9,7 +9,6 @@ class Alert < ApplicationRecord
   validates :resolved_at, presence: true, if: :closed?
   
   validates :customer, presence: true
-  validates :issue, presence: true
   
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?

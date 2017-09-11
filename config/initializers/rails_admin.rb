@@ -20,7 +20,7 @@ RailsAdmin.config do |config|
   config.model Alert do
     weight 2
     edit do
-      field :group_and_type
+      field :type_alert
       field :customer
       field :assigned_to
       field :created_by
