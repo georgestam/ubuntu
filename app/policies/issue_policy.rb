@@ -1,0 +1,3 @@
+class IssuePolicy < ApplicationPolicy
+  
+end

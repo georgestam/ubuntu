@@ -52,6 +52,7 @@ RailsAdmin.config do |config|
       #     field :updated_at do
       #       column_width 30
       #     end
+  end
     end
   end
     
