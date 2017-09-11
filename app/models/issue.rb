@@ -9,4 +9,5 @@ class Issue < ApplicationRecord
   def name
     self.resolution
   end
+  
 end

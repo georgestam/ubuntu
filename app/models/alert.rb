@@ -12,7 +12,13 @@ class Alert < ApplicationRecord
   
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
+  
+  validate :type_alert_for_alert_and_issue_is_the_same, if: :issue #it ensures that we have chosen the same type_alert in both tables
 
+  def type_alert_for_alert_and_issue_is_the_same
+    self.type_alert == self.issue.type_alert
+  end 
+  
   def resolved?
     true if self.resolved_at && self.issue.resolution != "" && !self.issue.resolution.nil?
   end 
@@ -28,7 +34,7 @@ class Alert < ApplicationRecord
   def group_and_type
     # binding.pry
     if self.issue
-      "#{self.issue.type_alert.group_alert.title}, #{self.issue.type_alert.name}"
+      "#{self.type_alert.group_alert.title}, #{self.type_alert.name}"
     end 
   end
   
