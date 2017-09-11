@@ -26,6 +26,13 @@ class Alert < ApplicationRecord
     AlertMailer.perform(self).deliver_later
   end
   
+  def group_and_type
+    # binding.pry
+    if self.issue
+      "#{self.issue.type_alert.group_alert.title}, #{self.issue.type_alert.name}"
+    end 
+  end
+  
   def send_slack_notification
     SendNotificationsToSlack.perform_later(self.id)
   end
