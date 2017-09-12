@@ -1,8 +1,29 @@
+RailsAdmin::Config::Actions.register RailsAdmin::Config::Actions::Edit
+
+
 RailsAdmin.config do |config|
   
   config.label_methods << :custom_label_method
   
-  
+  config.actions do
+    dashboard                     # mandatory
+    index                         # mandatory
+    new
+    export
+    bulk_delete
+    show
+    edit
+    # review do
+    #   # https://stackoverflow.com/questions/32243844/rails-admin-how-to-create-forms-for-custom-actions
+    #   only %w(Alert)
+    # end
+    delete
+    show_in_app
+
+    ## With an audit adapter, you can add:
+    # history_index
+    # history_show
+  end
   
   config.model GroupAlert do
     weight -1
@@ -96,8 +117,6 @@ RailsAdmin.config do |config|
   config.model Status do
     visible false
   end
-  
-  
     
   config.model User do
     weight 4
@@ -150,22 +169,7 @@ RailsAdmin.config do |config|
   ## == Gravatar integration ==
   ## To disable Gravatar integration in Navigation Bar set to false
   # config.show_gravatar true
-
-  config.actions do
-    dashboard                     # mandatory
-    index                         # mandatory
-    new
-    export
-    bulk_delete
-    show
-    edit
-    delete
-    show_in_app
-
-    ## With an audit adapter, you can add:
-    # history_index
-    # history_show
-  end
+  
 end
 
 

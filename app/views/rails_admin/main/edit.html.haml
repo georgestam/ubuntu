@@ -1,0 +1,137 @@
+:sass
+  .left
+    text-align: left
+  .right
+    text-align: right
+
+= "Basic Implementation"
+- model_name = @object.class.to_s.underscore
+- model = t("activerecord.models.#{model_name}.one").downcase
+%h3= t '.Review', model: model, record: @object
+
+= rails_admin_form_for @object, url: edit_path(@abstract_model, @object.id), as: @abstract_model.param_key, html: { method: "put", multipart: true, class: "form-horizontal denser", data: { title: @page_name } } do |form|
+  = form.generate action: :update
+
+:sass
+
+  .center 
+    text-align: center
+    
+  .brand-header img 
+    width: 100px
+    margin: 20px
+  
+  .brand-header
+    background: white
+    float: left
+    width: 100%
+    text-align: center
+    margin: 4px 0 0 0
+
+#alerts-new
+.row
+  .col-md-offset-3.col-md-6
+    #login.brand-header
+      = image_tag 'logo/main-logo.png', class: 'main-logo'
+%h1.center{style: "margin-bottom: 100px"}
+  Ubuntu Power
+.row
+  .panel-default.col-md-offset-2.col-md-8.center
+    %h4
+      = "Create an Issue"
+    %p
+      Please fill in this form to create a new issue
+    .row
+      .col-md-offset-2.col-md-8
+        -# = simple_form_for '/', method: :post do |f|
+        -#   = f.error_notification
+        -#   = render 'shared/flashes'
+        -#   = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
+        -#   = f.input :created_by, label: false, collection: @users, prompt: "Created by"
+        -#   = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select issue group"
+        -#   = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue"
+        -#   #new-resolved-response
+        -#     = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select from previous solution"
+        -#     -#= f.input :resolved_description, as: :fake, label: false, placeholder: "If previous response does not exists, please explain", autofocus: true
+        -#   #new-type-alert
+        -#     = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new issue description', autofocus: true
+        -#     -# = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true   
+        -#   = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
+-# .row
+-#   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
+-#     = "To sign out click here:"
+-#     = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path
+    
+- content_for :bottom_js do
+  :javascript
+    // https://stackoverflow.com/questions/38202484/simple-form-select-collection-populated-by-ajax-call
+    
+    // update dropdown for subgroup
+    $('#group_alert').change(function(){
+      $.ajax({
+        url: 'select_alert_subgroup',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          group_alert: this.value
+        },
+        success: function(data) {
+          
+          // Populate second dropdown here
+          var output = '';
+          $('#type_alert').empty().append(function() {
+            output += "<option value>"  + "Select issue" + "</option>"
+            output += "<option value='new'>"  + "Create new issue" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+              // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // update drowndown of posible responses
+    $('#type_alert').change(function(){
+      $.ajax({
+        url: 'select_issue',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          type_alert: this.value
+        },
+        success: function(data) {
+          // Populate second dropdown here
+          var output = '';
+          $('#issue').empty().append(function() {
+            output += "<option value>"  + "Select from previous solution" + "</option>"
+            output += "<option value>"  + "Solution is not in the list" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+                // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // copy possible response in empty field
+    // $('#issue').change(function(){
+    //   $.ajax({
+    //     url: 'select_issue_response',
+    //     dataType: 'json',
+    //     type: 'GET',
+    //     data: {
+    //       id: this.value
+    //     },
+    //     success: function(data) {
+    //       $('#resolved_description').val(data[0].resolution);
+    //     }  
+    //   });
+    // });
