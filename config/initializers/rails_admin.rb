@@ -10,10 +10,6 @@ RailsAdmin.config do |config|
     bulk_delete
     show
     edit
-    # review do
-    #   # https://stackoverflow.com/questions/32243844/rails-admin-how-to-create-forms-for-custom-actions
-    #   only %w(Alert)
-    # end
     delete
     show_in_app
 
@@ -57,7 +53,7 @@ RailsAdmin.config do |config|
           Proc.new { |scope|
             # scoping all Players currently, let's limit them to the team's league
             # Be sure to limit if there are a lot of Players and order them by position
-            scope = scope.where(type_alert_id: issue.type_alert_id) if issue.present?
+            scope.where(type_alert_id: issue.type_alert_id) if issue.present?
           }
         end
       end

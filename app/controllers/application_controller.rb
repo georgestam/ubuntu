@@ -22,13 +22,13 @@ private
 
   # https://github.com/sferik/rails_admin/wiki/How-to:-Reloading-RailsAdmin-Config-Automatically
   def reload_rails_admin
-    models = %W(User UserProfile)
+    models = %w(User UserProfile)
     models.each do |m|
       RailsAdmin::Config.reset_model(m)
     end
     RailsAdmin::Config::Actions.reset
 
-    load("#{Rails.root}/config/initializers/rails_admin.rb")
+    load("Rails.root.join('config', 'initializers', 'rails_admin.rb')")
   end
 
   def rails_admin_path?
