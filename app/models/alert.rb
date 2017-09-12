@@ -14,10 +14,20 @@ class Alert < ApplicationRecord
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
 
-  validate :type_alert_for_alert_and_issue_is_the_same, if: :issue #it ensures that we have chosen the same type_alert in both tables
+  validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? #it ensures that we have chosen the same type_alert in both tables
+
+  def title # to humanize rails admin
+    self.type_alert.name if self.type_alert.present?
+  end
 
   def type_alert_for_alert_and_issue_is_the_same
-    self.type_alert == self.issue.type_alert
+    unless self.type_alert == self.issue.type_alert
+      errors[:type_alert] << "#{self} Type Alert has to be the same for Issue and Alert"
+    end
+  end
+
+  def issue?
+    true if self.issue.present?
   end
 
   def resolved?
