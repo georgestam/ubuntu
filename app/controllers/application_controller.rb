@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     { locale: I18n.locale == I18n.default_locale ? nil : I18n.locale }
   end
 
-private
+  private
 
   # https://github.com/sferik/rails_admin/wiki/How-to:-Reloading-RailsAdmin-Config-Automatically
   def reload_rails_admin

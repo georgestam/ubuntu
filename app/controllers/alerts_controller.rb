@@ -54,14 +54,14 @@ class AlertsController < ApplicationController
   end
 
   def set_issue
-    # if ther is some input for 'new issue' description it creates a new alert and issue
+    # if there is some input for 'new issue' description it creates a new alert and issue
     @issue = if params[:description_new_alert] != ""
       # first record of GroupAlert and TypeAlert is new
       group_alert = GroupAlert.find_by(id: params[:group_alert])
       type_alert = TypeAlert.new(name: params[:description_new_alert], group_alert: group_alert)
       show_errors_and_redirect unless type_alert.save
 
-      Issue.new(type_alert: type_alert)
+      nil # return nil issue
     elsif params[:issue] != "" # if the solution exist
       Issue.find(params[:issue])
     else # if the solution is not in the list
