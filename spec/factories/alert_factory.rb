@@ -3,7 +3,6 @@ FactoryGirl.define do
   factory :alert do
 
     customer
-    issue
     type_alert
     created_by { Faker::Name.first_name }
     assigned_to { Faker::Name.first_name }
