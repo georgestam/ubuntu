@@ -1,2 +1,0 @@
-class OpenAlert < ApplicationRecord
-end

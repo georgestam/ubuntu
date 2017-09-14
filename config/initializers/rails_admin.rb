@@ -19,14 +19,17 @@ RailsAdmin.config do |config|
   end
 
   config.model GroupAlert do
+    navigation_label 'Alerts'
     weight -1
   end
 
   config.model TypeAlert do
+    navigation_label 'Alerts'
     weight 0
   end
 
   config.model Issue do
+    navigation_label 'Alerts'
     label "Solutions"
     weight 1
     list do
@@ -37,15 +40,8 @@ RailsAdmin.config do |config|
 
   end
 
-  config.model OpenAlert do
-    parent Alert
-  end
-
-  config.model ResolvedAlert do
-    parent Alert
-  end
-
   config.model Alert do
+    navigation_label 'Alerts'
     weight 2
     edit do
       field :type_alert
@@ -71,6 +67,7 @@ RailsAdmin.config do |config|
       field :resolved_at
     end
     list do
+      scopes [:not_resolved, :resolved]
       field :id do
         column_width 30
       end

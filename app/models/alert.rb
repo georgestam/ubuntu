@@ -6,8 +6,6 @@ class Alert < ApplicationRecord
   belongs_to :type_alert
   belongs_to :issue
 
-  validates :resolved_at, presence: true, if: :closed?
-
   validates :customer, presence: true
   validates :type_alert, presence: true
 
@@ -15,6 +13,15 @@ class Alert < ApplicationRecord
   after_save :send_slack_notification, if: :production?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
+  validate :solution_resolution_text_exist, if: :resolved?
+
+  def self.resolved
+    where.not(resolved_at: nil)
+  end
+
+  def self.not_resolved
+    where(resolved_at: nil)
+  end
 
   def title # to humanize rails admin
     self.type_alert.name if self.type_alert.present?
@@ -30,12 +37,12 @@ class Alert < ApplicationRecord
     true if self.issue.present?
   end
 
-  def resolved?
-    true if self.resolved_at && self.issue.resolution != "" && !self.issue.resolution.nil?
+  def solution_resolution_text_exist
+    true if self.issue.resolution != "" && !self.issue.resolution.nil?
   end
 
-  def closed?
-    true if self.closed_at
+  def resolved?
+    true if self.resolved_at && self.issue.resolution != "" && !self.issue.resolution.nil?
   end
 
   def send_alert_email
