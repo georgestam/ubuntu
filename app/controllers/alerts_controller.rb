@@ -8,7 +8,7 @@ class AlertsController < ApplicationController
     @type_alerts = []
     @issues = []
     @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
-    @users = User.all.collect {|c| [c.email, c.id]}
+    @users = User.all
   end
 
   def create
