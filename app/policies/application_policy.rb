@@ -34,6 +34,10 @@ class ApplicationPolicy
     user.manager?
   end
 
+  def history? # for rails admin
+    true
+  end
+
   def scope
     Pundit.policy_scope!(user, record.class)
   end
