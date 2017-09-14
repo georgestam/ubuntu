@@ -18,9 +18,7 @@ class AlertsController < ApplicationController
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
 
-    if !@issue.try(:resolution).nil?
-      flash[:alert] = "New issue was not created as a solution already exist"
-    elsif @alert.save
+    if @alert.save
       flash[:notice] = "New issue Created!"
     else
       flash[:alert] = @alert.errors.full_messages
