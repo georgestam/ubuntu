@@ -8,6 +8,3 @@ en:
     attributes:
       alert:
         resolved_comments: Notes
-  admin:
-    alert:
-      not_resolved: Open

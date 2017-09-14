@@ -66,7 +66,7 @@ RailsAdmin.config do |config|
       field :resolved_at
     end
     list do
-      scopes [:not_resolved, :resolved]
+      scopes %i[not_resolved resolved]
       field :id do
         column_width 30
       end
