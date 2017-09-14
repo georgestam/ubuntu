@@ -14,12 +14,13 @@ class AlertsController < ApplicationController
   def create
     set_issue
     @alert = Alert.new(alert_params)
+    @alert.created_by = User.find(alert_params[:created_by]).name
     authorize @alert
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
 
     if @alert.save
-      flash[:notice] = "New issue Created!"
+      flash[:notice] = "New Alert Created!"
     else
       flash[:alert] = @alert.errors.full_messages
     end

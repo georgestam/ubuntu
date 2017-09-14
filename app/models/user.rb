@@ -11,7 +11,7 @@ class User < ApplicationRecord
          
   validates :email, email_format: { message: "doesn't look like an email address" }, presence: true
   validates :role, inclusion: { in: ROLES }
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   
   def role_enum
      ROLES

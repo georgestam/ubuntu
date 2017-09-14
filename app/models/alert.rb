@@ -7,6 +7,7 @@ class Alert < ApplicationRecord
   belongs_to :issue
 
   validates :customer, presence: true
+  validates :created_by, presence: true
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
