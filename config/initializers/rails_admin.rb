@@ -37,6 +37,14 @@ RailsAdmin.config do |config|
 
   end
 
+  config.model OpenAlert do
+    parent Alert
+  end
+
+  config.model ResolvedAlert do
+    parent Alert
+  end
+
   config.model Alert do
     weight 2
     edit do
