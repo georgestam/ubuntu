@@ -1,0 +1,2 @@
+class ResolvedAlert < ApplicationRecord
+end
