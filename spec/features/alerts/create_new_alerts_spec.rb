@@ -8,8 +8,6 @@ describe "Create alerts#new", js: true do
     let!(:customer){ FactoryGirl.create :customer }
 
     let!(:reference_type_alert){ FactoryGirl.build :type_alert }
-    let!(:reference_issue){ FactoryGirl.build :issue }
-    let!(:reference_alert){ FactoryGirl.build :alert }
 
     sign_as
 
@@ -51,7 +49,7 @@ describe "Create alerts#new", js: true do
         Alert.count
       }.from(0).to(1).and change {
         TypeAlert.count
-      }.from(3).to(4)
+      }.from(1).to(2)
 
       expect(Alert.last.try(:resolved?)).to be nil
 
@@ -66,7 +64,13 @@ describe "Create alerts#new", js: true do
       find('#type_alert').find(:xpath, "option[3]").select_option
       find('#issue').find(:xpath, "option[3]").select_option # select solution
 
-      expect{find('#submit-button').click}.not_to change(Alert, :count)
+      expect {
+        find('#submit-button').click
+      }.to change {
+        Alert.count
+      }.from(0).to(1)
+
+      expect(Alert.last.issue.resolution).to eq issue.resolution
 
     end
 
