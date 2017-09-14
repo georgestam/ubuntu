@@ -30,7 +30,6 @@ RailsAdmin.config do |config|
 
   config.model Issue do
     navigation_label 'Alerts'
-    label "Solutions"
     weight 1
     list do
       field :type_alert
@@ -98,7 +97,6 @@ RailsAdmin.config do |config|
         column_width 200
       end
       field :issue do
-        label "Solution"
         column_width 200
       end
       field :resolved_comments do
