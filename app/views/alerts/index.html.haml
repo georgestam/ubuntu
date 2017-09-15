@@ -3,6 +3,9 @@
   .center 
     text-align: center
 
+  .margin
+    margin: 30px
+
 :css
 
   .nav-tabs > li {
@@ -18,6 +21,7 @@
 .center{style: "margin-bottom: 50px"}
   %h1
     = "My Alerts"
+
 #exTab2.container
   %ul.nav.nav-tabs
     %li.active
@@ -30,7 +34,27 @@
       %a{"data-toggle" => "tab", :href => "#4"} All Resolved Alerts
   .tab-content
     #1.tab-pane.active
-      %h3 Standard tab panel created on bootstrap using nav-tabs
+      %p.margin.center
+        = "Click here to resolve your alerts"
+        %br/
+        = link_to "Alerts in Admin Panel", "admin/alert", class: 'btn btn-primary btn-lg margin width-buttom'
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Id
+            %th Customer
+            %th Type alert
+            %th Created by
+            %th Created at
+            %th Notes
+        %tbody
+          %tr
+            %td id
+            %td customer
+            %td type_alert
+            %td created_by
+            %td Created at
+            %td Notes
     #2.tab-pane
       %h3 Notice the gap between the content and tab after applying a background color
     #3.tab-pane
@@ -38,4 +62,6 @@
     #4.tab-pane
       %h3 add clearfix to tab-content (see the css)
 %hr/
+
+
 
