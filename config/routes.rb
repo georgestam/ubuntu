@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end 
     
   end 
+
+  get 'info', to: "pages#info"
   
   post "users/update_db"
   
