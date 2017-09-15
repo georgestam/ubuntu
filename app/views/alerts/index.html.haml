@@ -1,10 +1,41 @@
-.tabs
-  %a.tab.active{:href => "#"}
-    %h3 Open
-    %p 
-  %a.tab{:href => "#"}
-    %h3 Resolved
-    %p 
-  %a.tab{:href => "#"}
-    %h3 Closed
-    %p 
+:sass
+
+  .center 
+    text-align: center
+
+:css
+
+  .nav-tabs > li {
+      float:none;
+      display:inline-block;
+      zoom:1;
+  }
+
+  .nav-tabs {
+      text-align:center;
+  }
+
+.center{style: "margin-bottom: 50px"}
+  %h1
+    = "My Alerts"
+#exTab2.container
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#1"} Open Alert
+    %li
+      %a{"data-toggle" => "tab", :href => "#2"} Resolved Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#3"} All Open Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#4"} All Resolved Alerts
+  .tab-content
+    #1.tab-pane.active
+      %h3 Standard tab panel created on bootstrap using nav-tabs
+    #2.tab-pane
+      %h3 Notice the gap between the content and tab after applying a background color
+    #3.tab-pane
+      %h3 add clearfix to tab-content (see the css)
+    #4.tab-pane
+      %h3 add clearfix to tab-content (see the css)
+%hr/
+
