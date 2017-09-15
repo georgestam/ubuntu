@@ -12,22 +12,16 @@ class Alert < ApplicationRecord
   validates :resolved_at, presence: true, if: :closed?
   validates :resolved_at, presence: true, if: :resolved?
   
-  validates :closed_at , presence: true, unless: :open?
-  
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
 
-  def self.open
-    where(resolved_at: [nil, false])
+  def self.not_resolved
+    where(resolved_at: nil)
   end 
   
   def self.resolved
-    where.not(resolved_at: [nil, false])
-  end 
-  
-  def self.closed
-    where.not(closed_at: [nil, false]) 
-  end 
+    where.not(resolved_at: nil)
+  end  
   
   def open?
     true unless resolved?
