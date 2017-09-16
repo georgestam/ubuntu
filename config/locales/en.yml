@@ -1,3 +1,10 @@
 ---
 en:
-
+  activerecord:
+    models:
+      issue: 
+        one: Solution
+        other: Solutions
+    attributes:
+      alert:
+        resolved_comments: Notes

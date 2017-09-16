@@ -24,9 +24,9 @@
 .row
   .panel-default.col-md-offset-2.col-md-8.center
     %h4
-      = "Create an Issue"
+      = "Create an Alert"
     %p
-      Please fill in this form to create a new issue
+      Please fill in this form to create a new alert
     .row
       .col-md-offset-2.col-md-8
         = simple_form_for Alert.new, url: alerts_path, method: :post do |f|
@@ -34,15 +34,15 @@
           = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
           = f.input :created_by, label: false, collection: @users, prompt: "Created by"
-          = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select issue group"
-          = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select issue"
+          = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select alert group"
+          = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select alert"
           #new-resolved-response
             = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select from previous solution"
             -#= f.input :resolved_description, as: :fake, label: false, placeholder: "If previous response does not exists, please explain", autofocus: true
           #new-type-alert
-            = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new issue description', autofocus: true
-            -# = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If issue has been 'resolved', please add how it was resolved", autofocus: true   
-          = f.button :submit, "Create issue", class: "button btn btn-lg btn-primary", id: "submit-button"
+            = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new alert description', autofocus: true
+            -# = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If alerrt has been 'resolved', please add how it was resolved", autofocus: true   
+          = f.button :submit, "Create Alert", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
     = "To sign out click here:"
@@ -66,8 +66,8 @@
           // Populate second dropdown here
           var output = '';
           $('#type_alert').empty().append(function() {
-            output += "<option value>"  + "Select issue" + "</option>"
-            output += "<option value='new'>"  + "Create new issue" + "</option>"
+            output += "<option value>"  + "Select Alert" + "</option>"
+            output += "<option value='new'>"  + "Create new alert" + "</option>"
             data.forEach(function(item) {
               item.forEach(function(subitem){
               // subitem is the vale HTML parameter which is added + 1 as the first one is the description
@@ -93,8 +93,8 @@
           // Populate second dropdown here
           var output = '';
           $('#issue').empty().append(function() {
-            output += "<option value>"  + "Select from previous solution" + "</option>"
-            output += "<option value>"  + "Solution is not in the list" + "</option>"
+            output += "<option value>"  + "Select possible solution" + "</option>"
+            output += "<option value>"  + "I don't find the a solution in the list" + "</option>"
             data.forEach(function(item) {
               item.forEach(function(subitem){
                 // subitem is the vale HTML parameter which is added + 1 as the first one is the description

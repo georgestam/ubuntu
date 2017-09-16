@@ -7,7 +7,7 @@ class RemoveColumnsFromAlerts < ActiveRecord::Migration[5.0]
     
     # remove_column :alerts, :type_alerts
     remove_column :alerts, :description, :string
-    # remove_column :alerts, :status
-    remove_column :alerts, :resolved_comments, :string
+    remove_column :alerts, :status
+    # remove_column :alerts, :resolved_comments, :string
   end
 end
