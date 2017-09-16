@@ -1,0 +1,156 @@
+:sass
+
+  .center 
+    text-align: center
+
+  .margin
+    margin: 30px
+
+:css
+
+  .nav-tabs > li {
+      float:none;
+      display:inline-block;
+      zoom:1;
+  }
+
+  .nav-tabs {
+      text-align:center;
+  }
+
+.center{style: "margin-bottom: 50px"}
+  %h1
+    = "My Alerts"
+
+#show_my_alerts
+#exTab2.container
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#1"} My Open Alert
+    %li
+      %a{"data-toggle" => "tab", :href => "#2"} My Resolved Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#3"} All Open Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#4"} All Resolved Alerts
+  .tab-content
+    #1.tab-pane.active
+      %p.margin.center
+        = "Click here to resolve your alerts"
+        %br/
+        = link_to "Alerts in Admin Panel", "admin/alert", class: 'btn btn-primary btn-lg margin width-buttom'
+      %table.table.table-striped
+        - if @my_not_resolved_alerts.present? 
+          %thead
+            %tr
+              %th Id
+              %th Customer
+              %th Type alert
+              %th Created by
+              %th Created at
+              %th Notes
+            %tbody
+              - @my_not_resolved_alerts.each do |alert|
+                #my_open_alert
+                %tr
+                  %td
+                    = alert.id
+                  %td.col-md-2
+                    = alert.customer.name
+                  %td.col-md-4
+                    = alert.type_alert.name
+                  %td.col-md-1
+                    = alert.created_by
+                  %td.col-md-2
+                    = alert.created_at
+                  %td.col-md-2
+                    = alert.resolved_comments 
+        - else 
+          %h4.center
+            = "Well done #{current_user.name}! You do not have open alerts"    
+    #2.tab-pane
+      %p.margin
+        %p.center
+          = "You resolved #{@my_resolved_alerts.count} alerts so far"
+        %br/
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Id
+            %th Customer
+            %th Type alert
+            %th Created by
+            %th Created at
+            %th Notes
+        %tbody
+          - if @my_resolved_alerts.present?
+            - @my_resolved_alerts.each do |alert|
+              %tr
+                %td
+                  = alert.id
+                %td.col-md-2
+                  = alert.customer.name
+                %td.col-md-4
+                  = alert.type_alert.name
+                %td.col-md-1
+                  = alert.created_by
+                %td.col-md-2
+                  = alert.created_at
+                %td.col-md-2
+                  = alert.resolved_comments 
+    #3.tab-pane
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Id
+            %th Customer
+            %th Type alert
+            %th Created by
+            %th Created at
+            %th Notes
+        %tbody
+          - if @not_resolved_alerts.present?
+            - @not_resolved_alerts.each do |alert|
+              %tr
+                %td
+                  = alert.id
+                %td.col-md-2
+                  = alert.customer.name
+                %td.col-md-4
+                  = alert.type_alert.name
+                %td.col-md-1
+                  = alert.created_by
+                %td.col-md-2
+                  = alert.created_at
+                %td.col-md-2
+                  = alert.resolved_comments 
+    #4.tab-pane
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Id
+            %th Customer
+            %th Type alert
+            %th Created by
+            %th Created at
+            %th Notes
+        %tbody
+          - if @resolved_alerts.present? 
+            - @resolved_alerts.each do |alert|
+              %tr
+                %td
+                  = alert.id
+                %td.col-md-2
+                  = alert.customer.name
+                %td.col-md-4
+                  = alert.type_alert.name
+                %td.col-md-1
+                  = alert.created_by
+                %td.col-md-2
+                  = alert.created_at
+                %td.col-md-2
+                  = alert.resolved_comments 
+%hr/
+
+
+

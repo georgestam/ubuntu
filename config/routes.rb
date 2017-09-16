@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # sidekiq setup
   require "sidekiq/web"
   authenticate :user, (lambda { |u| u.admin }) do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   
-  resources  :alerts, only: %i(new create) do
+  resources  :alerts, only: %i(index new create) do
     collection do 
       get "select_issue_response"   # /alerts/select_issue_response
       get "select_alert_subgroup"   # /alerts/select_issue_subgroup
@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     end 
     
   end 
+
+  get 'info', to: "pages#info"
   
   post "users/update_db"
   

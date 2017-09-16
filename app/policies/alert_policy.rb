@@ -1,5 +1,11 @@
 class AlertPolicy < ApplicationPolicy
   
+  class Scope < Scope
+    def resolve
+      scope.all
+    end
+  end 
+  
   def edit?
     super_user_or_manager?
   end 
