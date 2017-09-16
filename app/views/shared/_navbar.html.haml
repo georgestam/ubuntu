@@ -8,7 +8,7 @@
     - if user_signed_in?
       / Links when logged in
       = link_to "My alerts", alerts_path, class: "navbar-wagon-item navbar-wagon-link"
-      = link_to "Info", info_path, class: "navbar-wagon-item navbar-wagon-link"
+      = link_to "Info", info_path, class: "navbar-wagon-item navbar-wagon-link", id: "info"
       / = link_to "Statistics", "#", class: "navbar-wagon-item navbar-wagon-link"
       / Avatar with dropdown menu
       .navbar-wagon-item
