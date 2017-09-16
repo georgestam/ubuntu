@@ -1,6 +1,6 @@
-describe "Show pages#info" do
+describe "Display pages#info" do
 
-context 'when user is signed-in as a manager' do 
+  context 'when user is signed-in as a manager' do 
   
     sign_as :manager
     

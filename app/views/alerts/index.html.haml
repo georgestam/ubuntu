@@ -22,6 +22,7 @@
   %h1
     = "My Alerts"
 
+#show_my_alerts
 #exTab2.container
   %ul.nav.nav-tabs
     %li.active
@@ -50,6 +51,7 @@
               %th Notes
             %tbody
               - @my_not_resolved_alerts.each do |alert|
+                #my_open_alert
                 %tr
                   %td
                     = alert.id
