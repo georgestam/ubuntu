@@ -9,6 +9,7 @@ en:
       alert:
         resolved_comments: Notes
         user: Assigned to
+        issue: Solution
       group_alert:
         user: Responsible
       type_alert:

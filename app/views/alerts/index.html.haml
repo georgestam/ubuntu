@@ -38,9 +38,9 @@
       %p.margin.center
         = "Click here to resolve your alerts"
         %br/
-        = link_to "Alerts in Admin Panel", "admin/alert", class: 'btn btn-primary btn-lg margin width-buttom'
+        = link_to "Alerts in Admin Panel", "/admin/alert?model_name=alert&scope=my_open", class: 'btn btn-primary btn-lg margin width-buttom'
       %table.table.table-striped
-        - if @my_not_resolved_alerts.present? 
+        - if @my_open_alerts.present? 
           %thead
             %tr
               %th Id
@@ -50,7 +50,7 @@
               %th Created at
               %th Notes
             %tbody
-              - @my_not_resolved_alerts.each do |alert|
+              - @my_open_alerts.each do |alert|
                 #my_open_alert
                 %tr
                   %td
@@ -109,8 +109,8 @@
             %th Created at
             %th Notes
         %tbody
-          - if @not_resolved_alerts.present?
-            - @not_resolved_alerts.each do |alert|
+          - if @all_open_alerts.present?
+            - @all_open_alerts.each do |alert|
               %tr
                 %td
                   = alert.id
@@ -135,8 +135,8 @@
             %th Created at
             %th Notes
         %tbody
-          - if @resolved_alerts.present? 
-            - @resolved_alerts.each do |alert|
+          - if @all_resolved_alerts.present? 
+            - @all_resolved_alerts.each do |alert|
               %tr
                 %td
                   = alert.id

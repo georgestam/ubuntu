@@ -1,6 +1,6 @@
 class RemoveColumnToAlerts < ActiveRecord::Migration[5.0]
   def change
-  	# TODO: remove status fields
+    # TODO: remove status fields
     
     # remove_foreign_key :alerts, :status
     # remove_column :alerts, :status

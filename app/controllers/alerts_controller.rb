@@ -4,10 +4,10 @@ class AlertsController < ApplicationController
   
   def index
     alerts = policy_scope(Alert)
-    @not_resolved_alerts = alerts.not_resolved
-    @resolved_alerts = alerts.resolved
-    @my_not_resolved_alerts = [] # @not_resolved_alerts.where(user: current_user)
-    @my_resolved_alerts = [] # @resolved_alerts.where(user: current_user)
+    @all_open_alerts = alerts.all_open
+    @all_resolved_alerts = alerts.all_resolved
+    @my_open_alerts = alerts.my_open
+    @my_resolved_alerts = alerts.my_resolved
   end 
   
   def new

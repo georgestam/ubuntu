@@ -74,7 +74,7 @@ describe "Create alerts#new", js: true do
 
     end
 
-    it "creates an alert if a solution 'is not in the list" do
+    it "creates an alert if a solution 'is not in the list and assign task to an user" do
       visit root_path
 
       customer_and_created_by_setting
@@ -88,6 +88,8 @@ describe "Create alerts#new", js: true do
       }.to change {
         Alert.count
       }.from(0).to(1)
+
+      expect(Alert.last.user).to eq group_alert.user
 
     end
 

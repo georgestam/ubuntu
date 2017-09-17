@@ -10,7 +10,7 @@ class Alert < ApplicationRecord
   belongs_to :user, class_name: "User"
 
   before_validation :set_created_by
-  before_validation :set_assigned_alert_to
+  before_validation :set_assigned_alert_to, on: :create
 
   validates :customer, presence: true
   validates :created_by, presence: true
@@ -31,12 +31,20 @@ class Alert < ApplicationRecord
     self.created_by = Current.user
   end 
 
-  def self.resolved
+  def self.all_resolved
     where.not(resolved_at: nil)
   end
 
-  def self.not_resolved
+  def self.all_open
     where(resolved_at: nil)
+  end
+
+  def self.my_resolved
+    all_resolved.my_alerts
+  end
+
+  def self.my_open
+    all_open.my_alerts
   end
 
   def self.my_alerts
