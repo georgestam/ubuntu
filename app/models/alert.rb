@@ -111,8 +111,7 @@ class Alert < ApplicationRecord
         @alert = if Alert.create!({
             customer: customer,
             type_alert: type_alert,
-            issue: Issue.find_by(type_alert: type_alert),
-            created_by: "Laima"
+            issue: Issue.find_by(type_alert: type_alert)
             })
         else
           flash[:alert] = @alert.errors.full_messages

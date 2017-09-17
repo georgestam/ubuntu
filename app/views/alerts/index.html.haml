@@ -60,7 +60,7 @@
                   %td.col-md-4
                     = alert.type_alert.name
                   %td.col-md-1
-                    = alert.created_by.name
+                    = alert.created_by.try(:name)
                   %td.col-md-2
                     = alert.created_at
                   %td.col-md-2
@@ -93,7 +93,7 @@
                 %td.col-md-4
                   = alert.type_alert.name
                 %td.col-md-1
-                  = alert.created_by.name
+                  = alert.created_by.try(:name)
                 %td.col-md-2
                   = alert.created_at
                 %td.col-md-2
@@ -119,7 +119,7 @@
                 %td.col-md-4
                   = alert.type_alert.name
                 %td.col-md-1
-                  = alert.created_by.name
+                  = alert.created_by.try(:name)
                 %td.col-md-2
                   = alert.created_at
                 %td.col-md-2
@@ -145,7 +145,7 @@
                 %td.col-md-4
                   = alert.type_alert.name
                 %td.col-md-1
-                  = alert.created_by.name
+                  = alert.created_by.try(:name)
                 %td.col-md-2
                   = alert.created_at
                 %td.col-md-2
