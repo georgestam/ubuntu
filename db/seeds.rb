@@ -35,7 +35,8 @@ if development? || staging?
 end 
 
 if production?
-  TypeAlert.all.each do |type_alert|
-    GroupAlert.create!(title: type_alert.name)
+  Alert.all do |alert|
+    alert.user = User.find(7)
+    alert.save!
   end 
 end 
