@@ -5,12 +5,11 @@ FactoryGirl.define do
     customer
     type_alert
     user
+    user
     created_by { user }
-    # closed_at { rand(10.years).ago }
-    # resolved_at { rand(10.years).ago }
 
     trait :resolved do
-      resolved_at { Time.current }
+      resolved_at { rand(1.years).ago }
     end
 
   end
