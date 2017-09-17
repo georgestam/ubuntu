@@ -16,13 +16,11 @@ class AlertsController < ApplicationController
     @type_alerts = []
     @issues = []
     @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
-    @users = User.all
   end
 
   def create
     set_issue
     @alert = Alert.new(alert_params)
-    @alert.created_by = User.find(alert_params[:created_by]).name
     authorize @alert
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
@@ -82,7 +80,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:customer_id, :created_by)
+    params.require(:alert).permit(:customer_id)
   end
 
   def show_errors_and_redirect

@@ -9,16 +9,24 @@ class Alert < ApplicationRecord
   belongs_to :created_by, class_name: "User"
   belongs_to :user, class_name: "User"
 
+  before_validation :set_created_by
+
   validates :customer, presence: true
   validates :created_by, presence: true
-  validates :user, presence: true
+  # validates :user, presence: true
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
 
+
+
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
+
+  def set_created_by
+    self.created_by = Current.user
+  end 
 
   def self.resolved
     where.not(resolved_at: nil)
@@ -28,9 +36,9 @@ class Alert < ApplicationRecord
     where(resolved_at: nil)
   end
 
-  # def self.my_alerts
-  #   where(user: Current.user)
-  # end 
+  def self.my_alerts
+    where(user: Current.user)
+  end 
 
   def title # to humanize rails admin
     self.type_alert.name if self.type_alert.present?
