@@ -35,7 +35,7 @@ if development? || staging?
 end 
 
 if production?
-  Alert.all do |alert|
+  Alert.all.each do |alert|
     alert.user = User.find(7)
     alert.save!
   end 

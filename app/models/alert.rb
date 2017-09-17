@@ -9,7 +9,7 @@ class Alert < ApplicationRecord
   belongs_to :created_by, class_name: "User"
   belongs_to :user, class_name: "User"
 
-  before_validation :set_created_by, unless: :test? # TODO: Current.user not working in rspec
+  before_validation :set_created_by, on: :create 
   before_validation :set_assigned_alert_to, on: :create
 
   validates :customer, presence: true
@@ -27,7 +27,9 @@ class Alert < ApplicationRecord
   end 
 
   def set_created_by
-    self.created_by = Current.user
+    unless test? # TODO: Current.user not working in rspec
+      self.created_by = Current.user
+    end 
   end 
 
   def self.all_resolved
