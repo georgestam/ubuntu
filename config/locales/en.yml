@@ -8,3 +8,4 @@ en:
     attributes:
       alert:
         resolved_comments: Notes
+        user: Assigned to
