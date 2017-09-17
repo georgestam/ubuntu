@@ -45,7 +45,7 @@ RailsAdmin.config do |config|
     edit do
       field :type_alert
       field :customer
-      field :assigned_to
+      field :user
       field :created_by
       field :issue do
         label "Solution (please save and edit the field again if the Type Alert has changed)"
@@ -66,7 +66,7 @@ RailsAdmin.config do |config|
       field :resolved_at
     end
     list do
-      scopes %i[not_resolved resolved]
+      scopes %i[all_open all_resolved my_open my_resolved]
       field :id do
         column_width 30
       end
@@ -87,7 +87,7 @@ RailsAdmin.config do |config|
       field :customer do
         column_width 120
       end
-      field :assigned_to do
+      field :user do
         column_width 100
       end
       field :created_by do

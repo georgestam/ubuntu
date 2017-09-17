@@ -4,10 +4,10 @@ class AlertsController < ApplicationController
   
   def index
     alerts = policy_scope(Alert)
-    @not_resolved_alerts = alerts.not_resolved
-    @resolved_alerts = alerts.resolved
-    @my_not_resolved_alerts = [] # @not_resolved_alerts.where(assigned_to: current_user)
-    @my_resolved_alerts = [] # @resolved_alerts.where(assigned_to: current_user)
+    @all_open_alerts = alerts.all_open
+    @all_resolved_alerts = alerts.all_resolved
+    @my_open_alerts = alerts.my_open
+    @my_resolved_alerts = alerts.my_resolved
   end 
   
   def new
@@ -16,13 +16,11 @@ class AlertsController < ApplicationController
     @type_alerts = []
     @issues = []
     @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
-    @users = User.all
   end
 
   def create
     set_issue
     @alert = Alert.new(alert_params)
-    @alert.created_by = User.find(alert_params[:created_by]).name
     authorize @alert
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
@@ -82,7 +80,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:customer_id, :created_by)
+    params.require(:alert).permit(:customer_id)
   end
 
   def show_errors_and_redirect

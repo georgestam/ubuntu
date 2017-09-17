@@ -33,7 +33,6 @@
           = f.error_notification
           = render 'shared/flashes'
           = f.input :customer_id, label: false, collection: @customers, prompt: "Select customer" 
-          = f.input :created_by, label: false, collection: @users, prompt: "Created by"
           = f.input :group_alert, as: :fake_select, label: false, collection: @group_alerts, prompt: "Select alert group"
           = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select alert"
           #new-resolved-response

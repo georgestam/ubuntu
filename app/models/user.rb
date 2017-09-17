@@ -12,6 +12,11 @@ class User < ApplicationRecord
   validates :email, email_format: { message: "doesn't look like an email address" }, presence: true
   validates :role, inclusion: { in: ROLES }
   validates :name, uniqueness: true
+
+  has_many :alerts, :class_name => 'Alert', :primary_key => 'created_by'
+  has_many :alerts, :class_name => 'Alert', :primary_key => 'user'
+
+  has_many :group_alerts
   
   def role_enum
      ROLES

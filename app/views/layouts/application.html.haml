@@ -20,7 +20,7 @@
     = stylesheet_link_tag    'application', media: 'all'
 
   %body
-    = render 'shared/navbar' if user_signed_in?
+    = render 'shared/navbar' if user_signed_in? && current_user.role != 'field_user'
     = render 'shared/flashes' unless controller_name.in?('alerts') && action_name == 'new'
     .container
       = yield

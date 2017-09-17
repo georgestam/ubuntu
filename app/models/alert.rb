@@ -6,8 +6,14 @@ class Alert < ApplicationRecord
   belongs_to :type_alert
   belongs_to :issue
 
+  belongs_to :created_by, class_name: "User"
+  belongs_to :user, class_name: "User"
+
+  before_validation :set_created_by, unless: :test? # TODO: Current.user not working in rspec
+  before_validation :set_assigned_alert_to, on: :create
+
   validates :customer, presence: true
-  validates :created_by, presence: true
+  validates :user, presence: true
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
@@ -16,13 +22,33 @@ class Alert < ApplicationRecord
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
 
-  def self.resolved
+  def set_assigned_alert_to
+    self.user = self.type_alert.group_alert.user
+  end 
+
+  def set_created_by
+    self.created_by = Current.user
+  end 
+
+  def self.all_resolved
     where.not(resolved_at: nil)
   end
 
-  def self.not_resolved
+  def self.all_open
     where(resolved_at: nil)
   end
+
+  def self.my_resolved
+    all_resolved.my_alerts
+  end
+
+  def self.my_open
+    all_open.my_alerts
+  end
+
+  def self.my_alerts
+    where(user: Current.user)
+  end 
 
   def title # to humanize rails admin
     self.type_alert.name if self.type_alert.present?
@@ -85,8 +111,7 @@ class Alert < ApplicationRecord
         @alert = if Alert.create!({
             customer: customer,
             type_alert: type_alert,
-            issue: Issue.find_by(type_alert: type_alert),
-            created_by: "Laima"
+            issue: Issue.find_by(type_alert: type_alert)
             })
         else
           flash[:alert] = @alert.errors.full_messages
