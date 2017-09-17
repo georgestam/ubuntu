@@ -6,8 +6,12 @@ class Alert < ApplicationRecord
   belongs_to :type_alert
   belongs_to :issue
 
+  belongs_to :created_by, class_name: "User"
+  belongs_to :user, class_name: "User"
+
   validates :customer, presence: true
   validates :created_by, presence: true
+  validates :user, presence: true
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
@@ -23,6 +27,10 @@ class Alert < ApplicationRecord
   def self.not_resolved
     where(resolved_at: nil)
   end
+
+  # def self.my_alerts
+  #   where(user: Current.user)
+  # end 
 
   def title # to humanize rails admin
     self.type_alert.name if self.type_alert.present?

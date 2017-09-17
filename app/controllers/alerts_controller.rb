@@ -6,8 +6,8 @@ class AlertsController < ApplicationController
     alerts = policy_scope(Alert)
     @not_resolved_alerts = alerts.not_resolved
     @resolved_alerts = alerts.resolved
-    @my_not_resolved_alerts = [] # @not_resolved_alerts.where(assigned_to: current_user)
-    @my_resolved_alerts = [] # @resolved_alerts.where(assigned_to: current_user)
+    @my_not_resolved_alerts = [] # @not_resolved_alerts.where(user: current_user)
+    @my_resolved_alerts = [] # @resolved_alerts.where(user: current_user)
   end 
   
   def new

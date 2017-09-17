@@ -19,10 +19,10 @@ if development? || staging?
       2.times do |issue|
         issue = FactoryGirl.create :issue, type_alert: type_alert
         2.times do 
-          FactoryGirl.create :alert, issue: issue 
+          FactoryGirl.create :alert, issue: issue, type_alert: type_alert
         end 
         2.times do 
-          FactoryGirl.create :alert, :resolved, issue: issue 
+          FactoryGirl.create :alert, :resolved, issue: issue, type_alert: type_alert 
         end 
       end 
     end 

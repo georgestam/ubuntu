@@ -4,8 +4,8 @@ FactoryGirl.define do
 
     customer
     type_alert
-    created_by { Faker::Name.first_name }
-    assigned_to { Faker::Name.first_name }
+    user
+    created_by { user }
     # closed_at { rand(10.years).ago }
     # resolved_at { rand(10.years).ago }
 

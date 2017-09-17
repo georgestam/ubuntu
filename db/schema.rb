@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904095212) do
+ActiveRecord::Schema.define(version: 20170917002344) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,16 +18,15 @@ ActiveRecord::Schema.define(version: 20170904095212) do
   create_table "alerts", force: :cascade do |t|
     t.integer  "customer_id"
     t.integer  "type_alert_id"
-    t.string   "description"
-    t.string   "created_by"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.integer  "status_id"
     t.string   "resolved_comments"
-    t.string   "assigned_to"
     t.datetime "resolved_at"
     t.datetime "closed_at"
     t.integer  "issue_id"
+    t.integer  "created_by_id"
+    t.integer  "user_id"
     t.index ["customer_id"], name: "index_alerts_on_customer_id", using: :btree
     t.index ["issue_id"], name: "index_alerts_on_issue_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
@@ -134,6 +133,8 @@ ActiveRecord::Schema.define(version: 20170904095212) do
   add_foreign_key "alerts", "issues"
   add_foreign_key "alerts", "statuses"
   add_foreign_key "alerts", "type_alerts"
+  add_foreign_key "alerts", "users"
+  add_foreign_key "alerts", "users", column: "created_by_id"
   add_foreign_key "issues", "type_alerts"
   add_foreign_key "type_alerts", "group_alerts"
 end
