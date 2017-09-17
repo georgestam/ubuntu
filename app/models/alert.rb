@@ -10,19 +10,22 @@ class Alert < ApplicationRecord
   belongs_to :user, class_name: "User"
 
   before_validation :set_created_by
+  before_validation :set_assigned_alert_to
 
   validates :customer, presence: true
   validates :created_by, presence: true
-  # validates :user, presence: true
+  validates :user, presence: true
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, if: :production?
 
-
-
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
+
+  def set_assigned_alert_to
+    self.user = self.type_alert.group_alert.user
+  end 
 
   def set_created_by
     self.created_by = Current.user

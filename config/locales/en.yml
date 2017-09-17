@@ -11,3 +11,5 @@ en:
         user: Assigned to
       group_alert:
         user: Responsible
+      type_alert:
+        issues: Solutions
