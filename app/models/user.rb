@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   has_many :alerts, :class_name => 'Alert', :primary_key => 'created_by'
   has_many :alerts, :class_name => 'Alert', :primary_key => 'user'
+
+  has_many :group_alerts
   
   def role_enum
      ROLES

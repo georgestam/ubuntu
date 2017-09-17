@@ -13,7 +13,7 @@ if development? || staging?
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
   
   3.times do |group_alert|
-    group_alert = FactoryGirl.create :group_alert
+    group_alert = FactoryGirl.create :group_alert, user: User.first
     3.times do |type_alert|
       type_alert = FactoryGirl.create :type_alert, group_alert: group_alert
       2.times do |issue|

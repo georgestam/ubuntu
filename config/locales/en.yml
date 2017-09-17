@@ -9,3 +9,5 @@ en:
       alert:
         resolved_comments: Notes
         user: Assigned to
+      group_alert:
+        user: Responsible
