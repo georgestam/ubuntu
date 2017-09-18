@@ -1,5 +1,10 @@
 class SendNotificationsToSlack < ApplicationJob
+
   queue_as :default
+
+  def initialize(slack_notifier)
+    @slack_notifier = slack_notifier
+  end
 
   def perform(alert_id)
     logger.info { "I'm starting jobs" } 
