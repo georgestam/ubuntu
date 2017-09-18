@@ -134,6 +134,7 @@ RailsAdmin.config do |config|
     weight 4
     edit do
       field :name
+      field :slack_username
       field :email
       field :role, :enum do
         enum_method do
@@ -146,6 +147,7 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :name
+      field :slack_username
       field :email
       field :role, :enum do
         enum_method do
