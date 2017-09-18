@@ -17,7 +17,7 @@ class Alert < ApplicationRecord
   validates :type_alert, presence: true
 
   after_save :send_alert_email, if: :production?
-  after_save :send_slack_notification, if: :production?
+  after_save :send_slack_notification
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
@@ -95,7 +95,7 @@ class Alert < ApplicationRecord
     text = "New alert created by #{alert.created_by.name if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.type_alert.name}"
     client = Slack::Web::Client.new
     client.auth_test
-    client.chat_postMessage(channel: '#alerts', text: text, as_user: 'ubuntu')
+    client.chat_postMessage(channel: '@laima', text: text, as_user: 'ubuntu')
   end
 
   def resolved_at!
