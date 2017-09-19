@@ -102,10 +102,11 @@ class Alert < ApplicationRecord
   def self.notify_open_alerts_to_slack(user)
     alerts = Alert.all_open.where(user: user)
     alerts.sort_by(&:created_at)
-    text = "Good Morning #{user.name}! You have #{alerts.count} alerts open"
+    text = "Good Morning #{user.name}! \n You have #{alerts.count} alerts open. \n"
     alerts.each_with_index do |alert, index|
-      text << "#{index + 1 } - id: #{alert.id}, customer: #{alert.customer.name}, type of alert: #{alert.type_alert.name}"
+      text << "#{index + 1 } - id: #{alert.id}, The customer #{alert.customer.name} has the following issue since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name}. \n"
     end 
+    text << "*You can resolve your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
