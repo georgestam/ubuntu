@@ -68,7 +68,7 @@ class Alert < ApplicationRecord
 
   def solution_resolution_text_exist?
     if self.issue.try(:resolution) == "" || self.issue.try(:resolution).nil? 
-      errors[:type_alert] << "#{self} An alert can be only marked as a resolved if it has a solution and a date resolved_at"
+      errors[:type_alert] << "#{self.id} An alert can be only marked as a resolved if it has a solution and a date resolved_at"
     end  
   end
 
@@ -90,10 +90,10 @@ class Alert < ApplicationRecord
     SendNotificationsToSlack.perform_later(self.id)
   end
 
-  def self.slack_api_call(alert_id)
+  def self.notify_an_alert_to_slack(alert_id)
     alert = Alert.find(alert_id)
     user_to_assign_task = alert.user.slack_username ? alert.user.slack_username : '@laima'
-    text = "New alert created by #{alert.created_by.name if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.type_alert.name}"
+    text = "Hello #{Current.user}! You have a new alert created by #{alert.created_by.name if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.type_alert.name}"
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: user_to_assign_task, text: text, as_user: 'ubuntu')
