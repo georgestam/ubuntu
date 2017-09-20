@@ -8,15 +8,15 @@ if development? || staging?
 
   password = "password10"
 
-  FactoryGirl.create :user, :manager, email: "admin@ubuntu.org", password: password
+  manager = FactoryGirl.create :user, :manager, email: "jordi@ubuntu.org", password: password, name: "jordi", slack_username: "@jordi"
   FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
 
-  3.times do |group_alert|
-    group_alert = FactoryGirl.create :group_alert, user: User.first
-    3.times do |type_alert|
+  2.times do |group_alert|
+    group_alert = FactoryGirl.create :group_alert, user: manager
+    2.times do |type_alert|
       type_alert = FactoryGirl.create :type_alert, group_alert: group_alert
-      2.times do |issue|
+      1.times do |issue|
         issue = FactoryGirl.create :issue, type_alert: type_alert
         2.times do
           FactoryGirl.create :alert, issue: issue, type_alert: type_alert
