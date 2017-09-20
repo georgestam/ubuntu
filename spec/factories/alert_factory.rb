@@ -5,7 +5,7 @@ FactoryGirl.define do
     customer
     type_alert
     user
-    created_by_id { 1 } # Select the first user
+    created_by_id { User.first } # TODO: Assign another user in this field (alerts belongs_to 2 users)
 
     trait :resolved do
       resolved_at { Faker::Date.between(10.years.ago, DateTime.current) }

@@ -3,7 +3,7 @@ class SendNotificationsToSlack < ApplicationJob
 
   def perform(alert_id)
     logger.info { "I'm starting jobs" } 
-    Alert.slack_api_call(alert_id)
+    Alert.notify_an_alert_to_slack(alert_id)
     logger.info { "OK I'm done now" }
   end
 end

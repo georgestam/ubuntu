@@ -16,8 +16,8 @@ class Alert < ApplicationRecord
   validates :user, presence: true
   validates :type_alert, presence: true
 
-  after_save :send_alert_email, if: :production?
-  after_save :send_slack_notification, if: :production?
+  # after_save :send_alert_email, if: :production?
+  after_save :send_slack_notification, unless: :test?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
@@ -92,11 +92,13 @@ class Alert < ApplicationRecord
 
   def self.notify_an_alert_to_slack(alert_id)
     alert = Alert.find(alert_id)
-    user_to_assign_task = if development_or_test?
-        "@jordi"
-      else
-        alert.user.slack_username ? alert.user.slack_username : '@laima'
-      end 
+    user_to_assign_task = if development?
+      "@jordi"
+    else
+      alert.user.slack_username ? alert.user.slack_username : '@laima'
+    end 
+    
+    binding.pry
     text = "Hello #{Current.user.name}! You have a new alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.type_alert.name}"
     client = Slack::Web::Client.new
     client.auth_test
