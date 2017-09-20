@@ -8,7 +8,7 @@ FactoryGirl.define do
     created_by_id { 1 } # Select the first user
 
     trait :resolved do
-      resolved_at { Faker::Date.between(10.year.ago, Date.today) }
+      resolved_at { Faker::Date.between(10.years.ago, DateTime.current) }
     end
 
   end
