@@ -70,8 +70,7 @@ class AlertsController < ApplicationController
     elsif params[:issue] != "" # if the solution exist
       @issue = Issue.find(params[:issue])
     else # if the solution is not in the list
-      @issue = Issue.new(type_alert: set_type_alert)
-      show_errors_and_redirect unless @issue.save
+      @issue = nil
     end
   end
 
