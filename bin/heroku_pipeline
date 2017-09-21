@@ -1,8 +1,6 @@
 rvm use 2.4.0 --install
 bundle install
-# Make sure Ruby on Rails knows we are in the the test environment.
 export RAILS_ENV=test
-# Prepare the test database
 bundle exec rake db:schema:load
 bundle exec rake db:migrate
 bundle exec rake db:test:prepare
