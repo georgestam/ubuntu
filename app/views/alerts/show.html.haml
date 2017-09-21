@@ -1,0 +1,125 @@
+:sass
+
+  .center 
+    text-align: center
+    
+  .brand-header img 
+    width: 100px
+    margin: 20px
+  
+  .brand-header
+    background: white
+    float: left
+    width: 100%
+    text-align: center
+    margin: 4px 0 0 0
+    
+  .margin-text-alert 
+    margin: 30px
+
+#alerts-show
+.row
+  .panel-default.col-md-offset-3.col-md-6.center
+    %h3.center{style: "margin-top: 100px"}
+      = "Resolve/UnResolve Alert"
+      = @alert.id
+    %p{style: "margin-bottom: 50px"}
+      Please create a solution and marked as resolved the alert, by updating this form
+    
+    = simple_form_for Alert.new, url: alerts_path, method: :post do |f|
+      = f.error_notification
+      = render 'shared/flashes'
+      .margin-text-alert 
+        %strong
+          = "Customer:"
+        = "#{@alert.customer.name}, mobile #{@alert.customer.telephone}"
+      .margin-text-alert 
+        %strong
+          = "Group Alert:"
+        = "#{@alert.type_alert.group_alert.title}"
+      .margin-text-alert 
+        %strong
+          = "Type Alert:"
+        = "#{@alert.type_alert.name}"
+      .margin-text-alert
+        = f.input :issue, label: false, collection: @issues, :selected => 1
+        = f.input :resolved_description, as: :fake, label: false, placeholder: "If previous solution does not exists, please explain how this was solved", autofocus: true   
+      = f.button :submit, "Update Alert", class: "button btn btn-lg btn-primary", id: "submit-button"
+.row
+  .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
+    = "To sign out click here:"
+    = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path
+    
+- content_for :bottom_js do
+  :javascript
+    // https://stackoverflow.com/questions/38202484/simple-form-select-collection-populated-by-ajax-call
+    
+    // update dropdown for subgroup
+    $('#group_alert').change(function(){
+      $.ajax({
+        url: 'select_alert_subgroup',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          group_alert: this.value
+        },
+        success: function(data) {
+          
+          // Populate second dropdown here
+          var output = '';
+          $('#type_alert').empty().append(function() {
+            output += "<option value>"  + "Select Alert" + "</option>"
+            output += "<option value='new'>"  + "Create new alert" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+              // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // update drowndown of posible responses
+    $('#type_alert').change(function(){
+      $.ajax({
+        url: 'select_issue',
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          type_alert: this.value
+        },
+        success: function(data) {
+          // Populate second dropdown here
+          var output = '';
+          $('#issue').empty().append(function() {
+            output += "<option value>"  + "Select possible solution" + "</option>"
+            output += "<option value>"  + "I don't find the a solution in the list" + "</option>"
+            data.forEach(function(item) {
+              item.forEach(function(subitem){
+                // subitem is the vale HTML parameter which is added + 1 as the first one is the description
+                output += "<option value =" + subitem[1] + ">"  + subitem[0] + "</option>"
+              });
+            });
+            return output;
+          });
+        }
+      });
+    });
+
+    // copy possible response in empty field
+    // $('#issue').change(function(){
+    //   $.ajax({
+    //     url: 'select_issue_response',
+    //     dataType: 'json',
+    //     type: 'GET',
+    //     data: {
+    //       id: this.value
+    //     },
+    //     success: function(data) {
+    //       $('#resolved_description').val(data[0].resolution);
+    //     }  
+    //   });
+    // });

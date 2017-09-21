@@ -71,7 +71,7 @@
                   %td.col-md-2
                     = alert.issue.try(:resolution)
                   %td.col-md-2.center
-                    = link_to root_path do
+                    = link_to alert_path(alert) do
                       .fa.fa-check
 
                     
@@ -86,13 +86,14 @@
       %table.table.table-striped
         %thead
           %tr
-            %th Id
-            %th Customer
-            %th Type alert
-            %th Created by
-            %th Created at
-            %th Notes
-            %th Solution
+            %th.center Id
+            %th.center Customer
+            %th.center Type alert
+            %th.center Created by
+            %th.center Created at
+            %th.center Notes
+            %th.center Solution
+            %th.center Unresolve (click)
         %tbody
           - if @my_resolved_alerts.present?
             - @my_resolved_alerts.each do |alert|
@@ -111,17 +112,21 @@
                   = alert.resolved_comments 
                 %td.col-md-2
                   = alert.issue.try(:resolution) 
+                %td.col-md-2.center
+                  = link_to alert_path(alert) do
+                    .fa.fa-times
     #3.tab-pane
       %table.table.table-striped
         %thead
           %tr
-            %th Id
-            %th Customer
-            %th Type alert
-            %th Created by
-            %th Created at
-            %th Notes
-            %th Solution
+            %th.center Id
+            %th.center Customer
+            %th.center Type alert
+            %th.center Created by
+            %th.center Created at
+            %th.center Notes
+            %th.center Solution
+            %th.center Resolve (click)
         %tbody
           - if @all_open_alerts.present?
             - @all_open_alerts.each do |alert|
@@ -140,17 +145,21 @@
                   = alert.resolved_comments 
                 %td.col-md-2
                   = alert.issue.try(:resolution) 
+                %td.col-md-2.center
+                  = link_to alert_path(alert) do
+                    .fa.fa-check
     #4.tab-pane
       %table.table.table-striped
         %thead
           %tr
-            %th Id
-            %th Customer
-            %th Type alert
-            %th Created by
-            %th Created at
-            %th Notes
-            %th Solution
+            %th.center Id
+            %th.center Customer
+            %th.center Type alert
+            %th.center Created by
+            %th.center Created at
+            %th.center Notes
+            %th.center Solution
+            %th.center Unresolve (click)
         %tbody
           - if @all_resolved_alerts.present? 
             - @all_resolved_alerts.each do |alert|
@@ -169,6 +178,9 @@
                   = alert.resolved_comments 
                 %td.col-md-2
                   = alert.issue.try(:resolution)
+                %td.col-md-2.center
+                  = link_to alert_path(alert) do
+                    .fa.fa-times
 %hr/
 
 

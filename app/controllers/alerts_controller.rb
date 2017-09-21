@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
 
-  before_action :set_alert, only: %i[select_issue_response select_alert_subgroup select_issue]
+  before_action :set_alert, only: %i[new show select_issue_response select_alert_subgroup select_issue]
   
   def index
     alerts = policy_scope(Alert)
@@ -11,14 +11,36 @@ class AlertsController < ApplicationController
   end 
   
   def new
-    authorize(Alert.new)
-    @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
-    @type_alerts = []
-    @issues = []
-    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
+    generate_alert_instance_variables 
   end
+  
+  def show 
+    generate_alert_instance_variables
+    issue = @alert.issue.present? ? @alert.issue.name : "Select from previous solutions"
+    @issues << [issue, 1]
+    @issues << ["Write your own solution", 2]
+    # it does not store the object 'issue if it existed already in the array'
+    @issues << TypeAlert.find(@alert.type_alert).issues.collect {|c| [c.name, c.id + 3 ] unless issue == c.name}
+    # remove 'nil' if exist in array
+    @issues = @issues.reject { |c| c[0].nil? }
+  end 
 
   def create
+    set_issue
+    @alert = Alert.new(alert_params)
+    authorize @alert
+    @alert.issue = @issue
+    @alert.type_alert = @type_alert || set_type_alert
+
+    if @alert.save
+      flash[:notice] = "New Alert Created!"
+    else
+      flash[:alert] = @alert.errors.full_messages
+    end
+    redirect_to new_alert_path
+  end
+  
+  def update
     set_issue
     @alert = Alert.new(alert_params)
     authorize @alert
@@ -54,9 +76,16 @@ class AlertsController < ApplicationController
   private
 
   def set_alert
-    @alert ||= Alert.new
+    @alert = params[:id] ? Alert.find(params[:id]) : Alert.new
     authorize @alert
   end
+  
+  def generate_alert_instance_variables 
+    @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
+    @type_alerts = []
+    @issues = []
+    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
+  end 
 
   def set_issue
     # if there is some input for 'new issue' description it creates a new alert and issue
@@ -79,7 +108,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:customer_id)
+    params.require(:alert).permit(:customer_id, :issue)
   end
 
   def show_errors_and_redirect
