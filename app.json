@@ -1,7 +1,8 @@
 {
   "name": "ubuntu",
-  "description": "",
+  "description": "Ubuntu Power platform",
   "scripts": {
+    "postdeploy": "bin/heroku_pipeline"
   },
   "env": {
     "CLOUDINARY_URL": {
@@ -46,5 +47,12 @@
     {
       "url": "heroku/ruby"
     }
-  ]
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
 }
