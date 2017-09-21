@@ -36,20 +36,22 @@
   .tab-content
     #1.tab-pane.active
       %p.margin.center
-        = "Click here to resolve your alerts"
-        %br/
-        = link_to "Alerts in Admin Panel", "/admin/alert?model_name=alert&scope=my_open", class: 'btn btn-primary btn-lg margin width-buttom'
+        - unless current_user.role == "field_user"
+          = "Click here to see more info about your alerts"
+          %br/
+          = link_to "Alerts in Admin Panel", "/admin/alert?model_name=alert&scope=my_open", class: 'btn btn-primary btn-lg margin width-buttom'
       %table.table.table-striped
         - if @my_open_alerts.present? 
           %thead
             %tr
-              %th Id
-              %th Customer
-              %th Type alert
-              %th Created by
-              %th Created at
-              %th Notes
-              %th Solution
+              %th.center Id
+              %th.center Customer
+              %th.center Type alert
+              %th.center Created by
+              %th.center Created at
+              %th.center Notes
+              %th.center Solution
+              %th.center Resolve (click)
             %tbody
               - @my_open_alerts.each do |alert|
                 #my_open_alert
@@ -68,6 +70,11 @@
                     = alert.resolved_comments 
                   %td.col-md-2
                     = alert.issue.try(:resolution)
+                  %td.col-md-2.center
+                    = link_to root_path do
+                      .fa.fa-check
+
+                    
         - else 
           %h4.center
             = "Well done #{current_user.name}! You do not have open alerts"    
