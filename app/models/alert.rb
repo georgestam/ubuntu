@@ -113,9 +113,11 @@ class Alert < ApplicationRecord
       text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name}. \n"
     end 
     text << "*You can resolve your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
-    client = Slack::Web::Client.new
-    client.auth_test
-    client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
+    unless test? # TODO: how to stub_request and remove this unless for testing
+      client = Slack::Web::Client.new
+      client.auth_test
+      client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
+    end 
   end
 
   def resolved_at!

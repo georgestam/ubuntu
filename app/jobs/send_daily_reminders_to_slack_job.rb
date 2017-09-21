@@ -5,7 +5,7 @@ class SendDailyRemindersToSlackJob < ApplicationJob
     logger.info { "I'm starting jobs" } 
     if development_or_test?
       Alert.notify_open_alerts_to_slack(User.find_by(slack_username: "@jordi"))
-    else 
+    else
       User.all.each do |user|
         Alert.notify_open_alerts_to_slack(user)
       end
