@@ -1,41 +1,22 @@
 {
   "name": "ubuntu",
-  "description": "",
+  "description": "Ubuntu Power platform",
   "scripts": {
+    "postdeploy": "bin/heroku_pipeline"
   },
   "env": {
-    "CLOUDINARY_URL": {
-      "required": true
-    },
+    "CLOUDINARY_URL": "cloudinary://221234399847435:fmfzmcfMgfMO2Zbph26cGQyKXg4@georgestam",
     "DEVISE_SECRET_KEY": "bcf48bd8bbed737ba84965a2ce7e8b9ababc901fca4fe8865c726555bb2f7325596dc5550503c7edab08bc8fbecacaacc076dd591ebbb09611693756de500b29",
-    "LANG": {
-      "required": true
-    },
-    "POSTMARK_API_TOKEN": {
-      "required": true
-    },
-    "POSTMARK_SMTP_SERVER": {
-      "required": true
-    },
-    "RACK_ENV": {
-      "required": true
-    },
-    "RAILS_ENV": {
-      "required": true
-    },
-    "RAILS_LOG_TO_STDOUT": {
-      "required": true
-    },
-    "RAILS_SERVE_STATIC_FILES": {
-      "required": true
-    },
+    "LANG": "en_US.UTF-8",
+    "POSTMARK_API_TOKEN": "a6b6da16-ef76-425d-8a3e-b7430e31a778",
+    "POSTMARK_SMTP_SERVER": "smtp.postmarkapp.com",
+    "RACK_ENV": "test",
+    "RAILS_ENV": "test",
+    "RAILS_LOG_TO_STDOUT": "enabled",
+    "RAILS_SERVE_STATIC_FILES": "enabled",
     "SECRET_KEY_BASE": "83d1fcd7f86733b5dbc9a66ba1ca5c06af0d610689092e76090f3dc6393b383a75fa95f7dcd2d7240a2c89b592a5b19db8360733a60cd178bbf67c550fc35e34",
-    "SLACK_API_TOKEN": {
-      "required": true
-    },
-    "TOKEN_STEAMA": {
-      "required": true
-    }
+    "SLACK_API_TOKEN": "xoxb-229124971202-KJyvifgseEK7H7gxVsfoEAOY",
+    "TOKEN_STEAMA": "ee9b87a0dacf3e11ff9a29ae13fbab8e634a584d"
   },
   "formation": {
   },
@@ -46,5 +27,12 @@
     {
       "url": "heroku/ruby"
     }
-  ]
+  ],
+  "environments": {
+    "test": {
+      "scripts": {
+        "test": "bundle exec rake test"
+      }
+    }
+  }
 }

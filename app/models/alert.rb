@@ -16,8 +16,8 @@ class Alert < ApplicationRecord
   validates :user, presence: true
   validates :type_alert, presence: true
 
-  after_save :send_alert_email, if: :production?
-  after_save :send_slack_notification, if: :production?
+  # after_save :send_alert_email, if: :production?
+  after_save :send_slack_notification, unless: :test?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :solution_resolution_text_exist?, if: :resolved?
@@ -68,7 +68,7 @@ class Alert < ApplicationRecord
 
   def solution_resolution_text_exist?
     if self.issue.try(:resolution) == "" || self.issue.try(:resolution).nil? 
-      errors[:type_alert] << "#{self} An alert can be only marked as a resolved if it has a solution and a date resolved_at"
+      errors[:type_alert] << "#{self.id} An alert can be only marked as a resolved if it has a solution and a date resolved_at"
     end  
   end
 
@@ -90,13 +90,34 @@ class Alert < ApplicationRecord
     SendNotificationsToSlack.perform_later(self.id)
   end
 
-  def self.slack_api_call(alert_id)
+  def self.notify_an_alert_to_slack(alert_id)
     alert = Alert.find(alert_id)
-    user_to_assign_task = alert.user.slack_username ? alert.user.slack_username : '@laima'
-    text = "New alert created by #{alert.created_by.name if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: #{alert.type_alert.name}"
+    user_to_assign_task = if development?
+      "@jordi"
+    else
+      alert.user.slack_username ? alert.user.slack_username : '@laima'
+    end 
+    user = User.find_by(slack_username: user_to_assign_task)
+    text = "Hello #{user.name}!\n You have a new alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert_id}, #{alert.type_alert.name}\n"
+    text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: user_to_assign_task, text: text, as_user: 'ubuntu')
+  end
+
+  def self.notify_open_alerts_to_slack(user)
+    alerts = Alert.all_open.where(user: user)
+    alerts.sort_by(&:created_at)
+    text = "Good Morning #{user.name}! \n You have #{alerts.count} alerts open. \n"
+    alerts.each_with_index do |alert, index|
+      text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name}. \n"
+    end 
+    text << "*You can resolve your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
+    unless test? # TODO: how to stub_request and remove this unless for testing
+      client = Slack::Web::Client.new
+      client.auth_test
+      client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
+    end 
   end
 
   def resolved_at!
