@@ -1,0 +1,50 @@
+{
+  "name": "ubuntu",
+  "description": "",
+  "scripts": {
+  },
+  "env": {
+    "CLOUDINARY_URL": {
+      "required": true
+    },
+    "DEVISE_SECRET_KEY": "bcf48bd8bbed737ba84965a2ce7e8b9ababc901fca4fe8865c726555bb2f7325596dc5550503c7edab08bc8fbecacaacc076dd591ebbb09611693756de500b29",
+    "LANG": {
+      "required": true
+    },
+    "POSTMARK_API_TOKEN": {
+      "required": true
+    },
+    "POSTMARK_SMTP_SERVER": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": "83d1fcd7f86733b5dbc9a66ba1ca5c06af0d610689092e76090f3dc6393b383a75fa95f7dcd2d7240a2c89b592a5b19db8360733a60cd178bbf67c550fc35e34",
+    "SLACK_API_TOKEN": {
+      "required": true
+    },
+    "TOKEN_STEAMA": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "heroku-postgresql"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
