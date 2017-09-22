@@ -42,8 +42,9 @@
           = "Type Alert:"
         = "#{@alert.type_alert.name}"
       .margin-text-alert
-        = f.input :issue, label: false, collection: @issues, :selected => 1
-        = f.input :resolved_description, as: :fake, label: false, placeholder: "If previous solution does not exists, please explain how this was solved", autofocus: true   
+        = f.input :issue, label: "Solution", collection: @issues, :selected => 1
+        = f.input :resolved_description, as: :fake, label: false, placeholder: "If previous solution does not exists, please explain how this was solved", autofocus: true
+        = f.input :resolved?, as: :fake_select, collection: @resolved, :selected => 1
       = f.button :submit, "Update Alert", class: "button btn btn-lg btn-primary", id: "submit-button"
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}

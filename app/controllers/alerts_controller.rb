@@ -11,18 +11,22 @@ class AlertsController < ApplicationController
   end 
   
   def new
-    generate_alert_instance_variables 
+    @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
+    @type_alerts = []
+    @issues = []
+    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]} 
   end
   
   def show 
-    generate_alert_instance_variables
     issue = @alert.issue.present? ? @alert.issue.name : "Select from previous solutions"
+    @issues = []
     @issues << [issue, 1]
     @issues << ["Write your own solution", 2]
     # it does not store the object 'issue if it existed already in the array'
     @issues << TypeAlert.find(@alert.type_alert).issues.collect {|c| [c.name, c.id + 3 ] unless issue == c.name}
     # remove 'nil' if exist in array
     @issues = @issues.reject { |c| c[0].nil? }
+    @resolved = @alert.resolved? ? ["Yes", "No"] : ["No", "Yes"]
   end 
 
   def create
@@ -87,13 +91,6 @@ class AlertsController < ApplicationController
     @alert = params[:id] ? Alert.find(params[:id]) : Alert.new
     authorize @alert
   end
-  
-  def generate_alert_instance_variables 
-    @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
-    @type_alerts = []
-    @issues = []
-    @group_alerts = GroupAlert.all.collect {|c| [c.title, c.id]}
-  end 
 
   def set_issue
     # if there is some input for 'new issue' description it creates a new alert and issue
