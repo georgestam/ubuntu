@@ -16,4 +16,19 @@ $(document).ready(function(){
     }
   });
   
+  $("#resolved_description").hide();
+  $('#alert_issue').on('change', function() {
+    if ( this.value === '2')
+    //.....................^.......
+    {
+      $("#resolved_description").show();
+    }
+    else
+    {
+      $("#resolved_description").hide();
+    }
+  });
+  
+  
+  
 })

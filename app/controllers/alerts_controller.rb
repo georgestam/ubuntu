@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
 
-  before_action :set_alert, only: %i[new show select_issue_response select_alert_subgroup select_issue]
+  before_action :set_alert, only: %i[new show update select_issue_response select_alert_subgroup select_issue]
   
   def index
     alerts = policy_scope(Alert)
@@ -41,9 +41,17 @@ class AlertsController < ApplicationController
   end
   
   def update
-    set_issue
-    @alert = Alert.new(alert_params)
-    authorize @alert
+    # continue here
+    set alert
+    @entry.created_at = created_at_modified
+    if @entry.update_attributes(entry_params.merge(goal: @goal)) || @entry.save
+      flash[:notice] = I18n.t('entries.show.flash_entry_update_succesful') 
+      redirect_to entry_path(@entry)
+    else
+      flash_error(@entry)
+      redirect_to new_entry_path
+    end  
+    
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
 
