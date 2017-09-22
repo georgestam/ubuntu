@@ -120,11 +120,11 @@ class Alert < ApplicationRecord
     end 
   end
 
-  def resolved_at!
+  def resolved!
      self.update_attributes(resolved_at: Time.current)
   end
 
-  def closed_at!
+  def closed!
      self.update_attributes(closed_at: Time.current)
   end
 

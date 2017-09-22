@@ -45,26 +45,20 @@ class AlertsController < ApplicationController
   end
   
   def update
-    # continue here
-    set alert
-    @entry.created_at = created_at_modified
-    if @entry.update_attributes(entry_params.merge(goal: @goal)) || @entry.save
-      flash[:notice] = I18n.t('entries.show.flash_entry_update_succesful') 
-      redirect_to entry_path(@entry)
-    else
-      flash_error(@entry)
-      redirect_to new_entry_path
-    end  
-    
-    @alert.issue = @issue
-    @alert.type_alert = @type_alert || set_type_alert
-
-    if @alert.save
-      flash[:notice] = "New Alert Created!"
-    else
-      flash[:alert] = @alert.errors.full_messages
+    set_alert
+    if alert_params[:issue] == "2" # if the does not exist (collection on 'write your own solution')
+      @issue = Issue.new(type_alert: @alert.type_alert, resolution: params[:resolved_description])
+    else # if the solution is in the list
+      @issue = @alert.issue
     end
-    redirect_to new_alert_path
+    
+    if @alert.update_attributes(issue: @issue) && @issue.save
+      @alert.resolved! if params[:resolved?] == "Yes"
+      flash[:notice] = "Alert #{@alert.id} has been updated!" 
+    else
+      flash[:alert] = @alert.errors.full_messages || @issue.errors.full_messages
+    end  
+    redirect_to alerts_path
   end
 
   def select_issue_response
@@ -113,7 +107,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:customer_id, :issue)
+    params.require(:alert).permit(:customer, :issue)
   end
 
   def show_errors_and_redirect
