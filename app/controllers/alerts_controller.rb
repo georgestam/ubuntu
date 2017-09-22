@@ -23,9 +23,10 @@ class AlertsController < ApplicationController
     @issues << [issue, 1]
     @issues << ["Write your own solution", 2]
     # it does not store the object 'issue if it existed already in the array'
-    @issues << TypeAlert.find(@alert.type_alert).issues.collect {|c| [c.name, c.id + 3 ] unless issue == c.name}
+    TypeAlert.find(@alert.type_alert).issues.collect do |c| 
+      @issues << [c.name, c.id + 3 ] unless issue == c.name
+    end 
     # remove 'nil' if exist in array
-    @issues = @issues.reject { |c| c[0].nil? }
     @resolved = @alert.resolved? ? ["Yes", "No"] : ["No", "Yes"]
   end 
 
