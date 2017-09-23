@@ -93,7 +93,7 @@ class Alert < ApplicationRecord
     end 
     user = User.find_by(slack_username: user_to_assign_task)
     Alert.notify_slack_user(user, alert)
-    Alert.notify_slack_channel(alert)
+    Alert.notify_slack_channel(alert) unless development_or_test?
   end
   
   def self.notify_slack_user(user, alert)
