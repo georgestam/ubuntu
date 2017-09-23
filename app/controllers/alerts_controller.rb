@@ -37,7 +37,6 @@ class AlertsController < ApplicationController
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
     
-    binding.pry
     if @alert.save
       flash[:notice] = "New Alert Created!"
     else
