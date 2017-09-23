@@ -22,7 +22,7 @@ class AlertsController < ApplicationController
     @issues = []
     @issues << [issue, 1]
     @issues << ["Write your own solution", 2]
-    # it does not store the object 'issue if it existed already in the array'
+    # it does not store the object 'issue' if it existed already in the array
     TypeAlert.find(@alert.type_alert).issues.collect do |c| 
       @issues << [c.name, c.id + 2] unless issue == c.name
     end 
@@ -101,7 +101,7 @@ class AlertsController < ApplicationController
   end
   
   def set_issue_for_update
-    @issue = if alert_params[:issue] == "2" # if the does not exist (collection on 'write your own solution')
+    @issue = if alert_params[:issue] == "2" # if alert does not exist. It is the selection 'write your own solution')
       Issue.new(type_alert: @alert.type_alert, resolution: params[:resolved_description])
     elsif alert_params[:issue] == "1" # it selects the current issue associated with the alert  
       Issue.find_by(type_alert: @alert.type_alert) 
