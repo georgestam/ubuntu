@@ -19,7 +19,7 @@ describe "Update alerts#show", js: true do
       visit_my_alerts
       
       first('.fa-check').click
-      find('#alert_issue').find(:xpath, "option[2]").select_option #write your own solution
+      find('#alert_issue').find(:xpath, "option[2]").select_option # write your own solution
       find("#resolved_description").set reference_issue.resolution
       
       expect {
@@ -35,7 +35,7 @@ describe "Update alerts#show", js: true do
       visit_my_alerts
       
       first('.fa-check').click
-      find('#alert_issue').find(:xpath, "option[3]").select_option #write your own solution
+      find('#alert_issue').find(:xpath, "option[3]").select_option # write your own solution
       find('#resolved_').find(:xpath, "option[2]").select_option
       find('#submit-button').click
       
@@ -46,7 +46,7 @@ describe "Update alerts#show", js: true do
       visit_my_alerts
       
       first('.fa-check').click
-      find('#alert_issue').find(:xpath, "option[2]").select_option #write your own solution
+      find('#alert_issue').find(:xpath, "option[2]").select_option # write your own solution
       find("#resolved_description").set ""
       find('#resolved_').find(:xpath, "option[2]").select_option
       
