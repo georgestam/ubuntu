@@ -2,18 +2,18 @@ describe "Update alerts#show", js: true do
 
   sign_as
   
-  context 'when user is signed-in as field user' do
-
-    let!(:alert){ FactoryGirl.create :alert, user: user}
-    let!(:issue){ FactoryGirl.create :issue, type_alert: alert.type_alert }
+  def visit_my_alerts
+    alert.user = user # Since alert has to users, FactoryGirl does not Assign properly the user
+    alert.save!
+    visit root_path
+    find('#my_alerts').click 
+  end 
+  
+  context 'when user is signed-in as field user and look for open alerts' do
+    
+    let!(:alert){ FactoryGirl.create :alert, user: user }
     let!(:reference_issue){ FactoryGirl.build :issue }
-
-    def visit_my_alerts
-      alert.user = user # Since alert has to users, FactoryGirl does not Assign properly the user
-      alert.save!
-      visit root_path
-      find('#my_alerts').click 
-    end 
+    let!(:issue){ FactoryGirl.create :issue, type_alert: alert.type_alert }
     
     it "creates a new solution" do
       visit_my_alerts
@@ -55,7 +55,25 @@ describe "Update alerts#show", js: true do
       expect(alert.reload.resolved?).to eq nil
     end
     
+  end 
+  
+  context 'when user is signed-in as field user and look for resolved alerts' do
+    
+    let!(:issue){ FactoryGirl.create :issue }
+    let!(:alert){ FactoryGirl.create :alert, :resolved, user: user, issue: issue, type_alert: issue.type_alert }
+    
     it "marks an alert as a unresolved" do
+      expect(alert.reload.resolved?).to eq true
+      
+      visit_my_alerts
+
+      find('#resolved-alerts').click
+      
+      first('.fa-times').click
+      find('#resolved_').find(:xpath, "option[2]").select_option
+      find('#submit-button').click
+      
+      expect(alert.reload.resolved?).to eq nil
     end 
 
   end

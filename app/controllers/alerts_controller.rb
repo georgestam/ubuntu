@@ -49,7 +49,7 @@ class AlertsController < ApplicationController
     set_alert
     if alert_params[:issue] == "2" # if the does not exist (collection on 'write your own solution')
       @issue = Issue.new(type_alert: @alert.type_alert, resolution: params[:resolved_description])
-    elsif alert_params[:issue] == "2" # it slects the current issue associated with the alert  
+    elsif alert_params[:issue] == "1" # it selects the current issue associated with the alert  
       @issue = Issue.find_by(type_alert: @alert.type_alert) 
     else # if the solution is in the list
       @issue = Issue.find(alert_params[:issue].to_i-2) # it substract 2 indices to match id (added previously in #show)
@@ -57,6 +57,7 @@ class AlertsController < ApplicationController
     
     if @alert.update_attributes(issue: @issue) && @issue.save
       @alert.resolved! if params[:resolved?] == "Yes"
+      @alert.unresolved! if params[:resolved?] == "No"
       flash[:notice] = "Alert #{@alert.id} has been updated!" 
     else
       flash[:alert] = @alert.errors.full_messages || @issue.errors.full_messages

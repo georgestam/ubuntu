@@ -15,6 +15,7 @@ class Alert < ApplicationRecord
   validates :customer, presence: true
   validates :user, presence: true
   validates :type_alert, presence: true
+  validates :issue, presence: true, if: :resolved?
 
   # after_save :send_alert_email, if: :production?
   after_save :send_slack_notification, unless: :test?
@@ -115,6 +116,10 @@ class Alert < ApplicationRecord
 
   def resolved!
      self.update_attributes(resolved_at: Time.current)
+  end
+  
+  def unresolved!
+     self.update_attributes(resolved_at: nil)
   end
 
   def closed!
