@@ -20,7 +20,6 @@ class Alert < ApplicationRecord
   after_save :send_slack_notification, unless: :test?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
-  validate :solution_resolution_text_exist?, if: :resolved?
 
   def set_assigned_alert_to
     self.user = self.type_alert.group_alert.user
@@ -64,12 +63,6 @@ class Alert < ApplicationRecord
 
   def issue?
     true if self.issue.present?
-  end
-
-  def solution_resolution_text_exist?
-    if self.issue.try(:resolution) == "" || self.issue.try(:resolution).nil? 
-      errors[:type_alert] << "#{self.id} An alert can be only marked as a resolved if it has a solution and a date resolved_at"
-    end  
   end
 
   def resolved?

@@ -24,7 +24,7 @@ class AlertsController < ApplicationController
     @issues << ["Write your own solution", 2]
     # it does not store the object 'issue if it existed already in the array'
     TypeAlert.find(@alert.type_alert).issues.collect do |c| 
-      @issues << [c.name, c.id + 3 ] unless issue == c.name
+      @issues << [c.name, c.id + 2 ] unless issue == c.name
     end 
     # remove 'nil' if exist in array
     @resolved = @alert.resolved? ? ["Yes", "No"] : ["No", "Yes"]
@@ -49,8 +49,10 @@ class AlertsController < ApplicationController
     set_alert
     if alert_params[:issue] == "2" # if the does not exist (collection on 'write your own solution')
       @issue = Issue.new(type_alert: @alert.type_alert, resolution: params[:resolved_description])
+    elsif alert_params[:issue] == "2" # it slects the current issue associated with the alert  
+      @issue = Issue.find_by(type_alert: @alert.type_alert) 
     else # if the solution is in the list
-      @issue = @alert.issue
+      @issue = Issue.find(alert_params[:issue].to_i-2) # it substract 2 indices to match id (added previously in #show)
     end
     
     if @alert.update_attributes(issue: @issue) && @issue.save
