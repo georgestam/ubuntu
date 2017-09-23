@@ -122,6 +122,7 @@
             %th.center Id
             %th.center Customer
             %th.center Type alert
+            %th.center Assigned
             %th.center Created by
             %th.center Created at
             %th.center Notes
@@ -137,6 +138,8 @@
                   = alert.customer.name
                 %td.col-md-3
                   = alert.type_alert.name
+                %td.col-md-1
+                  = alert.user.try(:name)
                 %td.col-md-1
                   = alert.created_by.try(:name)
                 %td.col-md-1
@@ -155,6 +158,7 @@
             %th.center Id
             %th.center Customer
             %th.center Type alert
+            %th.center Assigned
             %th.center Created by
             %th.center Created at
             %th.center Notes
@@ -170,6 +174,8 @@
                   = alert.customer.name
                 %td.col-md-3
                   = alert.type_alert.name
+                %td.col-md-1
+                  = alert.user.try(:name)
                 %td.col-md-1
                   = alert.created_by.try(:name)
                 %td.col-md-1
