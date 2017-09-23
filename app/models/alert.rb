@@ -92,11 +92,23 @@ class Alert < ApplicationRecord
       alert.user.slack_username ? alert.user.slack_username : '@laima'
     end 
     user = User.find_by(slack_username: user_to_assign_task)
-    text = "Hello #{user.name}!\n You have a new alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert_id}, #{alert.type_alert.name}\n"
-    text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
+    
     client = Slack::Web::Client.new
     client.auth_test
-    client.chat_postMessage(channel: user_to_assign_task, text: text, as_user: 'ubuntu')
+    
+    notify_slack_user(user, alert)
+    notify_slack_channel(alert)
+  end
+  
+  def notify_slack_user(user, alert)
+    text = "Hello #{user.name}!\n You have a new alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert_id}, #{alert.type_alert.name}\n"
+    text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
+    client.chat_postMessage(channel: user, text: text, as_user: 'ubuntu')
+  end 
+  
+  def notify_slack_channel(alert)
+    text = "New alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert_id}, #{alert.type_alert.name}\n"
+    client.chat_postMessage(channel: "#alerts", text: text, as_user: 'ubuntu')
   end
 
   def self.notify_open_alerts_to_slack(user)

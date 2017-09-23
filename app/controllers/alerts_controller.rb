@@ -36,7 +36,8 @@ class AlertsController < ApplicationController
     authorize @alert
     @alert.issue = @issue
     @alert.type_alert = @type_alert || set_type_alert
-
+    
+    binding.pry
     if @alert.save
       flash[:notice] = "New Alert Created!"
     else
@@ -115,7 +116,7 @@ class AlertsController < ApplicationController
   end
 
   def alert_params
-    params.require(:alert).permit(:customer, :issue)
+    params.require(:alert).permit(:customer_id, :issue)
   end
 
   def show_errors_and_redirect
