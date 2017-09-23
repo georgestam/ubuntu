@@ -1,0 +1,52 @@
+:sass
+
+  .center 
+    text-align: center
+    
+  .brand-header img 
+    width: 100px
+    margin: 20px
+  
+  .brand-header
+    background: white
+    float: left
+    width: 100%
+    text-align: center
+    margin: 4px 0 0 0
+    
+  .margin-text-alert 
+    margin: 30px
+
+#alerts-show
+.row
+  .panel-default.col-md-offset-3.col-md-6.center
+    %h3.center{style: "margin-top: 100px"}
+      = "Resolve/UnResolve Alert"
+      = @alert.id
+    %p{style: "margin-bottom: 50px"}
+      Please create a solution and marked as resolved the alert, by updating this form
+    
+    = simple_form_for Alert.new, url: alert_path, method: :patch do |f|
+      = f.error_notification
+      = render 'shared/flashes'
+      .margin-text-alert 
+        %strong
+          = "Customer:"
+        = "#{@alert.customer.name}, mobile #{@alert.customer.telephone}"
+      .margin-text-alert 
+        %strong
+          = "Group Alert:"
+        = "#{@alert.type_alert.group_alert.title}"
+      .margin-text-alert 
+        %strong
+          = "Type Alert:"
+        = "#{@alert.type_alert.name}"
+      .margin-text-alert
+        = f.input :issue, label: "Solution", collection: @issues, :selected => 1
+        = f.input :resolved_description, as: :fake, label: false, placeholder: "If previous solution does not exists, please explain how this was solved", autofocus: true
+        = f.input :resolved?, as: :fake_select, collection: @resolved, :selected => 1
+      = f.button :submit, "Update Alert", class: "button btn btn-lg btn-primary", id: "submit-button"
+.row
+  .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
+    = "To sign out click here:"
+    = link_to t('.sign_out', default: 'Sign out'), destroy_user_session_path

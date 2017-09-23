@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # sidekiq setup
   require "sidekiq/web"
-  authenticate :user, (lambda { |u| u.admin }) do
+  authenticate :user, (lambda { |u| u.role == "manager" }) do
     mount Sidekiq::Web => '/sidekiq'
   end
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     
   devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   
-  resources  :alerts, only: %i(index new create) do
+  resources  :alerts, only: %i(index show new create update) do
     collection do 
       get "select_issue_response"   # /alerts/select_issue_response
       get "select_alert_subgroup"   # /alerts/select_issue_subgroup
