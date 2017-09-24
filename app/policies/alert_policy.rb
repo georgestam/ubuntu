@@ -22,10 +22,6 @@ class AlertPolicy < ApplicationPolicy
     user
   end   
   
-  def select_issue_response?
-    user
-  end 
-  
   def select_alert_subgroup?
     user
   end 

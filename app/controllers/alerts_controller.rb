@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
 
-  before_action :set_alert, only: %i[new show update select_issue_response select_alert_subgroup select_issue]
+  before_action :set_alert, only: %i[new show update select_alert_subgroup select_issue]
   
   def index
     alerts = policy_scope(Alert)
@@ -62,6 +62,7 @@ class AlertsController < ApplicationController
   def select_issue_response
    # ajax
    @issue = Issue.find(params[:id])
+   authorize(@issue)
    render json: [@issue]
   end
 

@@ -37,11 +37,13 @@
           = f.input :type_alert, as: :fake_select, label: false, collection: @type_alerts, prompt: "Select alert"
           #new-resolved-response
             = f.input :issue, as: :fake_select, label: false, collection: @issues, prompt: "Select from previous solution"
+            %p
+              #resolved-description{ style: "margin: 30px" }
             -#= f.input :resolved_description, as: :fake, label: false, placeholder: "If previous response does not exists, please explain", autofocus: true
           #new-type-alert
             = f.input :description_new_alert, as: :fake, label: false, placeholder: 'Add new alert description', autofocus: true
-            -# = f.input :resolved_description_new, as: :fake, label: false, placeholder: "If alerrt has been 'resolved', please add how it was resolved", autofocus: true   
           = f.button :submit, "Create Alert", class: "button btn btn-lg btn-primary", id: "submit-button"
+      
 .row
   .col-md-offset-3.col-md-8.center{ style: "margin:30px"}
     = "To sign out click here:"
@@ -107,16 +109,17 @@
     });
 
     // copy possible response in empty field
-    // $('#issue').change(function(){
-    //   $.ajax({
-    //     url: 'select_issue_response',
-    //     dataType: 'json',
-    //     type: 'GET',
-    //     data: {
-    //       id: this.value
-    //     },
-    //     success: function(data) {
-    //       $('#resolved_description').val(data[0].resolution);
-    //     }  
-    //   });
-    // });
+    $('#issue').change(function(){
+      $.ajax({
+        url: 'select_issue_response',    
+        dataType: 'json',
+        type: 'GET',
+        data: {
+          id: this.value
+        },
+        success: function(data) {
+          // $('#resolved-description').val();
+          $('#resolved-description').empty().append(data[0].resolution)
+        }  
+      });
+    });
