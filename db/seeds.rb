@@ -9,6 +9,7 @@ if development? || staging?
   password = "password10"
 
   manager = FactoryGirl.create :user, :manager, email: "jordi@ubuntu.org", password: password, name: "jordi", slack_username: "@jordi"
+  FactoryGirl.create :user, :manager, email: "ubuntu@ubuntu.org", password: password, name: "Ubuntu", slack_username: "@ubuntu"
   FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
 
@@ -28,7 +29,8 @@ if development? || staging?
     end
   end
 
-  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", user: manager
+  group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
+  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
   FactoryGirl.create :issue, type_alert: negative_acount
 
 end

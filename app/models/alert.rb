@@ -28,7 +28,8 @@ class Alert < ApplicationRecord
 
   def set_created_by
     unless test? # TODO: Current.user not working in rspec
-      self.created_by = Current.user
+      self.created_by = Current.user if Current.user
+      self.created_by = User.find_by(name: "Ubuntu") unless Current.user # When a rake tasks is called
     end 
   end 
 
