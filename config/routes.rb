@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     end 
     
   end 
+  
+  resources  :stats, only: %i(index)
+  get 'stats/data', :defaults => { :format => 'json' }
 
   get 'info', to: "pages#info"
   
