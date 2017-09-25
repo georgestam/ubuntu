@@ -29,5 +29,4 @@
 //= require bootstrap-datetimepicker
 
 //= require Chart.bundle
-//= require highcharts
 //= require chartkick
