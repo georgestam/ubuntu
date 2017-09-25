@@ -1,9 +1,17 @@
-%h1 Stats#index
-%p Find me in app/views/stats/index.html.haml
--#
+:sass
+  .title-graph 
+    font-weight: bold
+    text-align: center
+    margin: 40px
 
+
+%p.title-graph Alerts vs Num. Type of Alerts
 = alerts_by_type_alert
+%p.title-graph Alerts vs Type of Alert
 = alerts_by_type_alert_dunut
+%p.title-graph Alerts vs Users
+= alerts_by_user
+
 
 - content_for :bottom_js do
   :javascript
