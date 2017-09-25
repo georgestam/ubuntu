@@ -27,3 +27,7 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require bootstrap-datetimepicker
+
+//= require Chart.bundle
+//= require highcharts
+//= require chartkick

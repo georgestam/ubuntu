@@ -1,0 +1,9 @@
+%h1 Stats#index
+%p Find me in app/views/stats/index.html.haml
+-# display 3d 
+
+= bar_chart Alert.all.group(:created_at).count
+= line_chart User.group_by_day(:created_at).count
+
+- content_for :bottom_js do
+  :javascript
