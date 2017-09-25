@@ -15,6 +15,7 @@
 //= require bootstrap-sprockets
 //= require moment
 //= require turbolinks
+//= require d3
 //= require_tree .
 
 //= require bootstrap/dropdown
