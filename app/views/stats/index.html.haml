@@ -5,6 +5,54 @@
     margin: 40px
 
 
+:sass
+
+  .center 
+    text-align: center
+
+  .margin
+    margin: 30px
+
+:css
+
+  .nav-tabs > li {
+      float:none;
+      display:inline-block;
+      zoom:1;
+  }
+
+  .nav-tabs {
+      text-align:center;
+  }
+
+.center{style: "margin-bottom: 50px"}
+  %h1
+
+#show_my_alerts
+#exTab2.container
+  %ul.nav.nav-tabs
+    %li.active
+      %a{"data-toggle" => "tab", :href => "#1"} My Open Alert
+    %li
+      %a{"data-toggle" => "tab", :href => "#2", id: "resolved-alerts"} My Resolved Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#3"} All Open Alerts
+    %li
+      %a{"data-toggle" => "tab", :href => "#4"} All Resolved Alerts
+  .tab-content
+    #1.tab-pane.active
+  
+    #2.tab-pane
+      
+    #3.tab-pane
+      %table.table.table-striped
+      
+    #4.tab-pane
+      
+%hr/
+
+
+
 %p.title-graph Alerts vs Num. Type of Alerts
 = alerts_by_type_alert
 %p.title-graph Alerts vs Type of Alert
