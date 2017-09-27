@@ -17,8 +17,22 @@ module StatsAlertsHelper
   
   def alerts_by_time
   data = GroupAlert.all.map { |group_alert| 
-    {name: group_alert.title, data: GroupAlert.joins(:alerts).group_by_day("alerts.created_at").count} }
+    {name: group_alert.title, data: group_alert.alerts.group_by_day("alerts.created_at").count} }
   line_chart data, legend: "bottom"
   end 
+  
+  def total_alerts_in_time
+    
+    alerts_created = Alert.all.group_by_week(:created_at).count
+    alerts_resolved = Alert.all.group_by_week(:resolved_at).count
+    
+    data =  [
+      {name: "Created Alerts", data: alerts_created},
+      {name: "Resolved Alerts", data: alerts_resolved}
+    ]
+    
+    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "", ytitle: ""
+    
+  end
   
 end

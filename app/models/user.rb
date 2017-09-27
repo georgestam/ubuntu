@@ -34,6 +34,10 @@ class User < ApplicationRecord
     self.role == "field_user"
   end 
   
+  def find_alerts # active record does not because we have 2 users in alerts
+    Alert.where(user_id: self.id)
+  end 
+  
 end
 
 

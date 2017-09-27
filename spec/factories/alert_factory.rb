@@ -8,7 +8,7 @@ FactoryGirl.define do
     created_by_id { User.first } # TODO: Assign another user in this field (alerts belongs_to 2 users)
 
     trait :resolved do
-      resolved_at { Faker::Date.between(10.years.ago, DateTime.current) }
+      resolved_at { Faker::Date.between(10.days.ago, DateTime.current) }
     end
 
   end
