@@ -5,6 +5,11 @@ module StatsAlertsHelper
     bar_chart data, xtitle: "num. of alerts", ytitle: ""
   end
   
+  def alerts_by_group_alert
+    data = GroupAlert.joins(:alerts).group("group_alerts.title").count
+    bar_chart data, xtitle: "num. of alerts"
+  end
+  
   def alerts_by_group_alert_donut
     data = GroupAlert.joins(:alerts).group("group_alerts.title").count
     pie_chart data, donut: true, legend: "bottom"
