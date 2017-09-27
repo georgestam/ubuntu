@@ -21,7 +21,7 @@
     %li.active
       %a{"data-toggle" => "tab", :href => "#1"} Alerts 
     %li
-      %a{"data-toggle" => "tab", :href => "#2", id: "resolved-alerts"} Users
+      %a{"data-toggle" => "tab", :href => "#2"} Users
     %li
       %a{"data-toggle" => "tab", :href => "#3"} Customers
   .tab-content
@@ -31,4 +31,13 @@
       = render partial: 'users_graphs'
     #3.tab-pane
       = render partial: 'customers_graphs'
+
+- content_for :bottom_js do
+  -# Boostrap is not compatible with nav-tabs and chart.js https://github.com/ankane/chartkick/issues/28 && https://github.com/chartjs/Chart.js/issues/512
+  :javascript
+  
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+      var chart = Chartkick.charts["alerts-by-user"]
+      chart.redraw();
+    });
       
