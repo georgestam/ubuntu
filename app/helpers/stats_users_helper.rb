@@ -1,20 +1,38 @@
 module StatsUsersHelper
   
   def alerts_by_user
-    data = Alert.all.joins(:user).group("users.name").count
-    column_chart data, id: "alerts-by-user", xtitle: "", ytitle: ""
+    alerts_assigned = Alert.all.joins(:user).group("users.name").count
+    alerts_resolved = Alert.all_resolved.joins(:user).group("users.name").count
+    alerts_open = Alert.all_open.joins(:user).group("users.name").count
+    
+    data =  [
+      {name: "Assigned Alerts", data: alerts_assigned},
+      {name: "Resolved Alerts", data: alerts_resolved},
+      {name: "Open Alerts", data: alerts_open}
+    ]
+    
+    column_chart data, id: "total-alerts-by_user", legend: "bottom", xtitle: "", ytitle: ""
+    
   end
   
   def alerts_by_user_in_time  
-    data = User.all.map { |user| 
-      {name: user.name, data: user.find_alerts.group_by_day("alerts.created_at").count} }
-    line_chart data, legend: "bottom", id: "alerts-by-user-in-time", xtitle: "", ytitle: ""
+    data = User.all.map do |user| 
+      if user.find_alerts.any?
+        {name: user.name, data: user.find_alerts.group_by_day("alerts.created_at").count}
+      end 
+    end  
+    # Compact remove nil elements from the hash data
+    line_chart data.compact, legend: "bottom", id: "alerts-by-user-in-time", xtitle: "", ytitle: ""
   end
   
   def resolved_alerts_by_user_in_time  
-    data = User.all.map { |user| 
-      {name: user.name, data: user.find_alerts.group_by_day("alerts.resolved_at").count} }
-    line_chart data, legend: "bottom", id: "resolved-alerts-by-user-in-time", xtitle: "", ytitle: ""
+    data = User.all.map do |user| 
+      if user.find_alerts.any?
+        {name: user.name, data: user.find_alerts.group_by_day("alerts.resolved_at").count} 
+      end 
+    end 
+    # Compact remove nil elements from the hash data
+    line_chart data.compact, legend: "bottom", id: "resolved-alerts-by-user-in-time", xtitle: "", ytitle: ""
   end
   
 end

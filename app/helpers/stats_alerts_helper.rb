@@ -24,7 +24,7 @@ module StatsAlertsHelper
   def total_alerts_in_time
     
     alerts_created = Alert.all.group_by_week(:created_at).count
-    alerts_resolved = Alert.all.group_by_week(:resolved_at).count
+    alerts_resolved = Alert.all_resolved.group_by_week(:resolved_at).count
     
     data =  [
       {name: "Created Alerts", data: alerts_created},

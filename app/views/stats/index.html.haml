@@ -37,11 +37,7 @@
   :javascript
   
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
-      var chart = Chartkick.charts["alerts-by-user"]
-      chart.redraw();
-      var chart = Chartkick.charts["alerts-by-user-in-time"]
-      chart.redraw();
-      var chart = Chartkick.charts["total-alerts-in-time"]
+      var chart = Chartkick.charts["total-alerts-by_user"]
       chart.redraw();
     });
       
