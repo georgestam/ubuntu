@@ -39,5 +39,7 @@
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
       var chart = Chartkick.charts["total-alerts-by_user"]
       chart.redraw();
+      var chart = Chartkick.charts["top-10-customers-with-more-alerts"]
+      chart.redraw();
     });
       
