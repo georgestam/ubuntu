@@ -18,10 +18,8 @@
     / Mobile Meta
     %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
     = stylesheet_link_tag    'application', media: 'all'
-    
     = javascript_include_tag 'application'
     = javascript_include_tag 'https://www.gstatic.com/charts/loader.js' #Charts requiried by chartkick
-
   %body
     = render 'shared/navbar' if user_signed_in? 
     = render 'shared/flashes' unless controller_name.in?('alerts') && action_name == 'new'

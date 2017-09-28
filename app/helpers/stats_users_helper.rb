@@ -35,5 +35,4 @@ module StatsUsersHelper
     line_chart data.compact, legend: "bottom", xtitle: "", ytitle: ""
   end
   
-  
 end

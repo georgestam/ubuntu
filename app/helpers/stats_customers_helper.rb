@@ -18,5 +18,3 @@ module StatsCustomersHelper
   end
   
 end
-
-
