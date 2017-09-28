@@ -26,6 +26,7 @@
     .container
       = yield
     -# = render 'shared/footer' unless action_name == "form"
+    = javascript_include_tag('main.js') # added js at the end  as it has to hide elements after the yield (javascript_include_tag has to loaded due to chart.js earlier)
     = yield :bottom_js
     -# google analitics
 
