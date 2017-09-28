@@ -1,7 +1,7 @@
 module StatsAlertsHelper
 
   def alerts_by_type_alert
-    data = Alert.all.joins(:type_alert).group("type_alerts.name").count # https://github.com/ankane/chartkick/issues/19
+    data = Alert.all.joins(:type_alert).group("type_alerts.id").count.map{|type_alert_id, count| [type_alert_id ? truncate_string(TypeAlert.find(type_alert_id).name) : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19
     bar_chart data, xtitle: "", ytitle: ""
   end
   
@@ -22,7 +22,6 @@ module StatsAlertsHelper
   end 
   
   def total_alerts_in_time
-    
     alerts_created = Alert.all.group_by_week(:created_at).count
     alerts_resolved = Alert.all_resolved.group_by_week(:resolved_at).count
     
@@ -32,7 +31,11 @@ module StatsAlertsHelper
     ]
     
     column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "", ytitle: ""
-    
+  end
+  
+  def top_10_solutions
+    data = Alert.all_resolved.joins(:issue).group("issues.id").count.map{|issue_id, count| [issue_id ? truncate_string(Issue.find(issue_id).name) : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19
+    bar_chart data, id: "Top_10_solutions",  xtitle: "", ytitle: ""
   end
   
 end

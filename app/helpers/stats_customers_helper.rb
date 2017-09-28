@@ -10,5 +10,5 @@ module StatsCustomersHelper
           }],
       },
     }
-  end 
+  end
 end
