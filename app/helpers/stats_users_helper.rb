@@ -22,7 +22,7 @@ module StatsUsersHelper
       end 
     end  
     # Compact remove nil elements from the hash data
-    line_chart data.compact, legend: "bottom", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time" , xtitle: "", ytitle: ""
+    line_chart data.compact, legend: "bottom", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time", xtitle: "", ytitle: ""
   end
   
   def alerts_created_by_user  
