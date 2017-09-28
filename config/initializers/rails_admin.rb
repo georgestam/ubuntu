@@ -113,6 +113,7 @@ RailsAdmin.config do |config|
     weight 3
     list do
       field :id
+      field :alerts 
       field :id_steama
       field :telephone
       field :first_name

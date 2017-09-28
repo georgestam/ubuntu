@@ -1,3 +1,10 @@
+:scss
+
+  .navbar-wagon-link.active {
+      color: black;
+      font-weight: bold;
+    }
+
 .navbar-wagon
   / Logo
   = link_to root_path, class: "navbar-wagon-brand" do
@@ -7,8 +14,9 @@
   .navbar-wagon-right.hidden-xs.hidden-sm
     - if user_signed_in?
       / Links when logged in
-      = link_to "My alerts", alerts_path, class: "navbar-wagon-item navbar-wagon-link", id: "my_alerts"
-      = link_to "Info", info_path, class: "navbar-wagon-item navbar-wagon-link", id: "info"
+      = link_to "Statistics", stats_path, class: "navbar-wagon-item navbar-wagon-link #{'active' if current_page?(stats_path)}", id: "stats"
+      = link_to "My alerts", alerts_path, class: "navbar-wagon-item navbar-wagon-link #{'active' if current_page?(alerts_path)}", id: "my_alerts"
+      = link_to "Info", info_path, class: "navbar-wagon-item navbar-wagon-link #{'active' if current_page?(info_path)}", id: "info"
       / = link_to "Statistics", "#", class: "navbar-wagon-item navbar-wagon-link"
       / Avatar with dropdown menu
       .navbar-wagon-item

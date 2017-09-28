@@ -106,10 +106,10 @@ class Alert < ApplicationRecord
   end 
   
   def self.notify_slack_channel(alert)
-    if alert.resolved?
-      text = "Alert resolved for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    text = if alert.resolved?
+      "Alert resolved for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
     else 
-      text = "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+      "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
     end 
     client = Slack::Web::Client.new
     client.auth_test
