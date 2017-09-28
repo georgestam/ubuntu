@@ -93,12 +93,12 @@ class Alert < ApplicationRecord
       alert.user.slack_username ? alert.user.slack_username : '@laima'
     end 
     user = User.find_by(slack_username: user_to_assign_task)
-    Alert.notify_slack_user(user, alert)
+    Alert.notify_slack_user(user, alert) unless alert.resolved?
     Alert.notify_slack_channel(alert) unless development_or_test?
   end
   
   def self.notify_slack_user(user, alert)
-    text = "Hello #{user.name}!\n You have a new alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    text = "Hello #{user.name}!\n You have a new alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
     text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     client = Slack::Web::Client.new
     client.auth_test
@@ -106,7 +106,11 @@ class Alert < ApplicationRecord
   end 
   
   def self.notify_slack_channel(alert)
-    text = "New alert created by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    if alert.resolved?
+      text = "Alert resolved for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    else 
+      text = "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    end 
     client = Slack::Web::Client.new
     client.auth_test
     client.chat_postMessage(channel: "#alerts", text: text, as_user: 'ubuntu')
