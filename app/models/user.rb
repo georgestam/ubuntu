@@ -38,6 +38,10 @@ class User < ApplicationRecord
     Alert.where(user_id: self.id)
   end 
   
+  def find_created_by_alerts # active record does not because we have 2 users in alerts
+    Alert.where(created_by_id: self.id)
+  end 
+  
 end
 
 

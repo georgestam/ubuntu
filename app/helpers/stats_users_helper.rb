@@ -35,4 +35,15 @@ module StatsUsersHelper
     line_chart data.compact, legend: "bottom", id: "resolved-alerts-by-user-in-time", xtitle: "", ytitle: ""
   end
   
+  def alerts_created_by_user  
+    data = User.all.map do |user| 
+      if user.find_created_by_alerts.any?
+        {name: user.name, data: user.find_created_by_alerts.group_by_day("alerts.created_at").count} 
+      end 
+    end 
+    # Compact remove nil elements from the hash data
+    line_chart data.compact, legend: "bottom", xtitle: "", ytitle: ""
+  end
+  
+  
 end
