@@ -15,24 +15,14 @@ module StatsUsersHelper
     
   end
   
-  def alerts_by_user_in_time  
+  def alerts_by_user_in_time(attribute)  
     data = User.all.map do |user| 
       if user.find_alerts.any?
-        {name: user.name, data: user.find_alerts.group_by_day("alerts.created_at").count}
+        {name: user.name, data: user.find_alerts.group_by_day(attribute).count}
       end 
     end  
     # Compact remove nil elements from the hash data
-    line_chart data.compact, legend: "bottom", id: "alerts-by-user-in-time", xtitle: "", ytitle: ""
-  end
-  
-  def resolved_alerts_by_user_in_time  
-    data = User.all.map do |user| 
-      if user.find_alerts.any?
-        {name: user.name, data: user.find_alerts.group_by_day("alerts.resolved_at").count} 
-      end 
-    end 
-    # Compact remove nil elements from the hash data
-    line_chart data.compact, legend: "bottom", id: "resolved-alerts-by-user-in-time", xtitle: "", ytitle: ""
+    line_chart data.compact, legend: "bottom", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time" , xtitle: "", ytitle: ""
   end
   
   def alerts_created_by_user  
