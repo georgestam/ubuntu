@@ -34,8 +34,13 @@ module StatsAlertsHelper
   end
   
   def top_10_solutions
+    
+    # Visit.group(:browser).where("issue IS NOT NULL").
+    
     data = Alert.all_resolved.joins(:issue).group("issues.id").count.map{|issue_id, count| [issue_id ? truncate_string(Issue.find(issue_id).name) : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19
-    bar_chart data, id: "Top_10_solutions",  xtitle: "", ytitle: ""
+    top_10_data = data.sort {|a,b| b[1] <=> a[1]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+    
+    bar_chart top_10_data, id: "Top_10_solutions",  xtitle: "", ytitle: ""
   end
   
 end
