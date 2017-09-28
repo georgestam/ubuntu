@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     
   end 
   
-  resources  :stats, only: %i(index)
+  resources :stats, only: %i(index)
 
   get 'info', to: "pages#info"
   

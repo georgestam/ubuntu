@@ -5,7 +5,7 @@ module StatsUsersHelper
     alerts_resolved = Alert.all_resolved.joins(:user).group("users.name").count
     alerts_open = Alert.all_open.joins(:user).group("users.name").count
     
-    data =  [
+    data = [
       {name: "Assigned Alerts", data: alerts_assigned},
       {name: "Resolved Alerts", data: alerts_resolved},
       {name: "Open Alerts", data: alerts_open}
