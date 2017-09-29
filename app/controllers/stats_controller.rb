@@ -4,7 +4,7 @@ class StatsController < ApplicationController
     policy_scope(User)
     
     customer = Customer.first   
-    data = JSON.parse(self.data)
+    # data = JSON.parse(self.data)
   end
   
 end
