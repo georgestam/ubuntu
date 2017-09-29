@@ -1,0 +1,3 @@
+class MeterPolicy < ApplicationPolicy
+    
+end
