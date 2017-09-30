@@ -5,4 +5,8 @@ class Meter < ApplicationRecord
   validates :customer, presence: true
   validates :customer, uniqueness: true
   
+  def usages_on(date)
+    usages.where(created_on: date)
+  end 
+  
 end
