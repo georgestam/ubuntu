@@ -38,7 +38,7 @@ if development? || staging?
   # Run Steama API
   Customer.destroy_all
   UpdateDbJob.perform_now
-  Pull_usage_job.perform_now
+  PullUsageJob.perform_now
   
 end 
 
