@@ -1,4 +1,7 @@
 class Usage < ApplicationRecord
+  
+  require 'rest-client'
+  
   belongs_to :meter
   
   validates :meter, presence: true
