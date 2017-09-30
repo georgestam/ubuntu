@@ -3,6 +3,8 @@
 = yesterday_usage_hourly
 %p.title-graph 
   = "Cumulative usage on #{Date.yesterday.to_s}"
+  %br
+  = "(blue series is maximum allow average consuption)"
 = yesterday_usage_cumulative
 %p.title-graph 
   = "Horly usage on month #{Date.current.month.to_s}"

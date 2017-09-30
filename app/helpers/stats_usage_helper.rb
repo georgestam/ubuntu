@@ -38,8 +38,10 @@ module StatsUsageHelper
     json = JSON.parse(meter.usages_on(Date.yesterday).first.api_data)
     # hour:
     # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
+    cumulative = 0
     data = json.map do |usage_hour|
-      [usage_hour["timestamp"], usage_hour["usage"]]
+      cumulative += usage_hour["usage"].to_f
+      [usage_hour["timestamp"], cumulative]
     end 
     
     all_data << {name: "#{meter.customer.name}", data: data}
