@@ -1,5 +1,5 @@
 %p.title-graph 
-  = "Horly usage on #{Date.yesterday.to_s}"
+  = "Hourly usage on #{Date.yesterday.to_s}"
 = yesterday_usage_hourly
 %p.title-graph 
   = "Cumulative usage on #{Date.yesterday.to_s}"
@@ -7,6 +7,10 @@
   = "(blue series is maximum allow average consuption)"
 = yesterday_usage_cumulative
 %p.title-graph 
-  = "Horly usage on month #{Date.current.month.to_s}"
-= monthly_usage
+  = "Hourly usage last month"
+= monthly_usage(DateTime.current.month-1.month)
+%p.title-graph 
+  = "Hourly usage this month"
+= monthly_usage(DateTime.current.month)
+
 
