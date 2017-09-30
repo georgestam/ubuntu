@@ -56,7 +56,6 @@ if production?
     
   date = date + 1
   break if Date.current == date
-  
   end 
   
 end
