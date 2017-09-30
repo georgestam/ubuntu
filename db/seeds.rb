@@ -5,6 +5,8 @@ if development? || staging?
   TypeAlert.destroy_all
   GroupAlert.destroy_all
   User.destroy_all
+  Meter.destroy_all
+  Usage.destroy_all
 
   password = "password10"
 
@@ -36,9 +38,9 @@ if development? || staging?
   # Run Steama API
   Customer.destroy_all
   UpdateDbJob.perform_now
-  PullUsageJob.perform_now
+  Pull_usage_job.perform_now
   
-end
+end 
 
 if production?
   
@@ -53,7 +55,7 @@ if production?
     end 
     
   date = date + 1
-  break if DateTime.current.day == date.day
+  break if Date.current == date
   
   end 
   

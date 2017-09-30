@@ -50,13 +50,14 @@ module StatsUsageHelper
     line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
   end  
   
-  def monthly_usage(month)
+  def monthly_usage(start_date_month)
     
   all_data = []
 
   Meter.all.each do |meter|
     data = []
-    meter.usages_this_month(month).each do |usage_day|
+    
+    meter.usages_this_month(start_date_month.month).each do |usage_day|
       json = JSON.parse(usage_day.api_data)
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}

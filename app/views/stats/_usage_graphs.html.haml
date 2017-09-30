@@ -8,9 +8,9 @@
 = yesterday_usage_cumulative
 %p.title-graph 
   = "Hourly usage last month"
-= monthly_usage(DateTime.current.month-1.month)
+= monthly_usage(DateTime.current-1.month)
 %p.title-graph 
   = "Hourly usage this month"
-= monthly_usage(DateTime.current.month)
+= monthly_usage(DateTime.current)
 
 
