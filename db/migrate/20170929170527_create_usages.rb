@@ -1,7 +1,7 @@
 class CreateUsages < ActiveRecord::Migration[5.0]
   def change
     create_table :usages do |t|
-      t.string :api_data
+      t.text :api_data, array: true, default: []
       t.date :created_on
       t.references :meter, foreign_key: true
       

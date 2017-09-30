@@ -117,11 +117,11 @@ ActiveRecord::Schema.define(version: 20170929170527) do
   end
 
   create_table "usages", force: :cascade do |t|
-    t.string   "api_data"
+    t.text     "api_data",   default: [],              array: true
     t.date     "created_on"
     t.integer  "meter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["meter_id", "created_on"], name: "index_usages_on_meter_id_and_created_on", unique: true, using: :btree
     t.index ["meter_id"], name: "index_usages_on_meter_id", using: :btree
   end
