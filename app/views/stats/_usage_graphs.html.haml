@@ -1,4 +1,10 @@
 %p.title-graph 
-  = "Usage on #{Date.yesterday.to_s}"
-= yesterday_usage
+  = "Horly usage on #{Date.yesterday.to_s}"
+= yesterday_usage_hourly
+%p.title-graph 
+  = "Cumulative usage on #{Date.yesterday.to_s}"
+= yesterday_usage_cumulative
+%p.title-graph 
+  = "Horly usage on month #{Date.current.month.to_s}"
+= monthly_usage
 

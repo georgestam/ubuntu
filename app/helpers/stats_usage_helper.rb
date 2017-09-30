@@ -1,6 +1,25 @@
 module StatsUsageHelper
   
-  def yesterday_usage
+  def yesterday_usage_hourly
+    
+  all_data = []
+
+  Meter.all.each do |meter|
+    data = []
+    json = JSON.parse(meter.usages_on(Date.yesterday).first.api_data)
+    # hour:
+    # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
+    data = json.map do |usage_hour|
+      [usage_hour["timestamp"], usage_hour["usage"]]
+    end 
+    
+    all_data << {name: "#{meter.customer.name}", data: data}
+    
+    end 
+    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
+  end 
+  
+  def yesterday_usage_cumulative
     
   all_data = []
     
@@ -14,6 +33,25 @@ module StatsUsageHelper
   
   all_data << { name: "max usage per customer", data: constant_maximum_usage }
   
+  Meter.all.each do |meter|
+    data = []
+    json = JSON.parse(meter.usages_on(Date.yesterday).first.api_data)
+    # hour:
+    # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
+    data = json.map do |usage_hour|
+      [usage_hour["timestamp"], usage_hour["usage"]]
+    end 
+    
+    all_data << {name: "#{meter.customer.name}", data: data}
+    
+    end 
+    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
+  end  
+  
+  def monthly_usage
+    
+  all_data = []
+
   Meter.all.each do |meter|
     data = []
     meter.usages_on(Date.yesterday).each do |usage_day|
