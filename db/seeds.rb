@@ -32,12 +32,29 @@ if development? || staging?
   group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
   negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
   FactoryGirl.create :issue, type_alert: negative_acount
-
+  
+  # Run Steama API
+  Customer.destroy_all
+  UpdateDbJob.perform_now
+  PullUsageJob.perform_now
+  
 end
 
 if production?
-  Alert.all.each do |alert|
-    alert.user = User.find(7)
-    alert.save!
-  end
+  
+  date = Date.parse('2017-09-01') 
+  
+  loop do 
+    Customer.all.each do |customer| 
+      unless customer.meters.any?
+        customer.meters.create!(customer: customer)
+      end 
+      Usage.request_usage_to_api(date, customer.meters.first.id) 
+    end 
+    
+  date = date + 1
+  break if DateTime.current.day == date.day
+  
+  end 
+  
 end
