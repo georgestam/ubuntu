@@ -1,0 +1,15 @@
+:sass
+  .title-graph 
+    font-weight: bold
+    text-align: center
+    margin: 40px
+
+
+%p.title-graph 
+  = "Hourly usage last month"
+= monthly_usage(DateTime.current-1.month)
+%p.title-graph 
+  = "Hourly usage this month"
+= monthly_usage(DateTime.current)
+
+

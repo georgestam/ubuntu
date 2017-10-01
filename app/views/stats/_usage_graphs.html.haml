@@ -4,13 +4,12 @@
 %p.title-graph 
   = "Cumulative usage on #{Date.yesterday.to_s}"
   %br
-  = "(blue series is maximum allow average consuption)"
+  = "(blue series is theorical average consuption: #{Usage.max_usage_per_customer} kwh)"
 = yesterday_usage_cumulative
-%p.title-graph 
-  = "Hourly usage last month"
-= monthly_usage(DateTime.current-1.month)
-%p.title-graph 
-  = "Hourly usage this month"
-= monthly_usage(DateTime.current)
+%p.title-graph
+  = "Click here to see montly reports (it may take some time to load)"
+  %br/
+  .title-graph{style: "margin: 50px"} 
+    = link_to "Generate Montly Reports", montly_graphs_stats_path, class: 'btn btn-primary btn-lg margin width-buttom'
 
 
