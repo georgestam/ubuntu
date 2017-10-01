@@ -19,7 +19,7 @@ module StatsAlertsHelper
   data = GroupAlert.all.map { |group_alert| 
     {name: group_alert.title, data: group_alert.alerts.group_by_day("alerts.created_at").count} 
   }
-  line_chart data, legend: "bottom"
+  line_chart data, legend: "bottom", xtitle: "days", ytitle: ""
   end 
   
   def total_alerts_in_time
@@ -31,7 +31,7 @@ module StatsAlertsHelper
       {name: "Resolved Alerts", data: alerts_resolved}
     ]
     
-    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "", ytitle: ""
+    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "weeks", ytitle: ""
   end
   
   def top_10_solutions

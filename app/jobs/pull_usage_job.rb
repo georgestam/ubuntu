@@ -2,7 +2,6 @@ class PullUsageJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    # Do something later
     Customer.all.each do |customer| 
       unless customer.meters.any?
         customer.meters.create!(customer: customer)

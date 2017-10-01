@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   
   resources :stats, only: %i(index) do
     collection do 
-      get "montly_graphs"   # /alerts/select_issue_response
+      get "montly_graphs"  
     end 
   end 
 

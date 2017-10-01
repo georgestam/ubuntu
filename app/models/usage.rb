@@ -17,7 +17,6 @@ class Usage < ApplicationRecord
   def self.request_usage_to_api(start_time, meter_id)
     end_time = start_time + 1
     customer = Meter.find(meter_id).customer
-    # url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=2017-09-26&format=json&start_time=2017-09-025T00%3A00%3A00"
     url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=#{end_time}&format=json&start_time=#{start_time}"
     json_data = if !test?  
       RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
