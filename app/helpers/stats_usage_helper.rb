@@ -6,10 +6,10 @@ module StatsUsageHelper
 
     Meter.all.each do |meter|
       data = []
-      if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        json = JSON.parse(raw_data)
+      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
+        test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
       else 
-        json = []
+        []
       end 
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
@@ -41,10 +41,10 @@ module StatsUsageHelper
   
     Meter.all.each do |meter|
       data = []
-      if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        json = JSON.parse(raw_data)
+      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
+        test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
       else 
-        json = []
+        []
       end 
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
@@ -70,7 +70,7 @@ module StatsUsageHelper
       data = []
       
       meter.usages_this_month(full_month.month).each do |usage_day|
-        json = JSON.parse(usage_day.api_data)
+        json = test? ? JSON.parse(File.read(usage_day.api_data)) : JSON.parse(usage_day.api_data)
         # hour:
         # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
         json.each do |usage_hour|

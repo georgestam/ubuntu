@@ -25,7 +25,7 @@
     %li
       %a{"data-toggle" => "tab", :href => "#3"} Customers
     %li
-      %a{"data-toggle" => "tab", :href => "#4"} Usage 
+      %a{"data-toggle" => "tab", :href => "#4", id: "usage-tab"} Usage 
   .tab-content
     #1.tab-pane.active
       = render partial: 'alerts_graphs'
