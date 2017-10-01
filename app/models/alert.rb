@@ -98,7 +98,7 @@ class Alert < ApplicationRecord
   end
   
   def self.notify_slack_user(user, alert)
-    text = "Hello #{user.name}!\n You have a new alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}-#{alert.try(:resolved_comments)}-\n"
+    text = "Hello #{user.name}!\n You have a new alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     client = Slack::Web::Client.new
     client.auth_test
@@ -109,7 +109,7 @@ class Alert < ApplicationRecord
     text = if alert.resolved?
       "Alert resolved for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
     else 
-      "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}-#{alert.try(:resolved_comments)}-\n"
+      "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     end 
     client = Slack::Web::Client.new
     client.auth_test
@@ -121,7 +121,7 @@ class Alert < ApplicationRecord
     alerts.sort_by(&:created_at)
     text = "Good Morning #{user.name}! \n You have #{alerts.count} alerts open. \n"
     alerts.each_with_index do |alert, index|
-      text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name}-#{alert.try(:resolved_comments)}-\n"
+      text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     end 
     text << "*You can resolve your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     unless test? # TODO: how to stub_request and remove this unless for testing
