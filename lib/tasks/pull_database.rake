@@ -7,6 +7,7 @@ namespace :pull_database do
   desc "Pull usage from Steama (async)"
   task pull_usage_from_yesterday: :environment do
     PullUsageJob.perform_later
+    GenerateUsageAlertsJob.perform_later
   end
 
 end

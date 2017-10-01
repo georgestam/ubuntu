@@ -44,6 +44,9 @@ end
 
 if production?
   
+  group_alert = GroupAlert.find_by(title: "billing")
+  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
+  
   date = Date.parse('2017-09-01') 
   
   loop do 
