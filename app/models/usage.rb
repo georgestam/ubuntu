@@ -20,9 +20,9 @@ class Usage < ApplicationRecord
     # url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=2017-09-26&format=json&start_time=2017-09-025T00%3A00%3A00"
     url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=#{end_time}&format=json&start_time=#{start_time}"
     json_data = if !test?  
-      body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
+      RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
     else 
-      file = Rails.root.join('spec', 'support', 'example_steama_usage.json')
+      Rails.root.join('spec', 'support', 'example_steama_usage.json')
     end 
     
     usage = Usage.new(api_data: json_data, meter_id: meter_id, created_on: start_time)
@@ -30,6 +30,15 @@ class Usage < ApplicationRecord
     unless usage.save!
       #  TODO: send email with error
     end 
+  end
+  
+  def self.generate_usage_json(meter)
+    raw_data = meter.usages.where(created_on: Date.yesterday)[0].try(:api_data)
+    if raw_data
+      test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
+    else 
+      []
+    end
   end
   
 end

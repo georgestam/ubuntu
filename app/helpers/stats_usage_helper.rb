@@ -5,12 +5,7 @@ module StatsUsageHelper
     all_data = []
 
     Meter.all.each do |meter|
-      data = []
-      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
-      else 
-        []
-      end 
+      json = Usage.generate_usage_json(meter)
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
       data = json.map do |usage_hour|
@@ -30,7 +25,7 @@ module StatsUsageHelper
     all_data = []
       
     constant_maximum_usage = []
-    time = DateTime.new(DateTime.yesterday.year, DateTime.yesterday.month, DateTime.yesterday.day)
+    time = Date.new(Date.yesterday.year, Date.yesterday.month, Date.yesterday.day)
 
     24.times do 
       constant_maximum_usage << [time, Usage.max_usage_per_customer] 
@@ -40,12 +35,7 @@ module StatsUsageHelper
     all_data << { name: "max usage per customer", data: constant_maximum_usage }
   
     Meter.all.each do |meter|
-      data = []
-      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
-      else 
-        []
-      end 
+      json = Usage.generate_usage_json(meter)
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
       cumulative = 0
@@ -67,8 +57,6 @@ module StatsUsageHelper
     all_data = []
 
     Meter.all.each do |meter|
-      data = []
-      
       meter.usages_this_month(full_month.month).each do |usage_day|
         json = test? ? JSON.parse(File.read(usage_day.api_data)) : JSON.parse(usage_day.api_data)
         # hour:
@@ -84,6 +72,6 @@ module StatsUsageHelper
     end
     
     line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "hours"
-  end 
+  end  
   
 end

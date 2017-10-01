@@ -163,12 +163,8 @@ class Alert < ApplicationRecord
   def self.check_meters_exceeding_max_daily_usage
 
     Meter.all.each do |meter|
-
-      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        JSON.parse(raw_data)
-      else 
-        []
-      end 
+      
+      json = Usage.generate_usage_json(meter)
 
       cumulative = 0
       json.map do |usage_hour|
