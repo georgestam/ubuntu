@@ -10,7 +10,7 @@ class Usage < ApplicationRecord
   validates :created_on, uniqueness: {scope: :meter}, allow_nil: true
   
   def self.max_usage_per_customer 
-    solar_system_capacity = 30 #kw
+    solar_system_capacity = 30 # kw
     (solar_system_capacity.to_f / Customer.count)
   end 
   

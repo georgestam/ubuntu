@@ -17,7 +17,7 @@ module StatsUsageHelper
         [usage_hour["timestamp"], usage_hour["usage"]]
       end 
       
-      all_data << {name: "#{meter.customer.name}", data: data}
+      all_data << {name: (meter.customer.name).to_s, data: data}
       
     end 
     
@@ -33,8 +33,8 @@ module StatsUsageHelper
     time = DateTime.new(DateTime.yesterday.year, DateTime.yesterday.month, DateTime.yesterday.day)
 
     24.times do 
-      constant_maximum_usage << [ time, Usage.max_usage_per_customer ] 
-      time += (1/24.0) # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
+      constant_maximum_usage << [time, Usage.max_usage_per_customer] 
+      time += (1 / 24.0) # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
     end 
     
     all_data << { name: "max usage per customer", data: constant_maximum_usage }
@@ -54,7 +54,7 @@ module StatsUsageHelper
         [usage_hour["timestamp"], cumulative]
       end 
       
-      all_data << {name: "#{meter.customer.name}", data: data}
+      all_data << {name: (meter.customer.name).to_s, data: data}
       
     end 
     
@@ -77,9 +77,9 @@ module StatsUsageHelper
           data << [usage_hour["timestamp"], usage_hour["usage"]]
         end 
         
-    end
+      end
     
-    all_data << {name: "#{meter.customer.name}", data: data}
+      all_data << {name: (meter.customer.name).to_s, data: data}
     
     end
     

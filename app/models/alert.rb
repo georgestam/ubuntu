@@ -164,10 +164,10 @@ class Alert < ApplicationRecord
 
     Meter.all.each do |meter|
 
-      if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
-        json = JSON.parse(raw_data)
+      json = if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
+        JSON.parse(raw_data)
       else 
-        json = []
+        []
       end 
 
       cumulative = 0

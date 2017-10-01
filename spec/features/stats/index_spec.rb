@@ -1,4 +1,4 @@
-describe "Display Stats#index", js: true do
+describe "Display Stats#index" do
 
   before {
     Customer.update_customer_db # upload the example tests data
@@ -25,7 +25,6 @@ describe "Display Stats#index", js: true do
       same_actions
       find("#usage-tab").click
       find("#montly_graphs").click
-      binding.pry
       expect(page).to have_selector('#chart-1') # show montly hourly chart
     end
     

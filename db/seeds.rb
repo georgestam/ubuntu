@@ -57,8 +57,8 @@ if production?
       Usage.request_usage_to_api(date, customer.meters.first.id) 
     end 
     
-  date = date + 1
-  break if Date.current == date
+    date += 1
+    break if Date.current == date
   end 
   
 end
