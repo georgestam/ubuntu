@@ -12,7 +12,7 @@ class Meter < ApplicationRecord
         array_usages << usage 
       end 
     end
-    array_usages  
-  end 
+    array_usages
+  end
   
 end

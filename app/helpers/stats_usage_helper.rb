@@ -6,7 +6,11 @@ module StatsUsageHelper
 
   Meter.all.each do |meter|
     data = []
-    json = JSON.parse(meter.usages.where(created_on: Date.yesterday).first.api_data)
+    if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
+      json = JSON.parse(raw_data)
+    else 
+      json = []
+    end 
     # hour:
     # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
     data = json.map do |usage_hour|
@@ -35,7 +39,11 @@ module StatsUsageHelper
   
   Meter.all.each do |meter|
     data = []
-    json = JSON.parse(meter.usages.where(created_on: Date.yesterday).first.api_data)
+    if raw_data = meter.usages.where(created_on: Date.yesterday).first.try(:api_data)
+      json = JSON.parse(raw_data)
+    else 
+      json = []
+    end 
     # hour:
     # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
     cumulative = 0
@@ -61,8 +69,8 @@ module StatsUsageHelper
       json = JSON.parse(usage_day.api_data)
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
-      data = json.map do |usage_hour|
-        [usage_hour["timestamp"], usage_hour["usage"]]
+      json.each do |usage_hour|
+        data << [usage_hour["timestamp"], usage_hour["usage"]]
       end 
       
     end
@@ -71,7 +79,7 @@ module StatsUsageHelper
     
     end
     
-    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
+    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "hours"
   end 
   
 end
