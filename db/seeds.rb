@@ -5,6 +5,8 @@ if development? || staging?
   TypeAlert.destroy_all
   GroupAlert.destroy_all
   User.destroy_all
+  Meter.destroy_all
+  Usage.destroy_all
 
   password = "password10"
 
@@ -32,12 +34,31 @@ if development? || staging?
   group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
   negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
   FactoryGirl.create :issue, type_alert: negative_acount
-
-end
+  
+  # Run Steama API
+  Customer.destroy_all
+  UpdateDbJob.perform_now
+  PullUsageJob.perform_now
+  
+end 
 
 if production?
-  Alert.all.each do |alert|
-    alert.user = User.find(7)
-    alert.save!
-  end
+  
+  group_alert = GroupAlert.find_by(title: "billing")
+  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
+  
+  date = Date.parse('2017-09-01') 
+  
+  loop do 
+    Customer.all.each do |customer| 
+      unless customer.meters.any?
+        customer.meters.create!(customer: customer)
+      end 
+      Usage.request_usage_to_api(date, customer.meters.first.id) 
+    end 
+    
+    date += 1
+    break if Date.current == date
+  end 
+  
 end

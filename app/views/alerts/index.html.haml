@@ -36,7 +36,7 @@
           %br/
           = link_to "Alerts in Admin Panel", "/admin/alert?model_name=alert&scope=my_open", class: 'btn btn-primary btn-lg margin width-buttom'
       %table.table.table-striped
-        - if @my_open_alerts.present? 
+        - if @my_open_alerts.any? 
           %thead
             %tr
               %th.center Id
@@ -90,7 +90,7 @@
             %th.center Solution
             %th.center Unresolve (click)
         %tbody
-          - if @my_resolved_alerts.present?
+          - if @my_resolved_alerts.any?
             - @my_resolved_alerts.each do |alert|
               %tr
                 %td
@@ -124,7 +124,7 @@
             %th.center Solution
             %th.center Resolve (click)
         %tbody
-          - if @all_open_alerts.present?
+          - if @all_open_alerts.any?
             - @all_open_alerts.each do |alert|
               %tr
                 %td
@@ -160,7 +160,7 @@
             %th.center Solution
             %th.center Unresolve (click)
         %tbody
-          - if @all_resolved_alerts.present? 
+          - if @all_resolved_alerts.any? 
             - @all_resolved_alerts.each do |alert|
               %tr
                 %td

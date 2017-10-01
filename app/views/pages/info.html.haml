@@ -2,13 +2,17 @@
   = "Notes:"
 %ul
   %li.list-group-item 
+    30-09-17
+    The usage consumption from the day before for all the customers is downloaded every day at 12:30am UCT.
+  %li.list-group-item 
     When the database is updated (green buttom above) all the information from the Steama database is downloaded into this platform and alerts are created automatically (they can be also added manually).
   %li.list-group-item 
     Whenever a Alert record is created (automatically or manually) a message is sent to a slack channel. 
   %li.list-group-item 
-    Current alers created are:
+    Current alers created automatically by Ubuntu are:
     %ol
-      %li negative_account: An alert is created an account_balance is negative
+      %li Usage exceeded twice the normal average: An alert is created when an user spends more than 0.25kwh in a full day (30kwh/120 customers)
+      %li negative account: An alert is created when the account balance is negative
   %li.list-group-item 
     Data from the admin panel can be filtered and downloaded using the 'Export' button
   %li.list-group-item 

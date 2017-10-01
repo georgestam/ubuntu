@@ -59,7 +59,7 @@ class Alert < ApplicationRecord
 
   def type_alert_for_alert_and_issue_is_the_same
     unless self.type_alert == self.issue.type_alert
-      errors[:type_alert] << "#Type Alert has to be the same for Issue and Alert"
+      errors[:type_alert] << "Type Alert has to be the same for Issue and Alert"
     end
   end
 
@@ -98,7 +98,7 @@ class Alert < ApplicationRecord
   end
   
   def self.notify_slack_user(user, alert)
-    text = "Hello #{user.name}!\n You have a new alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+    text = "Hello #{user.name}!\n You have a new alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     text << "*You can see your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     client = Slack::Web::Client.new
     client.auth_test
@@ -109,7 +109,7 @@ class Alert < ApplicationRecord
     text = if alert.resolved?
       "Alert resolved for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
     else 
-      "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name}\n"
+      "New alert created (or updated) by #{alert.created_by.try(:name) if alert.created_by.present?} for Customer #{alert.customer.first_name} #{alert.customer.last_name}: id: #{alert.id}, #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     end 
     client = Slack::Web::Client.new
     client.auth_test
@@ -121,7 +121,7 @@ class Alert < ApplicationRecord
     alerts.sort_by(&:created_at)
     text = "Good Morning #{user.name}! \n You have #{alerts.count} alerts open. \n"
     alerts.each_with_index do |alert, index|
-      text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name}. \n"
+      text << "#{index + 1} - id: #{alert.id}, The customer #{alert.customer.name} has the following issue (created by #{alert.created_by.try(:name) if alert.created_by.present?}) since #{alert.created_at.strftime("%d %m")}: #{alert.type_alert.name} - #{alert.try(:resolved_comments)}\n"
     end 
     text << "*You can resolve your open alerts here* https://ubuntu-power.herokuapp.com/alerts"
     unless test? # TODO: how to stub_request and remove this unless for testing
@@ -157,6 +157,34 @@ class Alert < ApplicationRecord
           # TODO: send email with there has been a problem
         end
       end
+    end
+  end
+  
+  def self.check_meters_exceeding_max_daily_usage
+
+    Meter.all.each do |meter|
+      
+      json = Usage.generate_usage_json(meter)
+
+      cumulative = 0
+      json.map do |usage_hour|
+        cumulative += usage_hour["usage"].to_f
+      end 
+    
+      if cumulative > (2 * Usage.max_usage_per_customer)
+        type_alert = TypeAlert.find_by(name: "Usage exceeded twice the normal average")
+        @alert = if Alert.create!({
+            customer: meter.customer,
+            type_alert: type_alert,
+            issue: Issue.find_by(type_alert: type_alert),
+            resolved_comments: "Total usage was #{cumulative.round(2)} kwh, on #{Date.yesterday}"
+            })
+        else
+          flash[:alert] = @alert.errors.full_messages
+          # TODO: send email with there has been a problem
+        end
+      end
+    
     end
   end
 

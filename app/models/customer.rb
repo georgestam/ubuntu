@@ -4,6 +4,9 @@ class Customer < ApplicationRecord
   
   has_many :alerts, dependent: :destroy
   
+  has_many :meters, dependent: :destroy
+  has_many :usages, through: :meters
+  
   validates :id_steama, presence: true, uniqueness: true
   
   def self.customer_id_exist?(id_steama)

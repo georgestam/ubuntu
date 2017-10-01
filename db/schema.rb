@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918215929) do
+ActiveRecord::Schema.define(version: 20170929170527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,13 @@ ActiveRecord::Schema.define(version: 20170918215929) do
     t.index ["type_alert_id"], name: "index_issues_on_type_alert_id", using: :btree
   end
 
+  create_table "meters", force: :cascade do |t|
+    t.integer  "customer_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_meters_on_customer_id", using: :btree
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.string   "session_id", null: false
     t.text     "data"
@@ -107,6 +114,16 @@ ActiveRecord::Schema.define(version: 20170918215929) do
     t.datetime "updated_at",     null: false
     t.integer  "group_alert_id"
     t.index ["group_alert_id"], name: "index_type_alerts_on_group_alert_id", using: :btree
+  end
+
+  create_table "usages", force: :cascade do |t|
+    t.text     "api_data",   null: false
+    t.date     "created_on", null: false
+    t.integer  "meter_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meter_id", "created_on"], name: "index_usages_on_meter_id_and_created_on", unique: true, using: :btree
+    t.index ["meter_id"], name: "index_usages_on_meter_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -140,5 +157,7 @@ ActiveRecord::Schema.define(version: 20170918215929) do
   add_foreign_key "alerts", "users", column: "created_by_id"
   add_foreign_key "group_alerts", "users"
   add_foreign_key "issues", "type_alerts"
+  add_foreign_key "meters", "customers"
   add_foreign_key "type_alerts", "group_alerts"
+  add_foreign_key "usages", "meters"
 end
