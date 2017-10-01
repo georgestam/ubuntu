@@ -1,4 +1,4 @@
-describe "Update database from steama API and create alerts" do 
+describe "Pull database from steama API and create alerts" do 
   
   context 'when user is signed-in as admin user' do 
   

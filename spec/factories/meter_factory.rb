@@ -2,7 +2,7 @@ FactoryGirl.define do
   
   factory :meter do
     
-    cutomer
+    customer
       
   end
   
