@@ -57,6 +57,7 @@ module StatsUsageHelper
     all_data = []
 
     Meter.all.each do |meter|
+      data = []
       meter.usages_this_month(full_month.month).each do |usage_day|
         json = test? ? JSON.parse(File.read(usage_day.api_data)) : JSON.parse(usage_day.api_data)
         # hour:
