@@ -1,5 +1,5 @@
 Chartkick.options = {
-  height: "300px",
+  height: "600px",
   download: true,
   animation: {
     duration: 2000,

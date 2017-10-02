@@ -14,3 +14,6 @@ en:
         user: Responsible
       type_alert:
         issues: Solutions
+  time:
+    formats:
+       medium: '%d %B %Y'
