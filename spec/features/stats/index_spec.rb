@@ -25,7 +25,7 @@ describe "Display Stats#index" do
       same_actions
       find("#usage-tab").click
     
-      find("#montly_graphs").click
+      find("#monthly_graphs").click
       expect(page).to have_selector('#chart-1') # show montly hourly chart
     end
     

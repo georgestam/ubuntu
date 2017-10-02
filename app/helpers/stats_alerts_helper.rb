@@ -1,4 +1,12 @@
 module StatsAlertsHelper
+  
+  def stat_by
+    # @customer = Customer.includes(:alerts).first
+    # @alerts = @customer.alerts
+  
+    alerts = Alert.all
+    line_chart by_day(alerts), basic_opts('Click count')
+  end
 
   def alerts_by_type_alert
     data = Alert.all.joins(:type_alert).group("type_alerts.id").count.map{|type_alert_id, count| [type_alert_id ? truncate_string(TypeAlert.find(type_alert_id).name) : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19

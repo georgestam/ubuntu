@@ -19,9 +19,9 @@ Rails.application.routes.draw do
     
   end 
   
-  resources :stats, only: %i(index) do
+  resources :stats, only: %i(index create) do
     collection do 
-      get "montly_graphs"  
+      get "monthly_graphs"  
     end 
   end 
 

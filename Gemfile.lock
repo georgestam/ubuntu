@@ -542,7 +542,7 @@ DEPENDENCIES
   activerecord-session_store (~> 1)
   awesome_print
   better_errors
-  bootstrap-datepicker-rails
+  bootstrap-datepicker-rails (~> 1.7)
   bootstrap-sass (~> 3.3)
   browser (~> 2.3)
   capybara (~> 2.11)
