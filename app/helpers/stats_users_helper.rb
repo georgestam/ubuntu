@@ -23,7 +23,7 @@ module StatsUsersHelper
     end  
     # Compact remove nil elements from the hash data
     line_chart data.compact, legend: "bottom", xtitle: "weeks", ytitle: "", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time", 
-                            library: basic_opts("#{attribute == "alerts.created_at" ? "Created" : "Resolved"} alerts")
+                             library: basic_opts("#{attribute == "alerts.created_at" ? "Created" : "Resolved"} alerts")
   end
   
   def alerts_created_by_user  

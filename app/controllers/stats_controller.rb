@@ -1,7 +1,7 @@
 class StatsController < ApplicationController
   
   before_action :format_dates
-  before_action :skip_authorization, only: [:monthly_graphs, :create, :by_day]
+  before_action :skip_authorization, only: %i[monthly_graphs create]
   
   def index
     policy_scope(User)
@@ -20,13 +20,12 @@ class StatsController < ApplicationController
   private
   
   def format_dates
-    @start_date = params[:start_date].nil? || params[:start_date].empty? ?
+    @start_date = params[:start_date].blank? ?
         1.month.ago.midnight :
         params[:start_date].to_datetime.midnight
-    @end_date = params[:end_date].nil? || params[:end_date].empty? ?
+    @end_date = params[:end_date].blank? ?
         Time.current.at_end_of_day :
         params[:end_date].to_datetime.at_end_of_day
-    @start_date, @end_date = @end_date, @start_date if @end_date < @start_date
   end
   
 end
