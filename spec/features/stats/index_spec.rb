@@ -1,8 +1,8 @@
 describe "Display Stats#index" do
 
   before {
-    Customer.update_customer_db # upload the example tests data
-    PullUsageJob.perform_now # upload the example tests data
+    Customer.update_customer_db 
+    PullUsageJob.perform_now # jobs does not work with js: true 
   }
 
   context 'when user is signed-in as a field user' do 
@@ -10,7 +10,7 @@ describe "Display Stats#index" do
     sign_as
     
     def same_actions
-      FactoryGirl.create_list(:alert, 3)
+      FactoryGirl.create_list(:alert, 2)
       visit root_path
       find("#stats").click
     end 
