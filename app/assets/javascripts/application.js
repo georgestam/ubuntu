@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
-//= require moment
 //= require turbolinks
 //= require_tree .
 
@@ -23,10 +22,7 @@
 //= require bootstrap/modal
 //= require bootstrap/collapse
 
-//= require chosen-jquery
-//= require nprogress
-//= require nprogress-turbolinks
-//= require bootstrap-datetimepicker
+//= require bootstrap-datepicker
 
 //= require Chart.bundle
 //= require chartkick

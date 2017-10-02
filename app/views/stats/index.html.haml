@@ -1,4 +1,8 @@
 :sass
+  .col-centered
+    float: none
+    margin: 0 auto
+    
   .title-graph 
     font-weight: bold
     text-align: center
@@ -16,6 +20,28 @@
   %h1
 
 #show_my_alerts
+
+.row
+  .col-sm-10.col-sm-push-2
+    #event_period.row{style: "margin: 50px"}
+      = form_tag stats_path, remote: true do
+        .col-sm-1
+          %label{:for => "start_date"} Start date
+        .col-sm-3
+          .input-group
+            %input#start_date.actual_range.form-control.datepicker{:name => "start_date", :type => "text"}/
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+        .col-sm-1
+          %label{:for => "end_date"} End date
+        .col-sm-3
+          .input-group
+            %input#end_date.actual_range.form-control.datepicker{:name => "end_date", :type => "text"}/
+            .input-group-addon
+              %span.glyphicon.glyphicon-th
+        .col-sm-2
+          = submit_tag 'Update range', class: 'btn btn-primary'
+
 #exTab2.container
   %ul.nav.nav-tabs
     %li.active
@@ -47,5 +73,18 @@
       chart.redraw();
       var chart = Chartkick.charts["top-10-customers-with-less-alerts"]
       chart.redraw();
+    });
+    
+- content_for :bottom_js do
+  :javascript
+    $(document).ready(function() {
+      $('#event_period').datepicker({
+        inputs: $('.actual_range'),
+        startDate: '-3y',
+        endDate: '0d',
+        todayBtn: 'linked',
+        todayHighlight: 'true',
+        format: 'yyyy-mm-dd'
+      });
     });
       

@@ -35,6 +35,8 @@ if development? || staging?
   negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
   FactoryGirl.create :issue, type_alert: negative_acount
   
+  FactoryGirl.create_list(:alert, 10)
+  
   # Run Steama API
   Customer.destroy_all
   UpdateDbJob.perform_now
