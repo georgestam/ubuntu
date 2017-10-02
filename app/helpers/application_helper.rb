@@ -10,18 +10,16 @@ module ApplicationHelper
 
   def basic_opts(title)
     {
-      library: {
-        title: {
-             display: true,
-             fontSize: 15,
-             text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
-         }
-      }
+      title: {
+           display: true,
+           fontSize: 15,
+           text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
+       }
     }
   end
   
-  def by_day(records)
-    opts = ['created_at', {range: @start_date..@end_date, format: '%d %b'}]
+  def by_day(records, group_by)
+    opts = [group_by, {range: @start_date..@end_date, format: '%d %b'}]
     method_name = :group_by_day
     if by_year?
       opts[1].merge!({format: '%Y'})
@@ -32,7 +30,6 @@ module ApplicationHelper
     end
     # alerts = @alerts.group_by_day('created_at', format: '%d %b', range: @start_date..@end_date).count
     alerts = records.send(method_name, *opts).count
-    data = [{name: 'alerts test', data: alerts}]
   end
   
   def by_year?

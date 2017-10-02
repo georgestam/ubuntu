@@ -5,7 +5,18 @@ module StatsAlertsHelper
     # @alerts = @customer.alerts
   
     alerts = Alert.all
-    line_chart by_day(alerts), basic_opts('Click count')
+    line_chart by_day(alerts), basic_opts('Total alerts')
+  end
+  
+  def total_alerts_in_time
+    alerts_created = by_day(Alert.all, "created_at")
+    alerts_resolved = by_day(Alert.all, "resolved_at")
+    
+    data = [
+      {name: "Created Alerts", data: alerts_created},
+      {name: "Resolved Alerts", data: alerts_resolved}
+    ]
+    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "weeks", ytitle: "", library: basic_opts('Total alerts')
   end
 
   def alerts_by_type_alert
@@ -29,18 +40,6 @@ module StatsAlertsHelper
   }
   column_chart data, legend: "bottom", xtitle: "weeks", ytitle: ""
   end 
-  
-  def total_alerts_in_time
-    alerts_created = Alert.all.group_by_week(:created_at).count
-    alerts_resolved = Alert.all_resolved.group_by_week(:resolved_at).count
-    
-    data = [
-      {name: "Created Alerts", data: alerts_created},
-      {name: "Resolved Alerts", data: alerts_resolved}
-    ]
-    
-    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "weeks", ytitle: ""
-  end
   
   def top_10_solutions
     
