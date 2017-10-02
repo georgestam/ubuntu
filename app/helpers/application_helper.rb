@@ -12,15 +12,16 @@ module ApplicationHelper
     {
       title: {
            display: true,
-           fontSize: 15,
+           fontSize: 12,
+           padding: 50,
            text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
        }
     }
   end
   
-  def by_day(records, group_by)
+  def by_week(records, group_by)
     opts = [group_by, {range: @start_date..@end_date, format: '%d %b'}]
-    method_name = :group_by_day
+    method_name = :group_by_week
     if by_year?
       opts[1].merge!({format: '%Y'})
       method_name = :group_by_year
@@ -39,5 +40,9 @@ module ApplicationHelper
   def by_month?
     @end_date - (3.month + 2.days) > @start_date
   end
+  
+  def select_range_of_dates_for(records)
+    records.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+  end 
 
 end 
