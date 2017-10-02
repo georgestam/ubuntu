@@ -16,7 +16,7 @@ module StatsUsageHelper
       
     end 
     
-    column_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
+    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
   
   end 
   
