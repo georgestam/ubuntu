@@ -19,6 +19,24 @@ module ApplicationHelper
     }
   end
   
+  def basic_opts_without_decimals(title)
+    {
+      scales: {
+          xAxes: [{
+              ticks: {
+                  fixedStepSize: 1 # remove decimals
+              }
+          }]
+      },
+      title: {
+           display: true,
+           fontSize: 12,
+           padding: 50,
+           text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
+       }
+    }
+  end
+  
   def by_week(records, group_by)
     opts = [group_by, {range: @start_date..@end_date, format: '%d %b'}]
     method_name = :group_by_week
