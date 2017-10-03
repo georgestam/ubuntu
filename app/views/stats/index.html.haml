@@ -64,16 +64,19 @@
   :javascript
   
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+    
       var chart = Chartkick.charts["total-alerts-by_user"]
+      chart.redraw();
+      var chart = Chartkick.charts["alerts-by-user-in-time"]
+      chart.redraw();
+      var chart = Chartkick.charts["resolved-alerts-by-user-in-time"]
+      chart.redraw();
+      var chart = Chartkick.charts["chart-5"]
       chart.redraw();
       var chart = Chartkick.charts["top-10-customers-with-more-alerts"]
       chart.redraw();
-      var chart = Chartkick.charts["top-10-customers-with-less-alerts"]
-      chart.redraw();
     });
     
-- content_for :bottom_js do
-  :javascript
     $(document).ready(function() {
       $('#event_period').datepicker({
         inputs: $('.actual_range'),
