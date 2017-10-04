@@ -1,5 +1,10 @@
 module StatsUsersHelper
   
+  def assigned_alerts
+    data = select_range_of_dates_for(Alert.all).joins(:user).group("users.name").count
+    pie_chart data, donut: true, legend: "bottom", library: basic_opts('% Assigned alerts')
+  end
+  
   def alerts_by_user
     alerts_assigned = select_range_of_dates_for(Alert.all).joins(:user).group("users.name").count
     alerts_resolved = select_range_of_dates_for(Alert.all_resolved).joins(:user).group("users.name").count
