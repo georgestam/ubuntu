@@ -8,14 +8,14 @@ module StatsAlertsHelper
       {name: "Created Alerts", data: alerts_created},
       {name: "Resolved Alerts", data: alerts_resolved}
     ]
-    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "weeks", ytitle: "", library: basic_opts('Total alerts')
+    column_chart data, id: "total-alerts-in-time", legend: "bottom", xtitle: "", ytitle: "", library: basic_opts('Total alerts')
   end
   
   def alerts_by_time
     data = GroupAlert.includes(:alerts).map { |group_alert| 
       {name: group_alert.title, data: by_week(group_alert.alerts, "alerts.created_at")} 
     }
-    column_chart data, legend: "bottom", xtitle: "weeks", ytitle: "", library: basic_opts('Number of Alerts (Alerts Group)')
+    column_chart data, legend: "bottom", xtitle: "", ytitle: "", library: basic_opts('Number of Alerts (Alerts Group)')
   end 
   
   def alerts_by_group_alert_donut

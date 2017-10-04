@@ -22,7 +22,7 @@ module StatsUsersHelper
       end 
     end  
     # Compact remove nil elements from the hash data
-    column_chart data.compact, legend: "bottom", xtitle: "weeks", ytitle: "", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time", 
+    column_chart data.compact, legend: "bottom", xtitle: "", ytitle: "", id: attribute == "alerts.created_at" ? "alerts-by-user-in-time" : "resolved-alerts-by-user-in-time", 
                                library: basic_opts("#{attribute == "alerts.created_at" ? "Created" : "Resolved"} alerts")
   end
   
@@ -33,7 +33,7 @@ module StatsUsersHelper
       end 
     end 
     # Compact remove nil elements from the hash data
-    column_chart data.compact, legend: "bottom", xtitle: "weeks", ytitle: "", library: basic_opts('Alerts created by user')
+    column_chart data.compact, legend: "bottom", xtitle: "", ytitle: "", library: basic_opts('Alerts created by user')
   end
   
 end
