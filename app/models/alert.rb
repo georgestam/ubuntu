@@ -18,7 +18,7 @@ class Alert < ApplicationRecord
   validates :issue, presence: true, if: :resolved?
 
   # after_save :send_alert_email, if: :production?
-  after_save :send_slack_notification, unless: :test?
+  after_commit :send_slack_notification, unless: :test?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
 

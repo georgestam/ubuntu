@@ -39,6 +39,9 @@ if development? || staging?
   
   # Run Steama API
   Customer.destroy_all
+  
+  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
+  
   UpdateDbJob.perform_now
   PullUsageJob.perform_now
   
