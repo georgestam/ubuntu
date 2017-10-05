@@ -24,7 +24,7 @@ module ApplicationHelper
       scales: {
           xAxes: [{
               ticks: {
-                  fixedStepSize: 1 # remove decimals
+                  fixedStepSize: 0.25 # remove decimals
               }
           }]
       },
