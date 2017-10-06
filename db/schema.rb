@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929170527) do
+ActiveRecord::Schema.define(version: 20171006081205) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,9 @@ ActiveRecord::Schema.define(version: 20170929170527) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.index ["type_alert_id"], name: "index_issues_on_type_alert_id", using: :btree
+  end
+
+  create_table "median_functions", force: :cascade do |t|
   end
 
   create_table "meters", force: :cascade do |t|
