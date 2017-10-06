@@ -1,6 +1,6 @@
 module StatsUsageHelper
   
-  def average_usage_all_day_in_hours( order = "asc")
+  def average_usage_all_day_in_hours(order = "asc")
     
     all_data = []
     
@@ -24,7 +24,7 @@ module StatsUsageHelper
       end
       
       
-       all_data << {name: (meter.customer.name).to_s, data: data, total_usage: total_usage }
+      all_data << {name: (meter.customer.name).to_s, data: data, total_usage: total_usage }
       
     end 
     

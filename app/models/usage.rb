@@ -31,8 +31,8 @@ class Usage < ApplicationRecord
     end 
   end
   
-  def self.generate_usage_json(meter, dates = Date.yesterday.beginning_of_day..Date.today.end_of_day)
-    raw_data = meter.usages.where(created_on:dates)[0].try(:api_data)
+  def self.generate_usage_json(meter, dates = Date.yesterday.beginning_of_day..Time.zone.today.end_of_day)
+    raw_data = meter.usages.where(created_on: dates)[0].try(:api_data)
     if raw_data
       test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
     else 

@@ -13,7 +13,6 @@ gem 'faye-websocket'
 gem 'slack-ruby-client'
 
 gem 'activerecord-session_store', '~> 1'
-gem 'active_median'
 gem 'bootstrap-datepicker-rails', '~> 1.7' 
 gem 'bootstrap-sass', '~> 3.3'
 gem 'browser', '~> 2.3'
