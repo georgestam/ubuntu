@@ -11,7 +11,7 @@ module StatsUsageHelper
       
       (@start_date.to_date..@end_date.to_date).each do |date|
         cumulative = 0
-        cumulative = cumulative_calculation(date , meter, cumulative)
+        cumulative = cumulative_calculation(date, meter, cumulative)
         
         data << [date.to_s, cumulative]    
         total_usage += cumulative
@@ -48,8 +48,8 @@ module StatsUsageHelper
       
       weeks.each do |week|  
         
-        (DateTime.parse(week)..(DateTime.parse(week) + 7.days)).each do |date|
-          cumulative = cumulative_calculation(date , meter, cumulative)
+        (DateTime.parse(week).in_time_zone..(DateTime.parse(week).in_time_zone + 7.days)).each do |date|
+          cumulative = cumulative_calculation(date, meter, cumulative)
         end
         
         data << [week, cumulative]    
@@ -146,10 +146,9 @@ module StatsUsageHelper
     end
     
     line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "hours"
-  end  
+  end    
   
-  
-  def cumulative_calculation(date , meter, cumulative = 0) 
+  def cumulative_calculation(date, meter, cumulative = 0) 
     dates = date.beginning_of_day..date.end_of_day
     json = Usage.generate_usage_json(meter, dates)
     
