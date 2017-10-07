@@ -7,28 +7,29 @@ module StatsUsageHelper
     Meter.all.each do |meter|
       
       data = []
-      total_usage = 0
+      average_customer_usage = 0
       
       (@start_date.to_date..@end_date.to_date).each do |date|
         cumulative = 0
         cumulative = cumulative_calculation(date, meter, cumulative)
         
-        data << [date.to_s, cumulative]    
-        total_usage += cumulative
-        
+        average_hour = cumulative/24
+        data << [date.to_s, average_hour]    
+        average_customer_usage += average_hour 
+   
       end
       
-      all_data << {name: (meter.customer.name).to_s, data: data, total_usage: total_usage }
+      all_data << {name: (meter.customer.name).to_s, data: data, average_customer_usage: average_customer_usage }
       
     end 
     
     top_10_data = if order == "asc"
-      all_data.sort {|a, b| b[:total_usage] <=> a[:total_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+      all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
       else
-      all_data.sort {|a, b| a[:total_usage] <=> b[:total_usage]}.first 10
+      all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
     end 
     
-    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per day (24h)')
+    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per hour (24h)')
   
   end
   
@@ -39,7 +40,7 @@ module StatsUsageHelper
     Meter.all.each do |meter|
       
       data = []
-      total_usage = 0
+      average_customer_usage = 0
 
       # https://stackoverflow.com/questions/22695911/convert-date-range-to-array-of-weeks-and-months
       weeks = (@start_date.to_date..@end_date.to_date).select(&:sunday?).map(&:to_s) 
@@ -48,26 +49,26 @@ module StatsUsageHelper
       
       weeks.each do |week|  
         
-        (DateTime.parse(week).in_time_zone..(DateTime.parse(week).in_time_zone + 7.days)).each do |date|
+        (DateTime.parse(week)..(DateTime.parse(week) + 7.days)).each do |date|
           cumulative = cumulative_calculation(date, meter, cumulative)
         end
-        
-        data << [week, cumulative]    
-        total_usage += cumulative
+        average_day = cumulative/7
+        data << [week, average_day]    
+        average_customer_usage += average_day 
         
       end
       
-      all_data << {name: (meter.customer.name).to_s, data: data, total_usage: total_usage }
+      all_data << {name: (meter.customer.name).to_s, data: data, average_customer_usage: average_customer_usage }
       
     end 
     
     top_10_data = if order == "asc"
-      all_data.sort {|a, b| b[:total_usage] <=> a[:total_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+      all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
       else
-      all_data.sort {|a, b| a[:total_usage] <=> b[:total_usage]}.first 10
+      all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
     end 
     
-    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per week (24h)')
+    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
   
   end
   
