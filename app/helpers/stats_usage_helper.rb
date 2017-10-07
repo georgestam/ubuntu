@@ -50,14 +50,14 @@ module StatsUsageHelper
     
     all_data = []
     
+    # https://stackoverflow.com/questions/22695911/convert-date-range-to-array-of-weeks-and-months
+    weeks = (@start_date.to_date..@end_date.to_date).select(&:sunday?).map(&:to_s) 
+    
     Meter.all.each do |meter|
       
       data = []
       average_customer_usage = 0
 
-      # https://stackoverflow.com/questions/22695911/convert-date-range-to-array-of-weeks-and-months
-      weeks = (@start_date.to_date..@end_date.to_date).select(&:sunday?).map(&:to_s) 
-      
       cumulative = 0
       
       weeks.each do |week|  
@@ -80,6 +80,20 @@ module StatsUsageHelper
       else
       all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
     end 
+    
+    # calculate total average in the Community
+    total_data = []
+    
+    weeks.each do |week| 
+      (Date.parse(week)..(Date.parse(week) + 7.days)).each do |date|
+        cumulative = cumulative_calculation_for_total_usage(date)
+        
+        average_hour = cumulative / (7*Customer.count)
+        total_data << [week, average_hour]    
+      end 
+    end  
+    
+    top_10_data << {name: "Community average", data: total_data }
     
     line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
   
@@ -163,7 +177,7 @@ module StatsUsageHelper
   end    
   
   def cumulative_calculation(date, meter, cumulative = 0) 
-    dates = date.beginning_of_day..date.end_of_day
+    dates = date.beginning_of_day..date.end_of_day # we should only pass one full day
     json = Usage.generate_usage_json(meter, dates)
     
     json.map do |usage_hour|
@@ -176,6 +190,8 @@ module StatsUsageHelper
     cumulative = 0
     
     raw_data_usages = Usage.where(created_on: date)
+    binding.pry
+    
     raw_data_usages.each do |raw_data|
       json = if raw_data
         test? ? JSON.parse(File.read(raw_data.api_data)) : JSON.parse(raw_data.api_data)
