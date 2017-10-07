@@ -21,13 +21,26 @@ module StatsUsageHelper
       
       all_data << {name: (meter.customer.name).to_s, data: data, average_customer_usage: average_customer_usage }
       
-    end 
-    
+    end      
+        
     top_10_data = if order == "asc"
       all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
       else
       all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
     end 
+    
+    # calculate total average in the Community
+    total_data = []
+    
+    (@start_date.to_date..@end_date.to_date).each do |date|
+      cumulative = cumulative_calculation_for_total_usage(date)
+      
+      average_hour = cumulative / (24*Customer.count)
+      total_data << [date.to_s, average_hour]    
+    end 
+    
+    top_10_data << {name: "Community average", data: total_data }
+
     
     line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per hour (24h)')
   
@@ -156,6 +169,24 @@ module StatsUsageHelper
     json.map do |usage_hour|
       cumulative += usage_hour["usage"].to_f
     end 
+    cumulative
+  end 
+  
+  def cumulative_calculation_for_total_usage(date) 
+    cumulative = 0
+    
+    raw_data_usages = Usage.where(created_on: date)
+    raw_data_usages.each do |raw_data|
+      json = if raw_data
+        test? ? JSON.parse(File.read(raw_data.api_data)) : JSON.parse(raw_data.api_data)
+      else 
+        []
+      end
+      
+      json.each do |usage_hour|
+        cumulative += usage_hour["usage"].to_f
+      end 
+    end
     cumulative
   end 
   
