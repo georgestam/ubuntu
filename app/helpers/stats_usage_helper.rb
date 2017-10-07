@@ -13,7 +13,7 @@ module StatsUsageHelper
         cumulative = 0
         cumulative = cumulative_calculation(date, meter, cumulative)
         
-        average_hour = cumulative/24
+        average_hour = cumulative / 24
         data << [date.to_s, average_hour]    
         average_customer_usage += average_hour 
    
@@ -49,10 +49,10 @@ module StatsUsageHelper
       
       weeks.each do |week|  
         
-        (DateTime.parse(week)..(DateTime.parse(week) + 7.days)).each do |date|
+        (Date.parse(week)..(Date.parse(week) + 7.days)).each do |date|
           cumulative = cumulative_calculation(date, meter, cumulative)
         end
-        average_day = cumulative/7
+        average_day = cumulative / 7
         data << [week, average_day]    
         average_customer_usage += average_day 
         
