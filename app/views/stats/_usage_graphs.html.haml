@@ -1,6 +1,8 @@
 #usage_graphs
   %p.title-graph
-  = average_usage_all_day_in_hours
+  = average_usage_per_day_during_24
+  %p.title-graph
+  = average_usage_per_week_during_24
   %p.title-graph 
     = "Hourly usage on #{Date.yesterday.to_s}"
   = yesterday_usage_hourly
