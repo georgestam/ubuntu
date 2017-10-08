@@ -1,6 +1,6 @@
 module StatsUsageHelper
   
-  def average_usage_per_day_during_24(order = "asc")
+  def average_usage_per_day_during_24
     
     all_data = []
     
@@ -36,14 +36,22 @@ module StatsUsageHelper
       total_data << [date.to_s, average_hour]    
     end 
     
-    top_10_data << {name: "Community average", data: total_data }
-    bottom_10_data << {name: "Community average", data: total_data }
+    top_10_data.unshift({name: "Community average", data: total_data })
+    bottom_10_data.unshift({name: "Community average", data: total_data })
     
-    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per hour (24h)')
-    line_chart bottom_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('bottom 10 customers with less average usage per hour (24h)')
+    @plot_top_custommer_with_usage = top_10_data
+    @plot_bottom_custommer_with_usage = bottom_10_data
   end
   
-  def average_usage_per_week_during_24(order = "asc")
+  def plot_top_custommer_with_usage
+    line_chart @plot_top_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per hour (24h)')
+  end 
+  
+  def plot_bottom_custommer_with_usage
+    line_chart @plot_bottom_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('bottom 10 customers with less average usage per hour (24h)')
+  end 
+  
+  def average_usage_per_week_during_24
     
     all_data = []
     
@@ -72,7 +80,7 @@ module StatsUsageHelper
       
     end 
     
-    top_10_data = if order == "asc"
+    top_10_data = if true
       all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
       else
       all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
