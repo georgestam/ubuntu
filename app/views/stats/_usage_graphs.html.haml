@@ -1,10 +1,12 @@
 #usage_graphs
-  - average_usage_per_day_during_24
   %p.title-graph
+  - average_usage_per_day_during_24
   = plot_top_custommer_with_usage
   = plot_bottom_custommer_with_usage
   %p.title-graph
-  = average_usage_per_week_during_24
+  - average_usage_per_week_during_24
+  = plot_top_custommer_with_usage_per_week
+  = plot_bottom_custommer_with_usagep_per_week
   %p.title-graph 
     = "Hourly usage on #{Date.yesterday.to_s}"
   = yesterday_usage_hourly

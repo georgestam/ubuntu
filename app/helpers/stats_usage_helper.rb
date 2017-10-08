@@ -28,7 +28,7 @@ module StatsUsageHelper
     
     # calculate total average in the Community
     total_data = []
-    
+  
     (@start_date.to_date..@end_date.to_date).each do |date|
       cumulative = cumulative_calculation_for_total_usage(date)
       
@@ -48,7 +48,7 @@ module StatsUsageHelper
   end 
   
   def plot_bottom_custommer_with_usage
-    line_chart @plot_bottom_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('bottom 40 customers with less average usage per hour (24h)')
+    line_chart @plot_bottom_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Bottom 40 customers with less average usage per hour (24h)')
   end 
   
   def average_usage_per_week_during_24
@@ -63,12 +63,13 @@ module StatsUsageHelper
       data = []
       average_customer_usage = 0
 
-      cumulative = 0
       
       weeks.each do |week|  
         
+        cumulative = 0
+        
         (Date.parse(week)..(Date.parse(week) + 7.days)).each do |date|
-          cumulative = cumulative_calculation(date, meter, cumulative)
+          cumulative += cumulative_calculation(date, meter, cumulative)
         end
         average_day = cumulative / 7
         data << [week, average_day]    
@@ -80,28 +81,37 @@ module StatsUsageHelper
       
     end 
     
-    top_10_data = if true
-      all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
-      else
-      all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 10
-    end 
+    top_data = all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+    bottom_data = all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 40
     
     # calculate total average in the Community
     total_data = []
     
     weeks.each do |week| 
+      cumulative = 0
+      
       (Date.parse(week)..(Date.parse(week) + 7.days)).each do |date|
-        cumulative = cumulative_calculation_for_total_usage(date)
-        
-        average_hour = cumulative / (7*Customer.count)
-        total_data << [week, average_hour]    
+        cumulative += cumulative_calculation_for_total_usage(date, cumulative)  
       end 
+    
+      average_day = cumulative / (7*Customer.count)
+      total_data << [week, average_day]  
     end  
     
-    top_10_data << {name: "Community average", data: total_data }
+    top_data.unshift({name: "Community average", data: total_data })
+    bottom_data.unshift({name: "Community average", data: total_data })
     
-    line_chart top_10_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
+    @plot_top_custommer_with_usage_per_week = top_data
+    @plot_bottom_custommer_with_usagep_per_week = bottom_data
+    
+  end
   
+  def plot_top_custommer_with_usage_per_week
+    line_chart @plot_top_custommer_with_usage_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
+  end 
+  
+  def plot_bottom_custommer_with_usagep_per_week
+    line_chart @plot_bottom_custommer_with_usagep_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Bottom 40 customers with less average usage per day (24h)')
   end
   
   def yesterday_usage_hourly
@@ -191,8 +201,7 @@ module StatsUsageHelper
     cumulative
   end 
   
-  def cumulative_calculation_for_total_usage(date) 
-    cumulative = 0
+  def cumulative_calculation_for_total_usage(date, cumulative = 0) 
     
     raw_data_usages = Usage.where(created_on: date)
     
