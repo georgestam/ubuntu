@@ -22,9 +22,9 @@ module StatsUsageHelper
       all_data << {name: (meter.customer.name).to_s, data: data, average_customer_usage: average_customer_usage }
       
     end      
-        
-    top_10_data = all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
-    bottom_10_data = all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 50
+    
+    top_data = all_data.sort {|a, b| b[:average_customer_usage] <=> a[:average_customer_usage]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+    bottom_data = all_data.sort {|a, b| a[:average_customer_usage] <=> b[:average_customer_usage]}.first 40
     
     # calculate total average in the Community
     total_data = []
@@ -36,11 +36,11 @@ module StatsUsageHelper
       total_data << [date.to_s, average_hour]    
     end 
     
-    top_10_data.unshift({name: "Community average", data: total_data })
-    bottom_10_data.unshift({name: "Community average", data: total_data })
+    top_data.unshift({name: "Community average", data: total_data })
+    bottom_data.unshift({name: "Community average", data: total_data })
     
-    @plot_top_custommer_with_usage = top_10_data
-    @plot_bottom_custommer_with_usage = bottom_10_data
+    @plot_top_custommer_with_usage = top_data
+    @plot_bottom_custommer_with_usage = bottom_data
   end
   
   def plot_top_custommer_with_usage
@@ -48,7 +48,7 @@ module StatsUsageHelper
   end 
   
   def plot_bottom_custommer_with_usage
-    line_chart @plot_bottom_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('bottom 10 customers with less average usage per hour (24h)')
+    line_chart @plot_bottom_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('bottom 40 customers with less average usage per hour (24h)')
   end 
   
   def average_usage_per_week_during_24
