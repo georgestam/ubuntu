@@ -32,7 +32,7 @@ module StatsUsageHelper
     (@start_date.to_date..@end_date.to_date).each do |date|
       cumulative = cumulative_calculation_for_total_usage(date)
       
-      average_hour = cumulative / (24*Customer.count)
+      average_hour = cumulative / (24 * Customer.count)
       total_data << [date.to_s, average_hour]    
     end 
     
@@ -94,7 +94,7 @@ module StatsUsageHelper
         cumulative += cumulative_calculation_for_total_usage(date, cumulative)  
       end 
     
-      average_day = cumulative / (7*Customer.count)
+      average_day = cumulative / (7 * Customer.count)
       total_data << [week, average_day]  
     end  
     
