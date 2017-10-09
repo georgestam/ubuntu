@@ -119,8 +119,6 @@ module StatsUsageHelper
     dates = @start_date.beginning_of_day..@start_date.end_of_day
     
     all_data = []
-      
-    average_customer_usage = 0
     
     Meter.all.each do |meter|
       json = Usage.generate_usage_json(meter, dates)

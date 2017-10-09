@@ -12,6 +12,7 @@ class StatsController < ApplicationController
   end 
   
   def create 
+    @show_usage = params[:include_usage] == "yes" ? true : false
     respond_to do |format|
       format.js
     end
