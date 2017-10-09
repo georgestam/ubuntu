@@ -37,12 +37,12 @@
             .input-group-addon
               %span.glyphicon.glyphicon-th
         .col-sm-2{ style: "text-align: center" }
-          %input{:name => "include_usage", :type => "checkbox", :value => "yes"}/
+          %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
           %br
           %p 
             = "Tick to include 'usages' results (slow)"
         .col-sm-2
-          = submit_tag 'Update stats', class: 'btn btn-primary'
+          = submit_tag 'Update stats', class: 'btn btn-primary', id: "update-stats"
 
 #exTab2.container
   %ul.nav.nav-tabs

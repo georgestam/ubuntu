@@ -56,7 +56,7 @@ module StatsUsageHelper
   end
   
   def total_usage_cumulative
-    column_chart @plot_total_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Total community usage per day')
+    column_chart @plot_total_usage, id: "total-usage-cumulative", legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Total community usage per day')
   end 
   
   def plot_top_custommer_with_usage
