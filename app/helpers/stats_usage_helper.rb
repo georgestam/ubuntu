@@ -116,12 +116,14 @@ module StatsUsageHelper
   
   def day_usage_cumulative
     
+    dates = @start_date.beginning_of_day..@start_date.end_of_day
+    
     all_data = []
       
     average_customer_usage = 0
     
     Meter.all.each do |meter|
-      json = Usage.generate_usage_json(meter)
+      json = Usage.generate_usage_json(meter, dates)
       # hour:
       # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
       cumulative = 0
@@ -134,16 +136,15 @@ module StatsUsageHelper
       
     end 
     
-    top_data = all_data.sort {|a, b| b[:cumulative] <=> a[:cumulative]}
+    top_data = all_data.sort {|a, b| b[:cumulative] <=> a[:cumulative]}.first(10)
     total_data = []
     
     # create series for theorical average consumption
     constant_maximum_usage = []
-    time = DateTime.new(DateTime.yesterday.year, DateTime.yesterday.month, DateTime.yesterday.day).in_time_zone
+    time = DateTime.new(@start_date.year, @start_date.month, @start_date.day).in_time_zone
     
     24.times do 
       
-      dates = Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
       raw_data_usages = Usage.where(created_on: dates)  
       cumulative = 0  
       raw_data_usages.each do |raw_data|
@@ -170,7 +171,7 @@ module StatsUsageHelper
     
     top_data.unshift({name: "Community average", data: total_data })
     
-    line_chart top_data.first(12), legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "24 hours", library: {
+    line_chart top_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "24 hours", library: {
       title: {
            display: true,
            fontSize: 12,
