@@ -3,7 +3,10 @@ module StatsUsageHelper
   def average_usage_per_day_during_24
     
     all_data = []
-    total_usage = []
+    total_usage_24h = []
+    total_usage_24h = []   
+    total_usage_morning = []
+    total_usage_evening = []
     
     Meter.all.each do |meter|
       
@@ -33,21 +36,27 @@ module StatsUsageHelper
     (@start_date.to_date..@end_date.to_date).each do |date|
       cumulative = cumulative_calculation_for_total_usage(date)
       
-      average_hour = cumulative / (24 * Customer.count)
+      average_hour = cumulative[0] / (24 * Customer.count)
       total_data << [date.to_s, average_hour]
-      total_usage << [date.to_s, cumulative]     
+      total_usage_24h << [date.to_s, cumulative[0]]   
+      total_usage_morning << [date.to_s, cumulative[1]] 
+      total_usage_evening << [date.to_s, cumulative[2]]   
     end 
     
     top_data.unshift({name: "Community average", data: total_data })
     bottom_data.unshift({name: "Community average", data: total_data })
     
-    @plot_total_usage = total_usage
+    @plot_total_usage = [
+      {name: "Total usage", data: total_usage_24h},
+      {name: "Morning usage ( 6am > X <= 6pm)", data: total_usage_morning},
+      {name: "Evening usage ( 6pm > X <= 6am)", data: total_usage_evening}
+    ]
     @plot_top_custommer_with_usage = top_data
     @plot_bottom_custommer_with_usage = bottom_data
   end
   
   def total_usage_cumulative
-    column_chart @plot_total_usage, height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Total community usage per day')
+    column_chart @plot_total_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Total community usage per day')
   end 
   
   def plot_top_custommer_with_usage
@@ -98,7 +107,7 @@ module StatsUsageHelper
       cumulative = 0
       
       (Date.parse(week)..(Date.parse(week) + 7.days)).each do |date|
-        cumulative += cumulative_calculation_for_total_usage(date, cumulative)  
+        cumulative += cumulative_calculation_for_total_usage(date, cumulative)[0]  
       end 
     
       average_day = cumulative / (7 * Customer.count)
@@ -222,6 +231,9 @@ module StatsUsageHelper
   
   def cumulative_calculation_for_total_usage(date, cumulative = 0) 
     
+    cumulative_morning = 0
+    cumulative_evening = 0
+    
     raw_data_usages = Usage.where(created_on: date)
     
     raw_data_usages.each do |raw_data|
@@ -233,9 +245,15 @@ module StatsUsageHelper
       
       json.each do |usage_hour|
         cumulative += usage_hour["usage"].to_f
+        time = Time.zone.parse(usage_hour["timestamp"])
+        if time.hour > 6 && time.hour <= 18
+          cumulative_morning += usage_hour["usage"].to_f
+        else 
+          cumulative_evening += usage_hour["usage"].to_f
+        end 
       end 
     end
-    cumulative
+    [cumulative, cumulative_morning, cumulative_evening]
   end 
   
 end
