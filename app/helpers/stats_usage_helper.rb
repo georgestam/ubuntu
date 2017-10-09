@@ -3,6 +3,7 @@ module StatsUsageHelper
   def average_usage_per_day_during_24
     
     all_data = []
+    total_usage = []
     
     Meter.all.each do |meter|
       
@@ -33,15 +34,21 @@ module StatsUsageHelper
       cumulative = cumulative_calculation_for_total_usage(date)
       
       average_hour = cumulative / (24 * Customer.count)
-      total_data << [date.to_s, average_hour]    
+      total_data << [date.to_s, average_hour]
+      total_usage << [date.to_s, cumulative]     
     end 
     
     top_data.unshift({name: "Community average", data: total_data })
     bottom_data.unshift({name: "Community average", data: total_data })
     
+    @plot_total_usage = total_usage
     @plot_top_custommer_with_usage = top_data
     @plot_bottom_custommer_with_usage = bottom_data
   end
+  
+  def total_usage_cumulative
+    column_chart @plot_total_usage, height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Total community usage per day')
+  end 
   
   def plot_top_custommer_with_usage
     line_chart @plot_top_custommer_with_usage, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "days", library: basic_opts('Top 10 customers with more average usage per hour (24h)')
