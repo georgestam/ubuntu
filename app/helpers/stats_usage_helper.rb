@@ -114,42 +114,12 @@ module StatsUsageHelper
     line_chart @plot_bottom_custommer_with_usagep_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Bottom 40 customers with less average usage per day (24h)')
   end
   
-  def yesterday_usage_hourly
-    
-    all_data = []
-
-    Meter.all.each do |meter|
-      dates = @start_date.beginning_of_day..@end_date.end_of_day
-      json = Usage.generate_usage_json(meter, dates)
-      # hour:
-      # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"
-      
-      data = json.map do |usage_hour|
-        [usage_hour["timestamp"], usage_hour["usage"]]
-      end 
-      
-      all_data << {name: (meter.customer.name).to_s, data: data}
-      
-    end 
-        
-    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
-  
-  end 
-  
-  def yesterday_usage_cumulative
+  def day_usage_cumulative
     
     all_data = []
       
-    constant_maximum_usage = []
-    time = DateTime.new(DateTime.yesterday.year, DateTime.yesterday.month, DateTime.yesterday.day).in_time_zone
-
-    24.times do 
-      constant_maximum_usage << [time, Usage.max_usage_per_customer] 
-      time += 1.hour # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-ruby
-    end 
+    average_customer_usage = 0
     
-    all_data << { name: "max usage per customer", data: constant_maximum_usage }
-  
     Meter.all.each do |meter|
       json = Usage.generate_usage_json(meter)
       # hour:
@@ -158,13 +128,56 @@ module StatsUsageHelper
       data = json.map do |usage_hour|
         cumulative += usage_hour["usage"].to_f
         [usage_hour["timestamp"], cumulative]
-      end 
+      end  
       
-      all_data << {name: (meter.customer.name).to_s, data: data}
+      all_data << {name: (meter.customer.name).to_s, data: data, cumulative: cumulative }
       
     end 
     
-    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "24 hours"
+    top_data = all_data.sort {|a, b| b[:cumulative] <=> a[:cumulative]}
+    total_data = []
+    
+    # create series for theorical average consumption
+    constant_maximum_usage = []
+    time = DateTime.new(DateTime.yesterday.year, DateTime.yesterday.month, DateTime.yesterday.day).in_time_zone
+    
+    24.times do 
+      
+      dates = Date.yesterday.beginning_of_day..Date.yesterday.end_of_day
+      raw_data_usages = Usage.where(created_on: dates)  
+      cumulative = 0  
+      raw_data_usages.each do |raw_data|
+        json = if raw_data
+            test? ? JSON.parse(File.read(raw_data.api_data)) : JSON.parse(raw_data.api_data)
+          else 
+            []
+          end
+        
+        json.each do |usage_hour|
+          if Time.zone.parse(usage_hour["timestamp"]) <= time
+            cumulative += usage_hour["usage"].to_f
+          end 
+        end 
+      end
+      average_hour = cumulative / (Customer.count)
+      total_data << [time, average_hour] 
+      constant_maximum_usage << [time, Usage.max_usage_per_customer] 
+      time += 1.hour # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-rubyexit
+      
+    end 
+    # 
+    top_data.unshift({name: "Theorical average consumption: #{Usage.max_usage_per_customer.round(2)} kwh (maximum  battery capacity is 50 kwh)", data: constant_maximum_usage })
+    
+    top_data.unshift({name: "Community average", data: total_data })
+    
+    line_chart top_data.first(12), legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "24 hours", library: {
+      title: {
+           display: true,
+           fontSize: 12,
+           padding: 50,
+           text: "Top 10 customers with more usage during 24 hour period - #{DateTime.yesterday.strftime('%d %b %Y')} only"
+       }
+    }
   
   end  
   

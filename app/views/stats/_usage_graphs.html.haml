@@ -8,13 +8,7 @@
   = plot_top_custommer_with_usage_per_week
   = plot_bottom_custommer_with_usagep_per_week
   %p.title-graph 
-    = "Hourly usage on #{Date.yesterday.to_s}"
-  = yesterday_usage_hourly
-  %p.title-graph 
-    = "Cumulative usage on #{Date.yesterday.to_s}"
-    %br
-    = "(blue series is theorical average consumption: #{Usage.max_usage_per_customer.round(2)}) kwh, as maximum capacity battery storage is 50 kwh )"
-  = yesterday_usage_cumulative
+  = day_usage_cumulative
   %p.title-graph
     = "Click here to see montly reports (it may take some time to load)"
     %br/
