@@ -1,8 +1,8 @@
-describe "Display Stats#index" do
+describe "Display Stats#index", js: true do
 
   before {
     Customer.update_customer_db 
-    PullUsageJob.perform_now # jobs does not work with js: true 
+    PullUsageJob.perform_now 
   }
 
   context 'when user is signed-in as a field user' do 
@@ -21,12 +21,12 @@ describe "Display Stats#index" do
       expect(page).to have_selector('#total-alerts-by_user')
     end
     
-    it 'displays montlhy graphs' do
+    it 'displays usage graphs' do
       same_actions
+      find("#include-usage").set(true)
+      find("#update-stats").click
       find("#usage-tab").click
-    
-      find("#monthly_graphs").click
-      expect(page).to have_selector('#chart-1') # show montly hourly chart
+      expect(page).to have_selector('#total-usage-cumulative')
     end
     
   end

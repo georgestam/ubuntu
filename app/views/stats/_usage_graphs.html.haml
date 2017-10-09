@@ -1,16 +1,20 @@
 #usage_graphs
-  %p.title-graph 
-    = "Hourly usage on #{Date.yesterday.to_s}"
-  = yesterday_usage_hourly
-  %p.title-graph 
-    = "Cumulative usage on #{Date.yesterday.to_s}"
-    %br
-    = "(blue series is theorical average consumption: #{Usage.max_usage_per_customer.round(2)}) kwh, as maximum capacity battery storage is 50 kwh )"
-  = yesterday_usage_cumulative
-  %p.title-graph
-    = "Click here to see montly reports (it may take some time to load)"
-    %br/
-    .title-graph{style: "margin: 50px"} 
-      = link_to "Generate Montly Reports", monthly_graphs_stats_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "monthly_graphs"
+  - if @show_usage == true
+    %p.title-graph
+    - average_usage_per_day_during_24
+    = total_usage_cumulative
+    = plot_top_custommer_with_usage
+    = plot_bottom_custommer_with_usage
+    %p.title-graph
+    - average_usage_per_week_during_24
+    = plot_top_custommer_with_usage_per_week
+    = plot_bottom_custommer_with_usagep_per_week
+    %p.title-graph 
+    = day_usage_cumulative
+    %p.title-graph
+      = "Click here to see montly reports (it may take some time to load)"
+      %br/
+      .title-graph{style: "margin: 50px"} 
+        = link_to "Generate Montly Reports", monthly_graphs_stats_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "monthly_graphs"
 
 

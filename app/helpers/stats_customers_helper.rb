@@ -12,7 +12,7 @@ module StatsCustomersHelper
         cumulative += usage_hour["usage"].to_f
       end 
       
-       data << [meter.customer.name, cumulative]
+      data << [meter.customer.name, cumulative]
       
     end 
   
