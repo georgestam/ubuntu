@@ -3,7 +3,6 @@ module StatsUsageHelper
   def average_usage_per_day_during_24
     
     all_data = []
-    total_usage_24h = []
     total_usage_24h = []   
     total_usage_morning = []
     total_usage_evening = []
@@ -180,7 +179,7 @@ module StatsUsageHelper
       time += 1.hour # https://stackoverflow.com/questions/238684/subtract-n-hours-from-a-datetime-in-rubyexit
       
     end 
-    # 
+    
     top_data.unshift({name: "Theorical average consumption: #{Usage.max_usage_per_customer.round(2)} kwh (maximum  battery capacity is 50 kwh)", data: constant_maximum_usage })
     
     top_data.unshift({name: "Community average", data: total_data })
