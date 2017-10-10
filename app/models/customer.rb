@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   require 'rest-client'
   
   has_many :alerts, dependent: :destroy
+  has_many :topups, dependent: :destroy
   
   has_many :meters, dependent: :destroy
   has_many :usages, through: :meters
