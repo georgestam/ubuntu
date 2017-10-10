@@ -37,10 +37,17 @@
             .input-group-addon
               %span.glyphicon.glyphicon-th
         .col-sm-2{ style: "text-align: center" }
-          %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
-          %br
-          %p 
-            = "Tick to include 'usages' results (slow)"
+          = "Tick to include (slow)"
+          .col-sm-6{ style: "text-align: center" }
+            %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
+            %br
+            %p 
+              = "Usages"
+          .col-sm-6{ style: "text-align: center" }
+            %input{:name => "include_topups", :type => "checkbox", :value => "yes", id: "include_topups" }/
+            %br
+            %p 
+              = "Top-ups"
         .col-sm-2
           = submit_tag 'Update stats', class: 'btn btn-primary', id: "update-stats"
 
@@ -53,7 +60,9 @@
     %li
       %a{"data-toggle" => "tab", :href => "#3"} Customers
     %li
-      %a{"data-toggle" => "tab", :href => "#4", id: "usage-tab"} Usage 
+      %a{"data-toggle" => "tab", :href => "#4", id: "usage-tab"} Usage
+    %li
+      %a{"data-toggle" => "tab", :href => "#5", id: "usage-tab"} Top-ups 
   .tab-content
     #1.tab-pane.active
       = render partial: 'alerts_graphs'
@@ -63,6 +72,8 @@
       = render partial: 'customers_graphs'
     #4.tab-pane
       = render partial: 'usage_graphs'
+    #5.tab-pane
+      = render partial: 'topups_graphs'
 
 - content_for :bottom_js do
   -# Boostrap is not compatible with nav-tabs and chart.js https://github.com/ankane/chartkick/issues/28 && https://github.com/chartjs/Chart.js/issues/512

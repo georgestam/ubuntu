@@ -13,6 +13,7 @@ class StatsController < ApplicationController
   
   def create 
     @show_usage = params[:include_usage] == "yes" ? true : false
+    @show_topups = params[:include_topups] == "yes" ? true : false
     respond_to do |format|
       format.js
     end

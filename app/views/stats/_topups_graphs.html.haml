@@ -1,0 +1,11 @@
+#topups_graphs
+  - if @show_topups == true
+    %p.title-graph
+    - average_topup_per_day_during_24
+    = total_topup_cumulative
+    = plot_top_custommer_with_topup
+    = plot_bottom_custommer_with_topup
+    %p.title-graph
+    - average_topup_per_week_during_24
+    = plot_top_custommer_with_topup_per_week
+    = plot_bottom_custommer_with_topup_per_week
