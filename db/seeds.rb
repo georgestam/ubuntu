@@ -15,6 +15,20 @@ if development? || staging?
   FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
 
+  group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
+  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
+  FactoryGirl.create :issue, type_alert: negative_acount
+  
+  FactoryGirl.create_list(:alert, 10)
+  
+  # Run Steama API
+  Customer.destroy_all
+  
+  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
+  
+  UpdateDbJob.perform_now
+  PullUsageJob.perform_now
+
   2.times do |group_alert|
     group_alert = FactoryGirl.create :group_alert, user: manager 
     2.times do |type_alert|
@@ -30,37 +44,35 @@ if development? || staging?
       end
     end
   end
+  
+  require 'csv'    
 
-  group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
-  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
-  FactoryGirl.create :issue, type_alert: negative_acount
-  
-  FactoryGirl.create_list(:alert, 10)
-  
-  # Run Steama API
-  Customer.destroy_all
-  
-  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
-  
-  UpdateDbJob.perform_now
-  PullUsageJob.perform_now
+  csv_text = File.read('spec/support/top-ups.csv')
+  csv = CSV.parse(csv_text, :headers => true)
+  csv.each do |row|
+    h = row.to_hash
+    h["id_steama"] = h["id_steama"].to_i
+    h["amount"] = h["amount"].to_i
+    h["created_on"] = DateTime.strptime(h["created_on"], '%Y-%m-%d %H:%M:%S%z')
+    h["customer_id"] = Customer.find_by(id_steama: h["id_steama"].to_i).id
+    Topup.create!(h)
+  end
   
 end 
 
 if production?
   
-  date = Date.parse('2017-09-01') 
-  
-  loop do 
-    Customer.all.each do |customer| 
-      unless customer.meters.any?
-        customer.meters.create!(customer: customer)
-      end 
-      Usage.request_usage_to_api(date, customer.meters.first.id) 
-    end 
-    
-    date += 1
-    break if Date.current == date
-  end 
+  require 'csv'    
+
+  csv_text = File.read('spec/support/top-ups.csv')
+  csv = CSV.parse(csv_text, :headers => true)
+  csv.each do |row|
+    h = row.to_hash
+    h["id_steama"] = h["id_steama"].to_i
+    h["amount"] = h["amount"].to_i
+    h["created_on"] = DateTime.strptime(h["created_on"], '%Y-%m-%d %H:%M:%S%z')
+    h["customer_id"] = Customer.find_by(id_steama: h["id_steama"].to_i).id
+    Topup.create!(h)
+  end
   
 end
