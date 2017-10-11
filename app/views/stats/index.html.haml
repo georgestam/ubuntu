@@ -37,17 +37,19 @@
             .input-group-addon
               %span.glyphicon.glyphicon-th
         .col-sm-2{ style: "text-align: center" }
-          = "Tick to include (slow)"
-          .col-sm-6{ style: "text-align: center" }
-            %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
-            %br
-            %p 
-              = "Usages"
-          .col-sm-6{ style: "text-align: center" }
-            %input{:name => "include_topups", :type => "checkbox", :value => "yes", id: "include_topups" }/
-            %br
-            %p 
-              = "Top-ups"
+          %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
+          %br
+          = "Tick to include"
+          %br
+          %p 
+            = "Usages (slow)"
+        -# .col-sm-2{ style: "text-align: center" }
+        -#   %input{:name => "include_topups", :type => "checkbox", :value => "yes", id: "include_topups" }/
+        -#   %br
+        -#   = "Tick to include "
+        -#   %br
+        -#   %p 
+        -#     = "Top-ups (slow)"
         .col-sm-2
           = submit_tag 'Update stats', class: 'btn btn-primary', id: "update-stats"
 
