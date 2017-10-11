@@ -1,4 +1,4 @@
-class usageolicy < ApplicationPolicy
+class UsagePolicy < ApplicationPolicy
   
   def new? 
     false
