@@ -37,7 +37,7 @@ module ApplicationHelper
     }
   end
   
-  def by_week(records, group_by)
+  def by_week(records, group_by, group_type = "count")
     opts = [group_by, {range: @start_date..@end_date, format: '%d %b'}]
     method_name = :group_by_week
     if by_year?
@@ -48,7 +48,11 @@ module ApplicationHelper
       method_name = :group_by_month
     end
     # alerts = @alerts.group_by_day('created_at', format: '%d %b', range: @start_date..@end_date).count
-    alerts = records.send(method_name, *opts).count
+    alerts = if group_type == "count"
+      records.send(method_name, *opts).count
+    else
+      records.send(method_name, *opts).sum(:amount)
+    end 
   end
   
   def by_year?
