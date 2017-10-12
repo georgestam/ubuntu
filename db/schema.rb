@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170929170527) do
+ActiveRecord::Schema.define(version: 20171010083148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,16 @@ ActiveRecord::Schema.define(version: 20170929170527) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "topups", force: :cascade do |t|
+    t.integer  "customer_id"
+    t.integer  "amount"
+    t.integer  "id_steama"
+    t.datetime "created_on",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_topups_on_customer_id", using: :btree
+  end
+
   create_table "type_alerts", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",     null: false
@@ -158,6 +168,7 @@ ActiveRecord::Schema.define(version: 20170929170527) do
   add_foreign_key "group_alerts", "users"
   add_foreign_key "issues", "type_alerts"
   add_foreign_key "meters", "customers"
+  add_foreign_key "topups", "customers"
   add_foreign_key "type_alerts", "group_alerts"
   add_foreign_key "usages", "meters"
 end

@@ -39,8 +39,17 @@
         .col-sm-2{ style: "text-align: center" }
           %input{:name => "include_usage", :type => "checkbox", :value => "yes", id: "include-usage" }/
           %br
+          = "Tick to include"
+          %br
           %p 
-            = "Tick to include 'usages' results (slow)"
+            = "Usages (slow)"
+        -# .col-sm-2{ style: "text-align: center" }
+        -#   %input{:name => "include_topups", :type => "checkbox", :value => "yes", id: "include_topups" }/
+        -#   %br
+        -#   = "Tick to include "
+        -#   %br
+        -#   %p 
+        -#     = "Top-ups (slow)"
         .col-sm-2
           = submit_tag 'Update stats', class: 'btn btn-primary', id: "update-stats"
 
@@ -53,7 +62,9 @@
     %li
       %a{"data-toggle" => "tab", :href => "#3"} Customers
     %li
-      %a{"data-toggle" => "tab", :href => "#4", id: "usage-tab"} Usage 
+      %a{"data-toggle" => "tab", :href => "#4", id: "usage-tab"} Usage
+    %li
+      %a{"data-toggle" => "tab", :href => "#5", id: "top-up"} Top-ups 
   .tab-content
     #1.tab-pane.active
       = render partial: 'alerts_graphs'
@@ -63,6 +74,8 @@
       = render partial: 'customers_graphs'
     #4.tab-pane
       = render partial: 'usage_graphs'
+    #5.tab-pane
+      = render partial: 'topups_graphs'
 
 - content_for :bottom_js do
   -# Boostrap is not compatible with nav-tabs and chart.js https://github.com/ankane/chartkick/issues/28 && https://github.com/chartjs/Chart.js/issues/512
@@ -81,6 +94,10 @@
       var chart = Chartkick.charts["top-10-customers-with-more-usage"]
       chart.redraw();
       var chart = Chartkick.charts["top-10-customers-with-more-alerts"]
+      chart.redraw();
+      var chart = Chartkick.charts["top-10-customers-with-more-topups"]
+      chart.redraw();
+      var chart = Chartkick.charts["top-10-customers-with-more-topups-sum"]
       chart.redraw();
     });
     

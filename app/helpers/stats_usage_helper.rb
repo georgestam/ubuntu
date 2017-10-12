@@ -117,7 +117,7 @@ module StatsUsageHelper
     bottom_data.unshift({name: "Community average", data: total_data })
     
     @plot_top_custommer_with_usage_per_week = top_data
-    @plot_bottom_custommer_with_usagep_per_week = bottom_data
+    @plot_bottom_custommer_with_usage_per_week = bottom_data
     
   end
   
@@ -125,8 +125,8 @@ module StatsUsageHelper
     line_chart @plot_top_custommer_with_usage_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
   end 
   
-  def plot_bottom_custommer_with_usagep_per_week
-    line_chart @plot_bottom_custommer_with_usagep_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Bottom 40 customers with less average usage per day (24h)')
+  def plot_bottom_custommer_with_usage_per_week
+    line_chart @plot_bottom_custommer_with_usage_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Bottom 40 customers with less average usage per day (24h)')
   end
   
   def day_usage_cumulative
@@ -193,29 +193,6 @@ module StatsUsageHelper
        }
     }
   
-  end  
-  
-  def monthly_usage(full_month)
-    
-    all_data = []
-
-    Meter.all.each do |meter|
-      data = []
-      meter.usages_this_month(full_month.month).each do |usage_day|
-        json = test? ? JSON.parse(File.read(usage_day.api_data)) : JSON.parse(usage_day.api_data)
-        # hour:
-        # json[0] > {"usage"=>9.675945420895e-05, "timestamp"=>"2017-09-25T00:00:00+00:00"}
-        json.each do |usage_hour|
-          data << [usage_hour["timestamp"], usage_hour["usage"]]
-        end 
-        
-      end
-    
-      all_data << {name: (meter.customer.name).to_s, data: data}
-    
-    end
-    
-    line_chart all_data, legend: "false", height: "600px", ytitle: "Kwh", xtitle: "hours"
   end    
   
   def cumulative_calculation(date, meter, cumulative = 0) 

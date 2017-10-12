@@ -37,7 +37,7 @@ module ApplicationHelper
     }
   end
   
-  def by_week(records, group_by)
+  def by_week(records, group_by, group_type = "count")
     opts = [group_by, {range: @start_date..@end_date, format: '%d %b'}]
     method_name = :group_by_week
     if by_year?
@@ -48,7 +48,11 @@ module ApplicationHelper
       method_name = :group_by_month
     end
     # alerts = @alerts.group_by_day('created_at', format: '%d %b', range: @start_date..@end_date).count
-    alerts = records.send(method_name, *opts).count
+    alerts = if group_type == "count"
+      records.send(method_name, *opts).count
+    else
+      records.send(method_name, *opts).sum(:amount)
+    end 
   end
   
   def by_year?
@@ -61,6 +65,14 @@ module ApplicationHelper
   
   def select_range_of_dates_for(records)
     records.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
+  end 
+  
+  def sort_records(order, data, number_of_bottom_records = 40)
+    data = if order == "asc"
+      data.sort {|a, b| b[1] <=> a[1]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+      else
+      data.sort {|a, b| a[1] <=> b[1]}.first 40
+    end 
   end 
 
 end 
