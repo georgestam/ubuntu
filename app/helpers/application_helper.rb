@@ -66,5 +66,13 @@ module ApplicationHelper
   def select_range_of_dates_for(records)
     records.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
   end 
+  
+  def sort_records(order, data)
+    data = if order == "asc"
+      data.sort {|a, b| b[1] <=> a[1]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
+      else
+      data.sort {|a, b| a[1] <=> b[1]}.first 40
+    end 
+  end 
 
 end 
