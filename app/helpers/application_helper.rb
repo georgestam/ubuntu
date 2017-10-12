@@ -67,7 +67,7 @@ module ApplicationHelper
     records.where(:created_at => @start_date.beginning_of_day..@end_date.end_of_day)
   end 
   
-  def sort_records(order, data)
+  def sort_records(order, data, number_of_bottom_records = 40)
     data = if order == "asc"
       data.sort {|a, b| b[1] <=> a[1]}.first 10 # https://stackoverflow.com/questions/9615850/ruby-sort-array-of-an-array
       else
