@@ -15,8 +15,8 @@ if development? || staging?
   FactoryGirl.create :user, :super_user, name: 'test_super_user', email: "super@ubuntu.org", password: password
   FactoryGirl.create :user, :field_user, name: 'test_field_user', email: "field@ubuntu.org", password: password
 
-  group_alert = FactoryGirl.create :group_alert, title: "billing", user: manager
-  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert
+  group_alert_billing = FactoryGirl.create :group_alert, title: "billing", user: manager
+  negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert_billing
   FactoryGirl.create :issue, type_alert: negative_acount
   
   FactoryGirl.create_list(:alert, 10)
@@ -24,7 +24,7 @@ if development? || staging?
   # Run Steama API
   Customer.destroy_all
   
-  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert
+  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert_billing
   
   UpdateDbJob.perform_now
   PullUsageJob.perform_now
