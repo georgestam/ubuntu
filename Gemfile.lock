@@ -73,6 +73,9 @@ GEM
       sass (>= 3.3.4)
     browser (2.5.1)
     builder (3.2.3)
+    bullet (5.6.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.10.0)
     capybara (2.15.4)
       addressable
       mini_mime (>= 0.1.3)
@@ -469,6 +472,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
     sixarm_ruby_unaccent (1.2.0)
+    slack-notifier (2.3.1)
     slack-ruby-client (0.10.0)
       activesupport
       faraday (>= 0.9)
@@ -518,6 +522,7 @@ GEM
     unicorn (5.3.1)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    uniform_notifier (1.10.0)
     validates_email_format_of (1.6.3)
       i18n
     validates_formatting_of (0.9.0)
@@ -545,6 +550,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails (~> 1.7)
   bootstrap-sass (~> 3.3)
   browser (~> 2.3)
+  bullet
   capybara (~> 2.11)
   carrierwave (~> 1)
   chartkick (~> 2.2)
@@ -606,7 +612,8 @@ DEPENDENCIES
   simple_form
   simple_token_authentication (~> 1.15)
   simplecov (~> 0.12)
-  slack-ruby-client
+  slack-notifier
+  slack-ruby-client (~> 0.10)
   spring
   spring-watcher-listen (~> 2.0.0)
   therubyracer (~> 0.12)
