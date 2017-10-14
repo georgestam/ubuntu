@@ -24,5 +24,6 @@
 
 //= require bootstrap-datepicker
 
-//= require Chart.bundle
+//= require highcharts/highcharts
+//= require highcharts/modules/boost.js
 //= require chartkick
