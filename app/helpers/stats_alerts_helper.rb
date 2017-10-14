@@ -12,7 +12,7 @@ module StatsAlertsHelper
   end
   
   def alerts_by_time
-    data = GroupAlert.includes(:alerts).map { |group_alert| 
+    data = GroupAlert.all.map { |group_alert| 
       {name: group_alert.title, data: by_week(group_alert.alerts, "alerts.created_at")} 
     }
     column_chart data, legend: "bottom", xtitle: "", ytitle: "", library: basic_opts('Number of Alerts (Alerts Group)')

@@ -3,7 +3,7 @@ module StatsCustomersHelper
     
     data = []
 
-    Meter.all.each do |meter|
+    Meter.includes(:customer).each do |meter|
       dates = @start_date.beginning_of_day..@end_date.end_of_day
       json = Usage.generate_usage_json(meter, dates)
       

@@ -8,7 +8,7 @@ module StatsTopupsHelper
   
   def top_10_customers_with_topups_in_time
     
-    data = Customer.includes(:topups).map { |customer|
+    data = Customer.all.map { |customer|
       topups = Topup.where(customer: customer)
       sub_data = by_week(topups, "created_on")
       {name: customer.name, data: sub_data, cumulative: topups.count } 
@@ -33,7 +33,7 @@ module StatsTopupsHelper
   
   def top_10_customers_with_topups_in_time_sum
     
-    data = Customer.includes(:topups).map { |customer|
+    data = Customer.all.map { |customer|
       topups = Topup.where(customer: customer)
       sub_data = by_week(topups, "created_on", "sum")
       {name: customer.name, data: sub_data, cumulative: topups.sum(:amount) } 
