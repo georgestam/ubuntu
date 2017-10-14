@@ -8,9 +8,11 @@ gem 'pg', '~> 0.18'
 
 gem 'puma'
 
+# slack gems
 gem 'eventmachine'
 gem 'faye-websocket'
-gem 'slack-ruby-client'
+gem "slack-notifier"
+gem 'slack-ruby-client', '~> 0.10'
 
 gem 'activerecord-session_store', '~> 1'
 gem 'bootstrap-datepicker-rails', '~> 1.7' 
@@ -69,6 +71,7 @@ end
 group :staging, :development, :test do
   gem 'awesome_print'
   gem 'better_errors'
+  gem 'bullet'
   gem 'factory_girl_rails'
   gem 'faker', '~> 1.7'
   gem 'pry-nav'

@@ -10,10 +10,11 @@ module ApplicationHelper
 
   def basic_opts(title)
     {
+      boost: {
+      useGPUTranslations: true
+    },
       title: {
-           display: true,
-           fontSize: 12,
-           padding: 50,
+           margin: 50,
            text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
        }
     }
@@ -21,6 +22,9 @@ module ApplicationHelper
   
   def basic_opts_without_decimals(title)
     {
+      boost: {
+      useGPUTranslations: true
+    },
       scales: {
           xAxes: [{
               ticks: {
@@ -29,9 +33,7 @@ module ApplicationHelper
           }]
       },
       title: {
-           display: true,
-           fontSize: 12,
-           padding: 50,
+           margin: 50,
            text: "#{title} - #{@start_date.strftime('%d %b %Y') } to #{@end_date.strftime('%d %b %Y') }"
        }
     }
