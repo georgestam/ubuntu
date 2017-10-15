@@ -185,10 +185,11 @@ module StatsUsageHelper
     top_data.unshift({name: "Community average", data: total_data })
     
     line_chart top_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "24 hours", library: {
+      boost: {
+      useGPUTranslations: true
+    },
       title: {
-           display: true,
-           fontSize: 12,
-           padding: 50,
+           margin: 50,
            text: "Top 10 customers with more usage during 24 hour period - #{DateTime.yesterday.strftime('%d %b %Y')} only"
        }
     }

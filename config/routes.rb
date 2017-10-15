@@ -19,10 +19,14 @@ Rails.application.routes.draw do
     
   end 
   
-  resources :stats, only: %i(index create) do
+  resources :stats, only: %i(index create) 
+  
+  resources  :usages, only: %i() do
     collection do 
-      get "monthly_graphs"  
+      get "total_usage_and_custommer_with_usage_per_day"  
+      get "custommer_with_usage_per_week"    
     end 
+      
   end 
 
   get 'info', to: "pages#info"
