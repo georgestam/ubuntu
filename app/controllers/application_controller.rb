@@ -26,6 +26,6 @@ class ApplicationController < ActionController::Base
   ensure
     # to address the thread variable leak issues in Puma/Thin webserver
     Current.user = nil
-  end      
+  end     
 
 end

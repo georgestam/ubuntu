@@ -122,7 +122,7 @@ module StatsUsageHelper
   end
   
   def plot_top_custommer_with_usage_per_week
-    line_chart @plot_top_custommer_with_usage_per_week, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
+    line_chart @plot_top_custommer_with_usage_per_week, id: "total-usage-cumulative-per-week", legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "weeks", library: basic_opts('Top 10 customers with more average usage per day (24h)')
   end 
   
   def plot_bottom_custommer_with_usage_per_week
@@ -184,12 +184,13 @@ module StatsUsageHelper
     
     top_data.unshift({name: "Community average", data: total_data })
     
-    line_chart top_data, legend: "bottom", height: "600px", ytitle: "Kwh", xtitle: "24 hours", library: {
+    line_chart top_data, legend: "bottom", height: "600px", id: "day-usage-cumulative", ytitle: "Kwh", xtitle: "24 hours", library: {
+      boost: {
+      useGPUTranslations: true
+    },
       title: {
-           display: true,
-           fontSize: 12,
-           padding: 50,
-           text: "Top 10 customers with more usage during 24 hour period - #{DateTime.yesterday.strftime('%d %b %Y')} only"
+           margin: 50,
+           text: "Top 10 customers with more usage during 24 hour period - #{@start_date.strftime('%d %b %Y')} only"
        }
     }
   
