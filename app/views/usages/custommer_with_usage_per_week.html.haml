@@ -3,7 +3,10 @@
   .highcharts-title 
     font-weight: bold !important
     font-size: 14px !important
-    
+  
+  
+%div{ style: "margin-top: 40px"}
+  = link_to 'Back to stats', :back, class: 'btn btn-default btn-lg margin width-buttom'
 - average_usage_per_week_during_24
 %p.title-graph 
 = plot_top_custommer_with_usage_per_week
