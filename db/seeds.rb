@@ -19,15 +19,13 @@ if development? || staging?
   negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert_billing
   FactoryGirl.create :issue, type_alert: negative_acount
   
-  FactoryGirl.create_list(:alert, 10)
-  
   # Run Steama API
-  Customer.destroy_all
-  
   FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert_billing
   
   UpdateDbJob.perform_now
   PullUsageJob.perform_now
+  
+  main_customer = Customer.first
 
   2.times do |group_alert|
     group_alert = FactoryGirl.create :group_alert, user: manager 
@@ -36,10 +34,10 @@ if development? || staging?
       1.times do |issue|
         issue = FactoryGirl.create :issue, type_alert: type_alert
         2.times do
-          FactoryGirl.create :alert, issue: issue, type_alert: type_alert
+          FactoryGirl.create :alert, issue: issue, type_alert: type_alert, customer: main_customer
         end
         2.times do
-          FactoryGirl.create :alert, :resolved, issue: issue, type_alert: type_alert
+          FactoryGirl.create :alert, :resolved, issue: issue, type_alert: type_alert, customer: main_customer
         end
       end
     end
