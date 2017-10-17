@@ -42,15 +42,15 @@ class Alert < ApplicationRecord
   end
 
   def self.my_resolved
-    all_resolved.my_alerts
+    all_resolved.my_alerts.order(created_at: :asc)
   end
 
   def self.my_open
-    all_open.my_alerts
+    all_open.my_alerts.order(created_at: :asc)
   end
 
   def self.my_alerts
-    where(user: Current.user)
+    where(user: Current.user).order(created_at: :asc)
   end 
 
   def title # to humanize rails admin
