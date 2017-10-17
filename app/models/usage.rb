@@ -31,7 +31,7 @@ class Usage < ApplicationRecord
     end 
   end
   
-  def self.generate_usage_json(meter, dates)
+  def self.generate_usage_json(meter, dates = Date.yesterday.beginning_of_day..Date.yesterday.end_of_day)
     raw_data = meter.usages.where(created_on: dates)[0].try(:api_data) # we always pass the one full day, and we only have a record per day, we select always the first record
     if raw_data
       test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
