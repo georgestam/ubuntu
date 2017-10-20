@@ -26,7 +26,7 @@ class Usage < ApplicationRecord
     
     usage = Usage.new(api_data: json_data, meter_id: meter_id, created_on: start_time)
   
-    unless usage.save!
+    unless usage.save
       #  TODO: send email with error
     end 
   end
