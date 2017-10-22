@@ -18,20 +18,10 @@ class Customer < ApplicationRecord
     "#{self.first_name},#{self.last_name}"
   end
   
-  def an_alert_with_negative_acount_open?
+  def an_alert_open_with?(name_type_of_alert)
     exist = false 
     Alert.all.each do |alert|
-      if Alert.find_by(resolved_at: nil, customer_id: self.id, issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Negative account")))
-        exist = true  
-      end
-    end 
-    exist
-  end
-  
-  def an_alert_with_line_off?
-    exist = false 
-    Alert.all.each do |alert|
-      if Alert.find_by(resolved_at: nil, customer_id: self.id, issue: Issue.find_by(type_alert: TypeAlert.find_by(name: "Line is off")))
+      if Alert.find_by(resolved_at: nil, customer_id: self.id, issue: Issue.find_by(type_alert: TypeAlert.find_by(name: name_type_of_alert)))
         exist = true  
       end
     end 

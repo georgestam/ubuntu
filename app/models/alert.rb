@@ -147,7 +147,7 @@ class Alert < ApplicationRecord
 
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && !customer.an_alert_with_negative_acount_open? 
+      if customer.account_balance.to_i <= 0 && !customer.an_alert_open_with?("Negative account")
         type_alert = TypeAlert.find_by(name: "Negative account")
         @alert = if Alert.create!({
             customer: customer,
@@ -181,21 +181,24 @@ class Alert < ApplicationRecord
         
         id_steama = line['user'].to_i
         
-        customer = Customer.find_by(id_steama: id_steama)
+        # add condition as an_alert_open_with?("Line is off") does not work if customer if nil
+        customer = if Customer.find_by(id_steama: id_steama)
         # line_status 4,5,6,7 are line off
-        if line['line_status'].to_i > 3 && !customer.try(:an_alert_with_line_off?)
-          
-          type_alert = TypeAlert.find_by(name: "Line is off")
-          @alert = if Alert.create({
-              customer: customer,
-              type_alert: type_alert,
-              issue: Issue.find_by(type_alert: type_alert)
-              })
-          else
-            flash[:alert] = @alert.errors.full_messages
-            # TODO: send email with there has been a problem
+          if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off")
+            
+            type_alert = TypeAlert.find_by(name: "Line is off")
+            @alert = if Alert.create({
+                customer: customer,
+                type_alert: type_alert,
+                issue: Issue.find_by(type_alert: type_alert)
+                })
+            else
+              flash[:alert] = @alert.errors.full_messages
+              # TODO: send email with there has been a problem
+            end
           end
-        end
+          
+        end 
         
       end  
         
