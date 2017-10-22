@@ -172,22 +172,21 @@ class Alert < ApplicationRecord
         body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
         JSON.parse(body)
       else 
-        file = Rails.root.join('spec', 'support', 'example_steama.json')
+        file = Rails.root.join('spec', 'support', 'example_steama_utilities.json')
         JSON.parse(File.read(file))
       end 
     
       
       json_data['results'].each do |line|
         
-        # binding.pry
         id_steama = line['user'].to_i
         
         customer = Customer.find_by(id_steama: id_steama)
         # line_status 4,5,6,7 are line off
-        if line['line_status'].to_i > 3 && !customer.an_alert_with_line_off?
+        if line['line_status'].to_i > 3 && !customer.try(:an_alert_with_line_off?)
           
           type_alert = TypeAlert.find_by(name: "Line is off")
-          @alert = if Alert.create!({
+          @alert = if Alert.create({
               customer: customer,
               type_alert: type_alert,
               issue: Issue.find_by(type_alert: type_alert)
