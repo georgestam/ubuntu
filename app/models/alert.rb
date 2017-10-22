@@ -181,9 +181,11 @@ class Alert < ApplicationRecord
         
         id_steama = line['user'].to_i
         
-        # add condition as an_alert_open_with?("Line is off") does not work if customer if nil
-        customer = if Customer.find_by(id_steama: id_steama)
-        # line_status 4,5,6,7 are line off
+        customer = Customer.find_by(id_steama: id_steama)
+        # add condition as an_alert_open_with?("Line is off") does not work if customer is nil
+
+        if customer
+          # line_status 4,5,6,7 are line off
           if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off")
             
             type_alert = TypeAlert.find_by(name: "Line is off")
