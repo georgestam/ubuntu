@@ -17,7 +17,10 @@ if development? || staging?
 
   group_alert_billing = FactoryGirl.create :group_alert, title: "billing", user: manager
   negative_acount = FactoryGirl.create :type_alert, name: "Negative account", group_alert: group_alert_billing
+  line_off = FactoryGirl.create :type_alert, name: "Line is off", group_alert: group_alert_billing
+  
   FactoryGirl.create :issue, type_alert: negative_acount
+  FactoryGirl.create :issue, type_alert: line_off
   
   # Run Steama API
   FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert_billing
