@@ -1,4 +1,6 @@
 class Alert < ApplicationRecord
+  
+  require 'rest-client'
 
   STATUS = %w[open resolved].freeze
 
@@ -145,7 +147,7 @@ class Alert < ApplicationRecord
 
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && !customer.an_alert_with_negative_acount_open?
+      if customer.account_balance.to_i <= 0 && !customer.an_alert_open_with?("Negative account")
         type_alert = TypeAlert.find_by(name: "Negative account")
         @alert = if Alert.create!({
             customer: customer,
@@ -158,6 +160,51 @@ class Alert < ApplicationRecord
         end
       end
     end
+  end
+  
+  def self.create_alert_for_customers_with_line_off
+    
+    url1 = "https://api.steama.co/bitharvesters/99596/lines/?format=json&page_size=70"
+    url2 = "https://api.steama.co/bitharvesters/99596/lines/?format=json&page=2&page_size=70"
+    
+    [url1, url2].each do |url|
+      json_data = if !test?
+        body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
+        JSON.parse(body)
+      else 
+        file = Rails.root.join('spec', 'support', 'example_steama_utilities.json')
+        JSON.parse(File.read(file))
+      end 
+    
+      
+      json_data['results'].each do |line|
+        
+        id_steama = line['user'].to_i
+        
+        customer = Customer.find_by(id_steama: id_steama)
+        # add condition as an_alert_open_with?("Line is off") does not work if customer is nil
+
+        if customer
+          # line_status 4,5,6,7 are line off
+          if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off")
+            
+            type_alert = TypeAlert.find_by(name: "Line is off")
+            @alert = if Alert.create({
+                customer: customer,
+                type_alert: type_alert,
+                issue: Issue.find_by(type_alert: type_alert)
+                })
+            else
+              flash[:alert] = @alert.errors.full_messages
+              # TODO: send email with there has been a problem
+            end
+          end
+          
+        end 
+        
+      end  
+        
+    end 
   end
   
   def self.check_meters_exceeding_max_daily_usage
