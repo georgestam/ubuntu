@@ -45,7 +45,7 @@ gem 'omniauth-facebook', '~> 4'
 gem 'paper_trail', '~> 4' # version 6 is incompatible with rails_admin
 gem 'postmark'
 gem 'pundit', '~> 1.1'
-gem 'rails_admin'
+gem 'rails_admin', '~> 1.2'
 gem 'raygun4ruby'
 gem 'recaptcha', '~> 4.1', require: 'recaptcha/rails'
 gem 'redcarpet', '~> 3.4'
