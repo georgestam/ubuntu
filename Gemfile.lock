@@ -606,7 +606,7 @@ DEPENDENCIES
   sass-rails (~> 5)
   selenium-webdriver (~> 2.47)
   shoulda-matchers (~> 3.1)
-  sidekiq (~> 5.0.4)
+  sidekiq (~> 5.0)
   sidekiq-failures!
   simple_calendar (~> 2.2)
   simple_form

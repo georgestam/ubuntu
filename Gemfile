@@ -52,7 +52,7 @@ gem 'redcarpet', '~> 3.4'
 gem 'redis'
 gem 'remotipart', '~> 1.3', '>= 1.3.1' # for rails_admin
 gem 'sass-rails', '~> 5'
-gem 'sidekiq', '~> 5.0.4'
+gem 'sidekiq', '~> 5.0'
 gem 'sidekiq-failures', github: 'mhfs/sidekiq-failures'
 gem 'simple_calendar', '~> 2.2'
 gem 'simple_form'
