@@ -56,7 +56,7 @@ class Alert < ApplicationRecord
   end 
 
   def title # to humanize rails admin
-    self.type_alert.name if self.type_alert.present?
+    self.type_alert.present? ? self.type_alert.name : "type alert is not present"
   end
 
   def type_alert_for_alert_and_issue_is_the_same
