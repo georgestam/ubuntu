@@ -73,7 +73,7 @@ RailsAdmin.config do |config|
       field :group_alert do
         column_width 200
         formatted_value do
-          value.to_s
+          bindings[:object].title
         end
         column_width 120
       end
