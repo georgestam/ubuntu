@@ -27,6 +27,7 @@ if development? || staging?
   
   UpdateDbJob.perform_now
   PullUsageJob.perform_now
+  UpdateToupsJob.perform_now
   
   main_customer = Customer.first
 
@@ -46,34 +47,21 @@ if development? || staging?
     end
   end
   
-  require 'csv'    
-
-  csv_text = File.read('spec/support/top-ups.csv')
-  csv = CSV.parse(csv_text, :headers => true)
-  csv.each do |row|
-    h = row.to_hash
-    h["id_steama"] = h["id_steama"].to_i
-    h["amount"] = h["amount"].to_i
-    h["created_on"] = DateTime.strptime(h["created_on"], '%Y-%m-%d %H:%M:%S%z')
-    h["customer_id"] = Customer.find_by(id_steama: h["id_steama"].to_i).id
-    Topup.create!(h)
-  end
+  # require 'csv'    
+  # 
+  # csv_text = File.read('spec/support/top-ups.csv')
+  # csv = CSV.parse(csv_text, :headers => true)
+  # csv.each do |row|
+  #   h = row.to_hash
+  #   h["id_steama"] = h["id_steama"].to_i
+  #   h["amount"] = h["amount"].to_i
+  #   h["created_on"] = DateTime.strptime(h["created_on"], '%Y-%m-%d %H:%M:%S%z')
+  #   h["customer_id"] = Customer.find_by(id_steama: h["id_steama"].to_i).id
+  #   Topup.create!(h)
+  # end
   
 end 
 
 if production?
-  
-  require 'csv'    
-
-  csv_text = File.read('spec/support/top-ups.csv')
-  csv = CSV.parse(csv_text, :headers => true)
-  csv.each do |row|
-    h = row.to_hash
-    h["id_steama"] = h["id_steama"].to_i
-    h["amount"] = h["amount"].to_i
-    h["created_on"] = DateTime.strptime(h["created_on"], '%Y-%m-%d %H:%M:%S%z')
-    h["customer_id"] = Customer.find_by(id_steama: h["id_steama"].to_i).id
-    Topup.create!(h)
-  end
   
 end

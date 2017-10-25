@@ -18,5 +18,10 @@ namespace :pull_database do
   task check_customers_with_line_off: :environment do
     CreateAlertsForLineOffJob.perform_later
   end
+  
+  desc "Pull topups from Steama (async)"
+  task pull_topups: :environment do
+    UpdateToupsJob.perform_later
+  end
 
 end
