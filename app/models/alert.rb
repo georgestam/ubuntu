@@ -185,7 +185,7 @@ class Alert < ApplicationRecord
 
         if customer
           # line_status 4,5,6,7 are line off
-          if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off")
+          if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off") && !customer.an_alert_open_with?("Negative account")
             
             type_alert = TypeAlert.find_by(name: "Line is off")
             @alert = if Alert.create({
