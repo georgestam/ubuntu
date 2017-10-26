@@ -41,11 +41,7 @@ module Ubuntu
     end
 
     def self.protocol
-      if development_or_test?
-        'http'
-      else
-        'http'
-      end
+      'http'
     end
 
     def self.set_url_options!
