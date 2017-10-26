@@ -28,7 +28,7 @@ module Ubuntu
       elsif staging?
         'https://ubuntu-power-staging.herokuapp.com'
       else
-        'https://ubuntu-power.herokuapp.com'
+        'admin.ubuntupower.org'
       end
     end
 
@@ -44,7 +44,7 @@ module Ubuntu
       if development_or_test?
         'http'
       else
-        'https'
+        'http'
       end
     end
 
