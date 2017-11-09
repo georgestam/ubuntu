@@ -1,7 +1,7 @@
 class CustomerPolicy < ApplicationPolicy
   
   def edit?
-    false
+    user.manager?
   end 
   
   def create?

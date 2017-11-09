@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171024082727) do
+ActiveRecord::Schema.define(version: 20171109063134) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 20171024082727) do
   end
 
   create_table "customers", force: :cascade do |t|
-    t.integer  "id_steama",               null: false
+    t.integer  "id_steama",                               null: false
     t.string   "url"
     t.string   "transactions_url"
     t.string   "utilities"
@@ -66,8 +66,9 @@ ActiveRecord::Schema.define(version: 20171024082727) do
     t.string   "integration_id"
     t.string   "labels"
     t.string   "description"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.boolean  "ignore_alerts",           default: false
   end
 
   create_table "group_alerts", force: :cascade do |t|

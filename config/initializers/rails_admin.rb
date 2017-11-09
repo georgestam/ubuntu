@@ -114,10 +114,11 @@ RailsAdmin.config do |config|
     list do
       field :id
       field :alerts 
-      field :id_steama
+      field :ignore_alerts
       field :telephone
       field :first_name
       field :last_name
+      field :id_steama
       field :description
       field :account_balance
       field :low_balance_warning

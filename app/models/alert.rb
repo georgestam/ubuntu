@@ -23,6 +23,7 @@ class Alert < ApplicationRecord
   after_commit :send_slack_notification, unless: :test?
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
+  validate :customer_cannot_generate_alerts
 
   def set_assigned_alert_to
     self.user = self.type_alert.group_alert.user
@@ -62,6 +63,12 @@ class Alert < ApplicationRecord
   def type_alert_for_alert_and_issue_is_the_same
     unless self.type_alert == self.issue.type_alert
       errors[:type_alert] << "Type Alert has to be the same for Issue and Alert"
+    end
+  end
+  
+  def customer_cannot_generate_alerts
+    if self.customer.ignore_alerts == true
+      errors[:customer] << "Alert cannot be created for this customer"
     end
   end
 
