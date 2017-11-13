@@ -154,7 +154,7 @@ class Alert < ApplicationRecord
 
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      if customer.account_balance.to_i <= 0 && !customer.an_alert_open_with?("Negative account") && customer.ignore_alerts == false && customer.ignore_alerts == nil
+      if customer.account_balance.to_i <= 0 && !customer.an_alert_open_with?("Negative account") && !customer.ignore_alerts == true
         type_alert = TypeAlert.find_by(name: "Negative account")
         if Alert.create!({
             customer: customer,
