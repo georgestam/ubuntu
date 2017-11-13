@@ -331,6 +331,8 @@ GEM
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.3)
+    rack-mini-profiler (0.10.6)
+      rack (>= 1.2.0)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -592,6 +594,7 @@ DEPENDENCIES
   pry-stack_explorer
   puma
   pundit (~> 1.1)
+  rack-mini-profiler
   rails (= 5.0.1)
   rails-controller-testing (~> 1)
   rails_admin (~> 1.2)
