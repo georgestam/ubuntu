@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109063134) do
+ActiveRecord::Schema.define(version: 20171121090024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20171109063134) do
     t.index ["issue_id"], name: "index_alerts_on_issue_id", using: :btree
     t.index ["status_id"], name: "index_alerts_on_status_id", using: :btree
     t.index ["type_alert_id"], name: "index_alerts_on_type_alert_id", using: :btree
+  end
+
+  create_table "balances", force: :cascade do |t|
+    t.integer  "customer_id", null: false
+    t.integer  "value_cents", null: false
+    t.date     "created_on",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["customer_id"], name: "index_balances_on_customer_id", using: :btree
   end
 
   create_table "customers", force: :cascade do |t|
@@ -168,6 +177,7 @@ ActiveRecord::Schema.define(version: 20171109063134) do
   add_foreign_key "alerts", "type_alerts"
   add_foreign_key "alerts", "users"
   add_foreign_key "alerts", "users", column: "created_by_id"
+  add_foreign_key "balances", "customers"
   add_foreign_key "group_alerts", "users"
   add_foreign_key "issues", "type_alerts"
   add_foreign_key "meters", "customers"
