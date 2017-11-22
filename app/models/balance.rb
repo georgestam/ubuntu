@@ -9,7 +9,7 @@ class Balance < ApplicationRecord
   def self.update_balance
     Customer.all.each do |customer|
       
-      balance = Balance.new(customer: customer, value_cents: customer.account_balance.to_i*100 ,created_on: Date.today)
+      balance = Balance.new(customer: customer, value_cents: customer.account_balance.to_i * 100, created_on: Time.zone.today)
       
       unless balance.save
         #  TODO: send email with error

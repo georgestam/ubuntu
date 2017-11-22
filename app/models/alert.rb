@@ -154,20 +154,24 @@ class Alert < ApplicationRecord
 
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
-      balance_four_days_ago = Balance.find_by(customer: customer, created_on: Date.today - 4.days )
-      balance_today = Balance.find_by(customer: customer, created_on: Date.today )
+      balance_four_days_ago = Balance.find_by(customer: customer, created_on: Time.zone.today - 4.days)
+      balance_today = Balance.find_by(customer: customer, created_on: Time.zone.today)
       if balance_today && balance_four_days_ago
-        if balance_four_days_ago.value_cents <= 0 && balance_today.value_cents <= 0 && !customer.an_alert_open_with?("Negative account") && !customer.ignore_alerts == true
-          type_alert = TypeAlert.find_by(name: "Negative account")
-          Alert.create!({
-              customer: customer,
-              type_alert: type_alert,
-              issue: Issue.find_by(type_alert: type_alert)
-              })
-        end
+        Alert.create_negative_account(balance_four_days_ago, balance_today, customer)
       end 
     end
   end
+  
+  def self.create_negative_account(balance_four_days_ago, balance_today, customer)
+    if balance_four_days_ago.value_cents <= 0 && balance_today.value_cents <= 0 && !customer.an_alert_open_with?("Negative account") && !customer.ignore_alerts == true
+      type_alert = TypeAlert.find_by(name: "Negative account")
+      Alert.create!({
+          customer: customer,
+          type_alert: type_alert,
+          issue: Issue.find_by(type_alert: type_alert)
+          })
+    end
+  end 
   
   def self.create_alert_for_customers_with_line_off
     
