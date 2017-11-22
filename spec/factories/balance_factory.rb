@@ -4,7 +4,7 @@ FactoryGirl.define do
     
     customer
     value_cents { rand(0..10_000) }
-    created_on { Faker::Date.forward(23) }
+    created_on { Date.today }
       
   end
   

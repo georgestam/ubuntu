@@ -7,7 +7,7 @@ class Balance < ApplicationRecord
   validates :created_on, uniqueness: {scope: :customer}, allow_nil: true
   
   def self.update_balance
-    Customer.each do |customer|
+    Customer.all.each do |customer|
       
       balance = Balance.new(customer: customer, value_cents: customer.account_balance.to_i*100 ,created_on: Date.today)
       
