@@ -8,7 +8,7 @@ class Customer < ApplicationRecord
   has_many :meters, dependent: :destroy
   has_many :usages, through: :meters
   
-  has_many :balances
+  has_many :balances, dependent: :destroy
   
   validates :id_steama, presence: true, uniqueness: true
   
