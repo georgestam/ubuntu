@@ -1,14 +1,14 @@
 module StatsUsersHelper
   
   def assigned_alerts
-    data = select_range_of_dates_for(Alert.all).joins(:user).group("users.name").count
+    data = select_range_of_dates_for(Alert.all_not_hidden).joins(:user).group("users.name").count
     pie_chart data, donut: true, legend: "bottom", library: basic_opts('% Assigned alerts')
   end
   
   def alerts_by_user
-    alerts_assigned = select_range_of_dates_for(Alert.all).joins(:user).group("users.name").count
-    alerts_resolved = select_range_of_dates_for(Alert.all_resolved).joins(:user).group("users.name").count
-    alerts_open = select_range_of_dates_for(Alert.all_open).joins(:user).group("users.name").count
+    alerts_assigned = select_range_of_dates_for(Alert.all_not_hidden).joins(:user).group("users.name").count
+    alerts_resolved = select_range_of_dates_for(Alert.all_not_hidden.all_resolved).joins(:user).group("users.name").count
+    alerts_open = select_range_of_dates_for(Alert.all_not_hidden.all_open).joins(:user).group("users.name").count
     
     data = [
       {name: "Assigned Alerts", data: alerts_assigned},
@@ -22,8 +22,8 @@ module StatsUsersHelper
   
   def alerts_by_user_in_time(attribute)  
     data = User.all.map do |user| 
-      if user.find_alerts.any?
-        {name: user.name, data: by_week(user.find_alerts, attribute)}
+      if user.find_alerts.all_not_hidden.any?
+        {name: user.name, data: by_week(user.find_alerts.all_not_hidden, attribute)}
       end 
     end  
     # Compact remove nil elements from the hash data
@@ -33,8 +33,8 @@ module StatsUsersHelper
   
   def alerts_created_by_user  
     data = User.all.map do |user| 
-      if user.find_created_by_alerts.any?
-        {name: user.name, data: by_week(user.find_created_by_alerts, "alerts.created_at")} 
+      if user.find_created_by_alerts.all_not_hidden.any?
+        {name: user.name, data: by_week(user.find_created_by_alerts.all_not_hidden, "alerts.created_at")} 
       end 
     end 
     # Compact remove nil elements from the hash data

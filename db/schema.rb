@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109063134) do
+ActiveRecord::Schema.define(version: 20171123094834) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,9 +123,10 @@ ActiveRecord::Schema.define(version: 20171109063134) do
 
   create_table "type_alerts", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.integer  "group_alert_id"
+    t.boolean  "hidden_from_graphs", default: false
     t.index ["group_alert_id"], name: "index_type_alerts_on_group_alert_id", using: :btree
   end
 

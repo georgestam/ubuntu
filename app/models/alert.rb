@@ -35,7 +35,11 @@ class Alert < ApplicationRecord
       self.created_by = User.find_by(name: "Ubuntu") unless Current.user # When a rake tasks is called
     end 
   end 
-
+  
+  def self.all_not_hidden
+    where(type_alert: TypeAlert.where(hidden_from_graphs: false))
+  end 
+  
   def self.all_resolved
     where.not(resolved_at: nil)
   end

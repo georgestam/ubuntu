@@ -22,7 +22,7 @@ module StatsCustomersHelper
   end
   
   def top_10_customers_with_more_alerts(order)
-    data = select_range_of_dates_for(Alert.all).joins(:customer).group("customers.id").count.map{|costumer_id, count| [costumer_id ? Customer.find(costumer_id).name : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19
+    data = select_range_of_dates_for(Alert.all_not_hidden).joins(:customer).group("customers.id").count.map{|costumer_id, count| [costumer_id ? Customer.find(costumer_id).name : "Unassigned", count] } # https://github.com/ankane/chartkick/issues/19
     
     top_10_data = sort_records(order, data, 10)
      
