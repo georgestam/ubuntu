@@ -1,7 +1,7 @@
 class StatsController < ApplicationController
   
   before_action :format_dates
-  before_action :skip_authorization, only: %i[create]
+  before_action :skip_authorization, only: %i[create graph_costumer]
   
   def index
     policy_scope(User)
@@ -13,6 +13,10 @@ class StatsController < ApplicationController
       format.js
     end
   end 
+  
+  def graph_costumer
+  end 
+  
   
   private
   

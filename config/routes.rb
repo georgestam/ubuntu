@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   
   resources :stats, only: %i(index create) 
   
+  get "/graph_costumer", to: "stats#graph_costumer", as: :graph_costumer
+  
   resources :usages, only: %i() do
     collection do 
       get "total_usage_and_custommer_with_usage_per_day"  
