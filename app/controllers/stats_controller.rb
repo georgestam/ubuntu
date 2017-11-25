@@ -15,8 +15,8 @@ class StatsController < ApplicationController
   end 
   
   def graph_costumer
+    @customer = Customer.find(31)
   end 
-  
   
   private
   
