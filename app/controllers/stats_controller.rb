@@ -1,7 +1,9 @@
 class StatsController < ApplicationController
   
-  before_action :format_dates
+  before_action :format_dates, only: %i[index create]
+  before_action :load_costumers, only: %i[index create]
   before_action :skip_authorization, only: %i[create graph_costumer]
+  before_action :load_dates, only: %i[graph_costumer]
   
   def index
     policy_scope(User)
@@ -15,10 +17,14 @@ class StatsController < ApplicationController
   end 
   
   def graph_costumer
-    @customer = Customer.find(31)
+    @customer = Customer.find(params["customer_id"].to_i)
   end 
   
   private
+  
+  def load_costumers
+    @customers = Customer.all.sort_by(&:first_name).collect {|c| [c.name, c.id]}
+  end
   
   def format_dates
     @start_date = params[:start_date].blank? ? 2.weeks.ago.midnight : params[:start_date].to_datetime.midnight

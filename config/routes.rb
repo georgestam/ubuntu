@@ -19,9 +19,11 @@ Rails.application.routes.draw do
     
   end 
   
-  resources :stats, only: %i(index create) 
-  
-  get "/graph_costumer", to: "stats#graph_costumer", as: :graph_costumer
+  resources :stats, only: %i(index create) do 
+    collection do 
+      post "graph_costumer"
+    end 
+  end 
   
   resources :usages, only: %i() do
     collection do 

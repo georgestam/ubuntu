@@ -1,10 +1,36 @@
+:sass
+
+  .center 
+    text-align: center
+
+  .margin
+    margin: 30px
+
+  .nav-tabs > li
+    float: none
+    display: inline-block
+    zoom: 1
+
+  .nav-tabs 
+    text-align: center
+
+
 #customers_graphs
   %p.title-graph 
   = top_10_customers_with_more_usage("asc")
   %p.title-graph
   = top_10_customers_with_more_alerts("asc")
   %p.title-graph
-    = "Slect Costumer"
-  %br/
-  .title-graph{style: "margin: 50px"} 
-    = link_to "Generate Individual Report", graph_costumer_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "usages-1"
+  %br/  
+  .row
+    .panel-default.col-md-offset-2.col-md-8.center
+      %h4
+        = "Select Costumer"
+      .row
+        .col-md-offset-2.col-md-8
+          = simple_form_for Customer.new, url: graph_costumer_stats_path, method: :post do |f|
+            = f.error_notification
+            = render 'shared/flashes'
+            = f.input :customer_id, as: :fake_select, label: false, collection: @customers, prompt: "Select customer" 
+            = f.button :submit, "Generate Individual Report", class: "button btn btn-lg btn-primary"
+      
