@@ -1,4 +1,4 @@
-class MeterPolicy < ApplicationPolicy
+class BalancePolicy < ApplicationPolicy
   
   def new? 
     false
