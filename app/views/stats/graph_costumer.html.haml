@@ -1,0 +1,30 @@
+:sass
+  .col-centered
+    float: none
+    margin: 0 auto
+    
+  .title-graph 
+    font-weight: bold
+    text-align: center
+    margin: 40px
+  
+  .nav-tabs > li
+    float: none
+    display: inline-block
+    zoom: 1
+
+  .nav-tabs 
+    text-align: center
+    
+  // overides highcharts font size
+  .highcharts-title 
+    font-weight: bold !important
+    font-size: 14px !important
+
+= link_to 'Back', :back, class: 'btn btn-default btn-lg margin', style: "margin-top: 30px"
+
+%p.title-graph 
+  = customer_indivicual_graph_topups_in_time
+  = customer_indivicual_graph_in_time_sum
+  
+  

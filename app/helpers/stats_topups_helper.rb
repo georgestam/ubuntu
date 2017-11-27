@@ -50,4 +50,26 @@ module StatsTopupsHelper
     line_chart top_data, legend: "bottom", xtitle: "", ytitle: "KES", library: basic_opts('Top 10 customers with more topups per week (sum)')
   end
   
+  def customer_indivicual_graph_topups_in_time
+    data = [@customer].map { |customer|
+      topups = Topup.where(customer: customer)
+      sub_data = by_week(topups, "created_on")
+      {name: customer.name, data: sub_data, cumulative: topups.count } 
+    }
+    
+    line_chart data, legend: "bottom", xtitle: "", ytitle: "", library: basic_opts("#{@customer.first_name} topups per week (count)")
+    
+  end 
+  
+  def customer_indivicual_graph_in_time_sum
+    data = [@customer].map { |customer|
+      topups = Topup.where(customer: customer)
+      sub_data = by_week(topups, "created_on", "sum")
+      {name: customer.name, data: sub_data, cumulative: topups.sum(:amount) } 
+    }
+    
+    line_chart data, legend: "bottom", xtitle: "", ytitle: "KES", library: basic_opts("#{@customer.first_name} topups per week (sum)")
+  
+  end
+  
 end

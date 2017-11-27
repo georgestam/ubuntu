@@ -26,6 +26,13 @@ class ApplicationController < ActionController::Base
   ensure
     # to address the thread variable leak issues in Puma/Thin webserver
     Current.user = nil
-  end     
+  end  
+  
+  private   
+  
+  def load_dates
+    @start_date = session[:start_date].to_datetime.midnight
+    @end_date = session[:end_date].to_datetime.at_end_of_day
+  end
 
 end
