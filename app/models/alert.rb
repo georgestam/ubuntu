@@ -24,6 +24,8 @@ class Alert < ApplicationRecord
 
   validate :type_alert_for_alert_and_issue_is_the_same, if: :issue? # it ensures that we have chosen the same type_alert in both tables
   validate :customer_cannot_generate_alerts
+  
+  after_commit :notify_slack_user_created_by, on: :update 
 
   def set_assigned_alert_to
     self.user = self.type_alert.group_alert.user
@@ -117,6 +119,17 @@ class Alert < ApplicationRecord
     client.auth_test
     client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
   end 
+  
+  def notify_slack_user_created_by
+    ubuntu_user = User.find_by(slack_username: "@ubuntu")
+    if self.resolved? && !test? && self.created_by != ubuntu_user
+      user = User.find(self.created_by_id)
+      text = "Hello #{self.created_by.try(:name) if self.created_by.present?}!\n Alert resolved by #{self.user.try(:name)} for Customer #{self.customer.first_name} #{self.customer.last_name}: id: #{self.id}, #{self.type_alert.name} - #{self.try(:resolved_comments)}\n"
+      client = Slack::Web::Client.new
+      client.auth_test
+      client.chat_postMessage(channel: user.slack_username, text: text, as_user: 'ubuntu')
+    end 
+  end
   
   def self.notify_slack_channel(alert)
     text = if alert.resolved?
