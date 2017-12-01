@@ -168,6 +168,20 @@ class Alert < ApplicationRecord
   def closed!
      self.update_attributes(closed_at: Time.current)
   end
+  
+  def self.check_customers_with_sudden_drop_in_balance
+    Customer.all.each do |customer|
+      previous_account_balance = 100 # TODO 
+      if (previous_account_balance - customer.account_balance.to_i) >  100
+        type_alert = TypeAlert.find_by(name: "Sudden high drop in account balance")
+        Alert.create!({
+            customer: customer,
+            type_alert: type_alert,
+            issue: Issue.find_by(type_alert: type_alert)
+            })
+      end 
+    end
+  end
 
   def self.check_customers_with_negative_acount
     Customer.all.each do |customer|
