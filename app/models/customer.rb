@@ -100,7 +100,7 @@ class Customer < ApplicationRecord
   end 
   
   def update_customer(user)
-    # todo method
+    # TODO: method
     if self.update_attributes({  
         id_steama: user['id'],
         url: user['url'],

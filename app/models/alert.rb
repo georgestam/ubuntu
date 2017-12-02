@@ -172,7 +172,7 @@ class Alert < ApplicationRecord
   def self.check_customers_with_sudden_drop_in_balance
     Customer.all.each do |customer|
       previous_account_balance = 100 # TODO 
-      if (previous_account_balance - customer.account_balance.to_i) >  100
+      if (previous_account_balance - customer.account_balance.to_i) > 100
         type_alert = TypeAlert.find_by(name: "Sudden high drop in account balance")
         Alert.create!({
             customer: customer,
