@@ -8,22 +8,26 @@ class Topup < ApplicationRecord
   validates :amount, :numericality => { :greater_than_or_equal_to => 1 }
   
   def self.update_topups_from_api
-  
     if test?
       file = Rails.root.join('spec', 'support', 'example_steama_topups.json')
       json_data = JSON.parse(File.read(file))
       Topup.create_topup_from_api(json_data, Customer.first)
     else 
       Customer.all.each do |customer|
-        url = "https://api.steama.co/customers/#{customer.id_steama}/transactions/?format=json&page_size=70"
-
-        body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
-        json_data = JSON.parse(body)
-        
-        if json_data['results'] # checks that that the customer at least did one topup
+        url = "https://api.steama.co/customers/#{customer.id_steama}/transactions/?format=json&page_size=70" 
+        body = ""
+        begin
+          body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
+        rescue RestClient::ExceptionWithResponse => e
+          e.response
+        end
+        if body != ""
+          json_data = JSON.parse(body) 
+        end 
+        if json_data['results'].any? # checks that that the customer at least did one topup
           Topup.create_topup_from_api(json_data, customer)
         end 
-      end        
+      end       
     end
     
   end

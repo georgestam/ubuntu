@@ -179,7 +179,7 @@ class Alert < ApplicationRecord
             type_alert: type_alert,
             issue: Issue.find_by(type_alert: type_alert)
             })
-      end 
+      end
     end
   end
 
