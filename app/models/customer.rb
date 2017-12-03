@@ -100,7 +100,7 @@ class Customer < ApplicationRecord
   end 
   
   def update_customer(user)
-    # TODO: method
+    self.check_customers_with_sudden_drop_in_balance(user['account_balance'].to_i)
     if self.update_attributes({  
         id_steama: user['id'],
         url: user['url'],
@@ -141,4 +141,16 @@ class Customer < ApplicationRecord
     end 
          
   end
+  
+  def check_customers_with_sudden_drop_in_balance(new_account_balance)
+    if (self.account_balance.to_i - new_account_balance) > 100
+      type_alert = TypeAlert.find_by(name: "Sudden high drop in account balance")
+      Alert.create!({
+          customer: self,
+          type_alert: type_alert,
+          issue: Issue.find_by(type_alert: type_alert)
+          })
+    end
+  end
+  
 end
