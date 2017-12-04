@@ -19,12 +19,7 @@ class Usage < ApplicationRecord
     customer = Meter.find(meter_id).customer
     url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=#{end_time}&format=json&start_time=#{start_time}"
     json_data = if !test?  
-      body = ""
-      begin
-        body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
-      rescue RestClient::ExceptionWithResponse => e
-        e.response
-      end
+      body = RestClientCall.get_body
       JSON.parse(body) if body != ""
     else 
       Rails.root.join('spec', 'support', 'example_steama_usage.json')
