@@ -15,7 +15,7 @@ class Topup < ApplicationRecord
     else 
       Customer.all.each do |customer|
         url = "https://api.steama.co/customers/#{customer.id_steama}/transactions/?format=json&page_size=70" 
-        body = RestClientCall.get_body
+        body = RestClientCall.extract_body(url)
         json_data = JSON.parse(body) if body != ""
         Topup.create_topup_from_api(json_data, customer) if json_data['results'].any? # checks that that the customer at least did one topup
       end       
