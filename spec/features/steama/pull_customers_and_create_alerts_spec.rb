@@ -22,6 +22,21 @@ describe "Pull database from steama API and create alerts" do
       }.from(0).to(10)
     end
     
+    it 'create alerts sudden_drop_in_balance' do
+      FactoryGirl.create :type_alert, name: "Sudden high drop in account balance"
+      find('#update-database-button').click
+      
+      Customer.first.update_attributes({  
+          account_balance: "20000"
+          })
+      
+      expect { 
+        find('#update-database-button').click
+      }.to change { 
+        Alert.count 
+      }.from(0).to(1)
+    end
+    
   end
   
 end
