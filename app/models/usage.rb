@@ -20,7 +20,6 @@ class Usage < ApplicationRecord
     url = "https://api.steama.co/customers/#{customer.id_steama}/utilities/1/usage/?end_time=#{end_time}&format=json&start_time=#{start_time}"
     json_data = if !test?  
       body = RestClientCall.extract_body(url)
-      JSON.parse(body) if body != ""
     else 
       Rails.root.join('spec', 'support', 'example_steama_usage.json')
     end 
@@ -38,7 +37,7 @@ class Usage < ApplicationRecord
       begin
         test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
       rescue JSON::ParserError => e
-        e.message unless development?
+        e.message
       end
     else 
       []
