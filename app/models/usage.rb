@@ -38,8 +38,7 @@ class Usage < ApplicationRecord
       begin
         test? ? JSON.parse(File.read(raw_data)) : JSON.parse(raw_data)
       rescue JSON::ParserError => e
-        # blahblah
-        e unless production?
+        e.message unless development?
       end
     else 
       []
