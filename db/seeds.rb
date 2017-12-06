@@ -66,4 +66,15 @@ end
 
 if production?
   
+  start = Date.parse('2017-11-27')
+  final = Date.parse('2017-12-06')
+  (start..final).each do |date|
+    Customer.all.each do |customer| 
+      unless customer.meters.any?
+        customer.meters.create!(customer: customer)
+      end 
+      Usage.request_usage_to_api(date, customer.meters.first.id) 
+    end 
+  end
+  
 end
