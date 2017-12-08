@@ -5,7 +5,7 @@ class RestClientCall
     begin
       body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
     rescue RestClient::ExceptionWithResponse => e
-      e.response
+      e.response if development?
     end
     body
   end
