@@ -243,8 +243,8 @@ class Alert < ApplicationRecord
         cumulative += usage_hour["usage"].to_f
       end 
     
-      if cumulative > (2 * Usage.max_usage_per_customer)
-        type_alert = TypeAlert.find_by(name: "Usage exceeded twice the normal average")
+      if cumulative > (3 * Usage.max_usage_per_customer)
+        type_alert = TypeAlert.find_by(name: "Usage exceeded three the normal average")
         @alert = if Alert.create!({
             customer: meter.customer,
             type_alert: type_alert,
