@@ -244,7 +244,7 @@ class Alert < ApplicationRecord
       end 
     
       if cumulative > (3 * Usage.max_usage_per_customer)
-        type_alert = TypeAlert.find_by(name: "Usage exceeded three the average")
+        type_alert = TypeAlert.find_by(name: "Usage exceeded three times the average")
         @alert = if Alert.create!({
             customer: meter.customer,
             type_alert: type_alert,

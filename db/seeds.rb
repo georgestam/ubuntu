@@ -23,7 +23,7 @@ if development? || staging?
   FactoryGirl.create :issue, type_alert: line_off
   
   # Run Steama API
-  FactoryGirl.create :type_alert, name: "Usage exceeded twice the normal average", group_alert: group_alert_billing 
+  FactoryGirl.create :type_alert, name: "Usage exceeded three times the average", group_alert: group_alert_billing 
   FactoryGirl.create :type_alert, name: "Sudden high drop in account balance", group_alert: group_alert_billing
 
   
