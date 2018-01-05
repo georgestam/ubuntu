@@ -66,15 +66,23 @@ end
 
 if production?
   
-  start = Date.parse('2017-11-27')
-  final = Date.parse('2017-12-06')
-  (start..final).each do |date|
-    Customer.all.each do |customer| 
-      unless customer.meters.any?
-        customer.meters.create!(customer: customer)
+  Balance.all.each do |balance_first|
+    Balance.all.each do |balance_second|
+      if balance_first.customer_id == balance_second.customer_id && balance_first.created_on == balance_second.created_on
+        balance_second.destroy
       end 
-      Usage.request_usage_to_api(date, customer.meters.first.id) 
     end 
-  end
+  end 
+  
+  # start = Date.parse('2017-11-27')
+  # final = Date.parse('2017-12-06')
+  # (start..final).each do |date|
+  #   Customer.all.each do |customer| 
+  #     unless customer.meters.any?
+  #       customer.meters.create!(customer: customer)
+  #     end 
+  #     Usage.request_usage_to_api(date, customer.meters.first.id) 
+  #   end 
+  # end
   
 end
