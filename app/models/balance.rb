@@ -4,7 +4,7 @@ class Balance < ApplicationRecord
   validates :value_cents, presence: true
   validates :customer, presence: true
   
-  validates :created_on, uniqueness: {scope: :customer}
+  validates :created_on, uniqueness: {scope: :customer_id}
   
   def self.update_balance
     Customer.all.each do |customer|
