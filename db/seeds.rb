@@ -69,7 +69,7 @@ if production?
   Balance.all.each do |balance_first|
     Balance.all.each do |balance_second|
       if balance_first.customer_id == balance_second.customer_id && balance_first.created_on == balance_second.created_on && balance_first.id != balance_second.id
-        balance_second.destroy
+        balance_second.destroy!
       end 
     end 
   end 
