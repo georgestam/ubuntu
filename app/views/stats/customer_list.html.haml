@@ -1,0 +1,46 @@
+:sass
+
+  .center 
+    text-align: center
+  .tariff_1
+    color: green
+  .tariff_text
+    font-size: 30px
+    text-align: center
+    margin-top: 20px
+    margin-bottom: 20px
+    
+%div{style: "margin-top: 50px"}
+  %table.table.table-striped.center
+    .tariff_text.tariff_1
+      = "Tariff 1 (top 10):"
+      = @tariff_1 
+    %thead
+      %tr
+        %th.center Global Position
+        %th.center Id steama
+        %th.center Id 
+        %th.center first_name
+        %th.center last_name
+        %th.center energy_price
+        %th.center account_balance
+    %tbody
+      - Customer.all.each do |customer|
+        %tr.tariff_1
+          %td.col-md-2
+            = customer.first_name
+          %td
+            = customer.id
+          %td.col-md-2
+            = customer.first_name
+          %td.col-md-2
+            = customer.first_name
+          %td.col-md-2
+            = customer.first_name
+          %td.col-md-2
+            = customer.first_name
+          %td.col-md-2
+            = customer.first_name
+        
+
+                    

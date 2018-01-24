@@ -1,8 +1,8 @@
 class StatsController < ApplicationController
   
-  before_action :format_dates, only: %i[index create]
-  before_action :load_costumers, only: %i[index create]
-  before_action :skip_authorization, only: %i[create graph_costumer]
+  before_action :format_dates, only: %i[index create customer_list]
+  before_action :load_costumers, only: %i[index create customer_list]
+  before_action :skip_authorization, only: %i[create graph_costumer customer_list]
   before_action :load_dates, only: %i[graph_costumer]
   
   def index
@@ -18,6 +18,12 @@ class StatsController < ApplicationController
   
   def graph_costumer
     @customer = Customer.find(params["customer_id"].to_i)
+  end 
+  
+  def customer_list
+    @tariff_1 = Customer.tariff(1) 
+    @tariff_2 = Customer.tariff(2)
+    @tariff_2 = Customer.tariff(3)
   end 
   
   private

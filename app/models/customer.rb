@@ -20,6 +20,16 @@ class Customer < ApplicationRecord
     "#{self.first_name},#{self.last_name}"
   end
   
+  def self.tariff(number)
+    if number == 1
+      100
+    elsif number == 2
+      200
+    else 
+      300
+    end 
+  end 
+  
   def an_alert_open_with?(name_type_of_alert)
     exist = false 
     Alert.all.each do |alert|

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   resources :stats, only: %i(index create) do 
     collection do 
       post "graph_costumer"
+      get "customer_list"
     end 
   end 
   
