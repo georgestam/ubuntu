@@ -11,6 +11,7 @@ class Customer < ApplicationRecord
   has_many :balances, dependent: :destroy
   
   validates :id_steama, presence: true, uniqueness: true
+  validates :energy_price, presence: true
   
   def self.customer_id_exist?(id_steama)
     true if Customer.find_by(id_steama: id_steama)
@@ -21,12 +22,12 @@ class Customer < ApplicationRecord
   end
   
   def self.tariff(number)
-    if number == 1
-      100
+    if number == 1 #top 11
+      60
     elsif number == 2
-      200
-    else 
-      300
+      80
+    else # bottom 44
+      100
     end 
   end 
   
@@ -77,6 +78,7 @@ class Customer < ApplicationRecord
         telephone: user['telephone'], 
         first_name: user['first_name'],
         last_name: user['last_name'],
+        energy_price: user['energy_price'],
         account_balance: user['account_balance'],
         low_balance_warning: user['low_balance_warning'],
         low_balance_level: user['low_balance_level'],
@@ -119,6 +121,7 @@ class Customer < ApplicationRecord
         telephone: user['telephone'], 
         first_name: user['first_name'],
         last_name: user['last_name'],
+        energy_price: user['energy_price'],
         account_balance: user['account_balance'],
         low_balance_warning: user['low_balance_warning'],
         low_balance_level: user['low_balance_level'],
