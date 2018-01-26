@@ -21,9 +21,9 @@ class StatsController < ApplicationController
   end 
   
   def customer_list
-    @tariff_1 = Customer.tariff(1) 
-    @tariff_2 = Customer.tariff(2)
-    @tariff_2 = Customer.tariff(3)
+    @tariff_1 = Customer.tariff(1).to_i 
+    @tariff_2 = Customer.tariff(2).to_i
+    @tariff_2 = Customer.tariff(3).to_i 
   end 
   
   private

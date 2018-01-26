@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
   
+  TARIFS = %w[60 80 100].freeze
+  
   require 'rest-client'
   
   has_many :alerts, dependent: :destroy
@@ -11,23 +13,35 @@ class Customer < ApplicationRecord
   has_many :balances, dependent: :destroy
   
   validates :id_steama, presence: true, uniqueness: true
-  validates :energy_price, presence: true
+  validates :energy_price, inclusion: { in: TARIFS, allow_nil: false }
   
   def self.customer_id_exist?(id_steama)
     true if Customer.find_by(id_steama: id_steama)
   end 
+  
+  def self.tariff_1
+    where(energy_price: TARIFS[0])
+  end
+  
+  def self.tariff_2
+    where(energy_price: TARIFS[1])
+  end
+  
+  def self.tariff_3
+    where(energy_price: TARIFS[2])
+  end
   
   def name
     "#{self.first_name},#{self.last_name}"
   end
   
   def self.tariff(number)
-    if number == 1 #top 11
-      60
+    if number == 1 # top 11
+      TARIFS[0]
     elsif number == 2
-      80
+      TARIFS[1]
     else # bottom 44
-      100
+      TARIFS[2]
     end 
   end 
   

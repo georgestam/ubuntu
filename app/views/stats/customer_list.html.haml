@@ -13,35 +13,42 @@
 %div{style: "margin-top: 50px"}
   %table.table.table-striped.center
     .tariff_text.tariff_1
-      = "Tariff 1 (top 10):"
+      = "Tariff 1 (top 11):"
       = @tariff_1 
       = "KES"
     %thead
       %tr
         %th.center Global Position
+        %th.center Total Spend period (KES)
         %th.center Id steama
         %th.center Id 
-        %th.center first_name
-        %th.center last_name
-        %th.center energy_price
-        %th.center account_balance
+        %th.center First Name
+        %th.center Last Name
+        %th.center Energy Price
+        %th.center Account Balance
     %tbody
-      - Customer.all.each do |customer|
+      - sort_customers_with_topups_in_time_sum
+      - n = 0
+      - @data_sorted.each do |customer|
+        - customer_db = Customer.find(customer[:id])
+        - n += 1
         %tr.tariff_1
           %td.col-md-2
-            = customer.first_name
-          %td
-            = customer.id
+            = n
           %td.col-md-2
-            = customer.first_name
+            = customer[:cumulative]
           %td.col-md-2
-            = customer.first_name
+            = customer_db.id_steama
           %td.col-md-2
-            = customer.first_name
+            = customer_db.id
           %td.col-md-2
-            = customer.first_name
+            = customer_db.first_name
           %td.col-md-2
-            = customer.first_name
+            = customer_db.last_name
+          %td.col-md-2
+            = customer_db.energy_price
+          %td.col-md-2
+            = customer_db.account_balance
         
 
                     
