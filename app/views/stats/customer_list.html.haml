@@ -4,51 +4,70 @@
     text-align: center
   .tariff_1
     color: green
+  .tariff_2
+    color: blue
+  .tariff_3
+    color: brown
   .tariff_text
     font-size: 30px
     text-align: center
     margin-top: 20px
     margin-bottom: 20px
-    
-%div{style: "margin-top: 50px"}
-  %table.table.table-striped.center
-    .tariff_text.tariff_1
-      = "Tariff 1 (top 11):"
-      = @tariff_1 
-      = "KES"
-    %thead
-      %tr
-        %th.center Global Position
-        %th.center Total Spend period (KES)
-        %th.center Id steama
-        %th.center Id 
-        %th.center First Name
-        %th.center Last Name
-        %th.center Energy Price
-        %th.center Account Balance
-    %tbody
-      - sort_customers_with_topups_in_time_sum
-      - n = 0
-      - @data_sorted.each do |customer|
-        - customer_db = Customer.find(customer[:id])
-        - n += 1
-        %tr.tariff_1
-          %td.col-md-2
-            = n
-          %td.col-md-2
-            = customer[:cumulative]
-          %td.col-md-2
-            = customer_db.id_steama
-          %td.col-md-2
-            = customer_db.id
-          %td.col-md-2
-            = customer_db.first_name
-          %td.col-md-2
-            = customer_db.last_name
-          %td.col-md-2
-            = customer_db.energy_price
-          %td.col-md-2
-            = customer_db.account_balance
+
+- num_of_customers = 119 # Customers
+- sort_customers_with_topups_in_time_sum
+- n = 0
+- tariff_num = 0
+- a = 0
+- b = 10
+- c = num_of_customers - 40
+- data_tariff_1 = @data_sorted[a..b] # top 11 customers
+- data_tariff_2 = @data_sorted[(b+1)..c]
+- data_tariff_3 = @data_sorted[(c+1)..num_of_customers] # bottom 40 customers
+
+- [data_tariff_1, data_tariff_2, data_tariff_3].each do |tariff|
+  - tariff_num += 1
+  %div{style: "margin-top: 50px"}
+    %table.table.table-striped.center
+      .tariff_text{class: "tariff_#{tariff_num}"}
+        = "Tariff"
+        = tariff_num
+        = "("
+        = tariff.count 
+        = "Customers):"
+        = Customer.tariff(tariff_num).to_i 
+        = "KES"
+      %thead
+        %tr{class: "tariff_#{tariff_num}"}
+          %th.center Global Position
+          %th.center Total Spend period (KES)
+          %th.center Id steama
+          %th.center Id 
+          %th.center First Name
+          %th.center Last Name
+          %th.center Energy Price
+          %th.center Account Balance
+      %tbody
+        - tariff.each do |customer|
+          - customer_db = Customer.find(customer[:id])
+          - n += 1
+          %tr{class: "tariff_#{tariff_num}"}
+            %td.col-md-2
+              = n
+            %td.col-md-2
+              = customer[:cumulative]
+            %td.col-md-2
+              = customer_db.id_steama
+            %td.col-md-2
+              = customer_db.id
+            %td.col-md-2
+              = customer_db.first_name
+            %td.col-md-2
+              = customer_db.last_name
+            %td.col-md-2
+              = customer_db.energy_price
+            %td.col-md-2
+              = customer_db.account_balance
         
 
                     
