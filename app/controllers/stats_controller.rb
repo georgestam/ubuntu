@@ -1,9 +1,9 @@
 class StatsController < ApplicationController
   
-  before_action :format_dates, only: %i[index create customer_list]
+  before_action :format_dates, only: %i[index create]
   before_action :load_costumers, only: %i[index create customer_list]
   before_action :skip_authorization, only: %i[create graph_costumer customer_list]
-  before_action :load_dates, only: %i[graph_costumer]
+  before_action :load_dates, only: %i[graph_costumer customer_list]
   
   def index
     policy_scope(User)
@@ -21,9 +21,6 @@ class StatsController < ApplicationController
   end 
   
   def customer_list
-    @tariff_1 = Customer.tariff(1).to_i 
-    @tariff_2 = Customer.tariff(2).to_i
-    @tariff_2 = Customer.tariff(3).to_i 
   end 
   
   private

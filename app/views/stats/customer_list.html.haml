@@ -13,6 +13,13 @@
     text-align: center
     margin-top: 20px
     margin-bottom: 20px
+  .wrong_tariff
+    background-color: #f9b1ab !important
+  .title_list
+    font-weight: bold 
+    font-size: 20px 
+    text-align: center
+    margin-top: 30px
 
 - num_of_customers = 119 # Customers
 - sort_customers_with_topups_in_time_sum
@@ -20,11 +27,15 @@
 - tariff_num = 0
 - a = 0
 - b = 10
-- c = num_of_customers - 40
+- c = num_of_customers - 46
 - data_tariff_1 = @data_sorted[a..b] # top 11 customers
 - data_tariff_2 = @data_sorted[(b+1)..c]
 - data_tariff_3 = @data_sorted[(c+1)..num_of_customers] # bottom 40 customers
 
+= link_to 'Back', :back, class: 'btn btn-default btn-lg margin', style: "margin-top: 30px"
+
+.title_list
+  = "List of customers sorted by sum of topups -  #{@start_date.strftime('%d %b %Y')} to #{@end_date.strftime('%d %b %Y')}"
 - [data_tariff_1, data_tariff_2, data_tariff_3].each do |tariff|
   - tariff_num += 1
   %div{style: "margin-top: 50px"}
@@ -51,7 +62,7 @@
         - tariff.each do |customer|
           - customer_db = Customer.find(customer[:id])
           - n += 1
-          %tr{class: "tariff_#{tariff_num}"}
+          %tr{class: "tariff_#{tariff_num} #{'wrong_tariff' unless customer_db.energy_price == Customer.tariff(tariff_num)}"}
             %td.col-md-2
               = n
             %td.col-md-2

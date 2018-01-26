@@ -1,6 +1,6 @@
 class Customer < ApplicationRecord
   
-  TARIFS = %w[60 80 100].freeze
+  TARIFS = %w[60.00 80.00 100.00].freeze
   
   require 'rest-client'
   
