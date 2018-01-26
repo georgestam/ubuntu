@@ -10,7 +10,7 @@ FactoryGirl.define do
     low_balance_warning { rand(0..1000) }
     low_balance_level { rand(0..1000) }
     description { Faker::HowIMetYourMother.catch_phrase }
-    energy_price { [60, 80, 100].sample }
+    energy_price { Customer::TARIFS.sample }
       
   end
   

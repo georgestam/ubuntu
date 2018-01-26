@@ -37,48 +37,49 @@
 .title_list
   = "List of customers sorted by sum of topups -  #{@start_date.strftime('%d %b %Y')} to #{@end_date.strftime('%d %b %Y')}"
 - [data_tariff_1, data_tariff_2, data_tariff_3].each do |tariff|
-  - tariff_num += 1
-  %div{style: "margin-top: 50px"}
-    %table.table.table-striped.center
-      .tariff_text{class: "tariff_#{tariff_num}"}
-        = "Tariff"
-        = tariff_num
-        = "("
-        = tariff.count 
-        = "Customers):"
-        = Customer.tariff(tariff_num).to_i 
-        = "KES"
-      %thead
-        %tr{class: "tariff_#{tariff_num}"}
-          %th.center Global Position
-          %th.center Total Spend period (KES)
-          %th.center Id steama
-          %th.center Id 
-          %th.center First Name
-          %th.center Last Name
-          %th.center Energy Price
-          %th.center Account Balance
-      %tbody
-        - tariff.each do |customer|
-          - customer_db = Customer.find(customer[:id])
-          - n += 1
-          %tr{class: "tariff_#{tariff_num} #{'wrong_tariff' unless customer_db.energy_price == Customer.tariff(tariff_num)}"}
-            %td.col-md-2
-              = n
-            %td.col-md-2
-              = customer[:cumulative]
-            %td.col-md-2
-              = customer_db.id_steama
-            %td.col-md-2
-              = customer_db.id
-            %td.col-md-2
-              = customer_db.first_name
-            %td.col-md-2
-              = customer_db.last_name
-            %td.col-md-2
-              = customer_db.energy_price
-            %td.col-md-2
-              = customer_db.account_balance
-        
+  - if tariff.present?
+    - tariff_num += 1
+    %div{style: "margin-top: 50px"}
+      %table.table.table-striped.center
+        .tariff_text{class: "tariff_#{tariff_num}"}
+          = "Tariff"
+          = tariff_num
+          = "("
+          = tariff.count 
+          = "Customers):"
+          = Customer.tariff(tariff_num).to_i 
+          = "KES"
+        %thead
+          %tr{class: "tariff_#{tariff_num}"}
+            %th.center Global Position
+            %th.center Total Spend period (KES)
+            %th.center Id steama
+            %th.center Id 
+            %th.center First Name
+            %th.center Last Name
+            %th.center Energy Price
+            %th.center Account Balance
+        %tbody
+          - tariff.each do |customer|
+            - customer_db = Customer.find(customer[:id])
+            - n += 1
+            %tr{class: "tariff_#{tariff_num} #{'wrong_tariff' unless customer_db.energy_price == Customer.tariff(tariff_num)}"}
+              %td.col-md-2
+                = n
+              %td.col-md-2
+                = customer[:cumulative]
+              %td.col-md-2
+                = customer_db.id_steama
+              %td.col-md-2
+                = customer_db.id
+              %td.col-md-2
+                = customer_db.first_name
+              %td.col-md-2
+                = customer_db.last_name
+              %td.col-md-2
+                = customer_db.energy_price
+              %td.col-md-2
+                = customer_db.account_balance
+          
 
-                    
+                      
