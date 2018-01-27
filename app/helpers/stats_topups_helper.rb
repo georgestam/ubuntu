@@ -84,8 +84,4 @@ module StatsTopupsHelper
 
   end
   
-  
-  
-  
-  
 end

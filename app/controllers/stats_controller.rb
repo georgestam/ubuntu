@@ -1,7 +1,7 @@
 class StatsController < ApplicationController
   
   before_action :format_dates, only: %i[index create]
-  before_action :load_costumers, only: %i[index create customer_list]
+  before_action :load_costumers, only: %i[index create]
   before_action :skip_authorization, only: %i[create graph_costumer customer_list]
   before_action :load_dates, only: %i[graph_costumer customer_list]
   
