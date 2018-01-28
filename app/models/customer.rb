@@ -1,5 +1,7 @@
 class Customer < ApplicationRecord
   
+  TARIFS = %w[60.00 80.00 100.00].freeze
+  
   require 'rest-client'
   
   has_many :alerts, dependent: :destroy
@@ -11,6 +13,7 @@ class Customer < ApplicationRecord
   has_many :balances, dependent: :destroy
   
   validates :id_steama, presence: true, uniqueness: true
+  validates :energy_price, inclusion: { in: TARIFS, allow_nil: false }
   
   def self.customer_id_exist?(id_steama)
     true if Customer.find_by(id_steama: id_steama)
@@ -19,6 +22,16 @@ class Customer < ApplicationRecord
   def name
     "#{self.first_name},#{self.last_name}"
   end
+  
+  def self.tariff(number)
+    if number == 1 # top 11
+      TARIFS[0]
+    elsif number == 2
+      TARIFS[1]
+    else # bottom 44
+      TARIFS[2]
+    end 
+  end 
   
   def an_alert_open_with?(name_type_of_alert)
     exist = false 
@@ -67,6 +80,7 @@ class Customer < ApplicationRecord
         telephone: user['telephone'], 
         first_name: user['first_name'],
         last_name: user['last_name'],
+        energy_price: user['energy_price'],
         account_balance: user['account_balance'],
         low_balance_warning: user['low_balance_warning'],
         low_balance_level: user['low_balance_level'],
@@ -109,6 +123,7 @@ class Customer < ApplicationRecord
         telephone: user['telephone'], 
         first_name: user['first_name'],
         last_name: user['last_name'],
+        energy_price: user['energy_price'],
         account_balance: user['account_balance'],
         low_balance_warning: user['low_balance_warning'],
         low_balance_level: user['low_balance_level'],

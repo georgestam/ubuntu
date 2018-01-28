@@ -70,6 +70,18 @@ module StatsTopupsHelper
     
     line_chart data, legend: "bottom", xtitle: "", ytitle: "KES", library: basic_opts("#{@customer.first_name} topups per week (sum)")
   
+  end  
+  
+  def sort_customers_with_topups_in_time_sum
+    
+    data = Customer.all.map { |customer|
+      topups = Topup.where(customer: customer)
+      sub_data = by_week(topups, "created_on", "sum")
+      {id: customer.id, data: sub_data, cumulative: topups.sum(:amount) } 
+    }
+      
+    @data_sorted = data.sort {|a, b| b[:cumulative] <=> a[:cumulative]}
+
   end
   
 end

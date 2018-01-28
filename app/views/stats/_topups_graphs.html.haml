@@ -1,4 +1,13 @@
+:sass
+
+  #button_customers
+    text-align: center
+    margin-top: 30px
+    margin-bottom: 30px
+    
 #topups_graphs
+  #button_customers
+    = link_to "Display customers sorted by topups", customer_list_stats_path , class: "button btn btn-lg btn-primary", id: "display-customers"
   = top_10_customers_with_topups("asc")
   = top_10_customers_with_topups_in_time
   = top_10_customers_with_topups_sum("asc")
