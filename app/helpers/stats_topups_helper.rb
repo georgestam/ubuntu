@@ -73,8 +73,7 @@ module StatsTopupsHelper
   end  
   
   def sort_customers_with_topups_in_time_sum
-    
-    data = Customer.all.map { |customer|
+    data = Customer.where(ignore_alerts: false).map { |customer|
       topups = Topup.where(customer: customer)
       sub_data = by_week(topups, "created_on", "sum")
       {id: customer.id, data: sub_data, cumulative: topups.sum(:amount) } 
