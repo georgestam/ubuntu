@@ -191,31 +191,29 @@ class Alert < ApplicationRecord
   end 
   
   def self.create_alert_for_customers_with_line_off
-    
-    url1 = "https://api.steama.co/bitharvesters/99596/lines/?format=json&page_size=70"
-    url2 = "https://api.steama.co/bitharvesters/99596/lines/?format=json&page=2&page_size=70"
+
+    url1 = "https://api.steama.co/bitharvesters/99596/meters/?format=json&page_size=70"
+    url2 = "https://api.steama.co/bitharvesters/99596/meters/?format=json&page=2&page_size=70"
     
     [url1, url2].each do |url|
       json_data = if !test?
         body = RestClient.get url, {:Authorization => "Token #{ENV['TOKEN_STEAMA']}"}
         JSON.parse(body)
       else 
-        file = Rails.root.join('spec', 'support', 'example_steama_utilities.json')
+        file = Rails.root.join('spec', 'support', 'example_steama_meters.json')
         JSON.parse(File.read(file))
       end 
     
-      
-      json_data['results'].each do |line|
+    
+      json_data['results'].each do |meter|
         
-        id_steama = line['user'].to_i
-        
+        id_steama = meter['customer'].to_i
         customer = Customer.find_by(id_steama: id_steama)
         # add condition as an_alert_open_with?("Line is off") does not work if customer is nil
-
         if customer
           # line_status 4,5,6,7 are line off
-          if line['line_status'].to_i > 3 && !customer.an_alert_open_with?("Line is off") && !customer.an_alert_open_with?("Negative account")
-            
+          if !meter['connection_is_on'] && !customer.an_alert_open_with?("Line is off") && !customer.an_alert_open_with?("Negative account")
+          
           type_alert = TypeAlert.find_by(name: "Line is off")
           Alert.create({
               customer: customer,
