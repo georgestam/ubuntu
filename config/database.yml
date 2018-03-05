@@ -2,14 +2,14 @@ default: &default
   database: <%= "ubuntu_#{Rails.env}" %>
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 50000
 
 development:
   <<: *default
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 test:
   <<: *default
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 production_or_staging: &production_or_staging
   username: ubuntu
@@ -18,7 +18,6 @@ production_or_staging: &production_or_staging
 staging:
   <<: *default
   <<: *production_or_staging
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 production:
   <<: *default
