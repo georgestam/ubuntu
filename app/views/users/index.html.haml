@@ -1,16 +1,16 @@
 :sass
 
-  .center 
+  .center
     text-align: center
   .margin
     margin: 30px
   .width-buttom
     width: 200px !important
-    
-  .brand-header img 
+
+  .brand-header img
     width: 100px
     margin: 20px
-  
+
   .brand-header
     background: white
     float: left
@@ -31,12 +31,13 @@
 %h4
   = link_to "Admin Panel", rails_admin.dashboard_path, class: 'btn btn-primary btn-lg margin width-buttom', id: "admin-panel-button"
   = "Click here to access the admin dashboard"
-%h4 
+%h4
   = link_to "Update Database", users_update_db_path, method: :post, class: 'btn btn-success btn-lg margin width-buttom', id: "update-database-button"
   = "Click here to update database"
-%h4 
+%h4
   = link_to "Input Alerts form", new_alert_path, class: 'btn btn-default btn-lg margin width-buttom'
   = "Click here to get access to the input Alerts form"
+%h4
+  = link_to "Mark as completed", complate_last_10_path, class: 'btn btn-danger btn-lg margin width-buttom'
+  = "Click here to show as completed all the alerts exept the last 10"
 %p{ style: "margin-top: 150px"}
-
-  
